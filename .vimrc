@@ -1,4 +1,3 @@
-version 6.0
 if &cp | set nocp | endif
 let s:cpo_save=&cpo
 set cpo&vim
@@ -58,9 +57,9 @@ set undodir=~/.cache/vim/undo//
 set wildmenu
 set window=38
 " vim: set ft=vim :
-"colorscheme base16-black-metal-burzum
 syntax on
 
+set termguicolors
 
 au BufWinEnter * normal zR
 
@@ -103,8 +102,12 @@ call SetupVAM()
 " ACTIVATING PLUGINS
 
 " OPTION 1, use VAMActivate
-VAMActivate vim-latex-live-preview evince-synctex github:chriskempson/base16-vim
+VAMActivate github:xuhdev/vim-latex-live-preview evince-synctex github:chriskempson/base16-vim github:vim-airline/vim-airline github:vim-airline/vim-airline-themes github:dawikur/base16-vim-airline-themes
 
+let base16colorspace=256
+colorscheme base16-black-metal-bathory
+
+let g:airline_theme='base16'
 
 autocmd Filetype tex setl updatetime=1000
 

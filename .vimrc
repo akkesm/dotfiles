@@ -2,28 +2,28 @@ if &cp | set nocp | endif
 let s:cpo_save=&cpo
 set cpo&vim
 imap <C-J> <Plug>IMAP_JumpForward
-inoremap <silent> <Plug>IMAP_JumpBack :call IMAP_Jumpfunc('b', 0)
-inoremap <silent> <Plug>IMAP_JumpForward :call IMAP_Jumpfunc('', 0)
-inoremap <C-U> u
+inoremap <silent> <Plug>IMAP_JumpBack :call IMAP_Jumpfunc('b', 0)
+inoremap <silent> <Plug>IMAP_JumpForward :call IMAP_Jumpfunc('', 0)
+inoremap <C-U> u
 map! <S-Insert> <MiddleMouse>
 vmap <NL> <Plug>IMAP_JumpForward
 nmap <NL> <Plug>IMAP_JumpForward
 map Q gq
 vmap gx <Plug>NetrwBrowseXVis
 nmap gx <Plug>NetrwBrowseX
-vnoremap <silent> <Plug>NetrwBrowseXVis :call netrw#BrowseXVis()
-nnoremap <silent> <Plug>NetrwBrowseX :call netrw#BrowseX(expand((exists("g:netrw_gx")? g:netrw_gx : '<cfile>')),netrw#CheckIfRemote())
+vnoremap <silent> <Plug>NetrwBrowseXVis :call netrw#BrowseXVis()
+nnoremap <silent> <Plug>NetrwBrowseX :call netrw#BrowseX(expand((exists("g:netrw_gx")? g:netrw_gx : '<cfile>')),netrw#CheckIfRemote())
 vmap <C-J> <Plug>IMAP_JumpForward
 nmap <C-J> <Plug>IMAP_JumpForward
-vnoremap <silent> <Plug>IMAP_JumpBack `<:call IMAP_Jumpfunc('b', 0)
-vnoremap <silent> <Plug>IMAP_JumpForward :call IMAP_Jumpfunc('', 0)
-vnoremap <silent> <Plug>IMAP_DeleteAndJumpBack "_<Del>:call IMAP_Jumpfunc('b', 0)
-vnoremap <silent> <Plug>IMAP_DeleteAndJumpForward "_<Del>:call IMAP_Jumpfunc('', 0)
-nnoremap <silent> <Plug>IMAP_JumpBack :call IMAP_Jumpfunc('b', 0)
-nnoremap <silent> <Plug>IMAP_JumpForward :call IMAP_Jumpfunc('', 0)
+vnoremap <silent> <Plug>IMAP_JumpBack `<:call IMAP_Jumpfunc('b', 0)
+vnoremap <silent> <Plug>IMAP_JumpForward :call IMAP_Jumpfunc('', 0)
+vnoremap <silent> <Plug>IMAP_DeleteAndJumpBack "_<Del>:call IMAP_Jumpfunc('b', 0)
+vnoremap <silent> <Plug>IMAP_DeleteAndJumpForward "_<Del>:call IMAP_Jumpfunc('', 0)
+nnoremap <silent> <Plug>IMAP_JumpBack :call IMAP_Jumpfunc('b', 0)
+nnoremap <silent> <Plug>IMAP_JumpForward :call IMAP_Jumpfunc('', 0)
 map <S-Insert> <MiddleMouse>
 imap <NL> <Plug>IMAP_JumpForward
-inoremap  u
+inoremap  u
 cmap ww w !sudo tee > /dev/null %
 cmap W w
 cmap Q q
@@ -88,24 +88,24 @@ let g:tex_flavor='latex'
 
 
 fun! SetupVAM()
-  let c = get(g:, 'vim_addon_manager', {})
-  let g:vim_addon_manager = c
-  let c.plugin_root_dir = expand('$HOME', 1) . '/.vim/vim-addons'
+	let c = get(g:, 'vim_addon_manager', {})
+	let g:vim_addon_manager = c
+	let c.plugin_root_dir = expand('$HOME', 1) . '/.vim/vim-addons'
 
-  " Force your ~/.vim/after directory to be last in &rtp always:
-  " let g:vim_addon_manager.rtp_list_hook = 'vam#ForceUsersAfterDirectoriesToBeLast'
+	" Force your ~/.vim/after directory to be last in &rtp always:
+	" let g:vim_addon_manager.rtp_list_hook = 'vam#ForceUsersAfterDirectoriesToBeLast'
 
-  " most used options you may want to use:
-  " let c.log_to_buf = 1
-  " let c.auto_install = 0
-  let &rtp.=(empty(&rtp)?'':',').c.plugin_root_dir.'/vim-addon-manager'
-  if !isdirectory(c.plugin_root_dir.'/vim-addon-manager/autoload')
-    execute '!git clone --depth=1 git://github.com/MarcWeber/vim-addon-manager '
-        \       shellescape(c.plugin_root_dir.'/vim-addon-manager', 1)
-  endif
+	" most used options you may want to use:
+	" let c.log_to_buf = 1
+	" let c.auto_install = 0
+	let &rtp.=(empty(&rtp)?'':',').c.plugin_root_dir.'/vim-addon-manager'
+	if !isdirectory(c.plugin_root_dir.'/vim-addon-manager/autoload')
+		execute '!git clone --depth=1 git://github.com/MarcWeber/vim-addon-manager '
+					\       shellescape(c.plugin_root_dir.'/vim-addon-manager', 1)
+	endif
 
-  " This provides the VAMActivate command, you could be passing plugin names, too
-  call vam#ActivateAddons([], {})
+	" This provides the VAMActivate command, you could be passing plugin names, too
+	call vam#ActivateAddons([], {})
 endfun
 call SetupVAM()
 

@@ -1,7 +1,6 @@
 if &cp | set nocp | endif
 let s:cpo_save=&cpo
 set cpo&vim
-2020-09-28T11:10 
 nmap <F3> i<C-R>=strftime("%Y-%m-%dT %I:%M %p")<CR><Esc>
 imap <F3> <C-R>=strftime("%Y-%m-%dT%I:%M %p")<CR>
 imap <C-J> <Plug>IMAP_JumpForward

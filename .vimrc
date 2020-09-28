@@ -1,6 +1,9 @@
 if &cp | set nocp | endif
 let s:cpo_save=&cpo
 set cpo&vim
+2020-09-28T11:10 
+nmap <F3> i<C-R>=strftime("%Y-%m-%dT %I:%M %p")<CR><Esc>
+imap <F3> <C-R>=strftime("%Y-%m-%dT%I:%M %p")<CR>
 imap <C-J> <Plug>IMAP_JumpForward
 inoremap <silent> <Plug>IMAP_JumpBack :call IMAP_Jumpfunc('b', 0)
 inoremap <silent> <Plug>IMAP_JumpForward :call IMAP_Jumpfunc('', 0)
@@ -34,7 +37,10 @@ set background=dark
 set backspace=indent,eol,start
 set backupdir=~/.cache/vim/backup//
 set cindent
+set cmdheight=2
+set confirm
 set comments=b:#,:%,n:>
+set confirm
 set digraph
 set directory=~/.cache/vim/swap//
 set display=truncate
@@ -42,9 +48,11 @@ set fileencodings=ucs-bom,utf-8,default,latin1
 set formatoptions=cqrt
 set helplang=it
 set history=200
+set ignorecase
 set incsearch
 set langnoremap
 set list listchars=tab:»·,trail:·
+set noerrorbells
 set noexpandtab
 set nolangremap
 set nostartofline
@@ -56,6 +64,7 @@ set ruler
 set scrolloff=5
 set shiftwidth=4
 set showcmd
+set smartcase
 set softtabstop=4
 set suffixes=.bak,~,.o,.info,.swp,.aux,.bbl,.blg,.brf,.cb,.dvi,.idx,.ilg,.ind,.inx,.jpg,.log,.out,.png,.toc
 set tabstop=4
@@ -64,12 +73,13 @@ set termguicolors
 set ttimeout
 set ttimeoutlen=100
 set undodir=~/.cache/vim/undo//
-set visualbell
-set whichwrap=<,>,h,l
+" set visualbell
+set whichwrap=h,l
 set wildmenu
 set window=38
 " vim: set ft=vim :
 syntax on
+autocmd FileType make set tabstop=8 shiftwidth=8 softtabstop=0 noexpandtab
 
 au BufWinEnter * normal zR
 

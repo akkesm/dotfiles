@@ -129,16 +129,16 @@ let g:Tex_DefaultTargetFormat='pdf'
 let g:Tex_ViewRule_dvi='evince'
 
 
-" Update compile command with bibliography                              
-"        let b:livepreview_buf_data['run_cmd'] =                                 
-"               \       'env ' .                                                
-"               \               'TEXMFOUTPUT=' . l:tmp_root_dir . ' ' .         
-"                \               'TEXINPUTS=' . l:tmp_root_dir                   
+" Update compile command with bibliography
+"        let b:livepreview_buf_data['run_cmd'] =
+"               \       'env ' .
+"               \               'TEXMFOUTPUT=' . l:tmp_root_dir . ' ' .
+"                \               'TEXINPUTS=' . l:tmp_root_dir
 "                \                            . ':' . b:livepreview_buf_data['root_dir']
-"                \                            . ': ' .                           
-"                \ ' && ' .                                                      
-"                \       b:livepreview_buf_data['run_cmd'] .                     
-"                \ ' && ' .                                                      
+"                \                            . ': ' .
+"                \ ' && ' .
+"                \       b:livepreview_buf_data['run_cmd'] .
+"                \ ' && ' .
 "                \       'cd ' . l:tmp_root_dir . ' && bibtex *.bcf' .
-"                \ ' && ' .                                                      
+"                \ ' && ' .
 "                \       b:livepreview_buf_data['run_cmd']

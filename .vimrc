@@ -29,18 +29,25 @@ cmap W w
 cmap Q q
 let &cpo=s:cpo_save
 unlet s:cpo_save
+set autoindent
 set background=dark
 set backspace=indent,eol,start
 set backupdir=~/.cache/vim/backup//
 set cindent
+set comments=b:#,:%,n:>
+set digraph
 set directory=~/.cache/vim/swap//
 set display=truncate
 set fileencodings=ucs-bom,utf-8,default,latin1
+set formatoptions=cqrt
 set helplang=it
 set history=200
 set incsearch
 set langnoremap
+set list listchars=tab:»·,trail:·
+set noexpandtab
 set nolangremap
+set nostartofline
 set number
 set laststatus=2
 set mouse=nvi
@@ -49,17 +56,20 @@ set ruler
 set scrolloff=5
 set shiftwidth=4
 set showcmd
+set softtabstop=4
 set suffixes=.bak,~,.o,.info,.swp,.aux,.bbl,.blg,.brf,.cb,.dvi,.idx,.ilg,.ind,.inx,.jpg,.log,.out,.png,.toc
+set tabstop=4
 set termencoding=utf-8
+set termguicolors
 set ttimeout
 set ttimeoutlen=100
 set undodir=~/.cache/vim/undo//
+set visualbell
+set whichwrap=<,>,h,l
 set wildmenu
 set window=38
 " vim: set ft=vim :
 syntax on
-
-set termguicolors
 
 au BufWinEnter * normal zR
 

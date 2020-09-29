@@ -7,6 +7,11 @@ imap <C-J> <Plug>IMAP_JumpForward
 inoremap <silent> <Plug>IMAP_JumpBack :call IMAP_Jumpfunc('b', 0)
 inoremap <silent> <Plug>IMAP_JumpForward :call IMAP_Jumpfunc('', 0)
 inoremap <C-U> u
+inoremap { {<CR>}<Esc>O
+inoremap ( ()<Esc>i
+inoremap [ []<Esc>i
+inoremap " ""<Esc>i
+inoremap ' ''<Esc>i
 map! <S-Insert> <MiddleMouse>
 vmap <NL> <Plug>IMAP_JumpForward
 nmap <NL> <Plug>IMAP_JumpForward
@@ -23,15 +28,13 @@ vnoremap <silent> <Plug>IMAP_DeleteAndJumpBack "_<Del>:call IMAP_Jumpfunc('b', 0
 vnoremap <silent> <Plug>IMAP_DeleteAndJumpForward "_<Del>:call IMAP_Jumpfunc('', 0)
 nnoremap <silent> <Plug>IMAP_JumpBack :call IMAP_Jumpfunc('b', 0)
 nnoremap <silent> <Plug>IMAP_JumpForward :call IMAP_Jumpfunc('', 0)
-map <S-Insert> <MiddleMouse>
 imap <NL> <Plug>IMAP_JumpForward
-inoremap  u
 cmap ww w !sudo tee > /dev/null %
 cmap W w
 cmap Q q
 let &cpo=s:cpo_save
 unlet s:cpo_save
-set autoindent
+"set autoindent
 set background=dark
 set backspace=indent,eol,start
 set backupdir=~/.cache/vim/backup//
@@ -40,7 +43,7 @@ set cmdheight=2
 set confirm
 set comments=b:#,:%,n:>
 set confirm
-set digraph
+"set digraph
 set directory=~/.cache/vim/swap//
 set display=truncate
 set fileencodings=ucs-bom,utf-8,default,latin1
@@ -78,7 +81,10 @@ set wildmenu
 set window=38
 " vim: set ft=vim :
 syntax on
-autocmd FileType make set tabstop=8 shiftwidth=8 softtabstop=0 noexpandtab
+autocmd FileType make set tabstop=8 shiftwidth=8 softtabstop=8 noexpandtab
+autocmd FileType python set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+autocmd FileType c set tabstop=2 shiftwidth=2 softtabstop=2 noexpandtab textwidth=100
+autocmd Filetype tex setl updatetime=1000
 
 au BufWinEnter * normal zR
 
@@ -93,7 +99,6 @@ filetype indent on
 " 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
 " The following changes the default filetype back to 'tex':
 let g:tex_flavor='latex'
-
 
 
 fun! SetupVAM()
@@ -122,13 +127,13 @@ call SetupVAM()
 
 " OPTION 1, use VAMActivate
 VAMActivate github:xuhdev/vim-latex-live-preview evince-synctex github:chriskempson/base16-vim github:vim-airline/vim-airline github:vim-airline/vim-airline-themes github:dawikur/base16-vim-airline-themes
+"github:Raimondi/delimitMate
 
 let base16colorspace=256
 colorscheme base16-black-metal-bathory
 
 let g:airline_theme='base16'
-
-autocmd Filetype tex setl updatetime=1000
+let delimitMate_expand_cr=1
 
 let g:livepreview_engine='xelatex'
 let g:tex_flavor='xelatex'

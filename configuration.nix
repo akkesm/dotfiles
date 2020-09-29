@@ -4,36 +4,20 @@
 
 { config, pkgs, ... }:
 
- #let
- #  nvidia-offload = pkgs.writeShellScriptBin "nvidia-offload" ''
- #    export __NV_PRIME_RENDER_OFFLOAD=1
- #    export __NV_PRIME_RENDER_OFFLOAD_PROVIDER=NVIDIA-G0
- #    export __GLX_VENDOR_LIBRARY_NAME=nvidia
- #    export __VK_LAYER_NV_optimus=NVIDIA_only
- #    exec -a "$0" "$@"
- #  '';
- #in
- #{
- #  environment.systemPackages = [ nvidia-offload ];
- #
- #   services.xserver.videoDrivers = [ "nvidia" ];
- #  hardware.nvidia.prime = {
- #    offload.enable = true;
- #
- #    # Bus ID of the Intel GPU. You can find it using lspci, either under 3D or VGA
- #    intelBusId = "PCI:0:2:0";
- #
- #    # Bus ID of the NVIDIA GPU. You can find it using lspci, either under 3D or VGA
- #    nvidiaBusId = "PCI:4:0:0";
- #  };
- #}
-
-
+let
+	nvidia-offload = pkgs.writeShellScriptBin "nvidia-offload" ''
+		export __NV_PRIME_RENDER_OFFLOAD=1
+		export __NV_PRIME_RENDER_OFFLOAD_PROVIDER=NVIDIA-G0
+		export __GLX_VENDOR_LIBRARY_NAME=nvidia
+		export __VK_LAYER_NV_optimus=NVIDIA_only
+		exec -a "$0" "$@"
+	'';
+in
 {
-	imports =
-		[ # Include the results of the hardware scan.
-		./hardware-configuration.nix
-		  # Define file systems
+	imports = [
+		# Include the results of the hardware scan.
+	    	./hardware-configuration.nix
+		# Define file systems
 		./fileSystems.nix
 		];
 
@@ -97,15 +81,51 @@
  # Set your time zone.
 	time.timeZone = "Europe/Rome";
 
+
+	nixpkgs.config.packageOverrides = pkgs: {
+		nur = import (builtins.fetchTarball "https://github.com/nix-community/NUR/archive/master.tar.gz") {
+			inherit pkgs;
+		};
+	};
+
+	nixpkgs.config.allowBroken = true;
+
  # List packages installed in system profile. To search, run:
  # $ nix search wget
 	environment.systemPackages = with pkgs; [
+			nur.repos.suhr.v4l2loopback-dc			
+
+			nvidia-offload
+
 			wget 
 			neovim
+			vim
+			sl
+			cowsay
+			linuxHeaders
+			gcc
+			libjpeg
+			pkg-config
+			discord
+			steam
+			tdesktop
+			glxinfo
+			flameshot
+			efibootmgr
+			kdeconnect
+			neofetch
+			kid3
+			atop
+			gwenview
+			tldr
+			unzip
+		#	v4l2loopback
 			git
 			gnumake
 			gparted
 			tmux
+			pciutils
+			gnupg
 			mlocate
 		#	zsh-syntax-highlighting
 			vimpager
@@ -120,6 +140,9 @@
 			ruby
 			rustup
 			go
+			scrcpy
+			ranger
+			glances
 			kotlin
 			jdk
 			file
@@ -133,6 +156,9 @@
 	
 	programs.adb.enable = true;
 	nixpkgs.config.firefox.enablePlasmaBrowserIntegration = true;	
+	
+	services.flatpak.enable = true;
+
 
  # Some programs need SUID wrappers, can be configured further or are
  # started in user sessions.
@@ -171,7 +197,19 @@
 	services.xserver.enable = true;
 	services.xserver.layout = "it";
 	services.xserver.xkbOptions = "eurosign:e";
- #services.xserver.videoDrivers = [ "nvidia" ];
+
+
+
+	# environment.systemPackages = [ nvidia-offload ];
+
+	services.xserver.videoDrivers = [ "modesetting" "nvidia" ];
+	hardware.nvidia.prime = {
+		offload.enable = true;
+		intelBusId = "PCI:0:2:0";
+		nvidiaBusId = "PCI:4:0:0";
+	};
+
+
 
  # Enable touchpad support.
 	services.xserver.libinput.enable = true;
@@ -190,6 +228,7 @@
 		shell = pkgs.zsh;
 		extraGroups = [ "wheel" "networkmanager" "jackaudio" "adbusers" ];
 	};
+	users.users.root.shell = pkgs.zsh;
 
  # This value determines the NixOS release from which the default
  # settings for stateful data, like file locations and database versions
@@ -198,6 +237,8 @@
  # Before changing this value read the documentation for this option
  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
 	system.stateVersion = "20.03"; # Did you read the comment?
+	system.autoUpgrade.enable = true;
+	system.autoUpgrade.channel = https://nixos.org/channels/nixos-unstable;
 
 	hardware.opengl.driSupport32Bit = true;
 	boot.kernelPackages = pkgs.linuxPackages_latest;

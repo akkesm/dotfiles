@@ -114,6 +114,7 @@ in
 			efibootmgr
 			kdeconnect
 			neofetch
+			killall
 			kid3
 			atop
 			gwenview

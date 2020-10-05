@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+gcc -march=native -pipe -ansi -Wc90-c99-compat -Wpedantic -Werror -O2 -g "$1".c -o "$1" && ./"$1"

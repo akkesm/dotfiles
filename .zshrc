@@ -33,8 +33,8 @@ export MAKEFLAGS="-j3"
 #    [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
 #        eval "$("$BASE16_SHELL/profile_helper.sh")"
 
-export ZSH=~/.oh-my-zsh/
-export PATH="$PATH:$HOME/scripts"
+ export ZSH=~/.oh-my-zsh/
+ export PATH="$PATH:$HOME/scripts"
 
 plugins=(
   adb
@@ -58,6 +58,7 @@ plugins=(
 # rbenv
   ruby
   singlechar
+  suse
   systemd
 # thefuck
   tmux

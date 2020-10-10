@@ -10,13 +10,13 @@ inoremap <C-U> u
 inoremap { {<CR>}<Esc>O
 inoremap ( ()<Esc>i
 inoremap [ []<Esc>i
-inoremap " ""<Esc>i
+"inoremap " ""<Esc>i
 inoremap ' ''<Esc>i
 map! <S-Insert> <MiddleMouse>
 vmap <NL> <Plug>IMAP_JumpForward
 nmap <NL> <Plug>IMAP_JumpForward
 map Q gq
-vmap gx <Plug>NetrwBrowseXVis
+vmap gx <Plug>NetrwBrowseXVis#
 nmap gx <Plug>NetrwBrowseX
 vnoremap <silent> <Plug>NetrwBrowseXVis :call netrw#BrowseXVis()
 nnoremap <silent> <Plug>NetrwBrowseX :call netrw#BrowseX(expand((exists("g:netrw_gx")? g:netrw_gx : '<cfile>')),netrw#CheckIfRemote())
@@ -32,6 +32,7 @@ imap <NL> <Plug>IMAP_JumpForward
 cmap ww w !sudo tee > /dev/null %
 cmap W w
 cmap Q q
+cnoremap rms %s/\s\+$//e
 let &cpo=s:cpo_save
 unlet s:cpo_save
 "set autoindent
@@ -72,6 +73,10 @@ set suffixes=.bak,~,.o,.info,.swp,.aux,.bbl,.blg,.brf,.cb,.dvi,.idx,.ilg,.ind,.i
 set tabstop=4
 set termencoding=utf-8
 set termguicolors
+if $TMUX != ''
+	let &t_8f = "\<Esc>[38:2:%lu:%lu:%lum"
+	let &t_8b = "\<Esc>[48:2:%lu:%lu:%lum"
+endif
 set ttimeout
 set ttimeoutlen=100
 set undodir=~/.cache/vim/undo//
@@ -88,11 +93,7 @@ autocmd Filetype tex setl updatetime=1000
 
 au BufWinEnter * normal zR
 
-
-" REQUIRED. This makes vim invoke Latex-Suite when you open a tex file.
 filetype plugin on
-
-" OPTIONAL: This enables automatic indentation as you type.
 filetype indent on
 
 " OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
@@ -126,7 +127,7 @@ call SetupVAM()
 " ACTIVATING PLUGINS
 
 " OPTION 1, use VAMActivate
-VAMActivate github:xuhdev/vim-latex-live-preview evince-synctex github:chriskempson/base16-vim github:vim-airline/vim-airline github:vim-airline/vim-airline-themes github:dawikur/base16-vim-airline-themes
+VAMActivate github:xuhdev/vim-latex-live-preview evince-synctex github:chriskempson/base16-vim github:vim-airline/vim-airline github:vim-airline/vim-airline-themes github:dawikur/base16-vim-airline-themes github:tpope/vim-dispatch
 "github:Raimondi/delimitMate
 
 let base16colorspace=256

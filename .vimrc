@@ -1,6 +1,7 @@
 if &cp | set nocp | endif
 let s:cpo_save=&cpo
 set cpo&vim
+set path=.,,**
 nmap <F3> i<C-R>=strftime("%Y-%m-%dT %I:%M %p")<CR><Esc>
 imap <F3> <C-R>=strftime("%Y-%m-%dT%I:%M %p")<CR>
 imap <C-J> <Plug>IMAP_JumpForward
@@ -16,7 +17,7 @@ map! <S-Insert> <MiddleMouse>
 vmap <NL> <Plug>IMAP_JumpForward
 nmap <NL> <Plug>IMAP_JumpForward
 map Q gq
-vmap gx <Plug>NetrwBrowseXVis#
+vmap gx <Plug>NetrwBrowseXVis
 nmap gx <Plug>NetrwBrowseX
 vnoremap <silent> <Plug>NetrwBrowseXVis :call netrw#BrowseXVis()
 nnoremap <silent> <Plug>NetrwBrowseX :call netrw#BrowseX(expand((exists("g:netrw_gx")? g:netrw_gx : '<cfile>')),netrw#CheckIfRemote())
@@ -65,12 +66,12 @@ set mouse=nvi
 set nrformats=bin,hex
 set ruler
 set scrolloff=5
-set shiftwidth=4
+set shiftwidth=8
 set showcmd
 set smartcase
-set softtabstop=4
+set softtabstop=8
 set suffixes=.bak,~,.o,.info,.swp,.aux,.bbl,.blg,.brf,.cb,.dvi,.idx,.ilg,.ind,.inx,.jpg,.log,.out,.png,.toc
-set tabstop=4
+set tabstop=8
 set termencoding=utf-8
 set termguicolors
 if $TMUX != ''
@@ -93,7 +94,11 @@ autocmd Filetype tex setl updatetime=1000
 
 au BufWinEnter * normal zR
 
+
+" REQUIRED. This makes vim invoke Latex-Suite when you open a tex file.
 filetype plugin on
+
+" OPTIONAL: This enables automatic indentation as you type.
 filetype indent on
 
 " OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
@@ -127,7 +132,7 @@ call SetupVAM()
 " ACTIVATING PLUGINS
 
 " OPTION 1, use VAMActivate
-VAMActivate github:xuhdev/vim-latex-live-preview evince-synctex github:chriskempson/base16-vim github:vim-airline/vim-airline github:vim-airline/vim-airline-themes github:dawikur/base16-vim-airline-themes github:tpope/vim-dispatch
+VAMActivate github:xuhdev/vim-latex-live-preview evince-synctex github:chriskempson/base16-vim github:vim-airline/vim-airline github:vim-airline/vim-airline-themes github:dawikur/base16-vim-airline-themes github:tpope/vim-dispatch github:neomake/neomake
 "github:Raimondi/delimitMate
 
 let base16colorspace=256

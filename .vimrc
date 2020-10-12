@@ -1,6 +1,9 @@
 if &cp | set nocp | endif
 let s:cpo_save=&cpo
 set cpo&vim
+if !isdirectory($HOME."/.vim")
+	call mkdir($HOME."/.vim", "", 0770)
+endif
 set path=.,,**
 nmap <F3> i<C-R>=strftime("%Y-%m-%dT %I:%M %p")<CR><Esc>
 imap <F3> <C-R>=strftime("%Y-%m-%dT%I:%M %p")<CR>
@@ -39,14 +42,20 @@ unlet s:cpo_save
 "set autoindent
 set background=dark
 set backspace=indent,eol,start
-set backupdir=~/.cache/vim/backup//
+if !isdirectory($HOME."/.vim/backup")
+	call mkdir($HOME."/.vim/backup", "", 0711)
+endif
+set backupdir=~/.vim/backup//
 set cindent
 set cmdheight=2
 set confirm
 set comments=b:#,:%,n:>
 set confirm
 "set digraph
-set directory=~/.cache/vim/swap//
+if !isdirectory($HOME."/.vim/swap")
+	call mkdir($HOME."/.vim/swap", "", 0711)
+endif
+set directory=~/.vim/swap//
 set display=truncate
 set fileencodings=ucs-bom,utf-8,default,latin1
 set formatoptions=cqrt
@@ -80,7 +89,11 @@ if $TMUX != ''
 endif
 set ttimeout
 set ttimeoutlen=100
-set undodir=~/.cache/vim/undo//
+if !isdirectory($HOME."/.vim/undo")
+	call mkdir($HOME."/.vim/undo", "", 0711)
+endif
+set undodir=~/.vim/undo//
+set undofile
 " set visualbell
 set whichwrap=h,l
 set wildmenu

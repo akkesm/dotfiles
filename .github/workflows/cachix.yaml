@@ -1,0 +1,25 @@
+name: "Cachix"
+
+on:
+  pull_request:
+  push:
+  workflow_dispatch:
+
+jobs:
+  builds:
+    name: Build configuration civetta
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2.4.0
+      with:
+        fetch-depth: 0
+    - uses: cachix/install-nix-action@v16
+      with:
+        install_url: https://github.com/numtide/nix-unstable-installer/releases/download/nix-2.5pre20211026_5667822/install
+        extra_nix_config: |
+          experimental-features = nix-command flakes
+    - uses: cachix/cachix-action@v10
+      with:
+        name: akkesm
+        authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+    - run: nix build -L .#civetta

@@ -22,4 +22,4 @@ jobs:
       with:
         name: akkesm
         authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
-    - run: nix build -L .#civetta
+    - run: nix build -L .#nixosConfigurations.civetta.config.system.build.toplevel

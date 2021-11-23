@@ -23,6 +23,8 @@
     ];
   };
 
+  users.defaultUserShell = pkgs.zsh;
+
   xdg.portal = {
     enable = true;
     wlr.enable = true;

@@ -140,6 +140,7 @@
           # dwarffs.nixosModules.dwarffs
         ];
 
+        # nix build --impure .#nixosConfigurations.live-iso.config.system.build.isoImage
         "live-iso".modules = [
           ./hosts/live-iso
           {

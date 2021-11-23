@@ -23,7 +23,7 @@
       # "https://nixcache.reflex-frp.org"
     ];
 
-    # preallocate-contents fixes compression
+    # preallocate-contents fixes btrfs compression, it is now disabled by default
     # keep-* is for direnv and some other stuff
     extraOptions = ''
       experimental-features = nix-command flakes ca-derivations ca-references
@@ -113,10 +113,6 @@
       #     };
       #   });
       # })
-
-      # (import (builtins.fetchTarball {
-      #   url = "https://github.com/akkesm/Passky-Desktop/archive/flake-fix.tar.gz";
-      # }))
     ];
   };
 }

@@ -109,7 +109,7 @@
     ECORE_EVAS_ENGINE = "wayland_egl";
     ELM_ENGINE = "wayland_egl";
     QT_QPA_PLATFORM = "wayland-egl";
-    QT_WAYLAND_FORCE_DPI = 96;
+    QT_WAYLAND_FORCE_DPI = 100;
     SDL_VIDEODRIVER = "wayland";
     # _JAVA_AWT_WM_NONREPARENTING = 1;
   };

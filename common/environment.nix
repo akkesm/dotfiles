@@ -35,6 +35,7 @@
       pciutils
       ranger
       ripgrep
+      rwhich
       shellcheck
       strace
       sysstat
@@ -47,7 +48,7 @@
       whois
 
       (pkgs.writeShellScriptBin "fs-diff" ''
-        set -euo pipefail
+        set -Eeuo pipefail
 
         OLD_TRANSID=''$(sudo btrfs subvolume find-new /mnt/root-blank 9999999)
         OLD_TRANSID=''${OLD_TRANSID#transid marker was }
@@ -114,6 +115,7 @@
 
     traceroute.enable = true;
     wireshark.enable = true;
+    zmap.enable = true;
 
     zsh = {
       enableBashCompletion = true;
@@ -125,12 +127,18 @@
         batman = "batman --paging=auto";
         ccat = "bat";
 
+        cdtmp = "cd $(mktemp -d)";
+
         ll = "exa --long --group-directories-first --links --binary --group --time-style long-iso --icons";
         la = "exa --long --group-directories-first --links --binary --group --time-style long-iso --icons --all";
 
         h = "history";
         hs = "history | grep -i";
       };
+
+      shellInit = ''
+        function rwhich () { (which -a ls | sed -n '/^\//p' | uniq | xargs realpath) }
+      '';
     };
   };
 

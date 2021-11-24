@@ -11,6 +11,7 @@
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
       "akkesm.cachix.org-1:9ESYmocqudg/QaRhELpkSWy4LNZbTqDdD2N0zpJP/e8="
+      # "nickel.cachix.org-1:ABoCOGpTJbAum7U6c+04VbjvLxG9f0gJP5kYihRRdQs="
       # "ryantrinkle.com-1:JJiAKaRv9mWgpVAz8dwewnZe0AzzEAzPkagE9SP5NWI="
     ];
 
@@ -20,6 +21,7 @@
       "https://nix-community.cachix.org"
       "https://nixpkgs-wayland.cachix.org"
       "https://akkesm.cachix.org"
+      # "https://nickel.cachix.org"
       # "https://nixcache.reflex-frp.org"
     ];
 

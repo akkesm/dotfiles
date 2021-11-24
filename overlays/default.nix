@@ -10,6 +10,8 @@ final: prev:
   sway-launcher-desktop = final.callPackage ./sway-launcher-desktop { };
   xcursor-breeze-neutral = final.callPackage ./xcursor-breeze-neutral { };
 
+  rwhich = final.callPackage ./rwhich { };
+
   # Package set extensions
   vimPlugins = prev.vimPlugins
     // final.callPackage ./vim-plugins {

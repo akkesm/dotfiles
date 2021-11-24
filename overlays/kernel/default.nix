@@ -3,15 +3,15 @@
 base_kernel.override {
   version = "${base_kernel.version}-civetta";
 
-  kernelPatches = [{
-    name = "patchFeatures";
-    patch = null;
-    features = {
-      iwlwifi = true;
-      efiBootStub = true;
-      ia32Emulation = true;
-    };
-  }];
+  # kernelPatches = [{
+  #   name = "patchFeatures";
+  #   patch = null;
+  #   features = {
+  #     iwlwifi = true;
+  #     efiBootStub = true;
+  #     ia32Emulation = true;
+  #   };
+  # }];
 
   structuredExtraConfig = import ./civetta-config.nix {
     inherit lib stdenv;

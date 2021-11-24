@@ -63,12 +63,6 @@
 
     plugins = (
       let
-        # zsh-vi-mode = pkgs.fetchFromGitHub {
-        #   owner = "jeffreytse";
-        #   repo = "zsh-vi-mode";
-        #   rev = "9178e6bea2c8b4f7e998e59ef755820e761610c7";
-        #   sha256 = "0a1rvc03rl66v8rgzvxpq0vw55hxn5b9dkmhdqghvi2f4dvi8fzx";
-        # };
         #   oh-my-zsh-src = pkgs.fetchFromGitHub {
         #     owner = "ohmyzsh";
         #     repo = "ohmyzsh";
@@ -94,7 +88,7 @@
         }
         # {
         #   name = "zsh-vi-mode";
-        #   src = zsh-vi-mode;
+        #   src = pkgs.zsh-vi-mode;
         #   file = "share/zsh-vi-mode/zsh-vi-mode.zsh";
         # }
         # {
@@ -115,6 +109,8 @@
 
       batman = "batman --paging=auto";
       ccat = "bat";
+
+      cdtmp = "cd $(mktemp -d)";
 
       dnfl = "dnf list";
       dnfli = "dnf list installed";

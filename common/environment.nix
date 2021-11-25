@@ -13,6 +13,7 @@
       bpftrace
       perf
     ]) ++ (with pkgs; [
+      any-nix-shell
       bat
       bc
       bpytop
@@ -135,6 +136,10 @@
         h = "history";
         hs = "history | grep -i";
       };
+
+      promptInit = ''
+        any-nix-shell zsh | source /dev/stdin
+      '';
 
       shellInit = ''
         function rwhich () { (which -a ls | sed -n '/^\//p' | uniq | xargs realpath) }

@@ -14,7 +14,7 @@
         TPACPI_ENABLE = 0;
         TPSMAPI_ENABLE = 0;
         CPU_SCALING_GOVERNOR_ON_AC = "schedutil";
-        CPU_SCALING_GOVERNOR_ON_BAT = "conservative";
+        CPU_SCALING_GOVERNOR_ON_BAT = "schedutil";
         CPU_SCALING_MIN_FREQ_ON_AC = 1400000;
         CPU_SCALING_MAX_FREQ_ON_AC = 2900000;
         CPU_SCALING_MIN_FREQ_ON_BAT = 1400000;

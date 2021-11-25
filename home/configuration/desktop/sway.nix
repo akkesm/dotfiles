@@ -118,6 +118,7 @@
     clipman
     nordzy-cursors
     playerctl
+    qt5.qtwayland
     swayidle
     wl-clipboard
   ];

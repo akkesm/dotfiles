@@ -28,6 +28,14 @@
         unpaywall
       ];
 
+      # There is a bug with RES in Firefox in Wayland? Sway? tiling WMs?
+      # that doesn't display the popup window to grant permissions.
+      # To solve: 
+      # > In the prompt, open js console (F12) and grab window.location.href.
+      # > Then copy and paste that into a normal tab and click the button.
+      # > THEN I get the real firefox balloon message about actually granting the permissions.
+      # https://reddit.com/r/RESissues/comments/pje3x2/expandos_in_linuxwaylandfirefox_permissions/hcn7mx5/
+
       profiles."main" = {
         id = 0;
         settings = {

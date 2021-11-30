@@ -1,22 +1,17 @@
-{ config, lib, pkgs, modulesPath, ... }:
+{ config, modulesPath, ... }:
 
 {
   imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
   boot = {
-    initrd = {
-      availableKernelModules = [
-        "nvme"
-        "xhci_pci"
-        "ahci"
-        "usbhid"
-        "usb_storage"
-        "sd_mod"
-      ];
-
-      # Needed for LVM snapshots
-      kernelModules = [ "dm-snapshot" ];
-    };
+    initrd.availableKernelModules = [
+      "nvme"
+      "xhci_pci"
+      "ahci"
+      "usbhid"
+      "usb_storage"
+      "sd_mod"
+    ];
 
     kernelModules = [ "kvm-amd" ];
     supportedFilesystems = [ "btrfs" ];

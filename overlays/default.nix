@@ -2,25 +2,27 @@
 
 final: prev:
 
+let
+  inherit (final) callPackage;
+in
 {
   # New packages
-  kickoff = final.callPackage ./kickoff { }; # Broken, fontconfig too old
-  nordzy-cursors = final.callPackage ./nordzy-cursors { };
-  nordzy-icon-theme = final.callPackage ./nordzy-icon-theme { };
-  sway-launcher-desktop = final.callPackage ./sway-launcher-desktop { };
-  xcursor-breeze-neutral = final.callPackage ./xcursor-breeze-neutral { };
+  kickoff = callPackage ./kickoff { }; # Broken, fontconfig too old
+  nordzy-cursors = callPackage ./nordzy-cursors { };
+  nordzy-icon-theme = callPackage ./nordzy-icon-theme { };
+  sway-launcher-desktop = callPackage ./sway-launcher-desktop { };
+  xcursor-breeze-neutral = callPackage ./xcursor-breeze-neutral { };
 
-  rwhich = final.callPackage ./rwhich { };
+  rwhich = callPackage ./rwhich { };
 
   # Package set extensions
-  vimPlugins = prev.vimPlugins
-    // final.callPackage ./vim-plugins {
-      inherit inputs;
-      inherit (final) lib vimUtils;
-    };
+  vimPlugins = prev.vimPlugins // callPackage ./vim-plugins {
+    inherit inputs;
+    inherit (final) lib vimUtils;
+  };
 
   # Overrides
-  linux_civetta = final.callPackage ./kernel {
+  linux_civetta = callPackage ./kernel {
     inherit (final) lib stdenv;
     base_kernel = prev.linux_latest;
   };

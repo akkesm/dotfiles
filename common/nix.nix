@@ -28,7 +28,7 @@
     # preallocate-contents fixes btrfs compression, it is now disabled by default
     # keep-* is for direnv and some other stuff
     extraOptions = ''
-      experimental-features = nix-command flakes recursive-nix ca-derivations ca-references
+      experimental-features = nix-command flakes recursive-nix ca-derivations
       preallocate-contents = false
 
       keep-derivations = true

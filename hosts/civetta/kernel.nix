@@ -3,6 +3,7 @@
 {
   boot = {
     kernel.sysctl = {
+      "abi.vsyscall32" = 0; # Fixes a WINE bug
       "vm.swappiness" = 200;
     };
 

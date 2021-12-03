@@ -12,7 +12,9 @@ in
   nordzy-icon-theme = callPackage ./nordzy-icon-theme { };
   sway-launcher-desktop = callPackage ./sway-launcher-desktop { };
   xcursor-breeze-neutral = callPackage ./xcursor-breeze-neutral { };
+  yaml-language-server = callPackage ./yaml-language-server { };
 
+  ## scripts
   rwhich = callPackage ./rwhich { };
 
   # Package set extensions
@@ -22,12 +24,13 @@ in
   };
 
   # Overrides
-  linux_civetta = callPackage ./kernel {
-    inherit (final) lib stdenv;
-    base_kernel = prev.linux_latest;
-  };
+  # linux_civetta = callPackage ./kernel/civetta.nix {
+  #   inherit (final) lib stdenv;
+  #   base_kernel = prev.linux_latest;
+  # };
 
-  linuxPackages_civetta = final.recurseIntoAttrs (final.linuxKernel.packagesFor final.linux_civetta);
+  # linuxPackages_civetta = final.recurseIntoAttrs (final.linuxKernel.packagesFor final.linux_civetta);
+
   # let
   #   base_kernel = prev.linux_latest;
   # in

@@ -179,20 +179,20 @@
           local coq = require('coq')
           lspconfig.bashls.setup(coq.lsp_ensure_capabilities({}))
           lspconfig.ccls.setup(coq.lsp_ensure_capabilities({
-            root_dir = root_pattern('compile_commands.json', '.ccls', 'compile_flags.txt', '.git', 'flake.nix') or dirname
+            root_dir = lspconfig.util.root_pattern('compile_commands.json', '.ccls', 'compile_flags.txt', '.git', 'flake.nix') or lspconfig.util.path.dirname
           }))
           lspconfig.clojure_lsp.setup(coq.lsp_ensure_capabilities({
-            root_dir = root_pattern('project.clj', 'deps.edn', 'build.boot', 'shadow-cljs.edn', '.git', 'flake.nix') or lspconfig.util.path.dirname
+            root_dir = lspconfig.util.root_pattern('project.clj', 'deps.edn', 'build.boot', 'shadow-cljs.edn', '.git', 'flake.nix') or lspconfig.util.path.dirname
           }))
           -- lspconfig.diagnosticls.setup(coq.lsp_ensure_capabilities({}))
           lspconfig.dockerls.setup(coq.lsp_ensure_capabilities({
-                root_dir = root_pattern('Dockerfile', '.git', 'flake.nix') or lspconfig.util.path.dirname
+                root_dir = lspconfig.util.root_pattern('Dockerfile', '.git', 'flake.nix') or lspconfig.util.path.dirname
           }))
           lspconfig.gopls.setup(coq.lsp_ensure_capabilities({
-            root_dir = root_pattern('go.mod', '.git', 'flake.nix') or lspconfig.util.path.dirname
+            root_dir = lspconfig.util.root_pattern('go.mod', '.git', 'flake.nix') or lspconfig.util.path.dirname
           }))
           lspconfig.hls.setup(coq.lsp_ensure_capabilities({
-            root_dir = root_pattern('*.cabal', 'stack.yaml', 'cabal.project', 'package.yaml', 'hie.yaml', '.git', 'flake.nix') or lspconfig.util.path.dirname
+            root_dir = lspconfig.util.root_pattern('*.cabal', 'stack.yaml', 'cabal.project', 'package.yaml', 'hie.yaml', '.git', 'flake.nix') or lspconfig.util.path.dirname
           }))
 
           -- not needed with coq
@@ -208,12 +208,12 @@
           lspconfig.pyright.setup(coq.lsp_ensure_capabilities({}))
           lspconfig.rnix.setup(coq.lsp_ensure_capabilities({}))
           lspconfig.scry.setup(coq.lsp_ensure_capabilities({
-            root_dir = root_pattern('shard.yml', '.git', 'flake.nix') or lspconfig.util.path.dirname
+            root_dir = lspconfig.util.root_pattern('shard.yml', '.git', 'flake.nix') or lspconfig.util.path.dirname
           }))
           lspconfig.solargraph.setup(coq.lsp_ensure_capabilities({
             root_dir = lspconfig.util.root_pattern('Gemfile', '.git', 'flake.nix') or lspconfig.util.path.dirname
           }))
-          lspconfig.sqls.setup(coq.lsp_ensure_capabilities({})
+          lspconfig.sqls.setup(coq.lsp_ensure_capabilities({}))
 
           lspconfig.sumneko_lua.setup(coq.lsp_ensure_capabilities({
             cmd = {
@@ -234,8 +234,8 @@
                 },
                 workspace = {
                   library = {
-                    [vim.fn.expand('$VIMRUNTIME/lua')] = true,
-                    [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true
+                    [vim.fn.expand("$VIMRUNTIME/lua")] = true,
+                    [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true
                   }
                 },
                 telemetry = {
@@ -246,7 +246,7 @@
           }))
 
           lspconfig.terraformls.setup(coq.lsp_ensure_capabilities({
-            root_dir = root_pattern(".terraform", ".git", 'flake.nix') or lspconfig.util.path.dirname
+            root_dir = lspconfig.util.root_pattern('.terraform', '.git', 'flake.nix') or lspconfig.util.path.dirname
           }))
 
           lspconfig.texlab.setup(coq.lsp_ensure_capabilities({
@@ -263,7 +263,7 @@
           lspconfig.vimls.setup(coq.lsp_ensure_capabilities({}))
           lspconfig.yamlls.setup(coq.lsp_ensure_capabilities({}))
           lspconfig.zls.setup(coq.lsp_ensure_capabilities({
-            root_dir = root_pattern("zls.json", ".git", 'flake.nix') or lspconfig.util.path.dirname
+            root_dir = lspconfig.util.root_pattern('zls.json', '.git', 'flake.nix') or lspconfig.util.path.dirname
           }))
           EOF
         '';

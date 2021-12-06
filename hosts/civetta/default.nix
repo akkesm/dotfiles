@@ -3,14 +3,20 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ./environment.nix
+    ./amdgpu.nix
+    ./android.nix
+    ./bluetooth.nix
+    ./boot.nix
+    ./desktop.nix
     ./kernel.nix
-    ./media.nix
+    ./luks.nix
     ./networking.nix
     ./persistence.nix
+    ./pipewire.nix
     ./power.nix
     ./printing.nix
     ./security.nix
+    ./swap.nix
     ./users.nix
     ./virtualisation.nix
   ];

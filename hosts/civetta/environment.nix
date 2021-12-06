@@ -1,39 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  services = {
-    printing = {
-      enable = true;
-      drivers = [ pkgs.gutenprint ];
-      tempDir = "/tmp/cups";
-    };
-  };
-
-  boot = {
-    enableContainers = true;
-    consoleLogLevel = 4;
-
-    loader = {
-      efi.canTouchEfiVariables = true;
-
-      systemd-boot = {
-        enable = true;
-        consoleMode = "max";
-        configurationLimit = 4;
-        editor = false;
-      };
-
-      timeout = 5;
-    };
-  };
-
-  documentation = {
-    enable = true;
-    dev.enable = true;
-    man.generateCaches = true;
-    nixos.includeAllModules = true;
-  };
-
   # fonts = {
   #   enableDefaultFonts = true;
 
@@ -78,21 +45,5 @@
   #   ];
   # };
 
-  programs = {
-    adb.enable = true; # Add users to "adbusers" group
-    dconf.enable = true;
-  };
-
-  xdg.portal = {
-    enable = true;
-    wlr.enable = true;
-
-    extraPortals = [
-      pkgs.xdg-desktop-portal-gtk
-      pkgs.xdg-desktop-portal-kde
-    ];
-
-    gtkUsePortal = true;
-  };
 }
 

@@ -1,22 +1,36 @@
-{ lib, stdenv, fetchFromGitHub }:
+{ lib, stdenv, fetchFromGitHub
+, makeWrapper
+, bash, coreutils, fzf, gawk, man-db
+}:
 
-stdenv.mkDerivation {
+stdenv.mkDerivation rec {
   pname = "sway-launcher-desktop";
-  version = "1.5.2";
+  version = "1.5.4";
 
   src = fetchFromGitHub {
     owner = "Biont";
-    repo = "sway-launcher-desktop";
-    rev = "v1.5.2";
-    sha256 = "0hkcawjf1zfk8ppnd8m1hsj3f1q11mwmcxv3wvf3j69lbmxrmfag";
+    repo = pname;
+    rev = "v${version}";
+    sha256 = "0i19igj30jyszqb63ibq0b0zxzvjw3z1zikn9pbk44ig1c0v61aa";
   };
 
-  postPatch = ''
-    patchShebangs sway-launcher-desktop.sh
-  '';
+  buildInputs = [
+    makeWrapper
+    coreutils
+    fzf
+    gawk
+    man-db
+  ];
+
+  dontPatchSheBangs = true;
 
   installPhase = ''
     install -D sway-launcher-desktop.sh $out/bin/sway-launcher-desktop
+  '';
+
+  fixupPhase = ''
+    wrapProgram $out/bin/sway-launcher-desktop \
+      --prefix PATH : ${lib.makeBinPath [ bash coreutils fzf gawk man-db ]}
   '';
 
   meta = {

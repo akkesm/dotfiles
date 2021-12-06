@@ -2,6 +2,11 @@
 
 {
   programs = {
+    texlive = {
+      enable = true;
+      extraPackages = (tpkgs: { inherit (tpkgs) scheme-medium; });
+    };
+
     zathura = {
       enable = true;
       
@@ -19,18 +24,7 @@
         selection-notification = false;
       };
     };
-
-    texlive = {
-      enable = true;
-      extraPackages = (tpkgs: {
-        inherit (tpkgs)
-          scheme-medium
-        ;
-      });
-    };
   };
 
-  home.packages = [
-    pkgs.onlyoffice-bin
-  ];
+  home.packages = [ pkgs.onlyoffice-bin ];
 }

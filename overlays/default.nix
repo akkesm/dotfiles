@@ -15,9 +15,15 @@ in
   yaml-language-server = callPackage ./yaml-language-server { };
 
   ## scripts
+  fs-diff = callPackage ./fs-diff { };
   rwhich = callPackage ./rwhich { };
 
   # Package set extensions
+  # perlPackages = prev.perlPackages // callPackage ./perl-packages {
+  #   inherit (final) lib fetchurl;
+  #   inherit (prev) perlPackages;
+  # };
+
   vimPlugins = prev.vimPlugins // callPackage ./vim-plugins {
     inherit inputs;
     inherit (final) lib vimUtils;
@@ -30,41 +36,4 @@ in
   # };
 
   # linuxPackages_civetta = final.recurseIntoAttrs (final.linuxKernel.packagesFor final.linux_civetta);
-
-  # let
-  #   base_kernel = prev.linux_latest;
-  # in
-  # final.recurseIntoAttrs (final.linuxKernel.packagesFor (base_kernel.override {
-  #   version = "${base_kernel.version}-civetta";
-
-  #   features = {
-  #     iwlwifi = true;
-  #     efiBootStub = true;
-  #     ia32Emulation = true;
-  #   };
-
-  #   structuredExtraConfig = import ./kernel/civetta-config.nix {
-  #     inherit (final) lib stdenv;
-  #   };
-
-  #   ignoreConfigErrors = true;
-  # }));
-  # final.recurseIntoAttrs (final.linuxKernel.packagesFor (final.linuxKernel.manualConfig {
-  #   inherit (final) lib stdenv;
-  #   inherit (base_kernel) src;
-  #   version = "${base_kernel.version}-civetta";
-
-  #   kernelPatches = [ {
-  #     name = "patchFeatures";
-  #     patch = null;
-  #     features = {
-  #       iwlwifi = true;
-  #       efiBootStub = true;
-  #       ia32Emulation = true;
-  #     };
-  #   } ];
-
-  #   configfile = ./kernel/custom.config;
-  #   allowImportFromDerivation = true;
-  # }));
 }

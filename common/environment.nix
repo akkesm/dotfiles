@@ -4,73 +4,25 @@
   environment = {
     enableDebugInfo = false;
     memoryAllocator.provider = "libc";
-    shells = [
-      pkgs.bashInteractive
-      pkgs.zsh
-    ];
 
-    systemPackages = (with config.boot.kernelPackages; [
-      bpftrace
-      perf
-    ]) ++ (with pkgs; [
+    systemPackages = with pkgs; [
       any-nix-shell
       bat
       bc
-      bpytop
       cachix
-      dig
-      duf
       exa
       fd
       file
       gdb
-      glances
-      lsof
-      lshw
-      man-pages
-      manix
-      nettools
-      nmap
       openssl
       parted
-      pciutils
       ranger
       ripgrep
       rwhich
       shellcheck
       strace
-      sysstat
-      tcpdump
-      tldr
-      usbutils
-      libva-utils
-      weighttp
       wget
-      whois
-
-      (pkgs.writeShellScriptBin "fs-diff" ''
-        set -Eeuo pipefail
-
-        OLD_TRANSID=''$(sudo btrfs subvolume find-new /mnt/root-blank 9999999)
-        OLD_TRANSID=''${OLD_TRANSID#transid marker was }
-
-        sudo btrfs subvolume find-new "/mnt/root" "$OLD_TRANSID" |
-        sed '$d' |
-        cut -f17- -d' ' |
-        sort |
-        uniq |
-        while read path; do
-          path="/$path"
-          if [ -L "$path" ]; then
-            : # The path is a symbolic link, so is probably handled by NixOS already
-          elif [ -d "$path" ]; then
-            : # The path is a directory, ignore
-          else
-            echo "$path"
-          fi
-        done
-      '')
-    ]);
+    ];
 
     variables = {
       EDITOR = "nvim";
@@ -79,12 +31,6 @@
   };
 
   programs = {
-    atop = {
-      enable = true;
-      setuidWrapper.enable = true;
-    };
-
-    bcc.enable = true;
 
     git = {
       enable = true;
@@ -94,8 +40,6 @@
       enable = true;
     };
 
-    mtr.enable = true;
-
     neovim = {
       enable = true;
       package = pkgs.neovim-master;
@@ -104,46 +48,12 @@
       vimAlias = true;
     };
 
-    sysdig.enable = true;
-
     tmux = {
       enable = true;
       clock24 = true;
       keyMode = "vi";
       newSession = true;
       terminal = "screen-256color";
-    };
-
-    traceroute.enable = true;
-    wireshark.enable = true;
-    zmap.enable = true;
-
-    zsh = {
-      enableBashCompletion = true;
-      enableCompletion = true;
-
-      shellAliases = {
-        q = "exit";
-
-        batman = "batman --paging=auto";
-        ccat = "bat";
-
-        cdtmp = "cd $(mktemp -d)";
-
-        ll = "exa --long --group-directories-first --links --binary --group --time-style long-iso --icons";
-        la = "exa --long --group-directories-first --links --binary --group --time-style long-iso --icons --all";
-
-        h = "history";
-        hs = "history | grep -i";
-      };
-
-      promptInit = ''
-        any-nix-shell zsh | source /dev/stdin
-      '';
-
-      shellInit = ''
-        function rwhich () { (which -a ls | sed -n '/^\//p' | uniq | xargs realpath) }
-      '';
     };
   };
 
@@ -170,18 +80,6 @@
     openssh = {
       enable = true;
       startWhenNeeded = true;
-    };
-  };
-
-  virtualisation = {
-    podman = {
-      enable = true;
-      dockerCompat = true;
-      dockerSocket.enable = true; # Add users to "podman" group
-    };
-
-    oci-containers = {
-      backend = "podman";
     };
   };
 }

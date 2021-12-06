@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 {
   programs = {
@@ -221,18 +221,6 @@
         };
       };
     };
-
-    chromium = {
-      enable = true;
-      package = pkgs.ungoogled-chromium;
-
-      extensions = [
-        { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; } # uBlock Origin
-        { id = "dncldolpngigodjmkklknhahjafjoofn"; } # CiscoWebex helper
-        { id = "lckanjgmijmafbedllaakclkaicjfmnk"; } # ClearURLs
-        { id = "ldpochfccmkkmhdbclfhpagapcfdljkj"; } # Decentraleyes
-      ];
-    };
   };
 
   home = {
@@ -243,4 +231,10 @@
       MOZ_ENABLE_WAYLAND = 1;
     };
   };
+
+  wayland.windowManager.sway.config.keybindings = 
+    let mod = config.wayland.windowManager.sway.config.modifier;
+    in lib.mkOptionDefault {
+      "${mod}+b" = "exec firefox";
+    };
 }

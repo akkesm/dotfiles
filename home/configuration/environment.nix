@@ -5,6 +5,7 @@
     primary = true;
     address = "alessandro.barenghi@tuta.io";
     realName = "Alessandro Barenghi";
+
     gpg = {
       key = "50E2669CAB382F4A5F7216670D6BFC01D45EDADD";
       signByDefault = true;
@@ -21,6 +22,7 @@
       fortune
       lolcat
       nix-prefetch-scripts
+      nixpkgs-review
       taskwarrior
       xdg-utils
     ];
@@ -28,7 +30,6 @@
     sessionVariables = {
       CFLAGS = "-march=native -pipe -O3";
       CXXFLAGS = "${config.home.sessionVariables.CFLAGS}";
-      EDITOR = "nvim";
       PATH = "$HOME/.local/bin:$PATH";
     };
   };
@@ -77,7 +78,7 @@
       enable = true;
 
       defaultApplications = {
-        "inode/directory" = [ "org.gnome.Nautilus.desktop" "org.kde.dolphin.desktop" ];
+        "inode/directory" = [ "org.kde.dolphin.desktop" ];
       };
     };
 

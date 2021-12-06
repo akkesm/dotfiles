@@ -13,7 +13,6 @@
       "sd_mod"
     ];
 
-    kernelModules = [ "kvm-amd" ];
     supportedFilesystems = [ "btrfs" ];
   };
 
@@ -61,10 +60,5 @@
       device = "/dev/disk/by-uuid/5621-1D5E";
       fsType = "vfat";
     };
-  };
-
-  zramSwap = {
-    enable = true;
-    memoryPercent = 100;
   };
 }

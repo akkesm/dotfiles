@@ -1,10 +1,14 @@
 { config, lib, pkgs, ... }:
 
 {
-  home.activation."extraDirs" = lib.hm.dag.entryAfter [ "writeboundary" ] ''
-    $DRY_RUN_CMD mkdir $VERBOSE_ARG -p ${config.xdg.dataHome}/nvim/backup
-    $DRY_RUN_CMD mkdir $VERBOSE_ARG -p ${config.xdg.dataHome}/nvim/workbench
-  '';
+  home = {
+    activation."extraDirs" = lib.hm.dag.entryAfter [ "writeboundary" ] ''
+      $DRY_RUN_CMD mkdir $VERBOSE_ARG -p ${config.xdg.dataHome}/nvim/backup
+      $DRY_RUN_CMD mkdir $VERBOSE_ARG -p ${config.xdg.dataHome}/nvim/workbench
+    '';
+
+    sessionVariables = { EDITOR = "nvim"; };
+  };
 
   programs.neovim = {
     enable = true;
@@ -26,6 +30,7 @@
       nodePackages.vim-language-server
       nodePackages.vscode-html-languageserver-bin
       nodePackages.vscode-json-languageserver-bin
+      # perlPackages.Perl-LanguageServer
       rnix-lsp
       rust-analyzer-unwrapped
       scry
@@ -205,6 +210,7 @@
           lspconfig.jsonls.setup(coq.lsp_ensure_capabilities({
             cmd = { 'json-languageserver', '--stdio' }
           }))
+          -- lspconfig.perlls.setup(coq.lsp_ensure_capabilities({}))
           lspconfig.pyright.setup(coq.lsp_ensure_capabilities({}))
           lspconfig.rnix.setup(coq.lsp_ensure_capabilities({}))
           lspconfig.scry.setup(coq.lsp_ensure_capabilities({

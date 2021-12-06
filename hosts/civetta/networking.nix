@@ -2,7 +2,7 @@
 
 {
   networking = {
-    enableIPv6 = false; # FIXME
+    enableIPv6 = false; # FIXME bugs eduroam
     dhcpcd.enable = false;
     useDHCP = false;
 

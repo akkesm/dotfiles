@@ -21,10 +21,10 @@ in
   rwhich = callPackage ./rwhich { };
 
   # Package set extensions
-  # perlPackages = prev.perlPackages // callPackage ./perl-packages {
-  #   inherit (final) lib fetchurl;
-  #   inherit (prev) perlPackages;
-  # };
+  perlPackages = prev.perlPackages // callPackage ./perl-packages {
+    inherit (final) lib fetchurl;
+    inherit (prev) perlPackages;
+  };
 
   vimPlugins = prev.vimPlugins // callPackage ./vim-plugins {
     inherit inputs;

@@ -19,10 +19,11 @@
 
   programs.neovim = {
     enable = true;
-    extraConfig = builtins.readFile ./init.vim;
-    # extraConfig = ''
-    #   luafile ${./init.lua}
-    # '';
+    # extraConfig = builtins.readFile ./init.vim;
+    extraConfig = ''
+      luafile ${./init.lua}
+      lua vim.opt.backupdir = "${config.xdg.dataHome}/nvim/backup"
+    '';
 
     extraPackages = with pkgs; [
       perlPackages.NeovimExt

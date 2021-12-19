@@ -36,7 +36,7 @@
 
     # Extra modules
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/9de77227d7780518cfeaee5a917970247f3ecc56";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -97,6 +97,10 @@
     , ... }@inputs:
     utils.lib.mkFlake {
       inherit self inputs;
+
+      lib = nixpkgs.lib.extend (self: super: {
+        my = import ./lib.nix { lib = self; };
+      });
 
       supportedSystems = [ "x86_64-linux" ];
 

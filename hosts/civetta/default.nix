@@ -8,6 +8,7 @@
     ./bluetooth.nix
     ./boot.nix
     ./desktop.nix
+    ./greetd.nix
     ./kernel.nix
     ./luks.nix
     ./networking.nix

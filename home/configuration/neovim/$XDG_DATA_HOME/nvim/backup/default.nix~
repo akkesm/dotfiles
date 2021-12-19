@@ -19,10 +19,9 @@
 
   programs.neovim = {
     enable = true;
-    extraConfig = builtins.readFile ./init.vim;
-    # extraConfig = ''
-    #   luafile ${./init.lua}
-    # '';
+    extraConfig = ''
+      luafile ${./init.lua}
+    '';
 
     extraPackages = with pkgs; [
       perlPackages.NeovimExt

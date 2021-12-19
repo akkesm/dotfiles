@@ -2,9 +2,9 @@
 
 {
   imports = [
-    ./environment.nix
     ./containers.nix
     ./docs.nix
+    ./environment.nix
     ./localisation.nix
     ./monitoring.nix
     ./nix.nix

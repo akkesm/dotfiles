@@ -6,7 +6,7 @@
   xdg.configFile."swaylock/config".text = ''
     ignore-empty-password
     image=${../../..}/images/wallpaperNordNixLogo.png
-    scale=fill
+    scaling=fill
     font=${config.fonts.monospace}
     font-size=14
   '';

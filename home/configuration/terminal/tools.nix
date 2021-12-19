@@ -7,7 +7,6 @@
     bat-extras.batgrep
     bat-extras.batman
 
-    bombadillo
     scrcpy
 
     yubikey-manager-qt
@@ -28,7 +27,6 @@
 
     fzf = {
       enable = true;
-      enableFishIntegration = false;
       changeDirWidgetCommand = "fd --type directory --follow --hidden --color=always";
       defaultCommand = "fd --type file --follow --hidden --color=always";
       defaultOptions = [ "--height 40%" "--layout=reverse --ansi" ];
@@ -173,48 +171,6 @@
         tabstop = 4;
         wrapscan = true;
         wrapscroll = false;
-      };
-    };
-
-    lsd = {
-      enable = false;
-
-      settings = {
-        classic = false;
-
-        blocks = [
-          "permission"
-          # "inode"
-          "user"
-          "group"
-          "size"
-          "date"
-          "name"
-        ];
-
-        color.when = "auto";
-        date = "date";
-        dereference = false;
-        # display = "almost-all"; # leave commented for default
-
-        icons = {
-          when = "auto";
-          theme = "fancy";
-          separator = " ";
-        };
-
-        indicators = true;
-        size = "default";
-
-        sorting = {
-          column = "name";
-          reverse = false;
-          dir-grouping = "none";
-        };
-
-        no-symlink = false;
-        total-size = true;
-        symlink-arrow = "->";
       };
     };
   };

@@ -39,6 +39,7 @@
 
     pam.yubico = {
       enable = true;
+      challengeResponsePath = "/var/yubico";
       mode = "challenge-response";
     };
   };

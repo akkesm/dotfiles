@@ -25,7 +25,6 @@
         reddit-enhancement-suite
         stylus
         ublock-origin
-        unpaywall
       ];
 
       # There is a bug with RES in Firefox in Wayland? Sway? tiling WMs?

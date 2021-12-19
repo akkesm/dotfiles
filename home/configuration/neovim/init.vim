@@ -1,5 +1,3 @@
-" set autochdir
-set autoindent
 set autowrite
 set backup
 set backupcopy=yes
@@ -40,7 +38,7 @@ set pyxversion=3
 set relativenumber
 set ruler
 set scrolloff=3
-set shada=!,'100,<1000,h,r/mnt,s100
+set shada=!,'100,<100,h,r/mnt,s100
 set shiftwidth=4
 set shortmess=cfilnxtToO
 set showbreak="+++ "
@@ -55,7 +53,7 @@ set swapfile
 set tabstop=4
 set termguicolors
 set undofile
-set undolevels=500
+set undolevels=50
 set virtualedit=block
 set wildignorecase
 cnoremap ww w !sudo tee % >/dev/null
@@ -71,5 +69,14 @@ nnoremap <silent> <Leader>fmt <Cmd>lua vim.lsp.buf.formatting()<CR>
 
 let base16colorspace=256
 
-autocmd FileType json,nix setlocal shiftwidth=2 softtabstop=2 tabstop=2
-autocmd FileType norg setlocal shiftwidth=2 tabstop=4
+augroup indentation
+    autocmd!
+    autocmd FileType json,nix setlocal shiftwidth=2 softtabstop=2 tabstop=2
+    autocmd FileType norg setlocal shiftwidth=2 tabstop=4
+augroup END
+
+augroup zig_import_stdlib
+    autocmd!
+    autocmd BufNewFile *.zig 0put = 'const std = @import(\"std\");'
+    autocmd BufNewFile *.zig 2
+augroup END

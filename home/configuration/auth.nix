@@ -126,7 +126,7 @@
 
     # "curses" breaks things
     # "gnome3" requires services.dbus.packages = [ pkgs.gcr ]
-    pinentryFlavor = "qt";
+    pinentryFlavor = "gtk2";
     sshKeys = [ "9C9B70E57D232FBA6AFF0634A1CDDD6968769723" ];
   };
 }

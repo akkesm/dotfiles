@@ -5,6 +5,7 @@
     ./auth.nix
     ./bash.nix
     ./gtk.nix
+    ./kitty.nix
     ./qt.nix
     ./theme.nix
     ./applications

@@ -8,6 +8,7 @@
       gopls
       haskellPackages.haskell-language-server
       luajitPackages.lua-lsp
+      nimlsp
       nodePackages.bash-language-server
       # nodePackages.diagnostic-languageserver
       nodePackages.dockerfile-language-server-nodejs
@@ -116,6 +117,7 @@
           lspconfig.jsonls.setup(coq.lsp_ensure_capabilities({
             cmd = { 'json-languageserver', '--stdio' }
           }))
+          lspconfig.nimls.setup(coq.lsp_ensure_capabilities({}))
           lspconfig.perlls.setup(coq.lsp_ensure_capabilities({}))
           lspconfig.pyright.setup(coq.lsp_ensure_capabilities({}))
           lspconfig.rnix.setup(coq.lsp_ensure_capabilities({}))

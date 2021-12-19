@@ -38,7 +38,7 @@ vim.opt.relativenumber = true;
 vim.opt.ruler = true
 vim.opt.scrolloff = 5
 vim.opt.shada = { '!', "'100", '<100', 'h', 'r/mnt', 'r/tmp', 's100' }
-vim.opt.shiftwidth = 2
+vim.opt.shiftwidth = 4
 vim.opt.shortmess:append('Ic')
 vim.opt.showbreak = '+++ '
 vim.opt.showcmd = true
@@ -49,7 +49,7 @@ vim.opt.softtabstop = 2
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.swapfile = true
-vim.opt.tabstop = 8
+vim.opt.tabstop = 4
 vim.opt.termguicolors = true
 vim.opt.undofile = true
 vim.opt.undolevels = 50

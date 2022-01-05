@@ -88,6 +88,12 @@
       url = "github:windwp/windline.nvim";
       flake = false;
     };
+
+    # Zig master branch
+    zig = {
+      url = "github:ziglang/zig";
+      flake = false;
+    };
   };
 
   outputs =
@@ -140,7 +146,7 @@
             };
           }
 
-          # { nixpkgs.overlays = [ nix.overlay ]; }
+          { nixpkgs.overlays = [ nix.overlay ]; }
           # dwarffs.nixosModules.dwarffs
         ];
 

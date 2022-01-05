@@ -14,6 +14,7 @@
     dolphin
     gimp
     lbry
+    transmission-gtk
     # openclonk
     # passky
   ];

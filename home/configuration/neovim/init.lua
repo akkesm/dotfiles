@@ -31,6 +31,7 @@ vim.opt.list = true
 vim.opt.listchars = { tab = '»·', lead = '·', trail = '·', nbsp = '⍽' }
 vim.opt.mouse = 'a'
 vim.opt.mousehide = false
+vim.opt.nrformats:append({ 'alpha' })
 vim.opt.number = true
 vim.opt.numberwidth = 5
 vim.opt.pyxversion = 3
@@ -61,6 +62,16 @@ vim.api.nvim_set_keymap('n', '<Leader>fmt', '<Cmd>lua vim.lsp.buf.formatting()<C
 vim.api.nvim_set_keymap('n', '<Leader>n', ":noh<CR>", { noremap = true, silent = true })
 
 vim.cmd([[
-  autocmd FileType json,nix setlocal shiftwidth=2 softtabstop=2 tabstop=2
-  autocmd FileType norg setlocal shiftwidth=2 tabstop=4
+    augroup indentation
+        autocmd!
+        autocmd FileType json,nix setlocal shiftwidth=2 softtabstop=2 tabstop=2
+        autocmd FileType norg setlocal shiftwidth=2 tabstop=4
+    augroup END
+    
+    augroup zig
+        autocmd!
+        autocmd BufNewFile main.zig 0put = 'const std = @import(\"std\");'
+        autocmd BufNewFile main.zig 2
+        autocmd BufEnter *.zig compile zig
+    augroup END
 ]])

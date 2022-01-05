@@ -7,6 +7,7 @@ let
 in
 {
   # New packages
+  fritzbox-callmonitor = final.libsForQt5.callPackage ./fritzbox-callmonitor { };
   herbe = callPackage ./herbe { };
   kickoff = callPackage ./kickoff { }; # Broken, fontconfig too old
   nordzy-cursors = callPackage ./nordzy-cursors { };
@@ -32,10 +33,15 @@ in
   };
 
   # Overrides
-  # linux_civetta = callPackage ./kernel/civetta.nix {
-  #   inherit (final) lib stdenv;
-  #   base_kernel = prev.linux_latest;
-  # };
+  linux_civetta = callPackage ./kernel/civetta.nix {
+    inherit (final) lib stdenv;
+    base_kernel = prev.linux_latest;
+  };
 
-  # linuxPackages_civetta = final.recurseIntoAttrs (final.linuxKernel.packagesFor final.linux_civetta);
+  linuxPackages_civetta = final.recurseIntoAttrs (final.linuxKernel.packagesFor final.linux_civetta);
+
+  zig-master = (prev.zig.overrideAttrs (oldAttrs: {
+    version = "master";
+    src = inputs.zig;
+  })).override { llvmPackages = prev.llvmPackages_latest; };
 }

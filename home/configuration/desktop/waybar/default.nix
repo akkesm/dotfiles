@@ -17,9 +17,9 @@
         ];
 
         modules-right = [
-          "cpu"
-          "memory"
-          "disk"
+          # "cpu"
+          # "memory"
+          # "disk"
           "network"
           "pulseaudio"
           "backlight"
@@ -70,7 +70,7 @@
         };
 
         "battery" = {
-          interval = 59;
+          interval = 23;
           format = "{icon} {capacity}% {time}";
           format-charging = " {capacity}% {time}";
           format-time = " {H}:{M}";

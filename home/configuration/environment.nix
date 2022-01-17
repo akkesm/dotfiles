@@ -79,6 +79,9 @@
 
       defaultApplications = {
         "inode/directory" = [ "org.kde.dolphin.desktop" ];
+        "text/html" = [ "firefox.desktop" "chromium-browser.desktop" ];
+        "x-scheme-handler/http" = [ "firefox.desktop" "chromium-browser.desktop" ];
+        "x-scheme-handler/https" = [ "firefox.desktop" "chromium-browser.desktop" ];
       };
     };
 

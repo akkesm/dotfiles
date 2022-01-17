@@ -15,7 +15,6 @@ in
   sway-launcher-desktop = callPackage ./sway-launcher-desktop { };
   wayherb = callPackage ./wayherb { };
   xcursor-breeze-neutral = callPackage ./xcursor-breeze-neutral { };
-  yaml-language-server = callPackage ./yaml-language-server { };
 
   ## scripts
   fs-diff = callPackage ./fs-diff { };

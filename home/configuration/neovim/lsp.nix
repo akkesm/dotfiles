@@ -19,6 +19,7 @@
       nodePackages.vscode-html-languageserver-bin
       nodePackages.vscode-json-languageserver-bin
       perlPackages.Perl-LanguageServer
+      nodePackages.yaml-language-server
       rnix-lsp
       rust-analyzer-unwrapped
       scry
@@ -27,7 +28,6 @@
       sumneko-lua-language-server
       terraform-ls
       texlab
-      yaml-language-server
       zls
     ];
 

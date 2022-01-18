@@ -28,7 +28,6 @@
           "clock"
         ];
 
-        modules = {
         "cpu" = {
           interval = 11;
           format = "﬙ {usage}% {load}";
@@ -80,7 +79,6 @@
         "clock" = {
           format = " {:%Y-%m-%dT%H:%M}";
           today-format = "{%Y-%m-%d}";
-        };
         };
       }
     ];

@@ -36,7 +36,7 @@
 
     # Extra modules
     home-manager = {
-      url = "github:nix-community/home-manager/9de77227d7780518cfeaee5a917970247f3ecc56";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

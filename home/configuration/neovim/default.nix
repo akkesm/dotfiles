@@ -38,20 +38,19 @@
     package = pkgs.neovim-master;
 
     plugins = with pkgs.vimPlugins; [
-      # themes
+      # theme
       # {
       #   plugin = nvim-base16;
       #   config = ''
-      #     lua require('base16-colorscheme').setup('nord')
+      #     colorscheme base16-nord
       #   '';
       # }
       {
         plugin = nord-nvim;
         config = ''
           lua << EOF
-          vim.g.nord_contrast = false
           vim.g.nord_borders = true
-          vim.g.nord_cursorline_transparent = false
+          vim.g.nord_italic = false
           require('nord').set()
           EOF
         '';

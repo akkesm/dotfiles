@@ -16,7 +16,6 @@
         bypass-paywalls-clean
         clearurls
         decentraleyes
-        ecosia
         facebook-container
         multi-account-containers
         octolinker

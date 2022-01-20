@@ -64,6 +64,10 @@
       url = "github:ms-jpq/coq.thirdparty";
       flake = false;
     };
+    dirbuf-nvim = {
+      url = "github:elihunter173/dirbuf.nvim";
+      flake = false;
+    };
     due_nvim = {
       url = "github:NFrid/due.nvim";
       flake = false;

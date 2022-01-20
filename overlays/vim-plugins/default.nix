@@ -30,6 +30,13 @@ in
     meta.homepage = inputs.coq_thirdparty.url;
   };
 
+  dirbuf-nvim = vimUtils.buildVimPluginFrom2Nix {
+    pname = "dirbuf.nvim";
+    version = genDateVersion inputs.dirbuf-nvim;
+    src = inputs.dirbuf-nvim;
+    meta.homepage = inputs.dirbuf-nvim.url;
+  };
+
   due_nvim = vimUtils.buildVimPluginFrom2Nix {
     pname = "due_nvim";
     version = genDateVersion inputs.due_nvim;

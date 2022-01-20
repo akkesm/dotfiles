@@ -74,6 +74,8 @@
       }
       nvim-cursorline
 
+      dirbuf-nvim
+
       # hlslens
       {
         plugin = nvim-hlslens;
@@ -146,7 +148,6 @@
       telescope-fzf-writer-nvim
       telescope-symbols-nvim
 
-      # treesitter
       {
         plugin = nvim-autopairs;
         config = ''

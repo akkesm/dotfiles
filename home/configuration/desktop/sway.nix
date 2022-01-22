@@ -87,6 +87,10 @@
       };
       modifier = "Mod4";
 
+      keybindings = let mod = config.wayland.windowManager.sway.config.modifier; in lib.mkOptionDefault {
+        "${mod}+Tab" = "workspace back_and_forth";
+      };
+
       keycodebindings = {
         "121" = "exec ${pkgs.pulseaudio}/bin/pactl set-sink-mute @DEFAULT_SINK@ toggle";
         "122" = "exec ${pkgs.pulseaudio}/bin/pactl set-sink-volume @DEFAULT_SINK@ -1%";
@@ -104,7 +108,7 @@
       seat = {
         "seat0" = {
           hide_cursor = "when-typing enable";
-          xcursor_theme = "Nordzy-cursors";
+          xcursor_theme = "Nordzy-cursors 24";
         };
       };
 

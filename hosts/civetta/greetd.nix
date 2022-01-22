@@ -4,7 +4,7 @@ let
   wlgreetSwayConfig = pkgs.writeText "wlgreet-sway-config" ''
     exec "${pkgs.greetd.wlgreet}/bin/wlgreet --command ${pkgs.sway}/bin/sway; ${pkgs.sway}/bin/swaymsg exit"
 
-    bindsym Mod4+shift+e exec swaynag \
+    bindsym Mod4+Shift+e exec swaynag \
     	-t warning \
     	-m 'What do you want to do?' \
     	-b 'Poweroff' 'systemctl poweroff' \

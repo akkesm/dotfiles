@@ -29,7 +29,7 @@
 
     sessionVariables = {
       CFLAGS = "-march=native -pipe -O3";
-      CXXFLAGS = "${config.home.sessionVariables.CFLAGS}";
+      CXXFLAGS = config.home.sessionVariables.CFLAGS;
       PATH = "$HOME/.local/bin:$PATH";
     };
   };
@@ -41,30 +41,9 @@
 
   news.display = "silent";
 
-  programs.mpv = {
+  services.kdeconnect = {
     enable = true;
-
-    config = {
-      # hwdec = "auto-safe";
-      vo = "gpu";
-      window-maximized = true;
-    };
-  };
-
-  services = {
-    kdeconnect = {
-      enable = true;
-      indicator = true;
-    };
-
-    mpd = {
-      enable = false;
-      dataDir = "${config.xdg.dataHome}/mpd";
-      dbFile = "${config.services.mpd.dataDir}/tag_cache";
-      musicDirectory = "${config.home.homeDirectory}/Music";
-      network.startWhenNeeded = true;
-      playlistDirectory = "${config.services.mpd.dataDir}/playlists";
-    };
+    indicator = true;
   };
 
   xdg = {

@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, ... }:
 
 {
   programs.waybar = {
@@ -28,27 +28,27 @@
           "clock"
         ];
 
-        "cpu" = {
+        cpu = {
           interval = 11;
           format = "﬙ {usage}% {load}";
         };
 
-        "memory" = {
+        memory = {
           interval = 13;
           format = " {used:0.1f}/{total:0.1f}GiB";
         };
 
-        "disk" = {
+        disk = {
           interval = 127;
           format = " {used}/{total}";
         };
 
-        "network" = {
+        network = {
           format-ethernet = " {ipaddr} {essid} {bandwidthDownBits}↓ {bandwidthUpBits}↑";
           format-wifi = "﬉ {ipaddr} {essid} {bandwidthDownBits}↓ {bandwidthUpBits}↑";
         };
 
-        "pulseaudio" = {
+        pulseaudio = {
           scroll-step = 2;
           format = "{icon} {volume}%";
           format-bluetooth = "{icon} {volume}% ";
@@ -63,12 +63,12 @@
           };
         };
 
-        "backlight" = {
+        backlight = {
           format = "{icon} {percent}%";
           format-icons = [ "○" "◍" "●" ];
         };
 
-        "battery" = {
+        battery = {
           interval = 23;
           format = "{icon} {capacity}% {time}";
           format-charging = " {capacity}% {time}";
@@ -76,7 +76,7 @@
           format-icons = [ "" "" "" "" "" "" "" "" "" "" "" ];
         };
 
-        "clock" = {
+        clock = {
           format = " {:%Y-%m-%dT%H:%M}";
           today-format = "{%Y-%m-%d}";
         };

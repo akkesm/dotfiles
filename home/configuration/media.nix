@@ -20,8 +20,15 @@
         lyrics_directory = "${config.xdg.dataHome}/ncmpcpp/lyrics";
         mpd_host = config.services.mpd.network.listenAddress;
         mpd_port = config.services.mpd.network.port;
+        mpd_crossfade_time = 0;
         message_delay_time = 3;
-        volume_change_step = 2;
+        playlist_show_remaining_time = "yes";
+        browser_display_mode = "columns";
+        progressbar_look = "―›";
+        cyclic_scrolling = "yes";
+        display_bitrate = "yes";
+        search_engine_default_search_mode = 2;
+        external_editor = "nvim";
       };
     };
   };

@@ -1,6 +1,8 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 
 {
+  imports = [ ./easyeffects.nix ];
+
   programs = {
     mpv = {
       enable = true;

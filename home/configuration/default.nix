@@ -6,12 +6,12 @@
     ./bash.nix
     ./gtk.nix
     ./kitty.nix
-    ./media.nix
     ./qt.nix
     ./theme.nix
     ./applications
     ./desktop
     ./environment.nix
+    ./media
     ./neovim
     ./terminal
     ./zsh

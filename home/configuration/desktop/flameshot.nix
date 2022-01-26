@@ -6,7 +6,7 @@
     settings = {
       General = {
         disabledTrayIcon = false;
-        uiColor = "#2e3440";
+        uiColor = "#3b4252";
         contrastUiColor = "#88c0d0";
       };
     };

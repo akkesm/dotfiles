@@ -11,4 +11,6 @@
       };
     };
   };
+
+  wayland.windowManager.sway.config.keycodebindings."107" = "exec ${pkgs.flameshot}/bin/flameshot gui";
 }

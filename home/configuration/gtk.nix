@@ -27,6 +27,7 @@
   };
 
   home.packages = with pkgs; [
+    # gnome-themes-extra
     hicolor-icon-theme
     nordzy-cursors
   ];

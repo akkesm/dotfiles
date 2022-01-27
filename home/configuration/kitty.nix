@@ -27,8 +27,8 @@
         "ctrl+shift+c" = "copy_and_clear_or_interrupt";
         "ctrl+tab" = "next_window";
         "ctrl+shift+tab" = "previous_window";
-        "ctrl+shift+8" = "launch --location=vsplit";
-        "ctrl+shift+9" = "launch --location=hsplit";
+        "ctrl+shift+8" = "launch --cwd=current --location=vsplit";
+        "ctrl+shift+9" = "launch --cwd=current --location=hsplit";
         "alt+shift+h" = "move_window left";
         "alt+shift+j" = "move_window down";
         "alt+shift+k" = "move_window up";

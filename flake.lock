@@ -324,6 +324,22 @@
         "type": "indirect"
       }
     },
+    "nixpkgs-latest-stable": {
+      "locked": {
+        "lastModified": 1643247693,
+        "narHash": "sha256-rmShxIuNjYBz4l83J0J++sug+MURUY1koPCzX4F8hfo=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "6c4b9f1a2fd761e2d384ef86cff0d208ca27fdca",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-21.11",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-regression": {
       "locked": {
         "lastModified": 1643052045,
@@ -422,6 +438,7 @@
         "neovim": "neovim",
         "nix": "nix_2",
         "nixpkgs": "nixpkgs_2",
+        "nixpkgs-latest-stable": "nixpkgs-latest-stable",
         "nixpkgs-wayland": "nixpkgs-wayland",
         "nur": "nur",
         "nvim-workbench": "nvim-workbench",

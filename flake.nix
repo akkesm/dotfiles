@@ -7,6 +7,7 @@
 
     # Channels
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-latest-stable.url = "github:NixOS/nixpkgs/nixos-21.11";
 
     nur = {
       url = "github:nix-community/NUR";
@@ -102,7 +103,7 @@
 
   outputs =
     { self, nix, utils, dwarffs
-    , nixpkgs, nur, nixpkgs-wayland, neovim
+    , nixpkgs, nixpkgs-latest-stable, nur, nixpkgs-wayland, neovim
     , home-manager, sops-nix, impermanence
     , ... }@inputs:
     utils.lib.mkFlake {
@@ -114,21 +115,28 @@
 
       supportedSystems = [ "x86_64-linux" ];
 
-      channels.nixpkgs = {
-        input = nixpkgs;
-        overlaysBuilder = channels: [ self.overlay ];
+      channels = {
+        nixpkgs = {
+          input = nixpkgs;
+          overlaysBuilder = channels: [
+            nix.overlay
+            nixpkgs-wayland.overlay
+
+            (final: prev: {
+              neovim-master = neovim.defaultPackage.${prev.system};
+            })
+          ];
+        };
+
+        nixpkgs-latest-stable.input = nixpkgs-latest-stable;
       };
 
       channelsConfig.allowUnfree = true;
 
       sharedOverlays = [
+        self.overlay
+
         nur.overlay
-        nixpkgs-wayland.overlay
-
-        (final: prev: {
-          neovim-master = neovim.defaultPackage.${prev.system};
-        })
-
         sops-nix.overlay
       ];
 
@@ -141,6 +149,8 @@
       hosts = {
         "civetta".modules = [
           ./hosts/civetta
+          # dwarffs.nixosModules.dwarffs
+
           home-manager.nixosModules.home-manager
           {
             home-manager = {
@@ -149,9 +159,6 @@
               users."alessandro" = import ./home;
             };
           }
-
-          { nixpkgs.overlays = [ nix.overlay ]; }
-          # dwarffs.nixosModules.dwarffs
         ];
 
         # nix build --impure .#nixosConfigurations.live-iso.config.system.build.isoImage
@@ -163,6 +170,7 @@
               (nixpkgs + "/nixos/modules/installer/cd-dvd/channel.nix")
             ];
           }
+
           # home-manager.nixosModules.home-manager
           # {
           #   home-manager.useGlobalPkgs = true;
@@ -172,7 +180,7 @@
         ];
       };
 
-      overlay = import ./overlays { inherit inputs; };
+      overlay = import ./overlays { inherit (self) inputs; };
       overlays = utils.lib.exportOverlays { inherit (self) pkgs inputs; };
 
       outputsBuilder = channels: rec {

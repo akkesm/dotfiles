@@ -14,7 +14,6 @@
   };
 
   services = {
-    openssh.enable = true;
     pcscd.enable = true;
 
     udev.packages = [

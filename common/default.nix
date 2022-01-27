@@ -9,5 +9,6 @@
     ./monitoring.nix
     ./nix.nix
     ./shells.nix
+    ./ssh.nix
   ];
 }

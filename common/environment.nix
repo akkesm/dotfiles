@@ -67,19 +67,12 @@
     setuid = false;
     source = "${config.services.locate.locate}/bin/plocate";
   };
-  services = {
-    locate = {
-      enable = true;
-      interval = "Sat *-*-* 00:00";
-      localuser = null;
-      locate = pkgs.plocate;
-      output = "/var/lib/plocate/plocate.db";
-      pruneNames = [ ".bzr" ".cache" ".direnv" ".git" ".hg" ".svn" ];
-    };
-
-    openssh = {
-      enable = true;
-      startWhenNeeded = true;
-    };
+  services.locate = {
+    enable = true;
+    interval = "Sat *-*-* 00:00";
+    localuser = null;
+    locate = pkgs.plocate;
+    output = "/var/lib/plocate/plocate.db";
+    pruneNames = [ ".bzr" ".cache" ".direnv" ".git" ".hg" ".svn" ];
   };
 }

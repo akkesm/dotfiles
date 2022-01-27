@@ -6,7 +6,6 @@
     mutableUsers = false;
 
     users."alessandro" = {
-      createHome = true;
       description = "Alessandro Barenghi";
 
       extraGroups = [
@@ -18,9 +17,9 @@
         "wheel"
       ];
 
-      home = "/home/${config.users.users.alessandro.name}";
       initialHashedPassword = "$6$Hx7jqQUP$WEm9LBVxX/BJGZI3e1NqlYtHTyMERYLEl02Q5e3dGFLPvVzYpvr9ULXcxNF4K1SLWRHnnscZv5qBTpGxAsPSy1";
       isNormalUser = true;
+      passwordFile = config.sops.secrets.password-alessandro.path;
       name = "alessandro";
       uid = 1000;
     };
@@ -47,6 +46,7 @@
   sops.secrets = { # Add users to "keys" group
     password-alessandro = {
       format = "yaml";
+      neededForUsers = true;
       sopsFile = ./secrets/passwords.yaml;
     };
 

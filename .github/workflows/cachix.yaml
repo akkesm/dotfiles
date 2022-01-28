@@ -10,9 +10,14 @@ jobs:
     name: Build configuration civetta
     runs-on: ubuntu-latest
     steps:
+      # https://github.com/apache/flink/blob/76b35b8442a93027db9d658fca69a4630a4e0055/tools/azure-pipelines/free_disk_space.sh
       - name: "Free up disk space"
         run: |
           docker system prune -af
+          sudo apt-get remove -y 'ghc.*' 'dotnet.*' 'llvm.*'
+          sudo apt-get remove -y azure-cli google-cloud-sdk hhvm google-chrome-stable firefox powershell mono-devel
+          sudo apt-get autoremove -y
+          sudo apt-get clean
           sudo rm -rf /usr/share/dotnet
           sudo rm -rf /opt/ghc
           sudo rm -rf "/usr/local/share/boost"

@@ -14,4 +14,6 @@
 
     gtkUsePortal = true;
   };
+
+  security.pam.services.swaylock = {};
 }

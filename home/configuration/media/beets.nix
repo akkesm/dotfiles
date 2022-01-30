@@ -13,21 +13,22 @@
       library = "${config.xdg.dataHome}/beets/library.db";
       directory = config.xdg.userDirs.music;
       plugins = [
+        "convert"
         "deezer"
-          "edit"
-          "fuzzy"
-          "missing"
-          "mpdupdate"
-          "spotify"
+        "edit"
+        "fuzzy"
+        "missing"
+        "mpdupdate"
+        "spotify"
       ];
 
       ignore = [
         ".*"
-          "*~"
-          "System Volume Information"
-          "lost+found"
-          "*.m3u"
-          "*.txt"
+        "*~"
+        "System Volume Information"
+        "lost+found"
+        "*.m3u"
+        "*.txt"
       ];
 
       format_album = "$year - $albumartist - $album";

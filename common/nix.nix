@@ -3,27 +3,34 @@
 {
   nix = {
     package = pkgs.nixUnstable;
-    autoOptimiseStore = true;
+    settings = {
+      auto-optimise-store = true;
 
-    binaryCachePublicKeys = lib.mkForce [
-      "cache.ngi0.nixos.org-1:KqH5CBLNSyX184S9BKZJo1LxrxJ9ltnY2uAs5c/f1MA="
-      "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-      "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
-      "akkesm.cachix.org-1:9ESYmocqudg/QaRhELpkSWy4LNZbTqDdD2N0zpJP/e8="
-      # "nickel.cachix.org-1:ABoCOGpTJbAum7U6c+04VbjvLxG9f0gJP5kYihRRdQs="
-      # "ryantrinkle.com-1:JJiAKaRv9mWgpVAz8dwewnZe0AzzEAzPkagE9SP5NWI="
-    ];
+      trusted-public-keys = lib.mkForce [
+        "cache.ngi0.nixos.org-1:KqH5CBLNSyX184S9BKZJo1LxrxJ9ltnY2uAs5c/f1MA="
+        "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+        "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
+        "akkesm.cachix.org-1:9ESYmocqudg/QaRhELpkSWy4LNZbTqDdD2N0zpJP/e8="
+        # "nickel.cachix.org-1:ABoCOGpTJbAum7U6c+04VbjvLxG9f0gJP5kYihRRdQs="
+        # "ryantrinkle.com-1:JJiAKaRv9mWgpVAz8dwewnZe0AzzEAzPkagE9SP5NWI="
+      ];
 
-    binaryCaches = lib.mkForce [
-      "https://cache.ngi0.nixos.org"
-      "https://cache.nixos.org"
-      "https://nix-community.cachix.org"
-      "https://nixpkgs-wayland.cachix.org"
-      "https://akkesm.cachix.org"
-      # "https://nickel.cachix.org"
-      # "https://nixcache.reflex-frp.org"
-    ];
+      substituters = lib.mkForce [
+        "https://cache.ngi0.nixos.org"
+        "https://cache.nixos.org"
+        "https://nix-community.cachix.org"
+        "https://nixpkgs-wayland.cachix.org"
+        "https://akkesm.cachix.org"
+        # "https://nickel.cachix.org"
+        # "https://nixcache.reflex-frp.org"
+      ];
+
+      trusted-users = [
+        "root"
+        "@wheel"
+      ];
+    };
 
     # preallocate-contents fixes btrfs compression, it is now disabled by default
     # keep-* is for direnv and some other stuff
@@ -34,11 +41,6 @@
       keep-derivations = true
       keep-outputs = true
     '';
-
-    trustedUsers = [
-      "root"
-      "@wheel"
-    ];
   };
 
   nixpkgs = {

@@ -6,6 +6,18 @@
     settings = {
       auto-optimise-store = true;
 
+      experimental-features = [
+        "ca-derivations"
+        "flakes"
+        "nix-command"
+        "recursive-nix"
+        "no-url-literals"
+      ];
+
+      # preallocate-contents fixes btrfs compression, it is now disabled by default
+      # keep-derivations (default true) and keep-outputs are for nix-direnv
+      keep-outputs = true;
+
       trusted-public-keys = lib.mkForce [
         "cache.ngi0.nixos.org-1:KqH5CBLNSyX184S9BKZJo1LxrxJ9ltnY2uAs5c/f1MA="
         "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
@@ -31,16 +43,6 @@
         "@wheel"
       ];
     };
-
-    # preallocate-contents fixes btrfs compression, it is now disabled by default
-    # keep-* is for direnv and some other stuff
-    extraOptions = ''
-      experimental-features = nix-command flakes recursive-nix ca-derivations
-      preallocate-contents = false
-
-      keep-derivations = true
-      keep-outputs = true
-    '';
   };
 
   nixpkgs = {

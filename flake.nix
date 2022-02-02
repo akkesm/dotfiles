@@ -119,12 +119,10 @@
         nixpkgs = {
           input = nixpkgs;
           overlaysBuilder = channels: [
-            nix.overlay
+            # nix.overlay
             nixpkgs-wayland.overlay
 
-            (final: prev: {
-              neovim-master = neovim.defaultPackage.${prev.system};
-            })
+            (final: prev: { neovim-master = neovim.defaultPackage.${prev.system}; })
           ];
         };
 

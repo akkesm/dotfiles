@@ -11,7 +11,6 @@
         "flakes"
         "nix-command"
         "recursive-nix"
-        "no-url-literals"
       ];
 
       # preallocate-contents fixes btrfs compression, it is now disabled by default

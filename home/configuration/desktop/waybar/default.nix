@@ -44,8 +44,9 @@
         };
 
         network = {
-          format-ethernet = " {ipaddr} {essid} {bandwidthDownBits}↓ {bandwidthUpBits}↑";
-          format-wifi = "﬉ {ipaddr} {essid} {bandwidthDownBits}↓ {bandwidthUpBits}↑";
+          format-ethernet = " {ipaddr} {essid}";
+          format-wifi = "﬉ {ipaddr} {essid}";
+          format-disconnected = " {ifname} disconnected";
         };
 
         pulseaudio = {
@@ -56,7 +57,7 @@
 
           format-icons = {
             default = [ "" "" ];
-            headphones = [ "" "" ];
+            headphone = [ "" "" ];
             headset = "";
             phone = "";
             speaker = [ "🔈" "🔉" "🔊" ];

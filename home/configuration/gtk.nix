@@ -31,6 +31,4 @@
     hicolor-icon-theme
     nordzy-cursors
   ];
-
-  wayland.windowManager.sway.wrapperFeatures.gtk = config.wayland.windowManager.sway.enable;
 }

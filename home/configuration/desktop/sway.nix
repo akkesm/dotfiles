@@ -10,10 +10,12 @@
     ];
 
     sessionVariables = {
-      XDG_CURRENT_DESKTOP = "sway";
       ECORE_EVAS_ENGINE = "wayland_egl";
       ELM_ENGINE = "wayland_egl";
+      NIXOS_OZONE_WL = 1;
+      QT_QPA_PLATFORM = "wayland-egl";
       SDL_VIDEODRIVER = "wayland";
+      XDG_CURRENT_DESKTOP = "sway";
       _JAVA_AWT_WM_NONREPARENTING = 1;
     };
   };

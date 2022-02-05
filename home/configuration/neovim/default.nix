@@ -14,7 +14,7 @@
       $DRY_RUN_CMD mkdir $VERBOSE_ARG -p ${config.xdg.dataHome}/nvim/workbench
     '';
 
-    sessionVariables = { EDITOR = "nvim"; };
+    sessionVariables.EDITOR = "nvim";
   };
 
   programs.neovim = {

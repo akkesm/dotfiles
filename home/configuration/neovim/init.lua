@@ -57,9 +57,9 @@ vim.opt.undolevels = 50
 vim.opt.virtualedit = 'block'
 vim.opt.wildignorecase = true
 
-vim.api.nvim_set_keymap('c', 'ww', "w !sudo tee % > /dev/null", { noremap = true })
-vim.api.nvim_set_keymap('n', '<Leader>fmt', '<Cmd>lua vim.lsp.buf.formatting()<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<Leader>n', ":noh<CR>", { noremap = true, silent = true })
+vim.keymap.set('c', 'ww', 'w !sudo tee % > /dev/null', { noremap = true })
+vim.keymap.set('n', '<Leader>fmt', vim.lsp.buf.formatting, { noremap = true, silent = true })
+vim.keymap.set('n', '<Leader>n', ":noh<CR>", { noremap = true, silent = true })
 
 vim.cmd([[
     augroup indentation

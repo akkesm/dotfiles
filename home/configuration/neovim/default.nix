@@ -2,10 +2,13 @@
 
 {
   imports = [
+    ./completion.nix
     ./lsp.nix
     ./lualine.nix
     ./neorg.nix
+    ./telescope.nix
     ./treesitter.nix
+    ./vim-markdown-composer.nix
   ];
 
   home = {
@@ -22,22 +25,20 @@
     # extraConfig = builtins.readFile ./init.vim;
     extraConfig = ''
       luafile ${./init.lua}
+      luafile ${pkgs.writeText "generatedConfig.lua" config.programs.neovim.generatedConfigs.lua}
       lua vim.opt.backupdir = "${config.xdg.dataHome}/nvim/backup"
     '';
 
     extraPackages = with pkgs; [
       perlPackages.NeovimExt
-
-      # For coq_nvim
-      sqlite
-
-      # For vim-markdown-composer
-      vimb
     ];
 
     package = pkgs.neovim-master;
 
     plugins = with pkgs.vimPlugins; [
+      # Used by multiple other plugins
+      plenary-nvim
+
       # theme
       # {
       #   plugin = nvim-base16;
@@ -47,28 +48,26 @@
       # }
       {
         plugin = nord-nvim;
+        type = "lua";
         config = ''
-          lua << EOF
           vim.g.nord_borders = true
           vim.g.nord_italic = false
           require('nord').set()
-          EOF
         '';
       }
       {
         plugin = indent-blankline-nvim;
+        type = "lua";
         config = ''
-          lua << EOF
-          require('indent_blankline').setup({
-            char = '⟩',
+          require('indent_blankline').setup {
+            -- char = '⟩',
             space_char = '·',
             space_char_blankline = ' ',
             show_current_context = true,
             show_end_of_line = false,
             show_trailing_blankline_indent = false,
-            use_treesitter = true
-          })
-          EOF
+            use_treesitter = true,
+          }
         '';
       }
       nvim-cursorline
@@ -119,66 +118,18 @@
       # lf integration
       {
         plugin = lf-vim;
+        type = "lua";
         config = ''
-          lua vim.g.lf_map_keys = 0
-          map <Leader>lf <Cmd>Lf<CR>
+          vim.g.lf_map_keys = 0
+          vim.keymap.set("", '<Leader>lf', '<Cmd>Lf<CR>', { noremap = true, silent = true })
         '';
       }
 
       {
         plugin = registers-nvim;
+        type = "lua";
         config = ''
-          lua vim.g.registers_tab_symbol = '»·'
-        '';
-      }
-
-      # telescope
-      {
-        plugin = telescope-nvim;
-        config = ''
-          nnoremap <Leader>ff <Cmd>lua require('telescope.builtin').find_files()<CR>
-          nnoremap <Leader>fg <Cmd>lua require('telescope.builtin').live_grep()<CR>
-          nnoremap <Leader>fb <Cmd>lua require('telescope.builtin').buffers()<CR>
-          nnoremap <Leader>fh <Cmd>lua require('telescope.builtin').help_tags()<CR>
-        '';
-      }
-      plenary-nvim
-      popup-nvim
-      telescope-fzf-writer-nvim
-      telescope-symbols-nvim
-
-      {
-        plugin = nvim-autopairs;
-        config = ''
-          lua << EOF
-          _G.MUtils= {}
-
-          vim.g.completion_confirm_key = ""
-
-          MUtils.completion_confirm=function()
-            if vim.fn.pumvisible() ~= 0  then
-              if vim.fn.complete_info()["selected"] ~= -1 then
-                return vim.fn['compe#confirm'](require('nvim-autopairs').esc('<CR>'))
-              else
-                return require('nvim-autopairs').esc("<CR>")
-              end
-            else
-              return require('nvim-autopairs').autopairs_cr()
-            end
-          end
-
-          vim.api.nvim_set_keymap('i' , '<CR>', 'v:lua.MUtils.completion_confirm()', { expr = true , noremap = true })
-
-          require('nvim-autopairs').setup({
-            check_ts = true,
-            ignored_next_char = string.gsub([[ [%w%%%?%'%[%"%.] ]], '%s+', "")
-          })
-          require('nvim-treesitter.configs').setup({
-            autopairs = {
-              enable = true
-            }
-          })
-          EOF
+          vim.g.registers_tab_symbol = '»·'
         '';
       }
 
@@ -186,24 +137,26 @@
 
       {
         plugin = nvim-workbench;
+        type = "lua";
         config = ''
-          nnoremap <Leader>wb <Plug>ToggleBranchWorkbench
-          nnoremap <Leader>wp <Plug>ToggleProjectWorkbench
-          lua vim.g.workbench_border = 'single'
-          lua vim.g.workbench_storage_path = "${config.xdg.dataHome}/nvim/workbench"
+          vim.keymap.set('n', '<Leader>wb', '<Plug>ToggleBranchWorkbench', { noremap = true })
+          vim.keymap.set('n', '<Leader>wp', '<Plug>ToggleProjectWorkbench', { noremap = true })
+          vim.g.workbench_border = 'single'
+          vim.g.workbench_storage_path = "${config.xdg.dataHome}/nvim/workbench"
         '';
       }
 
       {
         plugin = vim-kitty-navigator;
+        type = "lua";
         config = ''
-          set title
-          set titlestring=%<%F%=%l/%L-%P\ -\ nvim
-          lua vim.g.kitty_navigator_no_mappings = 1
-          nnoremap <silent> <A-h> :KittyNavigateLeft<CR>
-          nnoremap <silent> <A-j> :KittyNavigateDown<CR>
-          nnoremap <silent> <A-k> :KittyNavigateUp<CR>
-          nnoremap <silent> <A-l> :KittyNavigateRight<CR>
+          vim.opt.title = true
+          vim.opt.titlestring = '%<%F%=%l/%L-%P - nvim'
+          vim.g.kitty_navigator_no_mappings = 1
+          vim.keymap.set('n', '<silent> <A-h>', ':KittyNavigateLeft<CR>', { noremap = true })
+          vim.keymap.set('n', '<silent> <A-j>', ':KittyNavigateDown<CR>', { noremap = true })
+          vim.keymap.set('n', '<silent> <A-k>', ':KittyNavigateUp<CR>', { noremap = true })
+          vim.keymap.set('n', '<silent> <A-l>', ':KittyNavigateRight<CR>', { noremap = true })
         '';
       }
 
@@ -211,60 +164,48 @@
       vimtex
       {
         plugin = vim-latex-live-preview;
+        type = "lua";
         config = ''
-          lua << EOF
           vim.g.livepreview_cursorhold_recompile = 0
           vim.g.livepreview_engine = 'xelatex'
           vim.g.livepreview_previewer = 'zathura'
           vim.g.livepreview_use_biber = 1
-          EOF
         '';
       }
 
       # mappings
       {
         plugin = which-key-nvim;
+        type = "lua";
         config = ''
-          lua require('which-key').setup({})
+          require('which-key').setup {}
         '';
       }
 
       # notes
       {
         plugin = due_nvim;
+        type = "lua";
         config = ''
-          lua << EOF
-          require('due_nvim').setup({
-            ft = '{*.md,*.org,*.norg}'
-          })
-          EOF
-        '';
-      }
-      {
-        plugin = vim-markdown-composer;
-        config = ''
-          lua << EOF
-          vim.g.markdown_composer_autostart = 0
-          vim.g.markdown_composer_browser = 'vimb'
-          vim.g.markdown_composer_refresh_rate = 1000
-          vim.g.markdown_composer_syntax_theme = 'nord'
-          EOF
+          require('due_nvim').setup { ft = '*.md,*.org,*.norg' }
         '';
       }
 
       {
         plugin = vim-mundo;
+        type = "lua";
         config = ''
-          lua vim.g.mundo_width = 50
+          vim.g.mundo_width = 50
 
-          nnoremap <Leader>u <Cmd>MundoToggle<CR>
+          vim.keymap.set('n', '<Leader>u', '<Cmd>MundoToggle<CR>', { noremap = true })
         '';
       }
 
       {
         plugin = nabla-nvim;
+        type = "lua";
         config = ''
-          nnoremap <Leader>ln <Cmd>lua require('nabla').action()<CR>
+          vim.keymap.set('n', '<Leader>ln', function() return require('nabla').action() end, { noremap = true })
         '';
       }
     ];

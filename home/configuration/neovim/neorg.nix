@@ -4,36 +4,35 @@
   programs.neovim.plugins = with pkgs.vimPlugins; [
     {
       plugin = neorg;
+      type = "lua";
       config = ''
-        lua << EOF
-        require('neorg').setup({
+        require('neorg').setup {
           load = {
-            ['core.defaults'] = { },
-            ['core.highlights'] = { },
-            ['core.integrations.telescope'] = { },
-            ['core.integrations.treesitter'] = { },
-            ['core.keybinds'] = {
-              config = {
-                default_keybinds = true
-              }
-            },
-            ['core.norg.concealer'] = { },
-            ['core.norg.dirman'] = {
-              config = {
-                autodetect = true,
-                autochdir = true,
+            core = {
+              defaults = {},
+              highlights = {},
+  
+              integrations = {
+                telescope = {},
+                treesitter = {},
+              },
 
-                workspaces = {
-                  uni = "${config.xdg.userDirs.documents}/UNI/notes"
-                }
-              }
-            }
+              ['keybinds.config.default_keybinds'] = true,
+  
+              norg = {
+                concealer = {},
+  
+                ['dirman.config'] = {
+                  autodetect = true,
+                  autochdir = true,
+                  ['workspaces.uni'] = "${config.xdg.userDirs.documents}/UNI/notes",
+                },
+              },
+            },
           },
-          logger = {
-            use_file = true;
-          }
-        })
-        EOF
+  
+          ['logger.use_file'] = true,
+        }
       '';
     }
 

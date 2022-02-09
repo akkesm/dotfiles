@@ -4,9 +4,9 @@
   programs.neovim.plugins = with pkgs.vimPlugins; [
     {
       plugin = lualine-nvim;
+      type = "lua";
       config = ''
-        lua << EOF
-        require('lualine').setup({
+        require('lualine').setup {
           options = {
             theme = 'nord',
             section_separators = { '', '' },
@@ -24,19 +24,18 @@
             lualine_z = { 'location' },
           },
           inactive_sections = {
-            lualine_a = { },
-            lualine_b = { },
+            lualine_a = {},
+            lualine_b = {},
             lualine_c = { 'filename' },
             lualine_x = { 'location' },
-            lualine_y = { },
-            lualine_z = { }
+            lualine_y = {},
+            lualine_z = {},
           },
           extensions = {
             'fzf',
-            'nvim-tree'
-          }
-        })
-        EOF
+            'nvim-tree',
+          },
+        }
       '';
     }
 

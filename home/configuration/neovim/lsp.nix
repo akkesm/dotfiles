@@ -39,26 +39,30 @@
         config = ''
           local lspconfig = require('lspconfig')
           local coq = require('coq')
+
           lspconfig.bashls.setup(coq.lsp_ensure_capabilities {})
+
           lspconfig.ccls.setup(coq.lsp_ensure_capabilities {
             root_dir = lspconfig.util.root_pattern('compile_commands.json', '.ccls', 'compile_flags.txt', '.git', 'flake.nix') or lspconfig.util.path.dirname
           })
+
           lspconfig.clojure_lsp.setup(coq.lsp_ensure_capabilities {
             root_dir = lspconfig.util.root_pattern('project.clj', 'deps.edn', 'build.boot', 'shadow-cljs.edn', '.git', 'flake.nix') or lspconfig.util.path.dirname
           })
+
           -- lspconfig.diagnosticls.setup(coq.lsp_ensure_capabilities {})
           lspconfig.dockerls.setup(coq.lsp_ensure_capabilities {
                 root_dir = lspconfig.util.root_pattern('Dockerfile', '.git', 'flake.nix') or lspconfig.util.path.dirname
           })
+
           lspconfig.gopls.setup(coq.lsp_ensure_capabilities {
             root_dir = lspconfig.util.root_pattern('go.mod', '.git', 'flake.nix') or lspconfig.util.path.dirname
           })
+
           lspconfig.hls.setup(coq.lsp_ensure_capabilities {
             root_dir = lspconfig.util.root_pattern('*.cabal', 'stack.yaml', 'cabal.project', 'package.yaml', 'hie.yaml', '.git', 'flake.nix') or lspconfig.util.path.dirname
           })
 
-          -- not needed with coq
-          -- vim.lsp.protocol.make_client_capabilities().textDocument.completion.completionItem.snippetSupport = true
           lspconfig.html.setup(coq.lsp_ensure_capabilities {
             capabilities = vim.lsp.protocol.make_client_capabilities(),
             cmd = { 'html-languageserver', '--stdio' },
@@ -67,16 +71,20 @@
           lspconfig.jsonls.setup(coq.lsp_ensure_capabilities {
             cmd = { 'json-languageserver', '--stdio' }
           })
+
           lspconfig.nimls.setup(coq.lsp_ensure_capabilities {})
           lspconfig.perlls.setup(coq.lsp_ensure_capabilities {})
           lspconfig.pyright.setup(coq.lsp_ensure_capabilities {})
           lspconfig.rnix.setup(coq.lsp_ensure_capabilities {})
+
           lspconfig.scry.setup(coq.lsp_ensure_capabilities {
             root_dir = lspconfig.util.root_pattern('shard.yml', '.git', 'flake.nix') or lspconfig.util.path.dirname
           })
+
           lspconfig.solargraph.setup(coq.lsp_ensure_capabilities {
             root_dir = lspconfig.util.root_pattern('Gemfile', '.git', 'flake.nix') or lspconfig.util.path.dirname
           })
+
           lspconfig.sqls.setup(coq.lsp_ensure_capabilities {})
 
           lspconfig.sumneko_lua.setup(coq.lsp_ensure_capabilities {
@@ -112,8 +120,10 @@
           lspconfig.tsserver.setup(coq.lsp_ensure_capabilities {
             root_dir = lspconfig.util.root_pattern('package.json', 'tsconfig.json', 'jsconfig.json', '.git', 'flake.nix')
           })
+
           lspconfig.vimls.setup(coq.lsp_ensure_capabilities {})
           lspconfig.yamlls.setup(coq.lsp_ensure_capabilities {})
+
           lspconfig.zls.setup(coq.lsp_ensure_capabilities {
             root_dir = lspconfig.util.root_pattern('zls.json', '.git', 'flake.nix') or lspconfig.util.path.dirname
           })

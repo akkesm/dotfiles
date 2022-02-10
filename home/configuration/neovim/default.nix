@@ -30,6 +30,7 @@
     '';
 
     extraPackages = with pkgs; [
+      lf
       perlPackages.NeovimExt
     ];
 
@@ -178,7 +179,7 @@
         plugin = which-key-nvim;
         type = "lua";
         config = ''
-          require('which-key').setup {}
+          require('which-key').setup { ['window.border'] = 'single' }
         '';
       }
 
@@ -187,7 +188,10 @@
         plugin = due_nvim;
         type = "lua";
         config = ''
-          require('due_nvim').setup { ft = '*.md,*.org,*.norg' }
+          require('due_nvim').setup {
+            ft = '*.md,*.org,*.norg',
+            use_clock_time = true,
+          }
         '';
       }
 

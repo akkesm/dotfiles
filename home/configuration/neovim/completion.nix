@@ -33,24 +33,18 @@
             {
               src = 'repl',
               sh = 'zsh',
+
               shell = {
-                n = 'node',
-                p = 'perl',
-                r = 'ruby',
+                n = 'nix eval --expr',
+                p = 'perl -E',
               },
-              max_lines = 99,
+
+              max_lines = 30,
               deadline = 500,
-              unsafe = { 'rm', 'poweroff', 'mv', 'reboot' },
+              unsafe = { 'cp', 'dd', 'mv', 'poweroff', 'reboot', 'rm' },
             },
-            {
-              src = 'nvimlua',
-              short_name = 'nLUA',
-              conf_only = true,
-            },
-            {
-              src = 'vimtex',
-              short_name = 'vTEX',
-            },
+            { src = 'nvimlua' },
+            { src = 'vimtex' },
           }
         '';
       }

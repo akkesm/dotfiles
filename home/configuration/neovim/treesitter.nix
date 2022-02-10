@@ -10,25 +10,16 @@
           ['highlight.enable'] = true,
           ['incremental_selection.enable'] = true,
           ['indent.enable'] = true,
-        }
-      '';
-    }
 
-    {
-      plugin = nvim-treesitter-refactor;
-      type = "lua";
-      config = ''
-        require('nvim-treesitter.configs').setup {
           refactor = {
             ['highlight_definitions.enable'] = true,
             ['highlight_current_scope.enable'] = false,
-          }
+          },
         }
       '';
     }
 
-    nvim-treesitter-textobjects
+    nvim-treesitter-refactor
     nvim-treesitter-context
-    playground
   ];
 }

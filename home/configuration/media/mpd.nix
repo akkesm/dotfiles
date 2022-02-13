@@ -15,13 +15,12 @@
       browser_display_mode = "columns";
       progressbar_look = "―›";
       cyclic_scrolling = "yes";
-      display_bitrate = "yes";
       search_engine_default_search_mode = 2;
       external_editor = "nvim";
     };
   };
 
-    services = {
+  services = {
     mpd = {
       enable = true;
       dataDir = "${config.xdg.dataHome}/mpd";

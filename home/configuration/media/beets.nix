@@ -16,6 +16,7 @@
         "convert"
         "deezer"
         "edit"
+        "fetchart"
         "fuzzy"
         "missing"
         "mpdupdate"

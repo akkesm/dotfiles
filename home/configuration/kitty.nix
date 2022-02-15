@@ -1,7 +1,10 @@
 { config, pkgs, ... }:
 
 {
-  home.sessionVariables = { TERMINAL = "${pkgs.kitty}/bin/kitty"; };
+  home = {
+    packages = [ pkgs.ffmpeg-full ]; # For icat kitten
+    sessionVariables.TERMINAL = "${pkgs.kitty}/bin/kitty";
+  };
 
   programs = {
     kitty = {

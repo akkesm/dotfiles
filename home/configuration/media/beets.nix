@@ -37,6 +37,7 @@
 
       import = {
         reflink = "auto";
+        incremental = "yes";
         incremental_skip_later = "yes";
       };
 

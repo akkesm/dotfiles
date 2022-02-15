@@ -7,7 +7,7 @@
     events = [
       {
         event = "lock";
-        command = "${pkgs.swaylock}/bin/swaylock -f";
+        command = "${pkgs.swaylock}/bin/swaylock";
       }
       {
         event = "before-sleep";
@@ -15,7 +15,7 @@
       }
       {
         event = "before-sleep";
-        command = "${pkgs.swaylock}/bin/swaylock -f";
+        command = "${pkgs.swaylock}/bin/swaylock";
       }
       {
         event = "after-resume";
@@ -40,7 +40,7 @@
       }
       {
         timeout = 605;
-        command = "${pkgs.swaylock}/bin/swaylock -f";
+        command = "${pkgs.swaylock}/bin/swaylock";
       }
     ];
   };

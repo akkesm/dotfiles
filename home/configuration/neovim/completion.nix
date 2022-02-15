@@ -16,6 +16,8 @@
             xdg = true,
             auto_start = 'shut-up',
             ['match.fuzzy_cutoff'] = 0.9,
+
+            ['keymap.recommended'] = false,
           }
         '';
       }
@@ -61,8 +63,6 @@
             map_cr = false,
             check_ts = true,
           }
-
-          vim.g.coq_settings = { keymap = { recommended = false } }
 
           vim.keymap.set('i', '<Esc>', [[pumvisible() ? '<C-e><Esc>' : '<Esc>']], { expr = true, noremap = true, silent = true })
           vim.keymap.set('i', '<C-c>', [[pumvisible() ? '<C-e><C-c>' : '<C-c>']], { expr = true, noremap = true, silent = true })

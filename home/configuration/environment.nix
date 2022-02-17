@@ -48,6 +48,7 @@
 
   xdg = {
     enable = true;
+    configFile."mimeapps.list".force = true; # $XDG_CONFIG_HOME/mimeapps.list often gets overwritten
     cacheHome = "${config.home.homeDirectory}/.cache";
     configHome = "${config.home.homeDirectory}/.config";
     dataHome = "${config.home.homeDirectory}/.local/share";

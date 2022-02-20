@@ -19,7 +19,7 @@
       nodePackages.vim-language-server
       nodePackages.vscode-html-languageserver-bin
       nodePackages.vscode-json-languageserver-bin
-      perlPackages.Perl-LanguageServer
+      perlPackages.PLS
       nodePackages.yaml-language-server
       rnix-lsp
       rust-analyzer-unwrapped
@@ -73,7 +73,7 @@
           })
 
           lspconfig.nimls.setup(coq.lsp_ensure_capabilities {})
-          lspconfig.perlls.setup(coq.lsp_ensure_capabilities {})
+          lspconfig.perlpls.setup(coq.lsp_ensure_capabilities {})
           lspconfig.pyright.setup(coq.lsp_ensure_capabilities {})
           lspconfig.rnix.setup(coq.lsp_ensure_capabilities {})
 

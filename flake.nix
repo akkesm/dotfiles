@@ -30,6 +30,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nix-matlab.url = "gitlab:doronbehar/nix-matlab";
+
     # luks-yk = {
     #   url = "github:akkesm/luks-yk";
     #   inputs.nixpkgs.follows = "nixpkgs";
@@ -102,7 +104,7 @@
   };
 
   outputs =
-    { self, nix, utils, dwarffs
+    { self, nix, utils, dwarffs, nix-matlab
     , nixpkgs, nixpkgs-latest-stable, nur, nixpkgs-wayland, neovim
     , home-manager, sops-nix, impermanence
     , ... }@inputs:
@@ -120,6 +122,7 @@
           input = nixpkgs;
           overlaysBuilder = channels: [
             # nix.overlay
+            nix-matlab.overlay
             nixpkgs-wayland.overlay
 
             (final: prev: { neovim-master = neovim.defaultPackage.${prev.system}; })

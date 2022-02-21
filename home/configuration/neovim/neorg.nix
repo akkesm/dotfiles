@@ -8,29 +8,21 @@
       config = ''
         require('neorg').setup {
           load = {
-            core = {
-              defaults = {},
-              highlights = {},
-  
-              integrations = {
-                telescope = {},
-                treesitter = {},
-              },
+            ['core.defaults'] = {},
+            ['core.norg.esupports.metagen'] = { config = { type = 'auto' } },
+            ['core.integrations.telescope'] = {},
+            ['core.integrations.treesitter'] = {},
+            ['core.norg.concealer'] = {},
 
-              ['keybinds.config.default_keybinds'] = true,
-  
-              norg = {
-                concealer = {},
-  
-                ['dirman.config'] = {
-                  autodetect = true,
-                  autochdir = true,
-                  ['workspaces.uni'] = "${config.xdg.userDirs.documents}/UNI/notes",
-                },
+            ['core.norg.dirman'] = {
+              config = {
+                autodetect = true,
+                autochdir = true,
+                ['workspaces.uni'] = "${config.xdg.userDirs.documents}/UNI/notes",
               },
             },
           },
-  
+
           ['logger.use_file'] = true,
         }
       '';

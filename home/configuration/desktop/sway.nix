@@ -91,7 +91,11 @@
 
       keybindings =
         let mod = config.wayland.windowManager.sway.config.modifier;
-        in lib.mkOptionDefault { "${mod}+Tab" = "workspace back_and_forth"; };
+        in lib.mkOptionDefault {
+          "${mod}+Tab" = "workspace back_and_forth";
+          "${mod}+z" = "exec bluetoothctl power on";
+          "${mod}+Shift+z" = "exec bluetoothctl power off";
+        };
 
       keycodebindings = {
         "121" = "exec ${pkgs.pulseaudio}/bin/pactl set-sink-mute @DEFAULT_SINK@ toggle";

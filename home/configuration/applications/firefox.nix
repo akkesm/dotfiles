@@ -232,7 +232,5 @@
 
   wayland.windowManager.sway.config.keybindings = 
     let mod = config.wayland.windowManager.sway.config.modifier;
-    in lib.mkOptionDefault {
-      "${mod}+b" = "exec firefox";
-    };
+    in lib.mkOptionDefault { "${mod}+b" = "exec firefox"; };
 }

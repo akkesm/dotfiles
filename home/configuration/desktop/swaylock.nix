@@ -1,7 +1,11 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 {
   home.packages = [ pkgs.swaylock ];
+
+  wayland.windowManager.sway.config.keybindings = 
+    let mod = config.wayland.windowManager.sway.config.modifier;
+    in lib.mkOptionDefault { "${mod}+l" = "exec swaylock"; };
 
   xdg.configFile."swaylock/config".text = ''
     daemonize

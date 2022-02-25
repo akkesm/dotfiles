@@ -148,8 +148,9 @@
       ];
 
       hosts = {
-        "civetta".modules = [
-          ./hosts/civetta
+        # Form factor1-Processor3-FS1-Encryption1-Persistent/Opt in1
+        "L8A4BLO".modules = [
+          ./hosts/L8A4BLO
           # dwarffs.nixosModules.dwarffs
 
           home-manager.nixosModules.home-manager
@@ -162,9 +163,9 @@
           }
         ];
 
-        # nix build --impure .#nixosConfigurations.live-iso.config.system.build.isoImage
-        "live-iso".modules = [
-          ./hosts/live-iso
+        # nix build --impure .#nixosConfigurations.live.config.system.build.isoImage
+        "live".modules = [
+          ./hosts/live
           {
             imports = [
               (nixpkgs + "/nixos/modules/installer/cd-dvd/installation-cd-minimal-new-kernel.nix")
@@ -179,6 +180,11 @@
           #   home-manager.users."alessandro" = import ./home;
           # }
         ];
+
+        "S2I5BNO" = {
+          channelName = "nixpkgs-latest-stable";
+          modules = [ ./hosts/media ];
+        };
       };
 
       overlay = import ./overlays { inherit (self) inputs; };

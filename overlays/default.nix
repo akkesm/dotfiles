@@ -32,12 +32,12 @@ in
   };
 
   # Overrides
-  linux_civetta = callPackage ./kernel/civetta.nix {
+  linux_L8A4BLO = callPackage ./kernel/L8A4BLO.nix {
     inherit (final) lib stdenv;
     base_kernel = prev.linux_latest;
   };
 
-  linuxPackages_civetta = final.recurseIntoAttrs (final.linuxKernel.packagesFor final.linux_civetta);
+  linuxPackages_L8A4BLO = final.recurseIntoAttrs (final.linuxKernel.packagesFor final.linux_L8A4BLO);
 
   zig-master = (prev.zig.overrideAttrs (oldAttrs: {
     version = "master";

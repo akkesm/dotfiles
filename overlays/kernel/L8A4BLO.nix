@@ -6,7 +6,7 @@ let
   };
 in
 base_kernel.override {
-  version = "${base_kernel.version}-civetta";
+  version = "${base_kernel.version}-L8A4BLO";
 
   # kernelPatches = [{
   #   name = "patchFeatures";
@@ -21,7 +21,7 @@ base_kernel.override {
   structuredExtraConfig = (with structuredConfig; lib.mkMerge [
     wifi
   ]) // (with lib.kernel; {
-    DEFAULT_HOSTNAME = freeform "civetta";
+    DEFAULT_HOSTNAME = freeform "L8A4BLO";
 
     NET_VENDOR_REALTEK = yes;
     R8169 = yes;
@@ -40,7 +40,7 @@ base_kernel.override {
 # linuxKernel.manualConfig {
 #   inherit lib stdenv;
 #   inherit (base_kernel) src;
-#   version = "${base_kernel.version}-civetta";
+#   version = "${base_kernel.version}-L8A4BLO";
 #
 #   configfile = ./custom.config;
 #   allowImportFromDerivation = true;

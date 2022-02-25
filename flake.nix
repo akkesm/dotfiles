@@ -9,10 +9,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-latest-stable.url = "github:NixOS/nixpkgs/nixos-21.11";
 
-    nur = {
-      url = "github:nix-community/NUR";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nur.url = "github:nix-community/NUR";
 
     nixpkgs-wayland = {
       url = "github:nix-community/nixpkgs-wayland";
@@ -30,7 +27,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-matlab.url = "gitlab:doronbehar/nix-matlab";
+    nix-matlab = {
+      url = "gitlab:doronbehar/nix-matlab";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # luks-yk = {
     #   url = "github:akkesm/luks-yk";

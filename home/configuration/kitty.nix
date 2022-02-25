@@ -54,7 +54,6 @@
       };
 
       settings = {
-        close_on_child_death = "yes";
         disable_ligatures = "cursor";
         touch_scroll_multiplier = "1.5";
         open_url_with = "firefox";
@@ -66,6 +65,7 @@
         tab_bar_style = "powerline";
         tab_separator = " ┇ ";
         tab_powerline_style = "angled";
+        close_on_child_death = "yes";
         update_check_interval = 0;
 
         # vim-kitty-navigator config

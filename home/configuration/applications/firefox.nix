@@ -14,15 +14,18 @@
       extensions = with pkgs.nur.repos.rycee.firefox-addons; [
         betterttv
         bypass-paywalls-clean
-        clearurls
-        decentraleyes
         facebook-container
-        multi-account-containers
+        flagfox
+        gopass-bridge
+        kristofferhagen-nord-theme
         octolinker
         octotree
         # plasma-integration
         reddit-enhancement-suite
-        stylus
+        refined-github
+        return-youtube-dislikes
+        skip-redirect
+        sourcegraph
         ublock-origin
       ];
 

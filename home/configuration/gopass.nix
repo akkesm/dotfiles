@@ -7,6 +7,7 @@
     enable = true;
     package = pkgs.gopass.override { passAlias = true; };
     variables.CHECKPOINT_DISABLE = "true";
+
     settings = {
       autoclip = true;
       autoimport = false;

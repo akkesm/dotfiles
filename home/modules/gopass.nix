@@ -56,6 +56,30 @@ in
         list of options.
       '';
     };
+
+    enableBashIntegration = mkOption {
+      type = types.bool;
+      default = true;
+      description = ''
+        Whether to enable Bash integration.
+      '';
+    };
+
+    enableZshIntegration = mkOption {
+      type = types.bool;
+      default = true;
+      description = ''
+        Whether to enable Zsh integration.
+      '';
+    };
+
+    enableFishIntegration = mkOption {
+      type = types.bool;
+      default = true;
+      description = ''
+        Whether to enable Fish integration.
+      '';
+    };
   };
 
   config = mkIf cfg.enable {
@@ -68,5 +92,21 @@ in
     xdg.configFile."${cfg.variables.GOPASS_CONFIG}" = mkIf (cfg.settings != { }) {
       source = yamlFormat.generate "gopass-config.yaml" cfg.settings;
     };
+
+    programs.bash.initExtra = mkIf cfg.enableBashIntegration ''
+      if [[ :$SHELLOPTS: =~ :(vi|emacs): ]]; then
+        source "${cfg.package}/share/bash-completion/completions/gopass.bash"
+      fi
+    '';
+
+    programs.zsh.initExtra = mkIf cfg.enableZshIntegration ''
+      if [[ $options[zle] = on ]]; then
+        fpath+="${cfg.package}/share/zsh/site-functions/_gopass"
+      fi
+    '';
+
+    programs.fish.interactiveShellInit = mkIf cfg.enableFishIntegration ''
+      source "${cfg.package}/share/fish/vendor_completions.d/gopass.fish" && skim_key_bindings
+    '';
   };
 }

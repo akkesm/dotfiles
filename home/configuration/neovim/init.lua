@@ -74,4 +74,9 @@ vim.cmd([[
         autocmd BufNewFile main.zig 2
         autocmd BufEnter *.zig compile zig
     augroup END
+
+    augroup gopass
+        autocmd!
+        autocmd BufNewFile,BufRead /dev/shm/gopass.* setlocal noswapfile nobackup noundofile
+    augroup END
 ]])

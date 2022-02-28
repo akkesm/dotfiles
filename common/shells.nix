@@ -1,10 +1,14 @@
 { config, pkgs, ... }:
 
 {
-  environment.shells = [
-    pkgs.bashInteractive
-    pkgs.zsh
-  ];
+  environment = {
+    pathsToLink = [ "/share/zsh" ];
+
+    shells = [
+      pkgs.bashInteractive
+      pkgs.zsh
+    ];
+  };
 
   programs.zsh = {
     enableBashCompletion = true;

@@ -4,6 +4,7 @@
   imports = [
     ./auth.nix
     ./bash.nix
+    ./gopass.nix
     ./gtk.nix
     ./kitty.nix
     ./qt.nix

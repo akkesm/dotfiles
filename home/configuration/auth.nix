@@ -81,23 +81,6 @@
 
       userKnownHostsFile = "${config.xdg.dataHome}/ssh/known_hosts";
     };
-
-    password-store = {
-      enable = true;
-
-      package = pkgs.pass.withExtensions (
-        exts: [
-          exts.pass-tomb
-          exts.pass-update
-        ]
-      );
-
-      settings = {
-        PASSWORD_STORE_CLIP_TIME = "30";
-        PASSWORD_STORE_DIR = "${config.xdg.dataHome}/password-store";
-        PASSWORD_STORE_KEY = "21246666AB72334C";
-      };
-    };
   };
 
   xdg.dataFile."ssh/known_hosts".text = ''

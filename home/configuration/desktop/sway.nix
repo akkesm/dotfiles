@@ -123,8 +123,18 @@
     };
 
     extraConfig = ''
-      for_window [app_id="^launcher$"] floating enable, sticky enable, resize set 30 ppt 50 ppt, border pixel 3
-      for_window [class="^Pinentry$"] floating enable
+      for_window {
+        [shell="xwayland"] title_format "%title [XWayland]"
+        [window_role="pop-up"] floating enable
+        [window_role="bubble"] floating enable
+        [window_role="dialog"] floating enable
+        [window_type="dialog"] floating enable
+        [title="(?:Open|Save) (?:File|Folder|As)"] floating enable
+        [app_id="^launcher$"] floating enable, sticky enable, resize set 30 ppt 50 ppt, border pixel 3
+        [class="^Pinentry$"] floating enable
+        [app_id="firefox" title="^Picture-in-Picture$"] floating enable, sticky enable
+        [app_id="firefox" title="^About Mozilla Firefox$"] floating enable
+      }
     '';
 
     systemdIntegration = true;

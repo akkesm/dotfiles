@@ -5,10 +5,10 @@
 
   programs.zsh = {
     enable = true;
+    enableAutosuggestions = false;
+    enableSyntaxHighlighting = true;
     autocd = true;
     defaultKeymap = "viins";
-    enableAutosuggestions = false;
-    enableCompletion = true;  #default
 
     envExtra = ''
       if [[ -e ${config.home.homeDirectory}/.nix-profile/etc/profile.d/nix.sh ]]; then
@@ -17,12 +17,11 @@
     '';
 
     dotDir =
-    let
-      relativeConfigHome = lib.removePrefix
-        (config.home.homeDirectory + "/")
-        config.xdg.configHome;
-    in
-    relativeConfigHome + "/zsh";
+      let
+        relativeConfigHome = lib.removePrefix
+          (config.home.homeDirectory + "/")
+          config.xdg.configHome;
+      in relativeConfigHome + "/zsh";
 
     history = {
       expireDuplicatesFirst = true;
@@ -63,54 +62,38 @@
       ];
     };
 
-    plugins = (
-      let
-        #   oh-my-zsh-src = pkgs.fetchFromGitHub {
-        #     owner = "ohmyzsh";
-        #     repo = "ohmyzsh";
-        #     rev = "2b1d4122796fea12dcaa7545cfca59fb43e6393e";
-        #     sha256 = "1c1hcmvfrfwds1zn165vpfh11a19s6kb20bxy2dzpby5cs15g6bc";
-        #   };
-      in
-      [
-        {
-          name = "zsh-nix-shell";
-          src = pkgs.zsh-nix-shell;
-          file = "share/zsh-nix-shell/nix-shell.plugin.zsh";
-        }
-        {
-          name = "zsh-powerlevel10k";
-          src = pkgs.zsh-powerlevel10k;
-          file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
-        }
-        {
-          name = "zsh-syntax-highlighting";
-          src = pkgs.zsh-syntax-highlighting;
-          file = "share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh";
-        }
-        # {
-        #   name = "zsh-vi-mode";
-        #   src = pkgs.zsh-vi-mode;
-        #   file = "share/zsh-vi-mode/zsh-vi-mode.zsh";
-        # }
-        # {
-        #   name = "oh-my-zsh-copybuffer";
-        #   src = oh-my-zsh-src;
-        #   file = "plugins/copybuffer/copybuffer.plugin.zsh";
-        # }
-        # {
-        #   name = "oh-my-zsh-extract";
-        #   src = oh-my-zsh-src;
-        #   file = "plugins/extract/extract.plugin.zsh";
-        # }
-      ]
-    );
+    plugins = [
+      {
+        name = "zsh-nix-shell";
+        src = pkgs.zsh-nix-shell;
+        file = "share/zsh-nix-shell/nix-shell.plugin.zsh";
+      }
+      {
+        name = "zsh-powerlevel10k";
+        src = pkgs.zsh-powerlevel10k;
+        file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
+      }
+      # {
+      #   name = "zsh-vi-mode";
+      #   src = pkgs.zsh-vi-mode;
+      #   file = "share/zsh-vi-mode/zsh-vi-mode.zsh";
+      # }
+      # {
+      #   name = "oh-my-zsh-copybuffer";
+      #   src = oh-my-zsh-src;
+      #   file = "plugins/copybuffer/copybuffer.plugin.zsh";
+      # }
+      # {
+      #   name = "oh-my-zsh-extract";
+      #   src = oh-my-zsh-src;
+      #   file = "plugins/extract/extract.plugin.zsh";
+      # }
+    ];
 
     shellAliases = {
       q = "exit";
 
       batman = "batman --paging=auto";
-      ccat = "bat";
 
       cdtmp = "cd $(mktemp -d)";
 

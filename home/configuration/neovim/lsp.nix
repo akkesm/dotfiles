@@ -2,13 +2,14 @@
 
 {
   programs.neovim = {
+    extraLuaPackages = with pkgs.lua51Packages; [ lua-lsp ];
+
     extraPackages = with pkgs; [
       # LSP servers
       ccls
       clojure-lsp
       gopls
       haskellPackages.haskell-language-server
-      luajitPackages.lua-lsp
       nimlsp
       nodePackages.bash-language-server
       # nodePackages.diagnostic-languageserver
@@ -19,8 +20,8 @@
       nodePackages.vim-language-server
       nodePackages.vscode-html-languageserver-bin
       nodePackages.vscode-json-languageserver-bin
-      perlPackages.PLS
       nodePackages.yaml-language-server
+      perlPackages.PLS
       rnix-lsp
       rust-analyzer-unwrapped
       scry

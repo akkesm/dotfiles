@@ -56,6 +56,7 @@
     enable = true;
 
     config = {
+      assigns."2" = [{ app_id = "firefox"; }];
       bindkeysToCode = true;
 
       colors = {

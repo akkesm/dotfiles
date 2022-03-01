@@ -13,6 +13,7 @@ in
   nordzy-cursors = callPackage ./nordzy-cursors { };
   nordzy-icon-theme = callPackage ./nordzy-icon-theme { };
   sway-launcher-desktop = callPackage ./sway-launcher-desktop { };
+  sway-prop = callPackage ./sway-prop { };
   wayherb = callPackage ./wayherb { };
   xcursor-breeze-neutral = callPackage ./xcursor-breeze-neutral { };
 

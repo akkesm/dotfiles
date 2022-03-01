@@ -26,9 +26,7 @@
     history = {
       expireDuplicatesFirst = true;
       extended = true;
-      ignoreDups = true;  #default
-      ignorePatterns = [ "q" ];
-      ignoreSpace = true; #default
+      ignorePatterns = [ "q"  "kill *" ];
       path = "${config.home.homeDirectory}/${config.programs.zsh.dotDir}/zsh_history";
     };
 
@@ -46,9 +44,7 @@
       [[ ! -f ${config.home.homeDirectory}/${config.programs.zsh.dotDir}/.p10k.zsh ]] || source ${config.home.homeDirectory}/${config.programs.zsh.dotDir}/.p10k.zsh
     '';
 
-    localVariables = {
-      POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD = true;
-    };
+    localVariables.POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD = true;
 
     oh-my-zsh = {
       enable = true;

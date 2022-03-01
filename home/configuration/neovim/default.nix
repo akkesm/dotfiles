@@ -22,7 +22,6 @@
 
   programs.neovim = {
     enable = true;
-    # extraConfig = builtins.readFile ./init.vim;
     extraConfig = ''
       luafile ${./init.lua}
       luafile ${pkgs.writeText "generatedConfig.lua" config.programs.neovim.generatedConfigs.lua}

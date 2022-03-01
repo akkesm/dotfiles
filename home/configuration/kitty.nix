@@ -22,7 +22,7 @@
       '';
 
       font = {
-        name = "Iosevka Term";
+        name = config.fonts.monospace;
         size = 12;
       };
 

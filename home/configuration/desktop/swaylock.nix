@@ -5,7 +5,7 @@
 
   wayland.windowManager.sway.config.keybindings = 
     let mod = config.wayland.windowManager.sway.config.modifier;
-    in lib.mkOptionDefault { "${mod}+l" = "exec swaylock"; };
+    in lib.mkOptionDefault { "${mod}+x" = "exec swaylock"; };
 
   xdg.configFile."swaylock/config".text = ''
     daemonize

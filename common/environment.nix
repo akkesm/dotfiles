@@ -21,7 +21,9 @@
       rwhich
       shellcheck
       strace
+      unzip
       wget
+      zip
     ];
 
     variables = {

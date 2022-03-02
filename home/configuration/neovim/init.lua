@@ -37,7 +37,7 @@ vim.opt.numberwidth = 5
 vim.opt.pyxversion = 3
 vim.opt.relativenumber = true;
 vim.opt.ruler = true
-vim.opt.scrolloff = 5
+vim.opt.scrolloff = 4
 vim.opt.shada = { '!', "'100", '<100', 'h', 'r/mnt', 'r/tmp', 's100' }
 vim.opt.shiftwidth = 4
 vim.opt.shortmess:append('Ic')

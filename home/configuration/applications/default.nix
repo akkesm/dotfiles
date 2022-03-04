@@ -15,6 +15,7 @@
     dolphin
     gimp
     lbry
+    qutebrowser
     transmission-gtk
     # openclonk
     # passky

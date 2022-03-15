@@ -4,6 +4,8 @@
 , makeWrapper
 , bash
 , jq
+, kitty
+, sway
 }:
 
 stdenv.mkDerivation rec {
@@ -17,7 +19,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ makeWrapper ];
-  buildInputs = [ bash jq ];
+  buildInputs = [ bash jq kitty sway ];
 
   dontUnpack = true;
 
@@ -27,4 +29,10 @@ stdenv.mkDerivation rec {
     wrapProgram $out/bin/${pname} \
       --prefix PATH : ${lib.makeBinPath buildInputs}
   '';
+
+  meta = {
+    description = "Display information for the focused window in sway";
+    license = lib.licenses.gpl3Plus;
+    platforms = lib.platforms.linux;
+  };
 }

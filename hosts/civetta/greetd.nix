@@ -24,7 +24,8 @@ in
       };
 
       initial_session = {
-        command = "${pkgs.systemd}/bin/systemd-cat --identifier=sway ${pkgs.sway}/bin/sway";
+        command = "${pkgs.sway}/bin/sway";
+        # command = "${pkgs.systemd}/bin/systemd-cat --identifier=sway ${pkgs.sway}/bin/sway";
         user = config.users.users.alessandro.name;
       };
     };

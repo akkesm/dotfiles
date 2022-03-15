@@ -1,14 +1,14 @@
 { lib, stdenv, fetchFromGitHub, gtk3, hicolor-icon-theme }:
 
-stdenv.mkDerivation {
+stdenv.mkDerivation rec {
   pname = "nordzy-icon-theme";
-  version = "2022-01-15";
+  version = "1.2";
 
   src = fetchFromGitHub {
     owner = "alvatip";
     repo = "Nordzy-icon";
-    rev = "ee5d01733fb69c05f5f4531105036148c47f9419";
-    sha256 = "19y52297cklpyjp474nxvwxxcqr39qydf237f38r3pfhkl2ly40x";
+    rev = version;
+    sha256 = "1cfsvjc8zqs5yb6j77g16rv6hdacwzvw9g52wivl6znk0pydf5sn";
   };
 
   nativeBuildInputs = [ gtk3 ];

@@ -24,7 +24,6 @@
         reddit-enhancement-suite
         refined-github
         return-youtube-dislikes
-        skip-redirect
         sourcegraph
         ublock-origin
       ];

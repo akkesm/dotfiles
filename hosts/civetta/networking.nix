@@ -25,7 +25,7 @@
       logRefusedUnicastsOnly = true;
     };
 
-    hostName = "L8A4BLO";
+    hostName = "civetta";
 
     hosts = {
       "127.0.0.1" = [ "localhost" "localhost.localdomain" ];

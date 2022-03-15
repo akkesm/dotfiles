@@ -50,6 +50,11 @@
 
     impermanence.url = "github:nix-community/impermanence";
 
+    kmonad = {
+      url = "github:kmonad/kmonad?dir=nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Neovim and plugins
     neovim = {
       url = "github:neovim/neovim?dir=contrib";
@@ -106,7 +111,7 @@
   outputs =
     { self, nix, utils, dwarffs, nix-matlab
     , nixpkgs, nixpkgs-latest-stable, nur, nixpkgs-wayland, neovim
-    , home-manager, sops-nix, impermanence
+    , home-manager, sops-nix, impermanence, kmonad
     , ... }@inputs:
     utils.lib.mkFlake {
       inherit self inputs;
@@ -139,6 +144,7 @@
 
         nur.overlay
         sops-nix.overlay
+        kmonad.overlay
       ];
 
       hostDefaults.modules = [
@@ -148,9 +154,8 @@
       ];
 
       hosts = {
-        # Form factor1-Processor3-FS1-Encryption1-Persistent/Opt in1
-        "L8A4BLO".modules = [
-          ./hosts/L8A4BLO
+        "civetta".modules = [
+          ./hosts/civetta
           # dwarffs.nixosModules.dwarffs
 
           home-manager.nixosModules.home-manager
@@ -181,7 +186,7 @@
           # }
         ];
 
-        "S2I5BNO" = {
+        "media" = {
           channelName = "nixpkgs-latest-stable";
           modules = [ ./hosts/media ];
         };

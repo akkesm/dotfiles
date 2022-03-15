@@ -1,22 +1,30 @@
-{ lib, rustPlatform, fetchFromGitHub
-, cmake, pkg-config, freetype, expat, makeFontsCache
+{ lib
+, rustPlatform
+, fetchFromGitHub
+, cmake
+, fontconfig
+, pkg-config
+, freetype
+, expat
+, makeFontsCache
 }:
 
-rustPlatform.buildRustPackage {
+rustPlatform.buildRustPackage rec {
   pname = "kickoff";
-  version = "0.4.5";
+  version = "0.5.0";
 
   src = fetchFromGitHub {
     owner = "j0ru";
     repo = "kickoff";
-    rev = "v0.4.5";
-    sha256 = "1iiqh7fvfn1ql026ja36pcl8625axmkmrfkgq2b4h3vqza6jrqzy";
+    rev = "v${version}";
+    sha256 = "1gkgz6axh0yfs8rxxb1ybfiy9lna3z1icyiccqi1j8vxzswsc3yk";
   };
 
-  cargoHash = "sha256-UN1lsFSP1jBMszYFtxXdjih1/8n1/mjYiIWhYLsmUyw=";
+  cargoHash = "sha256-zyuBsqMPXUWXmhlMCuNJ/rIVuRumXGs1WVoM1cO0ouc=";
 
   nativeBuildInputs = [
     cmake
+    fontconfig
     pkg-config
   ];
 
@@ -30,7 +38,7 @@ rustPlatform.buildRustPackage {
   meta = {
     description = "Minimalistic program launcher";
     homepage = "https://github.com/j0ru/kickoff";
-    license = lib.licenses.gpl3;
+    license = lib.licenses.gpl3Plus;
     platforms = lib.platforms.linux;
   };
 }

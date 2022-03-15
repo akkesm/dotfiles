@@ -5,52 +5,6 @@
 with perlPackages;
 
 rec {
-  ClassRefresh = buildPerlPackage {
-    pname = "Class-Refresh";
-    version = "0.07";
-    src = fetchurl {
-      url = "mirror://cpan/authors/id/D/DO/DOY/Class-Refresh-0.07.tar.gz";
-      sha256 = "e3b0035355cbb35a2aee3f223688d578946a7a7c570acd398b28cddb1fd4beb3";
-    };
-    buildInputs = [ TestFatal TestRequires ];
-    propagatedBuildInputs = [ ClassLoad ClassUnload DevelOverrideGlobalRequire TryTiny ];
-    meta = {
-      homepage = "http://metacpan.org/release/Class-Refresh";
-      description = "Refresh your classes during runtime";
-      license = with lib.licenses; [ artistic1 gpl1Plus ];
-    };
-  };
-
-  CompilerLexer = buildPerlModule {
-    pname = "Compiler-Lexer";
-    version = "0.23";
-    src = fetchurl {
-      url = "mirror://cpan/authors/id/G/GO/GOCCY/Compiler-Lexer-0.23.tar.gz";
-      sha256 = "6031ce4afebbfa4f492a274949be7b8232314e91023828c438e47981ff0a99db";
-    };
-    buildInputs = [ ModuleBuildXSUtil ];
-    perlPreHook = "export LD=$CC";
-    meta = {
-      homepage = "https://github.com/goccy/p5-Compiler-Lexer";
-      description = "Lexical Analyzer for Perl5";
-      license = with lib.licenses; [ artistic1 gpl1Plus ];
-    };
-  };
-
-  DevelOverrideGlobalRequire = buildPerlPackage {
-    pname = "Devel-OverrideGlobalRequire";
-    version = "0.001";
-    src = fetchurl {
-      url = "mirror://cpan/authors/id/D/DA/DAGOLDEN/Devel-OverrideGlobalRequire-0.001.tar.gz";
-      sha256 = "0791892de3ae292af4a94e382f21db1ee88210875031851e6ea82c3410785ef9";
-    };
-    meta = {
-      homepage = "https://metacpan.org/release/Devel-OverrideGlobalRequire";
-      description = "Override CORE::GLOBAL::require safely";
-      license = with lib.licenses; [ artistic1 gpl1Plus ];
-    };
-  };
-
   EvalSafe = buildPerlPackage {
     pname = "Eval-Safe";
     version = "0.02";
@@ -92,20 +46,6 @@ rec {
     meta = {
       description = "Perl bindings for neovim";
       license = with lib.licenses; [ artistic1 gpl1Plus ];
-    };
-  };
-
-  Perl-LanguageServer = buildPerlPackage {
-    pname = "Perl-LanguageServer";
-    version = "2.3.0";
-    src = fetchurl {
-      url = "mirror://cpan/authors/id/G/GR/GRICHTER/Perl-LanguageServer-2.3.0.tar.gz";
-      sha256 = "d4ad56e69d59e2ff1f20d9c21cf9c4ce7ef993cf8d684d30a2849923c0e15c88";
-    };
-    propagatedBuildInputs = [ AnyEvent AnyEventAIO ClassRefresh CompilerLexer Coro DataDump IOAIO JSON Moose PadWalker ];
-    meta = {
-      description = "Language Server and Debug Protocol Adapter for Perl";
-      license = lib.licenses.artistic2;
     };
   };
 }

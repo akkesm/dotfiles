@@ -1,25 +1,29 @@
 { config, pkgs, ... }:
 
 {
-  programs.neovim.plugins = with pkgs.vimPlugins; [
-    {
-      plugin = nvim-treesitter.withPlugins (_: pkgs.tree-sitter.allGrammars);
-      type = "lua";
-      config = ''
-        require('nvim-treesitter.configs').setup {
-          ['highlight.enable'] = true,
-          ['incremental_selection.enable'] = true,
-          ['indent.enable'] = true,
+  programs.neovim = {
+    extraPackages = [ pkgs.tree-sitter ];
 
-          refactor = {
-            ['highlight_definitions.enable'] = true,
-            ['highlight_current_scope.enable'] = false,
-          },
-        }
-      '';
-    }
+    plugins = with pkgs.vimPlugins; [
+      {
+        plugin = nvim-treesitter.withPlugins (_: pkgs.tree-sitter.allGrammars);
+        type = "lua";
+        config = ''
+          require('nvim-treesitter.configs').setup {
+            highlight = { enable = true },
+            incremental_selection = { enable = true },
+            indent = { enable = true },
 
-    nvim-treesitter-refactor
-    nvim-treesitter-context
-  ];
+            refactor = {
+              highlight_definitions = { enable = true },
+              highlight_current_scope = { enable = false },
+            },
+          }
+        '';
+      }
+  
+      nvim-treesitter-refactor
+      nvim-treesitter-context
+    ];
+  };
 }

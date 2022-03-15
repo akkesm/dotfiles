@@ -90,9 +90,10 @@ stdenv.mkDerivation rec {
     runHook postConfig
   '';
 
-  meta = with lib; {
+  meta = {
     description = "Daemon-less notifications without D-Bus";
     homepage = "https://github.com/dudik/herbe";
-    license = licenses.mit;
+    license = lib.licenses.mit;
+    platforms = lib.platforms.linux;
   };
 }

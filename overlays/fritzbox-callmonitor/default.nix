@@ -58,5 +58,6 @@ mkDerivation {
     description = "A small utility written in C++/Qt to show incoming calls from the Fritz!Box";
     homepage = "https://www.pera-software.com/html/software/fritzbox-callmonitor/fritzbox-callmonitor.html";
     license = lib.licenses.gpl3Only;
+    platforms = lib.platforms.linux;
   };
 }

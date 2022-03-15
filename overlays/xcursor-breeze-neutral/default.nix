@@ -2,7 +2,7 @@
 
 stdenv.mkDerivation {
   pname = "xcursor-breeze-neutral";
-  version = "2019-02-02";
+  version = "unstable-2019-02-02";
 
   src = fetchFromGitHub {
     owner = "TheScrawl";
@@ -17,4 +17,9 @@ stdenv.mkDerivation {
     install -D ./index.theme $out/share/icons
     install -D ./icon-theme.cache $out/share/icons
   '';
+
+  meta = {
+    description = " Neutral fork of KDE's Breeze Cursor";
+    homepage = "https://github.com/TheScrawl/xcursor-breeze-neutral";
+  };
 }

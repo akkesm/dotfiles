@@ -78,15 +78,15 @@ window#waybar.hidden {
 }
 
 #pulseaudio.muted {
-  color: #b48ead;
+  color: #bf616a;
 }
 
 #backlight {
-  color: #81a1c1;
+  color: #d8dee9;
 }
 
 #battery {
-  color: #5e81ac;
+  color: #81a1c1;
 }
 
 #battery.charging, #battery.plugged {

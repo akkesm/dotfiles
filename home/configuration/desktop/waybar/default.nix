@@ -44,8 +44,8 @@
         };
 
         network = {
-          format-ethernet = " {ipaddr} {essid}";
-          format-wifi = "﬉ {ipaddr} {essid}";
+          format-ethernet = " {signalStrength} {essid}";
+          format-wifi = "﬉ {signalStrength} {essid}";
           format-disconnected = " {ifname} disconnected";
         };
 

@@ -54,6 +54,9 @@
       };
 
       settings = {
+        active_border_color = "#a3be8c";
+        inactive_border_color = "#5e81ac";
+
         disable_ligatures = "cursor";
         touch_scroll_multiplier = "1.5";
         open_url_with = "firefox";

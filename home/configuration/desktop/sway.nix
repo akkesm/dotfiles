@@ -71,6 +71,30 @@
         };
       };
 
+      floating = {
+        border = 3;
+
+        criteria = [
+          { app_id = "^launcher$"; }
+
+          {
+            app_id = "firefox";
+            title = "^About Mozilla Firefox$";
+          }
+
+          {
+            app_id = "firefox";
+            title = "^Picture-in-Picture$";
+          }
+
+          { class = "^Pinentry$"; }
+          { title = "(?:Open|Save) (?:File|Folder|As)"; }
+          { window_role = "bubble"; }
+          { window_role = "dialog"; }
+          { window_role = "pop-up"; }
+        ];
+      };
+
       fonts = {
         names = [ config.fonts.sansSerif ];
         style = "Regular";
@@ -88,6 +112,7 @@
           tap_button_map = "lrm";
         };
       };
+
       modifier = "Mod4";
 
       keybindings =
@@ -121,22 +146,26 @@
 
       startup = [ { command = "${pkgs.brightnessctl}/bin/brightnessctl set 6%"; } ];
       terminal = "${pkgs.kitty}/bin/kitty";
-    };
 
-    extraConfig = ''
-      for_window {
-        [shell="xwayland"] title_format "%title [XWayland]"
-        [window_role="pop-up"] floating enable
-        [window_role="bubble"] floating enable
-        [window_role="dialog"] floating enable
-        [window_type="dialog"] floating enable
-        [title="(?:Open|Save) (?:File|Folder|As)"] floating enable
-        [app_id="^launcher$"] floating enable, sticky enable, resize set 30 ppt 50 ppt, border pixel 3
-        [class="^Pinentry$"] floating enable
-        [app_id="firefox" title="^Picture-in-Picture$"] floating enable, sticky enable
-        [app_id="firefox" title="^About Mozilla Firefox$"] floating enable
-      }
-    '';
+      window.commands = [
+        {
+          command = "title_format '%title [XWayland]'";
+          criteria.shell = "xwayland";
+        }
+        {
+          command = "sticky enable, resize set 30 ppt 50 ppt";
+          criteria.app_id = "^launcher$";
+        }
+        {
+          command = "sticky enable";
+
+          criteria = {
+            app_id = "firefox";
+            title = "^Picture-in-Picture$";
+          };
+        }
+      ];
+    };
 
     systemdIntegration = true;
     wrapperFeatures.gtk = true;

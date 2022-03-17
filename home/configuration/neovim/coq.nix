@@ -5,6 +5,10 @@
     extraLuaPackages = with pkgs.lua51Packages; [ lua-lsp ];
 
     extraPackages = with pkgs; [
+      # coq
+      sqlite
+      universal-ctags
+
       # LSP servers
       ccls
       clojure-lsp
@@ -34,6 +38,94 @@
     ];
 
     plugins = with pkgs.vimPlugins; [
+      coq_artifacts
+      {
+        plugin = coq_thirdparty;
+        type = "lua";
+        config = ''
+          require('coq_3p') {
+            {
+              src = 'bc',
+              short_name = 'BC',
+              precision = 6,
+            },
+            {
+              src = 'repl',
+              sh = 'zsh',
+
+              shell = {
+                n = 'nix eval --expr',
+                p = 'perl -E',
+              },
+
+              max_lines = 30,
+              deadline = 500,
+              unsafe = { 'cp', 'dd', 'mv', 'poweroff', 'reboot', 'rm' },
+            },
+            { src = 'nvimlua' },
+            { src = 'vimtex' },
+          }
+        '';
+      }
+      {
+        plugin = coq_nvim;
+        type = "lua";
+        config = ''
+          vim.g.coq_settings = {
+            xdg = true,
+            auto_start = 'shut-up',
+            ['match.fuzzy_cutoff'] = 0.9,
+
+            ['keymap.recommended'] = false,
+          }
+        '';
+      }
+
+      {
+        plugin = nvim-autopairs;
+        type = "lua";
+        config = ''
+          local npairs = require('nvim-autopairs')
+
+          npairs.setup {
+            enable_check_bracket_line = false,
+            map_bs = false,
+            map_cr = false,
+            check_ts = true,
+          }
+
+          vim.keymap.set('i', '<Esc>', [[pumvisible() ? '<C-e><Esc>' : '<Esc>']], { expr = true, noremap = true, silent = true })
+          vim.keymap.set('i', '<C-c>', [[pumvisible() ? '<C-e><C-c>' : '<C-c>']], { expr = true, noremap = true, silent = true })
+          vim.keymap.set('i', '<Tab>', [[pumvisible() ? '<C-n>' : '<Tab>']], { expr = true, noremap = true, silent = true })
+          vim.keymap.set('i', '<S-Tab>', [[pumvisible() ? '<C-p>' : '<BS>']], { expr = true, noremap = true, silent = true })
+
+          _G.MUtils = {}
+          
+          MUtils.CR = function()
+            if vim.fn.pumvisible() ~= 0 then
+              if vim.fn.complete_info({ 'selected' }).selected ~= -1 then
+                return npairs.esc('<C-y>')
+              else
+                return npairs.esc('<C-e>') .. npairs.autopairs_cr()
+              end
+            else
+              return npairs.autopairs_cr()
+            end
+          end
+
+          vim.keymap.set('i', '<CR>', 'v:lua.MUtils.CR()', { expr = true, noremap = true, silent = true })
+          
+          MUtils.BS = function()
+            if vim.fn.pumvisible() ~= 0 and vim.fn.complete_info({ 'mode' }).mode == 'eval' then
+              return npairs.esc('<c-e>') .. npairs.autopairs_bs()
+            else
+              return npairs.autopairs_bs()
+            end
+          end
+
+          vim.keymap.set('i', '<BS>', 'v:lua.MUtils.BS()', { expr = true, noremap = true,silent = true })
+        '';
+      }
       {
         plugin = nvim-lspconfig;
         type = "lua";

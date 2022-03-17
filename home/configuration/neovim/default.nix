@@ -2,8 +2,7 @@
 
 {
   imports = [
-    ./completion.nix
-    ./lsp.nix
+    ./coq.nix
     ./lualine.nix
     ./neorg.nix
     ./telescope.nix

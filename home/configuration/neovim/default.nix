@@ -2,9 +2,10 @@
 
 {
   imports = [
+    ./colorscheme.nix
     ./coq.nix
-    ./lualine.nix
     ./neorg.nix
+    ./statusline.nix
     ./telescope.nix
     ./treesitter.nix
     ./vim-markdown-composer.nix
@@ -38,22 +39,6 @@
       # Used by multiple other plugins
       plenary-nvim
 
-      # theme
-      # {
-      #   plugin = nvim-base16;
-      #   config = ''
-      #     colorscheme base16-nord
-      #   '';
-      # }
-      {
-        plugin = nord-nvim;
-        type = "lua";
-        config = ''
-          vim.g.nord_borders = true
-          vim.g.nord_italic = false
-          require('nord').set()
-        '';
-      }
       {
         plugin = indent-blankline-nvim;
         type = "lua";

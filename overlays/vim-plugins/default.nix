@@ -72,7 +72,7 @@ in
     meta.homepage = inputs.vim-latex.url;
   };
 
-  windline-nvim = {
+  windline-nvim = vimUtils.buildVimPluginFrom2Nix {
     pname = "windline.nvim";
     version = genDateVersion inputs.windline-nvim;
     src = inputs.windline-nvim;

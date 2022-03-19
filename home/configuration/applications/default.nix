@@ -6,6 +6,7 @@
     ./documents.nix
     ./firefox.nix
     ./games.nix
+    ./lbry.nix
     ./matlab.nix
     ./packet-tracer.nix
     ./ungoogled-chromium.nix

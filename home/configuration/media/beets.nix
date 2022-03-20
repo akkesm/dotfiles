@@ -41,11 +41,15 @@
         incremental_skip_later = "yes";
       };
 
-      musicbrainz.extratags = [ "year" ];
+      musicbrainz = {
+        extratags = [ "year" ];
+        genres = "yes";
+      };
 
       match = {
         preferred.original_year = "yes";
         ignored = [ "track_length" ];
+        max-rec.year = "low";
       };
 
       paths.default = "$albumartist/$year-$album%aunique{}/$track-$title";

@@ -1,12 +1,7 @@
 { inputs, lib, vimUtils }:
 
 let
-  genDateVersion = input:
-    lib.concatStringsSep "-" [
-      (builtins.substring 0 4 input.lastModifiedDate)
-      (builtins.substring 4 2 input.lastModifiedDate)
-      (builtins.substring 7 2 input.lastModifiedDate)
-    ];
+  inherit (lib.my) genDateVersion;
 in
 {
   coq_nvim = vimUtils.buildVimPluginFrom2Nix {

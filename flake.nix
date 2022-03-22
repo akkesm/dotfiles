@@ -101,6 +101,15 @@
       flake = false;
     };
 
+    tree-sitter-norg-meta = {
+      url = "github:nvim-neorg/tree-sitter-norg-meta";
+      flake = false;
+    };
+    tree-sitter-norg-table = {
+      url = "github:nvim-neorg/tree-sitter-norg-table";
+      flake = false;
+    };
+
     # Zig master branch
     zig = {
       url = "github:ziglang/zig";
@@ -113,12 +122,13 @@
     , nixpkgs, nixpkgs-latest-stable, nur, nixpkgs-wayland, neovim
     , home-manager, sops-nix, impermanence, kmonad
     , ... }@inputs:
-    utils.lib.mkFlake {
-      inherit self inputs;
-
-      lib = nixpkgs.lib.extend (self: super: {
-        my = import ./lib.nix { lib = self; };
+    let
+      lib = nixpkgs.lib.extend (final: prev: {
+         my = import ./lib { lib = final; };
       });
+    in
+    utils.lib.mkFlake rec {
+      inherit self inputs;
 
       supportedSystems = [ "x86_64-linux" ];
 
@@ -169,22 +179,26 @@
         ];
 
         # nix build --impure .#nixosConfigurations.live.config.system.build.isoImage
-        "live".modules = [
-          ./hosts/live
-          {
-            imports = [
-              (nixpkgs + "/nixos/modules/installer/cd-dvd/installation-cd-minimal-new-kernel.nix")
-              (nixpkgs + "/nixos/modules/installer/cd-dvd/channel.nix")
-            ];
-          }
+        "live" = {
+          channelName = "nixpkgs";
 
-          # home-manager.nixosModules.home-manager
-          # {
-          #   home-manager.useGlobalPkgs = true;
-          #   home-manager.useUserPackages = true;
-          #   home-manager.users."alessandro" = import ./home;
-          # }
-        ];
+          modules = [
+            ./hosts/live
+            {
+              imports = [
+                (channels."${hosts.live.channelName}".input + "/nixos/modules/installer/cd-dvd/installation-cd-minimal-new-kernel.nix")
+                (channels."${hosts.live.channelName}".input + "/nixos/modules/installer/cd-dvd/channel.nix")
+              ];
+            }
+  
+            # home-manager.nixosModules.home-manager
+            # {
+            #   home-manager.useGlobalPkgs = true;
+            #   home-manager.useUserPackages = true;
+            #   home-manager.users."alessandro" = import ./home;
+            # }
+          ];
+        };
 
         "media" = {
           channelName = "nixpkgs-latest-stable";
@@ -192,14 +206,16 @@
         };
       };
 
-      overlay = import ./overlays { inherit (self) inputs; };
+      overlay = import ./overlays {
+        inherit lib;
+        inherit (self) inputs;
+      };
       overlays = utils.lib.exportOverlays { inherit (self) pkgs inputs; };
 
       outputsBuilder = channels: rec {
         packages = utils.lib.exportPackages self.overlays channels;
 
-        devShells = import ./shells { pkgs = channels.nixpkgs; };
-        devShell = devShells.sops;
+        devShells = import ./shells { pkgs = self.pkgs.x86_64-linux.nixpkgs; };
       };
     };
 }

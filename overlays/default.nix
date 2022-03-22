@@ -1,4 +1,4 @@
-{ inputs }:
+{ inputs, lib }:
 
 final: prev:
 
@@ -23,18 +23,23 @@ in
 
   # Package set extensions
   perlPackages = prev.perlPackages // callPackage ./perl-packages {
-    inherit (final) lib fetchurl;
+    inherit lib;
+    inherit (final) fetchurl;
     inherit (prev) perlPackages;
   };
 
-  vimPlugins = prev.vimPlugins // callPackage ./vim-plugins {
-    inherit inputs;
-    inherit (final) lib vimUtils;
-  };
+  vimPlugins =
+    let
+      vimPluginsExtension = callPackage ./vim-plugins {
+        inherit inputs lib;
+        inherit (final) vimUtils;
+      };
+    in prev.vimPlugins.extend (final: prev: vimPluginsExtension);
 
   # Overrides
   linux_civetta = callPackage ./kernel/civetta.nix {
-    inherit (final) lib stdenv;
+    inherit lib;
+    inherit (final) stdenv;
     base_kernel = prev.linux_latest;
   };
 

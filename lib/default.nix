@@ -4,7 +4,9 @@ let
   callLibs = file: import file { inherit lib; };
 in
 rec {
-  trivial = callLibs ./trivial.nix;
+  colors = callLibs ./colors.nix;
+  packages = callLibs ./packages.nix;
 
-  inherit (trivial) pow hexToDec colorHexToRgbString;
+  inherit (colors) pow hexToDec colorHexToRgbString;
+  inherit (packages) genDateVersion;
 }

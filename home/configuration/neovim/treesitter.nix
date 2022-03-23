@@ -6,7 +6,9 @@
 
     plugins = with pkgs.vimPlugins; [
       {
-        plugin = nvim-treesitter.withPlugins (_: pkgs.tree-sitter.allGrammars);
+        plugin = nvim-treesitter.withPlugins (p: builtins.attrValues (p // {
+          inherit (pkgs.tree-sitter-grammars) tree-sitter-norg-meta tree-sitter-norg-table;
+        }));
         type = "lua";
         config = ''
           require('nvim-treesitter.configs').setup {

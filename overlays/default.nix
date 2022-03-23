@@ -28,6 +28,11 @@ in
     inherit (prev) perlPackages;
   };
 
+  tree-sitter-grammars = prev.tree-sitter-grammars // callPackage ./tree-sitter-grammars {
+    inherit inputs lib;
+    inherit (final) callPackage;
+  };
+
   vimPlugins =
     let
       vimPluginsExtension = callPackage ./vim-plugins {

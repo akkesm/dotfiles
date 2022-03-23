@@ -150,6 +150,10 @@
 
       window.commands = [
         {
+          command = "sticky enable";
+          criteria.class = "^Pinentry$";
+        }
+        {
           command = "title_format '%title [XWayland]'";
           criteria.shell = "xwayland";
         }

@@ -24,12 +24,14 @@
     mpd = {
       enable = true;
       dataDir = "${config.xdg.dataHome}/mpd";
+
       extraConfig = ''
         audio_output {
           type "pipewire"
           name "PipeWire Sound Server"
         }
       '';
+
       musicDirectory = "${config.home.homeDirectory}/Music";
       network.startWhenNeeded = true;
     };

@@ -1,6 +1,9 @@
 { config, pkgs, ... }:
 
 {
+  boot.initrd.kernelModules = [ "amdgpu" ];
+  environment.sessionVariables.LIBVA_DRIVE_NAME = "radeonsi";
+
   hardware.opengl = {
     enable = true;
     driSupport = true;
@@ -19,6 +22,4 @@
       pkgs.driversi686Linux.amdvlk
     ];
   };
-
-  boot.initrd.kernelModules = [ "amdgpu" ];
 }

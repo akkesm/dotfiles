@@ -79,10 +79,6 @@
           # https://wiki.archlinux.org/title/firefox#Hardware_video_acceleration
           "gfx.webrender.all" = true;
           "media.ffmpeg.vaapi.enabled" = true;
-          "media.ffvpx.enabled" = false;
-          "media.rdd-vpx.enabled" = false;
-          # "security.sandbox.content.level" = 0;
-          "media.navigator.mediadatadecoder_vpx_enabled" = true;
 
           # Native dialogs/file pickers
           # needs xdg-desktop-portal-* installed

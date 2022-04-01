@@ -100,7 +100,7 @@
           vim.keymap.set('i', '<S-Tab>', [[pumvisible() ? '<C-p>' : '<BS>']], { expr = true, noremap = true, silent = true })
 
           _G.MUtils = {}
-          
+
           MUtils.CR = function()
             if vim.fn.pumvisible() ~= 0 then
               if vim.fn.complete_info({ 'selected' }).selected ~= -1 then
@@ -114,7 +114,7 @@
           end
 
           vim.keymap.set('i', '<CR>', 'v:lua.MUtils.CR()', { expr = true, noremap = true, silent = true })
-          
+
           MUtils.BS = function()
             if vim.fn.pumvisible() ~= 0 and vim.fn.complete_info({ 'mode' }).mode == 'eval' then
               return npairs.esc('<c-e>') .. npairs.autopairs_bs()

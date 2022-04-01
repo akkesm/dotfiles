@@ -103,7 +103,7 @@ with libKernel;
 
     INFINIBAND = no;
 
-    BLK_DEV_LOOP_MIN_COUNT = 0;
+    BLK_DEV_LOOP_MIN_COUNT = freeform 0;
     BLK_DEV_CRYPTOLOOP = no; # deprecated, use dm
     BLK_DEV_DRBD = no;
     BLK_DEV_SX8 = no;

@@ -31,7 +31,6 @@ base_kernel.override {
     IWLDVM = module;
     IWLMVM = module;
     IWLWIFI_DEVICE_TRACING = yes;
-
   });
 
   # ignoreConfigErrors = true;

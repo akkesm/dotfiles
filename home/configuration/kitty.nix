@@ -76,6 +76,7 @@
         # listen_on = "unix:@mykitty";
       };
     };
+
     zsh.shellGlobalAliases = { ssh = "kitty +kitten ssh"; };
   };
   # services.xdg = {

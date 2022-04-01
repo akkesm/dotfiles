@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  accounts.email.accounts.${config.home.username} = {
+  accounts.email.accounts."${config.home.username}" = {
     primary = true;
     address = "alessandro.barenghi@tuta.io";
     realName = "Alessandro Barenghi";

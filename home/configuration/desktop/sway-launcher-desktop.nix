@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   wayland.windowManager.sway.config.menu =  "${pkgs.kitty}/bin/kitty --class=launcher ${pkgs.sway-launcher-desktop}/bin/sway-launcher-desktop";

@@ -170,7 +170,7 @@
       ];
 
       hosts = {
-        "civetta".modules = [
+        civetta.modules = [
           ./hosts/civetta
           # dwarffs.nixosModules.dwarffs
 
@@ -179,13 +179,13 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              users."alessandro" = import ./home;
+              users.alessandro = import ./home;
             };
           }
         ];
 
         # nix build --impure .#nixosConfigurations.live.config.system.build.isoImage
-        "live" = {
+        live = {
           channelName = "nixpkgs";
 
           modules = [
@@ -206,7 +206,7 @@
           ];
         };
 
-        "media" = {
+        media = {
           channelName = "nixpkgs-latest-stable";
           modules = [ ./hosts/media ];
         };

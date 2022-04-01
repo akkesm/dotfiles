@@ -1,4 +1,4 @@
-# Nixified dotfiles
+# Dotless dotfiles
 
 Dotfiles but without the dots.
 
@@ -64,7 +64,7 @@ Configured entirely with [Home Manager][4], including sway.
 - The [unofficial wiki][23]
 
 **And the place you'll spend the most time in:**\
-[The nixpkgs repository][24]
+[nixpkgs][24]
 
 [7]: https://github.com/nix-community/impermanence
 [8]: https://github.com/nix-community/NUR

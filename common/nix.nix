@@ -96,28 +96,6 @@
           };
         };
       })
-      # (final: prev: {
-      #   iosevka-custom-term-ss04 = prev.iosevka-custom-term-ss04.overrideAttrs (oldAttrs: {
-      #     buildPhase = ''
-      #         runHook preBuild
-      #         npm run build --no-update-notifier -- --jCmd=8  ttf::$pname >/dev/null
-      #         runHook postBuild
-      #       '';
-      #   });
-      # })
-
-      # (final: prev: {
-      #   lbry = prev.lbry.overrideAttrs (oldAttrs: rec {
-      #     version = "0.51.2";
-      #     src = prev.appimageTools.extract {
-      #       inherit (oldAttrs) name;
-      #       src = prev.fetchurl {
-      #         url = "https://github.com/lbryio/lbry-desktop/releases/download/v${version}/LBRY_${version}.AppImage";
-      #         sha512 = "EUM5k8D0OYYb01oWjVdBlWvwbZXcOa+mwL0WEDYxxPFRQQ+hLl1JsxZiqg3WCtSAACyutpTb4Rh2SotOSRT15A==";
-      #       };
-      #     };
-      #   });
-      # })
     ];
   };
 }

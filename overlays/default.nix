@@ -22,22 +22,22 @@ in
   rwhich = callPackage ./rwhich { };
 
   # Package set extensions
-  perlPackages = prev.perlPackages // callPackage ./perl-packages {
+  perlPackages = prev.perlPackages // import ./perl-packages {
     inherit lib;
     inherit (final) fetchurl;
     inherit (prev) perlPackages;
   };
 
-  tree-sitter-grammars = prev.tree-sitter-grammars // callPackage ./tree-sitter-grammars {
+  tree-sitter-grammars = prev.tree-sitter-grammars // import ./tree-sitter-grammars {
     inherit inputs lib;
     inherit (final) callPackage;
   };
 
   vimPlugins =
     let
-      vimPluginsExtension = callPackage ./vim-plugins {
+      vimPluginsExtension = import ./vim-plugins {
         inherit inputs lib;
-        inherit (final) vimUtils;
+        inherit (final) rustPlatform vimUtils;
       };
     in prev.vimPlugins.extend (final: prev: vimPluginsExtension);
 

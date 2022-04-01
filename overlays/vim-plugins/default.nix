@@ -1,4 +1,4 @@
-{ inputs, lib, vimUtils }:
+{ inputs, lib, rustPlatform, vimUtils }:
 
 let
   inherit (lib.my) genDateVersion;
@@ -52,6 +52,36 @@ in
     src = inputs.neorg-telescope;
     meta.homepage = inputs.neorg-telescope.url;
   };
+
+  nvim-compleet =
+    let
+      version = genDateVersion inputs.nvim-compleet;
+      src = inputs.nvim-compleet;
+      nvim-compleet-lib = rustPlatform.buildRustPackage rec {
+        pname = "nvim-compleet-lib";
+        inherit version src;
+        buildType = "release";
+        cargoDepsName = pname;
+        cargoSha256 = "0zw6jp9xajr193z1z89piwmhrdhb0b6327p4a9kw3d535x6r377y";
+        outputs = [ "out" "dev" ];
+        postInstall = ''
+          mkdir -p $dev/deps
+          cp ./target/*/${buildType}-tmp/deps/*.rlib $dev/deps
+        '';
+      };
+    in
+    vimUtils.buildVimPluginFrom2Nix {
+      pname = "nvim-compleet";
+      inherit version src;
+
+      postInstall = ''
+        mkdir -p $target/lua
+        ln -s "${nvim-compleet-lib}/lib/libcompleet.so" $target/lua/compleet.so
+        ln -s "${nvim-compleet-lib.dev}/deps" $target/lua
+      '';
+
+      meta.homepage = inputs.nvim-compleet.url;
+    };
 
   nvim-workbench = vimUtils.buildVimPluginFrom2Nix {
     pname = "nvim-workbench";

@@ -84,6 +84,10 @@
       url = "github:jbyuki/nabla.nvim";
       flake = false;
     };
+    nvim-compleet = {
+      url = "github:noib3/nvim-compleet";
+      flake = false;
+    };
     neorg-telescope = {
       url = "github:nvim-neorg/neorg-telescope";
       flake = false;

@@ -182,7 +182,7 @@
         plugin = vim-mundo;
         type = "lua";
         config = ''
-          vim.g.mundo_width = 50
+          vim.g.mundo_width = 100
 
           vim.keymap.set('n', '<Leader>u', '<Cmd>MundoToggle<CR>', { noremap = true })
         '';

@@ -134,7 +134,7 @@
 
       output = {
         "*" = {
-          background = "${../../..}/images/wallpaperNordNixLogo.png fill";
+          background = "${../../..}/static/wallpaperNordNixLogo.png fill";
         };
       };
 

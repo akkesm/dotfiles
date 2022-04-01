@@ -17,7 +17,7 @@
     };
 
     # Helpers
-    utils = {
+    flake-utils-plus = {
       url = "github:gytis-ivaskevicius/flake-utils-plus";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -122,7 +122,7 @@
   };
 
   outputs =
-    { self, nix, utils, dwarffs, nix-matlab
+    { self, nix, flake-utils-plus, dwarffs, nix-matlab
     , nixpkgs, nixpkgs-latest-stable, nur, nixpkgs-wayland, neovim
     , home-manager, sops-nix, impermanence, kmonad
     , ... }@inputs:
@@ -131,7 +131,7 @@
          my = import ./lib { lib = final; };
       });
     in
-    utils.lib.mkFlake rec {
+    flake-utils-plus.lib.mkFlake rec {
       inherit self inputs;
 
       supportedSystems = [ "x86_64-linux" ];
@@ -165,6 +165,8 @@
         ./common
         sops-nix.nixosModules.sops
         impermanence.nixosModules.impermanence
+
+        { nix.generateRegistryFromInputs = true;}
       ];
 
       hosts = {
@@ -214,10 +216,10 @@
         inherit lib;
         inherit (self) inputs;
       };
-      overlays = utils.lib.exportOverlays { inherit (self) pkgs inputs; };
+      overlays = flake-utils-plus.lib.exportOverlays { inherit (self) pkgs inputs; };
 
       outputsBuilder = channels: rec {
-        packages = utils.lib.exportPackages self.overlays channels;
+        packages = flake-utils-plus.lib.exportPackages self.overlays channels;
 
         devShells = import ./shells { pkgs = self.pkgs.x86_64-linux.nixpkgs; };
       };

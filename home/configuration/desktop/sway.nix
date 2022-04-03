@@ -89,7 +89,7 @@
 
           { class = "^Pinentry$"; }
           { title = "(?:Open|Save) (?:File|Folder|As)"; }
-          { title = "(?:Copying|Moving) .* Dolphin"; }
+          { title = "(?:Copying|Moving|Deleting) .* Dolphin"; }
           { window_role = "bubble"; }
           { window_role = "dialog"; }
           { window_role = "pop-up"; }

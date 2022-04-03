@@ -2,13 +2,13 @@
 
 stdenv.mkDerivation rec {
   pname = "nordzy-cursors";
-  version = "0.3.0";
+  version = "0.4.0";
 
   src = fetchFromGitHub {
     owner = "alvatip";
     repo = "Nordzy-cursors";
     rev = "v${version}";
-    sha256 = "1swc2c0gjz2q5div6d597vr2mncw3sc864lcdw658y15k64sa3yi";
+    sha256 = "1drswkqbhl8fhr4g5m6d8gpg4p3gdk097xrnvyamah63w83rrknp";
   };
 
   installPhase = ''
@@ -16,8 +16,8 @@ stdenv.mkDerivation rec {
 
     mkdir -p $out/share/icons
     ls -l
-    cp -r Nordzy-cursors/ $out/share/icons/nordzy-cursors
-    cp -r Nordzy-cursors-white/ $out/share/icons/nordzy-cursors-white
+    cp -r Nordzy-cursors $out/share/icons
+    cp -r Nordzy-cursors-white $out/share/icons
 
     runHook postInstall
   '';
@@ -26,6 +26,6 @@ stdenv.mkDerivation rec {
     description = "Cursor theme using the Nord color palette";
     homepage = "https://github.com/alvatip/Nordzy-cursors";
     licenses = licenses.gpl3Only;
-    platforms = platforms.linux;
+    platforms = platforms.unix;
   };
 }

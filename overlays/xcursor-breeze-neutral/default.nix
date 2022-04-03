@@ -12,14 +12,15 @@ stdenv.mkDerivation {
   };
 
   installPhase = ''
-    mkdir -p $out/share/icons
-    cp -r ./cursors $out/share/icons
-    install -D ./index.theme $out/share/icons
-    install -D ./icon-theme.cache $out/share/icons
+    mkdir -p $out/share/icons/xcursor-breeze-neutral
+    cp -r ./cursors $out/share/icons/xcursor-breeze-neutral
+    install -D ./index.theme $out/share/icons/xcursor-breeze-neutral
+    install -D ./icon-theme.cache $out/share/icons/xcursor-breeze-neutral
   '';
 
   meta = {
     description = " Neutral fork of KDE's Breeze Cursor";
     homepage = "https://github.com/TheScrawl/xcursor-breeze-neutral";
+    platforms = lib.platforms.unix;
   };
 }

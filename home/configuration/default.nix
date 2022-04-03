@@ -2,19 +2,19 @@
 
 {
   imports = [
+    ./applications
     ./auth.nix
     ./bash.nix
+    ./desktop
+    ./environment.nix
     ./gopass.nix
     ./gtk.nix
     ./kitty.nix
-    ./qt.nix
-    ./theme.nix
-    ./applications
-    ./desktop
-    ./environment.nix
     ./media
     ./neovim
+    ./qt.nix
     ./terminal
+    ./theme.nix
     ./zsh
   ];
 

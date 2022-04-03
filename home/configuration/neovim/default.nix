@@ -3,6 +3,7 @@
 {
   imports = [
     ./colorscheme.nix
+    # ./compleet.nix
     ./coq.nix
     ./neorg.nix
     ./statusline.nix

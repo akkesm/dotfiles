@@ -9,7 +9,7 @@
 
   xdg.configFile."swaylock/config".text = ''
     daemonize
-    image=${../../..}/images/wallpaperNordNixLogo.png
+    image=${builtins.head (lib.splitString " " config.wayland.windowManager.sway.config.output."*".background)}
     scaling=fill
     bs-hl-color=bf616a
     caps-lock-bs-hl-color=bf616a

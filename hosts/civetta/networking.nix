@@ -41,7 +41,7 @@
       interfaces = [ "wlp1s0" ];
 
       networks = {
-        "FRITZ!Box 7590 FC" = {
+        "FRITZ!Box 7590 ZT" = {
           authProtocols = [ "WPA-PSK" ];
           psk = "@PSK_FRITZBOX@";
         };

@@ -6,6 +6,7 @@
 , coreutils
 }:
 
+# writeShellApplication sets errexit, nounset, pipefail automatically
 writeShellApplication {
   name = "fs-diff";
 
@@ -16,7 +17,7 @@ writeShellApplication {
   ];
 
   text = ''
-    set -Eeuo pipefail
+    set -E
 
     OLD_TRANSID=''$(sudo btrfs subvolume find-new /mnt/root-blank 9999999)
     OLD_TRANSID=''${OLD_TRANSID#transid marker was }

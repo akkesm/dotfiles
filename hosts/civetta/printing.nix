@@ -6,7 +6,7 @@
 
     ensurePrinters = [{
       description = "Epson Stylus SX600FW";
-      deviceUri = "socket://192.168.178.31";
+      deviceUri = "socket://192.168.178.28";
       model = "gutenprint.${lib.versions.majorMinor (lib.getVersion pkgs.gutenprint)}://escp2-sx600fw/expert";
       name = "EPSONSX600FW";
 
@@ -20,7 +20,7 @@
     defaultShared = true;
     drivers = [ pkgs.gutenprint ];
     logLevel = "debug";
-    tempDir = "/tmp/cups";
+    tempDir = "/var/spool/cups/tmp";
   };
 
   services.avahi = {

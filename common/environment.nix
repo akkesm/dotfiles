@@ -33,7 +33,6 @@
   };
 
   programs = {
-
     git = {
       enable = true;
     };
@@ -60,7 +59,7 @@
   };
 
   # 20211122 the module only has options for mlocate, not plocate
-  users.groups.plocate = {};
+  users.groups.plocate = { };
   security.wrappers.locate = {
     group = "plocate";
     owner = "root";

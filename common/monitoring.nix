@@ -18,7 +18,6 @@
       sysstat
       tcpdump
       usbutils
-      weighttp
       whois
     ]);
 

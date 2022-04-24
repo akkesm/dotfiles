@@ -1,6 +1,11 @@
 { config, lib, pkgs, ... }:
 
 {
+  boot = {
+    initrd.kernelModules = [ "tcp_veno" ];
+    kernel.sysctl."net.ipv4.tcp_congestion_control" = "veno";
+  };
+
   networking = {
     enableIPv6 = false; # FIXME bugs eduroam
     dhcpcd.enable = false;

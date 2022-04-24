@@ -6,7 +6,7 @@
       "abi.vsyscall32" = 0; # Fixes a WINE bug
     };
 
-    kernelPackages = pkgs.linuxPackages_civetta;
+    kernelPackages = pkgs.linuxPackages_latest;
     kernelParams = [ "acpi_backlight=native" ];
   };
 }

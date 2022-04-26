@@ -9,13 +9,13 @@
     ./lbry.nix
     ./matlab.nix
     ./packet-tracer.nix
+    ./qutebrowser.nix
   ];
 
   home.packages = with pkgs; [
     dolphin
     gimp
     lbry
-    qutebrowser
     transmission-gtk
     # openclonk
     # passky

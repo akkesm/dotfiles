@@ -58,16 +58,6 @@
     };
   };
 
-  # 20211122 the module only has options for mlocate, not plocate
-  users.groups.plocate = { };
-  security.wrappers.locate = {
-    group = "plocate";
-    owner = "root";
-    permissions = "u+rx,g+x,o+x";
-    setgid = true;
-    setuid = false;
-    source = "${config.services.locate.locate}/bin/plocate";
-  };
   services.locate = {
     enable = true;
     interval = "Sat *-*-* 00:00";

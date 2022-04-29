@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 {
   environment = {
@@ -6,8 +6,12 @@
     memoryAllocator.provider = "libc";
 
     systemPackages = with pkgs; [
-      any-nix-shell
       bat
+      bat-extras.batdiff
+      bat-extras.batman
+      bat-extras.batgrep
+      bat-extras.batman
+
       bc
       cachix
       exa
@@ -16,7 +20,6 @@
       gdb
       openssl
       parted
-      ranger
       ripgrep
       rwhich
       shellcheck
@@ -25,11 +28,6 @@
       wget
       zip
     ];
-
-    variables = {
-      EDITOR = "nvim";
-      PAGER = "less";
-    };
   };
 
   programs = {
@@ -41,9 +39,7 @@
       ];
     };
 
-    less = {
-      enable = true;
-    };
+    less.envVariables.LESS = "--quit-if-one-screen --ignore-case --RAW-CONTROL-CHARS --incsearch";
 
     neovim = {
       enable = true;

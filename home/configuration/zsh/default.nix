@@ -85,38 +85,5 @@
       #   file = "plugins/extract/extract.plugin.zsh";
       # }
     ];
-
-    shellAliases = {
-      q = "exit";
-
-      batman = "batman --paging=auto";
-
-      cdtmp = "cd $(mktemp -d)";
-
-      dnfl = "dnf list";
-      dnfli = "dnf list installed";
-      dnfq = "dnf info";
-      dnfs = "dnf search";
-      dnfdep = "dnf repoquery --requires --resolve";
-      dnfreq = "dnf repoquery --exactdeps --whatrequires";
-      dnfp = "dnf provides";
-      dnfa = "sudo dnf autoremove";
-      dnfc = "sudo dnf clean all";
-      dnfi = "sudo dnf install";
-      dnfr = "sudo dnf remove";
-      dnfu = "sudo dnf upgrade";
-
-      ll = "exa --long --group-directories-first --links --binary --group --time-style long-iso --icons";
-      la = "exa --long --group-directories-first --links --binary --group --time-style long-iso --icons --all";
-
-      gits = "git status";
-
-      h = "history";
-      hs = "history | grep -i";
-    };
-
-    shellGlobalAliases = {
-      ncg = "nix-collect-garbage && nix store optimise";
-    };
   };
 }

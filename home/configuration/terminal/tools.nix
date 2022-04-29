@@ -2,11 +2,24 @@
 
 {
   home.packages = with pkgs; [
+    any-nix-shell
+
     bat-extras.batdiff
     bat-extras.batman
     bat-extras.batgrep
     bat-extras.batman
 
+    bc
+    cachix
+    file
+    gdb
+    ripgrep
+    rwhich
+    shellcheck
+    strace
+    unzip
+    wget
+    zip
     scrcpy
 
     yubikey-manager-qt
@@ -18,7 +31,7 @@
     bat = {
       enable = true;
       config = {
-        paging = "never";
+        pager = "less";
         theme = "Nord";
       };
     };
@@ -75,6 +88,16 @@
         right_meter_modes = [ 1 2 2 2 2 2 2 ];
       };
     };
+
+    less = {
+      enable = true;
+      keys = ''
+        #env
+        LESS = --quit-if-one-screen --ignore-case --RAW-CONTROL-CHARS --incsearch
+      '';
+    };
+
+    lesspipe.enable = true;
 
     lf = {
       enable = true;

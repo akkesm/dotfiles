@@ -15,8 +15,5 @@
         source ${config.home.homeDirectory}/.nix-profile/etc/profile.d/nix.sh
       fi
     '';
-    shellAliases = {
-      q = "exit";
-    };
   };
 }

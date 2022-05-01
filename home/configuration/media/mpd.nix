@@ -30,9 +30,11 @@
           type "pipewire"
           name "PipeWire Sound Server"
         }
+
+        samplerate_converter "Best Sinc Interpolator"
       '';
 
-      musicDirectory = "${config.home.homeDirectory}/Music";
+      musicDirectory = config.xdg.userDirs.music;
       network.startWhenNeeded = true;
     };
 

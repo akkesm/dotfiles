@@ -58,7 +58,7 @@ vim.opt.virtualedit = 'block'
 vim.opt.wildignorecase = true
 
 vim.keymap.set('c', 'ww', 'w !sudo tee % > /dev/null', { noremap = true })
-vim.keymap.set('n', '<Leader>fmt', vim.lsp.buf.formatting, { noremap = true, silent = true })
+vim.keymap.set('n', '<Leader>fmt', function() vim.lsp.buf.format { async = true } end, { noremap = true, silent = true })
 vim.keymap.set('n', '<Leader>n', ":noh<CR>", { noremap = true, silent = true })
 
 vim.cmd([[
@@ -68,7 +68,7 @@ vim.cmd([[
         autocmd FileType norg setlocal shiftwidth=2 tabstop=4
         autocmd FileType make setlocal noexpandtab shiftwidth=4 softtabstop=4 tabstop=4
     augroup END
-    
+
     augroup zig
         autocmd!
         autocmd BufNewFile main.zig 0put = 'const std = @import(\"std\");'

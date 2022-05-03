@@ -128,7 +128,7 @@
     , ... }@inputs:
     let
       lib = nixpkgs.lib.extend (final: prev: {
-         my = import ./lib { lib = final; };
+        my = import ./lib { lib = final; };
       });
     in
     flake-utils-plus.lib.mkFlake rec {
@@ -158,7 +158,6 @@
 
         nur.overlay
         sops-nix.overlay
-        kmonad.overlay
       ];
 
       hostDefaults.modules = [
@@ -166,13 +165,14 @@
         sops-nix.nixosModules.sops
         impermanence.nixosModules.impermanence
 
-        { nix.generateRegistryFromInputs = true;}
+        { nix.generateRegistryFromInputs = true; }
       ];
 
       hosts = {
         civetta.modules = [
           ./hosts/civetta
           # dwarffs.nixosModules.dwarffs
+          kmonad.nixosModule
 
           home-manager.nixosModules.home-manager
           {

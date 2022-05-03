@@ -33,7 +33,7 @@
 
     shells = [
       pkgs.bashInteractive
-        pkgs.zsh
+      pkgs.zsh
     ];
 
     systemPackages = [ pkgs.any-nix-shell ];
@@ -45,6 +45,6 @@
 
     promptInit = ''
       any-nix-shell zsh | source /dev/stdin
-      '';
+    '';
   };
 }

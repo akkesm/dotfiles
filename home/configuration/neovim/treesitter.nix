@@ -46,8 +46,8 @@
           p.tree-sitter-yaml
           p.tree-sitter-zig
         ] ++ (with pkgs.tree-sitter-grammars; [
-            tree-sitter-norg-meta
-            tree-sitter-norg-table
+          tree-sitter-norg-meta
+          tree-sitter-norg-table
         ]));
         type = "lua";
         config = ''
@@ -63,7 +63,7 @@
           }
         '';
       }
-  
+
       nvim-treesitter-refactor
       nvim-treesitter-context
     ];

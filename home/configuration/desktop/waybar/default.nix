@@ -95,7 +95,7 @@
     };
   };
 
-  wayland.windowManager.sway.config.bars = [];
+  wayland.windowManager.sway.config.bars = [ ];
   # [{
   #   command = "${pkgs.waybar}/bin/waybar";
   #   fonts = {

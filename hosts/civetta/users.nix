@@ -43,7 +43,8 @@
     };
   };
 
-  sops.secrets = { # Add users to "keys" group
+  sops.secrets = {
+    # Add users to "keys" group
     password-alessandro = {
       format = "yaml";
       neededForUsers = true;

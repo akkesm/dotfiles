@@ -51,7 +51,7 @@
             "https://raw.githubusercontent.com/gioxx/xfiles/master/filtri.txt"
             "https://secure.fanboy.co.nz/enhancedstats.txt"
             "https://raw.githubusercontent.com/Spam404/lists/master/adblock-list.txt"
-            ];
+          ];
 
           hosts.lists = [
             "https://raw.githubusercontent.com/Spam404/lists/master/adblock-list.txt"

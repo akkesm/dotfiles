@@ -106,6 +106,7 @@
         "type:keyboard" = {
           repeat_delay = "300";
           xkb_layout = "it";
+          # xkb_options = "compose:ralt";
         };
 
         "type:touchpad" = {
@@ -118,7 +119,8 @@
 
       keybindings =
         let mod = config.wayland.windowManager.sway.config.modifier;
-        in lib.mkOptionDefault {
+        in
+        lib.mkOptionDefault {
           "${mod}+Tab" = "workspace back_and_forth";
           "${mod}+z" = "exec bluetoothctl power on";
           "${mod}+Shift+z" = "exec bluetoothctl power off";
@@ -145,7 +147,7 @@
         };
       };
 
-      startup = [ { command = "${pkgs.brightnessctl}/bin/brightnessctl set 6%"; } ];
+      startup = [{ command = "${pkgs.brightnessctl}/bin/brightnessctl --quiet set 6%"; }];
       terminal = "${pkgs.kitty}/bin/kitty";
 
       window.commands = [

@@ -49,14 +49,16 @@ let
             }.${lib.toUpper d};
           hexDigits = lib.flatten (builtins.filter builtins.isList (builtins.split "([[:xdigit:]])" h));
           decDigits = lib.imap1 (i: d: (toDecDigits d) * (pow 16 ((builtins.length hexDigits) - i))) hexDigits;
-        in lib.foldl (a: b: a + b) 0 decDigits;
+        in
+        lib.foldl (a: b: a + b) 0 decDigits;
       hexPair = start: builtins.substring start 2 hexString;
       decInteger = start: hexToDec (hexPair start);
       hexPairToDecString = start: builtins.substring 0 5 (builtins.toString (decInteger start / 255.0));
       red = hexPairToDecString 1;
       green = hexPairToDecString 3;
-      blue = hexPairToDecString 5 ;
-    in { inherit red green blue; };
+      blue = hexPairToDecString 5;
+    in
+    { inherit red green blue; };
 
   mkConfigFile = config:
     let

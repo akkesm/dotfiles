@@ -108,7 +108,7 @@
 
     media-session.config = {
       alsa-monitor.rules = [{
-        matches = [ { "node.name" = "alsa_output.pci-0000_04_00.6.analog-stereo"; } ];
+        matches = [{ "node.name" = "alsa_output.pci-0000_04_00.6.analog-stereo"; }];
         actions = {
           update-props = {
             "audio.format" = "S32LE";

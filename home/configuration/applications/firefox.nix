@@ -103,7 +103,7 @@
 
           # Move disk cache to RAM
           "browser.cache.disk.parent_directory" = "/run/user/1000/firefox";
-          
+
           # Privacy
           # https://proprivacy.com/privacy-service/guides/firefox-privacy-security-guide#how-to-make-firefox-more-secure-using-aboutconfig
           # https://www.privacytools.io/browsers/#about_config
@@ -228,7 +228,7 @@
     };
   };
 
-  wayland.windowManager.sway.config.keybindings = 
+  wayland.windowManager.sway.config.keybindings =
     let mod = config.wayland.windowManager.sway.config.modifier;
     in lib.mkOptionDefault { "${mod}+b" = "exec firefox"; };
 }

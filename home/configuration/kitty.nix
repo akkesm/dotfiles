@@ -11,15 +11,15 @@
       enable = true;
 
       extraConfig =
-      let
-        kitty-nord-conf = pkgs.fetchurl {
-          url = "https://raw.githubusercontent.com/connorholyday/nord-kitty/master/nord.conf";
-          sha256 = "1fbnc6r9mbqb6wxqqi9z8hjhfir44rqd6ynvbc49kn6gd8v707p1";
-        };
-      in
-      ''
-        include ${kitty-nord-conf}
-      '';
+        let
+          kitty-nord-conf = pkgs.fetchurl {
+            url = "https://raw.githubusercontent.com/connorholyday/nord-kitty/master/nord.conf";
+            sha256 = "1fbnc6r9mbqb6wxqqi9z8hjhfir44rqd6ynvbc49kn6gd8v707p1";
+          };
+        in
+        ''
+          include ${kitty-nord-conf}
+        '';
 
       font = {
         name = config.fonts.monospace;
@@ -80,15 +80,15 @@
     zsh.shellGlobalAliases = { ssh = "kitty +kitten ssh"; };
   };
   # services.xdg = {
-    # configFile = 
-    #   let
-    #     kitty-neighboring_window-py = builtins.fetchurl "https://raw.githubusercontent.com/knubie/vim-kitty-navigator/master/neighboring_window.py";
-    #     kitty-pass_keys-py = builtins.fetchurl "https://raw.githubusercontent.com/knubie/vim-kitty-navigator/master/pass_keys.py";
-    #   in
-    #   {
-    #     "user-dirs.locale".text = "it_IT";
-    #     "kitty/neighboring_window.py".source = kitty-neighboring_window-py;
-    #     "kitty/pass_keys.py".source = kitty-pass_keys-py;
-    #   };
+  # configFile = 
+  #   let
+  #     kitty-neighboring_window-py = builtins.fetchurl "https://raw.githubusercontent.com/knubie/vim-kitty-navigator/master/neighboring_window.py";
+  #     kitty-pass_keys-py = builtins.fetchurl "https://raw.githubusercontent.com/knubie/vim-kitty-navigator/master/pass_keys.py";
+  #   in
+  #   {
+  #     "user-dirs.locale".text = "it_IT";
+  #     "kitty/neighboring_window.py".source = kitty-neighboring_window-py;
+  #     "kitty/pass_keys.py".source = kitty-pass_keys-py;
+  #   };
   # };
 }

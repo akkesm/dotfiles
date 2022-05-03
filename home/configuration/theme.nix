@@ -12,11 +12,13 @@
     fonts = with pkgs; [
       twemoji-color-font
       ttf_bitstream_vera
-      (nerdfonts.override { fonts = [
-       "FiraCode"
-       "Iosevka"
-       "Meslo"
-      ]; })
+      (nerdfonts.override {
+        fonts = [
+          "FiraCode"
+          "Iosevka"
+          "Meslo"
+        ];
+      })
       roboto-slab
       dejavu_fonts
       freefont_ttf

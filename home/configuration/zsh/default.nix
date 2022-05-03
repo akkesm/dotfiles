@@ -21,12 +21,13 @@
         relativeConfigHome = lib.removePrefix
           (config.home.homeDirectory + "/")
           config.xdg.configHome;
-      in relativeConfigHome + "/zsh";
+      in
+      relativeConfigHome + "/zsh";
 
     history = {
       expireDuplicatesFirst = true;
       extended = true;
-      ignorePatterns = [ "q"  "kill *" ];
+      ignorePatterns = [ "q" "kill *" ];
       path = "${config.home.homeDirectory}/${config.programs.zsh.dotDir}/zsh_history";
     };
 

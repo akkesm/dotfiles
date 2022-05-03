@@ -2,24 +2,24 @@
 
 {
   environment.systemPackages = (with config.boot.kernelPackages; [
-      bpftrace
-      perf
-    ]) ++ (with pkgs; [
-      bpytop
-      dig
-      duf
-      glances
-      nettools
-      libva-utils
-      lshw
-      lsof
-      nmap
-      pciutils
-      sysstat
-      tcpdump
-      usbutils
-      whois
-    ]);
+    bpftrace
+    perf
+  ]) ++ (with pkgs; [
+    bpytop
+    dig
+    duf
+    glances
+    nettools
+    libva-utils
+    lshw
+    lsof
+    nmap
+    pciutils
+    sysstat
+    tcpdump
+    usbutils
+    whois
+  ]);
 
   programs = {
     atop = {

@@ -22,8 +22,8 @@
       allowPing = false;
 
       # KDE Connect
-      allowedTCPPortRanges = [ { from = 1714; to = 1764; } ];
-      allowedUDPPortRanges = [ { from = 1714; to = 1764; } ];
+      allowedTCPPortRanges = [{ from = 1714; to = 1764; }];
+      allowedUDPPortRanges = [{ from = 1714; to = 1764; }];
 
       logRefusedConnections = true;
       logRefusedPackets = false;

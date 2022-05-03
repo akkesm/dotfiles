@@ -25,7 +25,8 @@ rec {
         }.${toUpper d};
       hexDigits = flatten (filter isList (split "([[:xdigit:]])" h));
       decDigits = imap1 (i: d: (toDecDigits d) * (pow 16 ((length hexDigits) - i))) hexDigits;
-    in foldl (a: b: a + b) 0 decDigits;
+    in
+    foldl (a: b: a + b) 0 decDigits;
 
   colorHexToRgbString = hexString:
     let
@@ -34,6 +35,7 @@ rec {
       hexPairToDecString = start: substring 0 5 (toString (decInteger start / 255.0));
       red = hexPairToDecString 1;
       green = hexPairToDecString 3;
-      blue = hexPairToDecString 5 ;
-    in { inherit red green blue; };
+      blue = hexPairToDecString 5;
+    in
+    { inherit red green blue; };
 }

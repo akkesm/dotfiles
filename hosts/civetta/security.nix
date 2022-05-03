@@ -12,5 +12,5 @@
     ];
   };
 
-  sops.gnupg.sshKeyPaths = [];
+  sops.gnupg.sshKeyPaths = [ ];
 }

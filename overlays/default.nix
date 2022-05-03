@@ -39,7 +39,8 @@ in
         inherit inputs lib;
         inherit (final) rustPlatform vimUtils;
       };
-    in prev.vimPlugins.extend (final: prev: vimPluginsExtension);
+    in
+    prev.vimPlugins.extend (final: prev: vimPluginsExtension);
 
   # Overrides
   linux_civetta = callPackage ./kernel/civetta.nix {

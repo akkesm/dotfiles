@@ -1,6 +1,12 @@
-{ lib, stdenv, fetchFromGitHub
+{ lib
+, stdenv
+, fetchFromGitHub
 , makeWrapper
-, bash, coreutils, fzf, gawk, man-db
+, bash
+, coreutils
+, fzf
+, gawk
+, man-db
 }:
 
 stdenv.mkDerivation rec {

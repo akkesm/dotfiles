@@ -8,7 +8,7 @@
 
   services.pipewire.media-session.config.bluez-monitor.rules = [
     {
-      matches = [ { "device.name" = "~bluez_card.*"; } ];
+      matches = [{ "device.name" = "~bluez_card.*"; }];
       actions = {
         "update-props" = {
           "bluez5.reconnect-profiles" = [

@@ -122,10 +122,22 @@
   };
 
   outputs =
-    { self, nix, flake-utils-plus, dwarffs, nix-matlab
-    , nixpkgs, nixpkgs-latest-stable, nur, nixpkgs-wayland, neovim
-    , home-manager, sops-nix, impermanence, kmonad
-    , ... }@inputs:
+    { self
+    , nix
+    , nixpkgs
+    , nixpkgs-latest-stable
+    , nur
+    , nixpkgs-wayland
+    , flake-utils-plus
+    , dwarffs
+    , nix-matlab
+    , home-manager
+    , sops-nix
+    , impermanence
+    , kmonad
+    , neovim
+    , ...
+    }@inputs:
     let
       lib = nixpkgs.lib.extend (final: prev: {
         my = import ./lib { lib = final; };
@@ -196,7 +208,7 @@
                 (channels."${hosts.live.channelName}".input + "/nixos/modules/installer/cd-dvd/channel.nix")
               ];
             }
-  
+
             # home-manager.nixosModules.home-manager
             # {
             #   home-manager.useGlobalPkgs = true;

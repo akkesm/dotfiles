@@ -106,7 +106,7 @@
         "type:keyboard" = {
           repeat_delay = "300";
           xkb_layout = "it";
-          # xkb_options = "compose:ralt";
+          xkb_options = "compose:rctrl-altgr";
         };
 
         "type:touchpad" = {

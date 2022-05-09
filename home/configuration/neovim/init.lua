@@ -64,9 +64,9 @@ vim.keymap.set('n', '<Leader>n', ":noh<CR>", { noremap = true, silent = true })
 vim.cmd([[
     augroup indentation
         autocmd!
-        autocmd FileType json,nix setlocal shiftwidth=2 softtabstop=2 tabstop=2
-        autocmd FileType norg setlocal shiftwidth=2 tabstop=4
-        autocmd FileType make setlocal noexpandtab shiftwidth=4 softtabstop=4 tabstop=4
+        autocmd FileType json,nix setlocal shiftwidth=2 tabstop=2
+        autocmd FileType norg setlocal shiftwidth=2
+        autocmd FileType make setlocal noexpandtab softtabstop=4
     augroup END
 
     augroup zig

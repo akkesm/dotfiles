@@ -6,6 +6,7 @@
     ./colorscheme.nix
     # ./compleet.nix
     ./coq.nix
+    ./latex.nix
     ./neorg.nix
     ./statusline.nix
     ./telescope.nix
@@ -123,19 +124,6 @@
         '';
       }
 
-      # LaTeX
-      vimtex
-      {
-        plugin = vim-latex-live-preview;
-        type = "lua";
-        config = ''
-          vim.g.livepreview_cursorhold_recompile = 0
-          vim.g.livepreview_engine = 'xelatex'
-          vim.g.livepreview_previewer = 'zathura'
-          vim.g.livepreview_use_biber = 1
-        '';
-      }
-
       # mappings
       {
         plugin = which-key-nvim;
@@ -184,3 +172,4 @@
     withRuby = true;
   };
 }
+

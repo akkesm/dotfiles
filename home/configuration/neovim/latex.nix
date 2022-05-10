@@ -2,7 +2,10 @@
 
 {
   programs.neovim = {
-    extraPackages = [ pkgs.neovim-remote ];
+    extraPackages = with pkgs; [
+      neovim-remote
+      zathura
+    ];
 
     plugins = with pkgs.vimPlugins; [
       {
@@ -10,6 +13,7 @@
         type = "lua";
         config = ''
           vim.g.vimtex_compiler_progname = 'nvr'
+          vim.g.vimtex_view_method = 'zathura'
         '';
       }
       {

@@ -67,6 +67,7 @@ vim.cmd([[
         autocmd FileType json,nix setlocal shiftwidth=2 tabstop=2
         autocmd FileType norg setlocal shiftwidth=2
         autocmd FileType make setlocal noexpandtab softtabstop=4
+        autocmd FileType tex setlocal iskeyword+=: shiftwidth=2
     augroup END
 
     augroup zig

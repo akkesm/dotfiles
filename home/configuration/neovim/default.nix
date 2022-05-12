@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./chadtree.nix
+    # ./chadtree.nix
     ./colorscheme.nix
     # ./compleet.nix
     ./coq.nix
@@ -59,7 +59,15 @@
       }
       nvim-cursorline
 
-      dirbuf-nvim
+      {
+        plugin = dirbuf-nvim;
+        type = "lua";
+        config = ''
+          require('dirbuf').setup {
+            sort_order = 'directories_first'
+          }
+        '';
+      }
 
       # hlslens
       {

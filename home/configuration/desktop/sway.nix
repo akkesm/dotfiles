@@ -20,14 +20,6 @@
     };
   };
 
-  # programs.zsh.profileExtra = ''
-  #   if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
-  #     # systemctl --user import-environment PATH LD_LIBRARY_PATH LIBEXEC_PATH GTK_PATH
-  #     # exec systemctl --user start sway.service
-  #     exec sway
-  #   fi
-  # '';
-
   systemd.user = {
     services.sway = {
       Unit = {

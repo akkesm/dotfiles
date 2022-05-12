@@ -77,7 +77,6 @@
         "{file}"
       ];
 
-      scrolling.smooth = true;
       session.lazy_restore = true;
 
       tabs = {

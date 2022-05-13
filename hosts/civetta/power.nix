@@ -20,7 +20,6 @@
         CPU_SCALING_MIN_FREQ_ON_BAT = 1400000;
         CPU_SCALING_MAX_FREQ_ON_BAT = 2900000;
         DEVICES_TO_DISABLE_ON_STARTUP = "wwan";
-        DEVICES_TO_DISABLE_ON_BAT_NOT_IN_USE = "bluetooth";
         USB_AUTOSUSPEND = 0;
       };
     };

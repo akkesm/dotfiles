@@ -14,21 +14,13 @@
     ./vim-markdown-composer.nix
   ];
 
-  home = {
-    activation."extraDirs" = lib.hm.dag.entryAfter [ "writeboundary" ] ''
-      $DRY_RUN_CMD mkdir $VERBOSE_ARG -p ${config.xdg.dataHome}/nvim/backup
-      $DRY_RUN_CMD mkdir $VERBOSE_ARG -p ${config.xdg.dataHome}/nvim/workbench
-    '';
-
-    sessionVariables.EDITOR = "nvim";
-  };
+  home.sessionVariables.EDITOR = "nvim";
 
   programs.neovim = {
     enable = true;
     extraConfig = ''
       luafile ${./init.lua}
       luafile ${pkgs.writeText "generatedConfig.lua" config.programs.neovim.generatedConfigs.lua}
-      lua vim.opt.backupdir = "${config.xdg.dataHome}/nvim/backup"
     '';
 
     extraPackages = with pkgs; [
@@ -106,17 +98,6 @@
       }
 
       nvim-web-devicons
-
-      {
-        plugin = nvim-workbench;
-        type = "lua";
-        config = ''
-          vim.keymap.set('n', '<Leader>wb', '<Plug>ToggleBranchWorkbench', { noremap = true })
-          vim.keymap.set('n', '<Leader>wp', '<Plug>ToggleProjectWorkbench', { noremap = true })
-          vim.g.workbench_border = 'single'
-          vim.g.workbench_storage_path = "${config.xdg.dataHome}/nvim/workbench"
-        '';
-      }
 
       {
         plugin = vim-kitty-navigator;

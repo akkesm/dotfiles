@@ -6,12 +6,12 @@
 
     events = [
       {
-        event = "lock";
-        command = "${pkgs.swaylock}/bin/swaylock";
+        event = "before-sleep";
+        command = "${pkgs.playerctl}/bin/playerctl pause";
       }
       {
         event = "before-sleep";
-        command = "${pkgs.playerctl}/bin/playerctl pause";
+        command = "${pkgs.brightnessctl}/bin/brightnessctl --save";
       }
       {
         event = "before-sleep";
@@ -23,20 +23,20 @@
       }
       {
         event = "after-resume";
-        command = "${pkgs.brightnessctl}/bin/brightnessctl set 6%";
+        command = "${pkgs.brightnessctl}/bin/brightnessctl --restore";
       }
     ];
 
     timeouts = [
       {
         timeout = 480;
-        command = "${pkgs.brightnessctl}/bin/brightnessctl set 0%";
-        resumeCommand = "${pkgs.brightnessctl}/bin/brightnessctl set 6%";
+        command = "${pkgs.brightnessctl}/bin/brightnessctl --save && ${pkgs.brightnessctl}/bin/brightnessctl --quiet set 0%";
+        resumeCommand = "${pkgs.brightnessctl}/bin/brightnessctl --restore";
       }
       {
         timeout = 600;
         command = "${pkgs.sway}/bin/swaymsg 'output * dpms off'";
-        resumeCommand = "${pkgs.sway}/bin/swaymsg 'output * dpms on' && ${pkgs.brightnessctl}/bin/brightnessctl set 6%";
+        resumeCommand = "${pkgs.sway}/bin/swaymsg 'output * dpms on' && ${pkgs.brightnessctl}/bin/brightnessctl --restore";
       }
       {
         timeout = 605;

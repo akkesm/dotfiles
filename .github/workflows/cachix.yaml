@@ -29,7 +29,7 @@ jobs:
         with:
           install_url: https://github.com/numtide/nix-unstable-installer/releases/download/nix-2.9.0pre20220513_bf89cd9/install
           extra_nix_config: |
-            experimental-features = nix-command flakes
+            experimental-features = flakes nix-command recursive-nix
       - uses: cachix/cachix-action@v10
         with:
           name: akkesm

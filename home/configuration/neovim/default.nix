@@ -21,6 +21,7 @@
     extraConfig = ''
       luafile ${./init.lua}
       luafile ${pkgs.writeText "generatedConfig.lua" config.programs.neovim.generatedConfigs.lua}
+      lua vim.opt.backupdir = "${config.xdg.stateHome}/nvim/backup//"
     '';
 
     extraPackages = with pkgs; [

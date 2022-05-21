@@ -4,20 +4,6 @@
   programs.beets = {
     enable = true;
 
-    package = pkgs.beets.override {
-      pluginOverrides = {
-        alternatives = {
-          enable = true;
-          propagatedBuildInputs = [ pkgs.beetsPackages.alternatives ];
-        };
-
-        extrafiles = {
-          enable = true;
-          propagatedBuildInputs = [ pkgs.beetsPackages.extrafiles ];
-        };
-      };
-    };
-
     settings = {
       library = "${config.xdg.dataHome}/beets/library.db";
       directory = config.xdg.userDirs.music;

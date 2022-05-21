@@ -5,8 +5,17 @@
     enable = true;
 
     package = pkgs.beets.override {
-      enableAlternatives = true;
-      enableExtraFiles = true;
+      pluginOverrides = {
+        alternatives = {
+          enable = true;
+          propagatedBuildInputs = [ pkgs.beetsPackages.alternatives ];
+        };
+
+        extrafiles = {
+          enable = true;
+          propagatedBuildInputs = [ pkgs.beetsPackages.extrafiles ];
+        };
+      };
     };
 
     settings = {

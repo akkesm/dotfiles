@@ -26,6 +26,7 @@ vim.opt.ignorecase = true
 vim.opt.inccommand = 'nosplit'
 vim.opt.incsearch = true
 vim.opt.joinspaces = true
+vim.opt.laststatus = 3
 vim.opt.linebreak = true
 vim.opt.list = true
 vim.opt.listchars = { tab = '»·', lead = '·', trail = '·', nbsp = '⍽' }

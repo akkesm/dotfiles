@@ -65,9 +65,9 @@ vim.keymap.set('n', '<Leader>n', ":noh<CR>", { noremap = true, silent = true })
 vim.cmd([[
     augroup indentation
         autocmd!
+        autocmd FileType c,make setlocal noexpandtab shiftwidth=8 softtabstop=8 tabstop=8
         autocmd FileType json,nix setlocal shiftwidth=2 tabstop=2
         autocmd FileType norg setlocal shiftwidth=2
-        autocmd FileType make setlocal noexpandtab softtabstop=4
         autocmd FileType tex setlocal iskeyword+=: shiftwidth=2
     augroup END
 

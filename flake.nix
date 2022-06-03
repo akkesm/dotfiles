@@ -184,7 +184,7 @@
         civetta.modules = [
           ./hosts/civetta
           # dwarffs.nixosModules.dwarffs
-          kmonad.nixosModule
+          kmonad.nixosModules.default
 
           home-manager.nixosModules.home-manager
           {

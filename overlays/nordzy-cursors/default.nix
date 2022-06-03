@@ -2,13 +2,13 @@
 
 stdenv.mkDerivation rec {
   pname = "nordzy-cursors";
-  version = "0.4.0";
+  version = "0.5.0";
 
   src = fetchFromGitHub {
     owner = "alvatip";
     repo = "Nordzy-cursors";
     rev = "v${version}";
-    sha256 = "1drswkqbhl8fhr4g5m6d8gpg4p3gdk097xrnvyamah63w83rrknp";
+    sha256 = "1xjq23pnanbkd1bfyl434ssm7s0h6izhw76ywgillvybr7bvqrx7";
   };
 
   installPhase = ''

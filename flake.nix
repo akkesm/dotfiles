@@ -7,7 +7,7 @@
 
     # Channels
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-latest-stable.url = "github:NixOS/nixpkgs/nixos-21.11";
+    nixpkgs-latest-stable.url = "github:NixOS/nixpkgs/nixos-22.05";
 
     nur.url = "github:nix-community/NUR";
 
@@ -207,6 +207,9 @@
                 (channels."${hosts.live.channelName}".input + "/nixos/modules/installer/cd-dvd/installation-cd-minimal-new-kernel.nix")
                 (channels."${hosts.live.channelName}".input + "/nixos/modules/installer/cd-dvd/channel.nix")
               ];
+            }
+            {
+              system.stateVersion = "22.11";
             }
 
             # home-manager.nixosModules.home-manager

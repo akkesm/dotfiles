@@ -54,6 +54,12 @@
       clock24 = true;
       keyMode = "vi";
       newSession = true;
+
+      plugins = with pkgs.tmuxPlugins; [
+        resurrect
+        sidebar
+      ];
+
       terminal = "screen-256color";
     };
   };

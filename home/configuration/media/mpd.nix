@@ -14,6 +14,7 @@
       playlist_show_remaining_time = "yes";
       browser_display_mode = "columns";
       progressbar_look = "―›";
+      media_library_primary_tag = "album_artist";
       cyclic_scrolling = "yes";
       search_engine_default_search_mode = 2;
       external_editor = "nvim";

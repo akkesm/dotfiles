@@ -157,13 +157,30 @@
         '';
       };
 
-      extraConfig = ''
-        set mouse on
-      '';
+      extraConfig =
+        let
+          kittyCleaner = pkgs.writeShellScript "kittyCleaner.sh" ''
+            ${config.programs.kitty.package}/bin/kitty +icat --clear --silent --transfer-mode file
+          '';
+        in
+        ''
+          set cleaner ${kittyCleaner}
+          set mouse on
+        '';
 
       keybindings = {
         P = "paste-async";
       };
+
+      previewer.source = pkgs.writers.writeBash "kittyPreviewer.sh" ''
+        if [[ "$( file -Lb --mime-type "$1")" =~ ^image ]]; then
+          ${config.programs.kitty.package}/bin/kitty +icat --silent \
+            --transfer-mode file --place "$2x$3@$4x$5" "$1"
+          exit 1
+        fi
+        
+        ${pkgs.pistol}/bin/pistol "$1"
+      '';
 
       settings = {
         anchorfind = false;

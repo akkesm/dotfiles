@@ -15,6 +15,7 @@
     gdb
     ripgrep
     rwhich
+    sd
     shellcheck
     strace
     unzip

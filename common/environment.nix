@@ -22,6 +22,7 @@
       parted
       ripgrep
       rwhich
+      sd
       shellcheck
       strace
       unzip

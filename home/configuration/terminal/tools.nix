@@ -23,6 +23,19 @@
     zip
     scrcpy
 
+    bottom
+    dig
+    duf
+    lshw
+    lsof
+    nettools
+    nmap
+    pciutils
+    sysstat
+    tcpdump
+    usbutils
+    whois
+
     yubikey-manager-qt
     yubikey-personalization
     yubioath-desktop

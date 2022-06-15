@@ -5,14 +5,13 @@
     bpftrace
     perf
   ]) ++ (with pkgs; [
-    bpytop
+    bottom
     dig
     duf
-    glances
-    nettools
     libva-utils
     lshw
     lsof
+    nettools
     nmap
     pciutils
     sysstat

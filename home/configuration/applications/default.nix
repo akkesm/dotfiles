@@ -16,6 +16,7 @@
     dolphin
     gimp
     lbry
+    skanlite
     transmission-gtk
     # openclonk
     # passky

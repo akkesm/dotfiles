@@ -12,7 +12,9 @@
         "adbusers"
         "keys"
         "libvirtd"
+        "lp"
         "podman"
+        "scanner"
         "video"
         "wheel"
       ];

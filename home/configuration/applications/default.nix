@@ -8,7 +8,7 @@
     ./games.nix
     ./lbry.nix
     ./matlab.nix
-    ./packet-tracer.nix
+    # ./packet-tracer.nix
     ./qutebrowser.nix
   ];
 

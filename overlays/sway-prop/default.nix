@@ -10,11 +10,11 @@
 
 stdenv.mkDerivation rec {
   pname = "sway-prop";
-  version = "unstable-2021-11-02";
+  version = "unstable-2022-06-27";
 
   src = fetchurl {
     url = "https://gitlab.com/wef/dotfiles/-/raw/master/bin/sway-prop";
-    sha256 = "0i1zj9yjra5vlasbglskzyixbmzgwmsp4z5yb4mbffxmw8iifvi9";
+    sha256 = "0x6zilj5mpjykrkcqx6cj4hkk22ynpwc7rff4g2pwrs9963xq84m";
     executable = true;
   };
 

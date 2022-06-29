@@ -17,6 +17,7 @@
   virtualisation.libvirtd = {
     # Add users to "libvirtd" group
     enable = true;
+    qemu.swtpm.enable = true;
   };
 
   environment.systemPackages = [ pkgs.virt-manager ];

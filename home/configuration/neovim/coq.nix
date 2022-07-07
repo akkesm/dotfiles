@@ -112,7 +112,6 @@
               return npairs.autopairs_cr()
             end
           end
-
           vim.keymap.set('i', '<CR>', 'v:lua.MUtils.CR()', { expr = true, noremap = true, silent = true })
 
           MUtils.BS = function()
@@ -122,8 +121,7 @@
               return npairs.autopairs_bs()
             end
           end
-
-          vim.keymap.set('i', '<BS>', 'v:lua.MUtils.BS()', { expr = true, noremap = true,silent = true })
+          vim.keymap.set('i', '<BS>', 'v:lua.MUtils.BS()', { expr = true, noremap = true, silent = true })
         '';
       }
       {

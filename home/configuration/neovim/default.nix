@@ -2,13 +2,10 @@
 
 {
   imports = [
-    # ./chadtree.nix
-    ./colorscheme.nix
-    # ./compleet.nix
     ./coq.nix
     ./latex.nix
+    ./mini.nix
     ./neorg.nix
-    ./statusline.nix
     ./telescope.nix
     ./treesitter.nix
     ./vim-markdown-composer.nix
@@ -33,6 +30,7 @@
 
     plugins = with pkgs.vimPlugins; [
       # Used by multiple other plugins
+      nvim-web-devicons
       plenary-nvim
 
       {
@@ -50,7 +48,14 @@
           }
         '';
       }
-      nvim-cursorline
+
+      {
+        plugin = nvim-cursorline;
+        type = "lua";
+        config = ''
+          require('nvim-cursorline').setup()
+        '';
+      }
 
       {
         plugin = dirbuf-nvim;
@@ -61,24 +66,6 @@
           }
         '';
       }
-
-      # hlslens
-      {
-        plugin = nvim-hlslens;
-        config = ''
-          noremap <silent> n <Cmd>execute('normal! ' . v:count1 . 'n')<CR> <Cmd>lua require('hlslens').start()<CR>
-          noremap <silent> N <Cmd>execute('normal! ' . v:count1 . 'N')<CR> <Cmd>lua require('hlslens').start()<CR>
-          map * <Plug>(asterisk-*)<Cmd>lua require('hlslens').start()<CR>
-          map # <Plug>(asterisk-#)<Cmd>lua require('hlslens').start()<CR>
-          map g* <Plug>(asterisk-g*)<Cmd>lua require('hlslens').start()<CR>
-          map g# <Plug>(asterisk-g#)<Cmd>lua require('hlslens').start()<CR>
-          map z* <Plug>(asterisk-z*)<Cmd>lua require('hlslens').start()<CR>
-          map z# <Plug>(asterisk-z#)<Cmd>lua require('hlslens').start()<CR>
-          map gz* <Plug>(asterisk-gz*)<Cmd>lua require('hlslens').start()<CR>
-          map gz# <Plug>(asterisk-gz#)<Cmd>lua require('hlslens').start()<CR>
-        '';
-      }
-      vim-asterisk
 
       # lf integration
       {
@@ -97,8 +84,6 @@
           vim.g.registers_tab_symbol = '»·'
         '';
       }
-
-      nvim-web-devicons
 
       {
         plugin = vim-kitty-navigator;
@@ -140,7 +125,6 @@
         type = "lua";
         config = ''
           vim.g.mundo_width = 100
-
           vim.keymap.set('n', '<Leader>u', '<Cmd>MundoToggle<CR>', { noremap = true })
         '';
       }

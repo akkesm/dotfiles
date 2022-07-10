@@ -14,6 +14,7 @@
 
       bc
       cachix
+      dateutils
       exa
       fd
       file

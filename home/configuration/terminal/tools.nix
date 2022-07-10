@@ -11,6 +11,7 @@
 
     bc
     cachix
+    dateutils
     file
     gdb
     ripgrep

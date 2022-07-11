@@ -238,5 +238,10 @@
 
         devShells = import ./shells { pkgs = self.pkgs.x86_64-linux.nixpkgs; };
       };
+
+      templates.default = {
+        path = ./templates/default;
+        description = "Default flake template";
+      };
     };
 }

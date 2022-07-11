@@ -18,6 +18,7 @@
       nodePackages.bash-language-server
       # nodePackages.diagnostic-languageserver
       nodePackages.dockerfile-language-server-nodejs
+      nodePackages.purescript-language-server
       nodePackages.pyright
       nodePackages.typescript
       nodePackages.typescript-language-server
@@ -165,6 +166,7 @@
 
           lspconfig.nimls.setup(coq.lsp_ensure_capabilities {})
           lspconfig.perlpls.setup(coq.lsp_ensure_capabilities {})
+          lspconfig.purescriptls.setup(coq.lsp_ensure_capabilities {})
           lspconfig.pyright.setup(coq.lsp_ensure_capabilities {})
           lspconfig.rnix.setup(coq.lsp_ensure_capabilities {})
 

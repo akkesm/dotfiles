@@ -7,16 +7,23 @@
     settings = {
       library = "${config.xdg.dataHome}/beets/library.db";
       directory = config.xdg.userDirs.music;
+
       plugins = [
+        "badfiles"
         "convert"
         "deezer"
+        "discogs"
         "edit"
         "fetchart"
         "fuzzy"
+        "info"
         "missing"
         "mpdupdate"
+        "rewrite"
         "spotify"
       ];
+
+      discogs.index_tracks = "yes";
 
       ignore = [
         ".*"

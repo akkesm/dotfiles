@@ -22,3 +22,49 @@
 
   environment.systemPackages = [ pkgs.virt-manager ];
 }
+
+# Windows VM optimization options
+#
+#   <vcpu placement="static">8</vcpu>
+#   <cputune>
+#     <vcpupin vcpu="0" cpuset="8"/>
+#     <vcpupin vcpu="1" cpuset="9"/>
+#     <vcpupin vcpu="2" cpuset="10"/>
+#     <vcpupin vcpu="3" cpuset="11"/>
+#     <vcpupin vcpu="4" cpuset="12"/>
+#     <vcpupin vcpu="5" cpuset="13"/>
+#     <vcpupin vcpu="6" cpuset="14"/>
+#     <vcpupin vcpu="7" cpuset="15"/>
+#     <emulatorpin cpuset="0-1"/>
+#   </cputune>
+#   <features>
+#     <acpi/>
+#     <apic/>
+#     <hyperv mode="custom">
+#       <relaxed state="on"/>
+#       <vapic state="on"/>
+#       <spinlocks state="on" retries="8191"/>
+#       <vpindex state="on"/>
+#       <runtime state="on"/>
+#       <synic state="on"/>
+#       <stimer state="on"/>
+#       <vendor_id state="on" value="KVM Hv"/>
+#       <tlbflush state="on"/>
+#       <ipi state="on"/>
+#     </hyperv>
+#     <kvm>
+#       <hidden state="on"/>
+#     </kvm>
+#     <vmport state="off"/>
+#   </features>
+#   <cpu mode="host-passthrough" check="partial" migratable="on">
+#     <topology sockets="1" dies="1" cores="4" threads="2"/>
+#     <feature policy="require" name="topoext"/>
+#     <feature policy="disable" name="hypervisor"/>
+#   </cpu>
+#   <clock offset="localtime">
+#     <timer name="rtc" tickpolicy="catchup"/>
+#     <timer name="pit" tickpolicy="delay"/>
+#     <timer name="hpet" present="no"/>
+#     <timer name="hypervclock" present="yes"/>
+#   </clock>

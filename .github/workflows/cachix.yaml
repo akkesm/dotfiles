@@ -1,13 +1,16 @@
-name: "Cachix"
+name: "Build and push to Cachix"
 
 on:
   pull_request:
+    branches:
+      - master
   push:
+    branches:
+      - master
   workflow_dispatch:
 
 jobs:
-  builds:
-    name: Build configuration civetta
+  civetta:
     runs-on: ubuntu-latest
     steps:
       # https://github.com/apache/flink/blob/76b35b8442a93027db9d658fca69a4630a4e0055/tools/azure-pipelines/free_disk_space.sh
@@ -17,21 +20,18 @@ jobs:
           sudo apt-get remove -y 'ghc.*' 'dotnet.*' 'llvm.*'
           sudo apt-get remove -y azure-cli google-cloud-sdk hhvm google-chrome-stable firefox powershell mono-devel
           sudo apt-get autoremove -y
-          sudo apt-get clean
           sudo rm -rf /usr/share/dotnet
           sudo rm -rf /opt/ghc
           sudo rm -rf "/usr/local/share/boost"
           sudo rm -rf "$AGENT_TOOLSDIRECTORY"
       - uses: actions/checkout@v3.0.2
-        with:
-          fetch-depth: 0
       - uses: cachix/install-nix-action@v17
         with:
-          install_url: https://github.com/numtide/nix-unstable-installer/releases/download/nix-2.9.0pre20220513_bf89cd9/install
-          extra_nix_config: |
-            experimental-features = flakes nix-command recursive-nix
+          nix_path: nixpkgs = nixpkgs:channel:nixos-unstable
+          extra_nix_config: experimental-features = flakes nix-command recursive-nix
       - uses: cachix/cachix-action@v10
         with:
           name: akkesm
           authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+          extraPullNames: nix-community,nixpkgs-wayland
       - run: nix build -L .#nixosConfigurations.civetta.config.system.build.toplevel

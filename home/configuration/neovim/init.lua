@@ -67,7 +67,7 @@ vim.cmd([[
         autocmd!
         autocmd FileType c,make setlocal noexpandtab shiftwidth=8 softtabstop=8 tabstop=8
         autocmd FileType json,nix setlocal shiftwidth=2 tabstop=2
-        autocmd FileType norg setlocal shiftwidth=2
+        autocmd FileType markdown,norg setlocal shiftwidth=2
         autocmd FileType tex setlocal iskeyword+=: shiftwidth=2
     augroup END
 

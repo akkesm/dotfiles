@@ -3,6 +3,7 @@
 {
   programs.neovim = {
     extraPackages = with pkgs; [
+      biber
       neovim-remote
       zathura
     ];

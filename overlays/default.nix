@@ -43,14 +43,6 @@ in
     prev.vimPlugins.extend (final: prev: vimPluginsExtension);
 
   # Overrides
-  linux_civetta = callPackage ./kernel/civetta.nix {
-    inherit lib;
-    inherit (final) stdenv;
-    base_kernel = prev.linux_latest;
-  };
-
-  linuxPackages_civetta = final.recurseIntoAttrs (final.linuxKernel.packagesFor final.linux_civetta);
-
   zig-master = (prev.zig.overrideAttrs (oldAttrs: {
     version = "master";
     src = inputs.zig;

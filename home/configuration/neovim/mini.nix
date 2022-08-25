@@ -14,6 +14,8 @@
       plugin = mini-nvim;
       type = "lua";
       config = ''
+        require('mini.ai').setup()
+
         require('mini.base16').setup {
           palette = {
             base00 = '#2E3440',

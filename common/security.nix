@@ -12,5 +12,15 @@
     ];
   };
 
-  sops.gnupg.sshKeyPaths = [ ];
+  security.sudo = {
+    execWheelOnly = true;
+
+    extraConfig = ''
+      Defaults lecture = never
+    '';
+
+    wheelNeedsPassword = false;
+  };
+
+  users.mutableUsers = false;
 }

@@ -2,12 +2,12 @@
 
 {
   imports = [
-    ./hardware-configuration.nix
     ./amdgpu.nix
     ./android.nix
     ./bluetooth.nix
     ./boot.nix
     ./desktop.nix
+    ./filesystem.nix
     ./greetd.nix
     ./kernel.nix
     # ./kmonad
@@ -17,10 +17,9 @@
     ./pipewire.nix
     ./power.nix
     ./printing.nix
-    ./security.nix
-    ./swap.nix
     ./users.nix
     ./virtualisation.nix
+    ./zram.nix
   ];
 
   system.stateVersion = "22.11";

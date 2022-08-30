@@ -1,36 +1,32 @@
-{ config, lib, pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
-  environment = {
-    enableDebugInfo = false;
-    memoryAllocator.provider = "libc";
+  environment.systemPackages = with pkgs; [
+    bat
+    bat-extras.batdiff
+    bat-extras.batman
+    bat-extras.batgrep
+    bat-extras.batman
 
-    systemPackages = with pkgs; [
-      bat
-      bat-extras.batdiff
-      bat-extras.batman
-      bat-extras.batgrep
-      bat-extras.batman
-
-      bc
-      cachix
-      dateutils
-      exa
-      fd
-      file
-      gdb
-      openssl
-      parted
-      ripgrep
-      rwhich
-      sd
-      shellcheck
-      strace
-      unzip
-      wget
-      zip
-    ];
-  };
+    bc
+    cachix
+    dateutils
+    diskus
+    exa
+    fd
+    file
+    gdb
+    openssl
+    parted
+    ripgrep
+    rwhich
+    sd
+    shellcheck
+    strace
+    unzip
+    wget
+    zip
+  ];
 
   programs = {
     git = {

@@ -1,29 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  networking = {
-    firewall = {
-      enable = true;
-      package = pkgs.iptables-nftables-compat;
-    };
-
-    wireless = {
-      enable = true;
-      userControlled.enable = true;
-    };
-  };
-
-  services = {
-    pcscd.enable = true;
-
-    udev.packages = [
-      pkgs.yubikey-manager
-      pkgs.yubikey-personalization
-    ];
-  };
-
-  users.defaultUserShell = pkgs.zsh;
-
   xdg.portal = {
     enable = true;
 

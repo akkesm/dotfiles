@@ -15,7 +15,7 @@
 
   programs.neovim = {
     enable = true;
-    # package = pkgs.neovim-master;
+    package = pkgs.neovim-master;
 
     extraConfig = ''
       luafile ${./init.lua}

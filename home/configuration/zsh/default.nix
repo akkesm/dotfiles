@@ -40,8 +40,6 @@
     initExtra = ''
       setopt HIST_IGNORE_ALL_DUPS
 
-      any-nix-shell zsh | source /dev/stdin
-
       [[ ! -f ${config.home.homeDirectory}/${config.programs.zsh.dotDir}/.p10k.zsh ]] || source ${config.home.homeDirectory}/${config.programs.zsh.dotDir}/.p10k.zsh
     '';
 

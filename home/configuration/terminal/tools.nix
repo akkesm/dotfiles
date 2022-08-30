@@ -2,8 +2,6 @@
 
 {
   home.packages = with pkgs; [
-    any-nix-shell
-
     bat-extras.batdiff
     bat-extras.batman
     bat-extras.batgrep
@@ -12,6 +10,7 @@
     bc
     cachix
     dateutils
+    diskus
     file
     gdb
     ripgrep

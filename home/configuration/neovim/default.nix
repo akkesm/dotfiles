@@ -23,10 +23,7 @@
       lua vim.opt.backupdir = "${config.xdg.stateHome}/nvim/backup//"
     '';
 
-    extraPackages = with pkgs; [
-      lf
-      perlPackages.NeovimExt
-    ];
+    extraPackages = [ pkgs.lf ];
 
     plugins = with pkgs.vimPlugins; [
       # Used by multiple other plugins

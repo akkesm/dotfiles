@@ -22,12 +22,6 @@ in
   rwhich = callPackage ./rwhich { };
 
   # Package set extensions
-  perlPackages = prev.perlPackages // import ./perl-packages {
-    inherit lib;
-    inherit (final) fetchurl;
-    inherit (prev) perlPackages;
-  };
-
   tree-sitter-grammars = prev.tree-sitter-grammars // import ./tree-sitter-grammars {
     inherit inputs lib;
     inherit (final) callPackage;

@@ -6,3 +6,7 @@ creation_rules:
     key_groups:
     - age:
       - *civetta
+  - path_regex: common/secrets/.+
+    key_groups:
+    - age:
+      - *civetta

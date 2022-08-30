@@ -1,10 +1,6 @@
-{ ... }:
 
 {
   boot = {
-    enableContainers = true;
-    consoleLogLevel = 4;
-
     loader = {
       efi.canTouchEfiVariables = true;
 
@@ -14,8 +10,6 @@
         configurationLimit = 4;
         editor = false;
       };
-
-      timeout = 5;
     };
   };
 }

@@ -22,11 +22,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    dwarffs = {
-      url = "github:edolstra/dwarffs";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     nix-matlab = {
       url = "gitlab:doronbehar/nix-matlab";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -101,7 +96,6 @@
     , nur
     , nixpkgs-wayland
     , flake-utils-plus
-    , dwarffs
     , nix-matlab
     , home-manager
     , sops-nix

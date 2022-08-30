@@ -34,24 +34,17 @@ in
     iptables -I INPUT -p udp -s ${EpsonSX600W-IP} -j ACCEPT
   '';
 
-  services = {
-    printing = {
-      enable = true;
-      browsing = true;
-      defaultShared = true;
+  services.printing = {
+    enable = true;
+    browsing = true;
+    defaultShared = true;
 
-      drivers = [
-        pkgs.epson-escpr
-        # pkgs.gutenprint
-      ];
+    drivers = [
+      pkgs.epson-escpr
+      # pkgs.gutenprint
+    ];
 
-      logLevel = "debug";
-      tempDir = "/var/spool/cups/tmp";
-    };
-  };
-
-  services.avahi = {
-    enable = false;
-    nssmdns = true;
+    logLevel = "debug";
+    tempDir = "/var/spool/cups/tmp";
   };
 }

@@ -8,9 +8,6 @@
 
     alsa = {
       enable = true;
-
-      # Cannot set the kernel feature with manualConfig
-      # but it is not checked 
       support32Bit = true;
     };
 
@@ -20,8 +17,6 @@
     config = {
       pipewire = {
         "context.properties" = {
-          "link.max-buffers" = 16;
-          "log.level" = 2;
           "default.clock.rate" = 48000;
           "default.clock.quantum" = 512;
           "default.clock.min-quantum" = 32;
@@ -66,9 +61,6 @@
       };
 
       pipewire-pulse = {
-        "context.properties" = {
-          "log.level" = 2;
-        };
         "context.modules" = [
           {
             name = "libpipewire-module-rtkit";

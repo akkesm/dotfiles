@@ -22,7 +22,7 @@
             storage.device = "/dev/nvme0n1p1";
             twoFactor = true;
           };
-        };  
+        };
       };
     };
   };

@@ -15,6 +15,8 @@
 
   programs.neovim = {
     enable = true;
+    # package = pkgs.neovim-master;
+
     extraConfig = ''
       luafile ${./init.lua}
       luafile ${pkgs.writeText "generatedConfig.lua" config.programs.neovim.generatedConfigs.lua}
@@ -25,8 +27,6 @@
       lf
       perlPackages.NeovimExt
     ];
-
-    package = pkgs.neovim-master;
 
     plugins = with pkgs.vimPlugins; [
       # Used by multiple other plugins
@@ -126,14 +126,6 @@
         config = ''
           vim.g.mundo_width = 100
           vim.keymap.set('n', '<Leader>u', '<Cmd>MundoToggle<CR>', { noremap = true })
-        '';
-      }
-
-      {
-        plugin = nabla-nvim;
-        type = "lua";
-        config = ''
-          vim.keymap.set('n', '<Leader>ln', function() return require('nabla').action() end, { noremap = true })
         '';
       }
     ];

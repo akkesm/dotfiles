@@ -39,9 +39,9 @@
     ];
 
     plugins = with pkgs.vimPlugins; [
-      coq_artifacts
+      coq-artifacts
       {
-        plugin = coq_thirdparty;
+        plugin = coq-thirdparty;
         type = "lua";
         config = ''
           require('coq_3p') {

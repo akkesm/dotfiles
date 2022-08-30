@@ -60,18 +60,6 @@
       url = "github:neovim/neovim?dir=contrib";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    coq_nvim = {
-      url = "github:ms-jpq/coq_nvim";
-      flake = false;
-    };
-    coq_artifacts = {
-      url = "github:ms-jpq/coq.artifacts";
-      flake = false;
-    };
-    coq_thirdparty = {
-      url = "github:ms-jpq/coq.thirdparty";
-      flake = false;
-    };
     dirbuf-nvim = {
       url = "github:elihunter173/dirbuf.nvim";
       flake = false;
@@ -80,28 +68,12 @@
       url = "github:NFrid/due.nvim";
       flake = false;
     };
-    nabla-nvim = {
-      url = "github:jbyuki/nabla.nvim";
-      flake = false;
-    };
-    nvim-compleet = {
-      url = "github:noib3/nvim-compleet";
-      flake = false;
-    };
     neorg-telescope = {
       url = "github:nvim-neorg/neorg-telescope";
       flake = false;
     };
-    nvim-workbench = {
-      url = "github:marcushwz/nvim-workbench";
-      flake = false;
-    };
     vim-latex = {
       url = "github:vim-latex/vim-latex";
-      flake = false;
-    };
-    windline-nvim = {
-      url = "github:windwp/windline.nvim";
       flake = false;
     };
 

@@ -10,7 +10,6 @@
     ./filesystem.nix
     ./greetd.nix
     ./kernel.nix
-    # ./kmonad
     ./luks.nix
     ./networking.nix
     ./persistence.nix

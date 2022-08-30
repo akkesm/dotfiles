@@ -40,11 +40,6 @@
 
     impermanence.url = "github:nix-community/impermanence";
 
-    kmonad = {
-      url = "github:kmonad/kmonad?dir=nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     # Neovim and plugins
     neovim = {
       url = "github:neovim/neovim?dir=contrib";
@@ -94,7 +89,6 @@
     , home-manager
     , sops-nix
     , impermanence
-    , kmonad
     , neovim
     , ...
     }@inputs:
@@ -142,9 +136,6 @@
       hosts = {
         civetta.modules = [
           ./hosts/civetta
-          # dwarffs.nixosModules.dwarffs
-          kmonad.nixosModules.default
-
           home-manager.nixosModules.home-manager
           {
             home-manager = {

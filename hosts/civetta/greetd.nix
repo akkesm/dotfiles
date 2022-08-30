@@ -3,7 +3,6 @@
 {
   services.greetd = {
     enable = true;
-    package = pkgs.greetd.greetd;
     settings = {
       default_session = {
         command = "${pkgs.greetd.greetd}/bin/agreety --cmd ${pkgs.zsh}/bin/zsh";
@@ -11,8 +10,8 @@
       };
 
       initial_session = {
-        command = "${pkgs.sway}/bin/sway";
-        # command = "${pkgs.systemd}/bin/systemd-cat --identifier=sway ${pkgs.sway}/bin/sway";
+        command = "sway";
+        # command = "${pkgs.systemd}/bin/systemd-cat --identifier=sway sway";
         user = config.users.users.alessandro.name;
       };
     };

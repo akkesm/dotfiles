@@ -18,8 +18,7 @@
     gimp
     lbry
     skanlite
+    teams
     transmission-gtk
-    # openclonk
-    # passky
   ];
 }

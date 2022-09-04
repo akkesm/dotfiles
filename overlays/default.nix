@@ -7,9 +7,7 @@ let
 in
 {
   # New packages
-  fritzbox-callmonitor = final.libsForQt5.callPackage ./fritzbox-callmonitor { };
   herbe = callPackage ./herbe { };
-  kickoff = callPackage ./kickoff { }; # Broken, fontconfig too old
   nordzy-cursors = callPackage ./nordzy-cursors { };
   nordzy-icon-theme = callPackage ./nordzy-icon-theme { };
   sway-launcher-desktop = callPackage ./sway-launcher-desktop { };

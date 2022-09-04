@@ -16,4 +16,6 @@ jobs:
       - uses: DeterminateSystems/update-flake-lock@v13
         with:
           pr-title: "Update flake.lock"
-          pr-labels: dependencies
+          pr-labels: |
+            automerge
+            dependencies

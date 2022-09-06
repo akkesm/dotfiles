@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 let
-  EpsonSX600W-IP = "192.168.178.28";
+  EpsonSX600W-IP = "192.168.178.29";
 in
 {
   hardware = {

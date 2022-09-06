@@ -17,10 +17,7 @@
     };
 
     # Helpers
-    flake-utils-plus = {
-      url = "github:gytis-ivaskevicius/flake-utils-plus";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    flake-utils-plus.url = "github:gytis-ivaskevicius/flake-utils-plus";
 
     # luks-yk = {
     #   url = "github:akkesm/luks-yk";

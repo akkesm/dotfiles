@@ -15,8 +15,9 @@
     android-file-transfer
     dolphin
     gimp
+    gwenview
     lbry
-    skanlite
+    simple-scan
     teams
     transmission-gtk
   ];

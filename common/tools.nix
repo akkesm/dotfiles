@@ -41,7 +41,6 @@
 
     neovim = {
       enable = true;
-      package = pkgs.neovim-master;
       defaultEditor = true;
       viAlias = true;
       vimAlias = true;

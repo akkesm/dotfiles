@@ -29,12 +29,10 @@ and [opt-in state on btrfs][3].
 
 Configured entirely with [Home Manager][4], including sway.
 
-- Neovim built from the [official flake][5] with an extended plugin set
 - Custom Firefox configuration
 - Terminal-centric with [Kitty][6] and Zsh
 
 [4]: https://github.com/nix-community/home-manager
-[5]: https://github.com/neovim/neovim/tree/master/contrib/flake.nix
 [6]: https://sw.kovidgoyal.net/kitty
 
 # Resources and references

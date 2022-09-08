@@ -38,10 +38,6 @@
     impermanence.url = "github:nix-community/impermanence";
 
     # Neovim and plugins
-    neovim = {
-      url = "github:neovim/neovim?dir=contrib";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     dirbuf-nvim = {
       url = "github:elihunter173/dirbuf.nvim";
       flake = false;
@@ -86,7 +82,6 @@
     , home-manager
     , sops-nix
     , impermanence
-    , neovim
     , ...
     }@inputs:
     let
@@ -105,8 +100,6 @@
           overlaysBuilder = channels: [
             # nix.overlay
             nixpkgs-wayland.overlay
-
-            (final: prev: { neovim-master = neovim.defaultPackage.${prev.system}; })
           ];
         };
 

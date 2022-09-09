@@ -5,11 +5,7 @@
     primary = true;
     address = "alessandro.barenghi@tuta.io";
     realName = "Alessandro Barenghi";
-
-    gpg = {
-      key = "50E2669CAB382F4A5F7216670D6BFC01D45EDADD";
-      signByDefault = true;
-    };
+    gpg.key = "50E2669CAB382F4A5F7216670D6BFC01D45EDADD";
   };
 
   home = {
@@ -33,13 +29,6 @@
       PATH = "$HOME/.local/bin:$PATH";
     };
   };
-
-  manual = {
-    html.enable = true;
-    manpages.enable = true;
-  };
-
-  news.display = "silent";
 
   services.kdeconnect = {
     enable = true;

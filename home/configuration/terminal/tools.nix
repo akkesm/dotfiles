@@ -105,6 +105,7 @@
 
     less = {
       enable = true;
+
       keys = ''
         #env
         LESS = --quit-if-one-screen --ignore-case --RAW-CONTROL-CHARS --incsearch
@@ -192,7 +193,7 @@
             --transfer-mode file --place "$2x$3@$4x$5" "$1"
           exit 1
         fi
-        
+
         ${pkgs.pistol}/bin/pistol "$1"
       '';
 

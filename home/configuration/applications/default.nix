@@ -2,10 +2,8 @@
 
 {
   imports = [
-    ./chat.nix
     ./documents.nix
     ./firefox.nix
-    ./games.nix
     ./lbry.nix
     # ./packet-tracer.nix
     ./qutebrowser.nix
@@ -16,9 +14,16 @@
     dolphin
     gimp
     gwenview
-    lbry
     simple-scan
     teams
     transmission-gtk
+
+    # Chat
+    element-desktop
+    tdesktop
+
+    # Games
+    lutris
+    steam
   ];
 }

@@ -7,6 +7,7 @@
     ./bash.nix
     ./desktop
     ./environment.nix
+    ./fonts.nix
     ./gopass.nix
     ./gtk.nix
     ./kitty.nix
@@ -14,7 +15,6 @@
     ./neovim
     ./qt.nix
     ./terminal
-    ./theme.nix
     ./zsh
   ];
 

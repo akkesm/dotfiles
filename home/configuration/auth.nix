@@ -5,10 +5,6 @@
     git = {
       enable = true;
 
-      aliases = {
-        emptycommit = "commit -a --allow-empty-message -m ''";
-      };
-
       extraConfig = {
         core.editor = "nvim";
         credential.helper = "store";

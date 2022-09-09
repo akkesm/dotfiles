@@ -1,11 +1,8 @@
 { config, lib, pkgs, ... }:
 
 {
-  home.file."${config.programs.zsh.dotDir}/.p10k.zsh".source = ./p10k.zsh;
-
   programs.zsh = {
     enable = true;
-    enableAutosuggestions = false;
     enableSyntaxHighlighting = true;
     autocd = true;
     defaultKeymap = "viins";
@@ -40,7 +37,7 @@
     initExtra = ''
       setopt HIST_IGNORE_ALL_DUPS
 
-      [[ ! -f ${config.home.homeDirectory}/${config.programs.zsh.dotDir}/.p10k.zsh ]] || source ${config.home.homeDirectory}/${config.programs.zsh.dotDir}/.p10k.zsh
+      source "${./.}/p10k.zsh"
     '';
 
     localVariables.POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD = true;

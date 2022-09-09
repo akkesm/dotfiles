@@ -4,39 +4,35 @@
   programs.neovim = {
     extraLuaPackages = with pkgs.lua51Packages; [ lua-lsp ];
 
-    extraPackages = with pkgs; [
+    extraPackages = (with pkgs; [
       # coq
       sqlite
       universal-ctags
 
       # LSP servers
       ccls
-      clojure-lsp
       gopls
       haskellPackages.haskell-language-server
       nimlsp
-      nodePackages.bash-language-server
-      # nodePackages.diagnostic-languageserver
-      nodePackages.dockerfile-language-server-nodejs
-      nodePackages.purescript-language-server
-      nodePackages.pyright
-      nodePackages.typescript
-      nodePackages.typescript-language-server
-      nodePackages.vim-language-server
-      nodePackages.vscode-html-languageserver-bin
-      nodePackages.vscode-json-languageserver-bin
-      nodePackages.yaml-language-server
       perlPackages.PLS
       rnix-lsp
-      rust-analyzer-unwrapped
       scry
       solargraph
       sqls
       sumneko-lua-language-server
-      terraform-ls
       texlab
       zls
-    ];
+    ]) ++ (with pkgs.nodePackages; [
+      bash-language-server
+      dockerfile-language-server-nodejs
+      purescript-language-server
+      pyright
+      typescript
+      typescript-language-server
+      vscode-html-languageserver-bin
+      vscode-json-languageserver-bin
+      yaml-language-server
+    ]);
 
     plugins = with pkgs.vimPlugins; [
       coq-artifacts
@@ -138,13 +134,8 @@
             root_dir = lspconfig.util.root_pattern('compile_commands.json', '.ccls', 'compile_flags.txt', '.git', 'flake.nix') or lspconfig.util.path.dirname
           })
 
-          lspconfig.clojure_lsp.setup(coq.lsp_ensure_capabilities {
-            root_dir = lspconfig.util.root_pattern('project.clj', 'deps.edn', 'build.boot', 'shadow-cljs.edn', '.git', 'flake.nix') or lspconfig.util.path.dirname
-          })
-
-          -- lspconfig.diagnosticls.setup(coq.lsp_ensure_capabilities {})
           lspconfig.dockerls.setup(coq.lsp_ensure_capabilities {
-                root_dir = lspconfig.util.root_pattern('Dockerfile', '.git', 'flake.nix') or lspconfig.util.path.dirname
+            root_dir = lspconfig.util.root_pattern('Dockerfile', '.git', 'flake.nix') or lspconfig.util.path.dirname
           })
 
           lspconfig.gopls.setup(coq.lsp_ensure_capabilities {
@@ -204,42 +195,17 @@
             },
           })
 
-          lspconfig.terraformls.setup(coq.lsp_ensure_capabilities {
-            root_dir = lspconfig.util.root_pattern('.terraform', '.git', 'flake.nix') or lspconfig.util.path.dirname
-          })
-
           lspconfig.texlab.setup(coq.lsp_ensure_capabilities { ['settings.latex.lint.onchange'] = true })
 
           lspconfig.tsserver.setup(coq.lsp_ensure_capabilities {
             root_dir = lspconfig.util.root_pattern('package.json', 'tsconfig.json', 'jsconfig.json', '.git', 'flake.nix')
           })
 
-          lspconfig.vimls.setup(coq.lsp_ensure_capabilities {})
           lspconfig.yamlls.setup(coq.lsp_ensure_capabilities {})
 
           lspconfig.zls.setup(coq.lsp_ensure_capabilities {
             root_dir = lspconfig.util.root_pattern('zls.json', '.git', 'flake.nix') or lspconfig.util.path.dirname
           })
-        '';
-      }
-
-      {
-        plugin = rust-tools-nvim;
-        type = "lua";
-        config = ''
-          require('rust-tools').setup {
-            tools = {
-              autoSetHints = true,
-              hover_with_actions = true,
-              ['runnables.use_telescope'] = true,
-
-              inlay_hints = {
-                show_parameter_hints = true,
-                parameter_hints_prefix = '<-',
-                other_hints_prefix  = '->'
-              },
-            },
-          }
         '';
       }
 

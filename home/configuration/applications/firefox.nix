@@ -6,7 +6,6 @@
     package = pkgs.firefox-wayland;
 
     extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-      betterttv
       bypass-paywalls-clean
       facebook-container
       flagfox
@@ -24,7 +23,7 @@
 
     # There is a bug with RES in Firefox in Wayland? Sway? tiling WMs?
     # that doesn't display the popup window to grant permissions.
-    # To solve: 
+    # To solve:
     # > In the prompt, open js console (F12) and grab window.location.href.
     # > Then copy and paste that into a normal tab and click the button.
     # > THEN I get the real firefox balloon message about actually granting the permissions.

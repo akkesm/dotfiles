@@ -7,7 +7,7 @@
 
     # Channels
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-latest-stable.url = "github:NixOS/nixpkgs/nixos-22.05";
+    nixos-2205.url = "github:NixOS/nixpkgs/nixos-22.05";
 
     nur.url = "github:nix-community/NUR";
 
@@ -29,6 +29,8 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nixos-wsl.url = "github:nix-community/NixOS-WSL";
 
     sops-nix = {
       url = "github:Mic92/sops-nix";
@@ -75,11 +77,12 @@
     { self
     , nix
     , nixpkgs
-    , nixpkgs-latest-stable
+    , nixos-2205
     , nur
     , nixpkgs-wayland
     , flake-utils-plus
     , home-manager
+    , nixos-wsl
     , sops-nix
     , impermanence
     , ...
@@ -103,7 +106,7 @@
           ];
         };
 
-        nixpkgs-latest-stable.input = nixpkgs-latest-stable;
+        nixos-2205.input = nixos-2205;
       };
 
       channelsConfig.allowUnfree = true;
@@ -135,6 +138,34 @@
             };
           }
         ];
+
+        # nix build .#nixosConfigurations.mysystem.config.system.build.installer
+        wsl = {
+          channelName = "nixos-2205";
+
+          modules = [
+            nixos-wsl.nixosModules.wsl
+            {
+              wsl = {
+                enable = true;
+                automountPath = "/mnt";
+                defaultUser = "nixos";
+                startMenuLaunchers = true;
+              };
+
+              system.stateVersion = "22.05";
+            }
+
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                users.alessandro = import ./home;
+              };
+            }
+          ];
+        };
 
         # nix build --impure .#nixosConfigurations.live.config.system.build.isoImage
         live = {

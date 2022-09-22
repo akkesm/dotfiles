@@ -1,7 +1,9 @@
-name: "Build and push to Cachix"
+name: "Build civetta"
 
 on:
-  pull_request:
+  pull_request_target:
+    types:
+      - closed
     branches:
       - master
   push:

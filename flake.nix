@@ -139,7 +139,7 @@
           }
         ];
 
-        # nix build .#nixosConfigurations.mysystem.config.system.build.installer
+        # nix build .#nixosConfigurations.wsl.config.system.build.installer
         wsl = {
           channelName = "nixos-2205";
 
@@ -149,7 +149,7 @@
               wsl = {
                 enable = true;
                 automountPath = "/mnt";
-                defaultUser = "nixos";
+                defaultUser = "alessandro";
                 startMenuLaunchers = true;
               };
 

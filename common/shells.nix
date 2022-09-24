@@ -7,7 +7,7 @@
     shellAliases = {
       q = "exit";
 
-      cdtmp = "cd $(mktemp -d)";
+      cdtmp = "cd \"$(mktemp -d)\"";
 
       ll = "${pkgs.exa}/bin/exa --long --group-directories-first --links --binary --group --time-style long-iso --icons";
       la = "${pkgs.exa}/bin/exa --long --group-directories-first --links --binary --group --time-style long-iso --icons --all";

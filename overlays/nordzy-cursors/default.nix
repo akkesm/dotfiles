@@ -25,7 +25,7 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     description = "Cursor theme using the Nord color palette";
     homepage = "https://github.com/alvatip/Nordzy-cursors";
-    licenses = licenses.gpl3Only;
+    license = licenses.gpl3Only;
     platforms = platforms.unix;
   };
 }

@@ -27,7 +27,7 @@ stdenv.mkDerivation rec {
 
   installPhase = ''
     runHook preInstall
-    
+
     mkdir -p $out/share/icons
 
     ./install.sh \

@@ -77,7 +77,11 @@
         plugin = registers-nvim;
         type = "lua";
         config = ''
-          vim.g.registers_tab_symbol = '»·'
+          require('registers').setup {
+            symbols = {
+              tab = "»·"
+            }
+          }
         '';
       }
 

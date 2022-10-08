@@ -5,7 +5,7 @@
     ./coq.nix
     ./latex.nix
     ./mini.nix
-    # ./neorg.nix
+    ./neorg.nix
     ./telescope.nix
     ./treesitter.nix
     ./vim-markdown-composer.nix

@@ -3,7 +3,7 @@
 {
   imports = [
     ./beets.nix
-    ./easyeffects.nix
+    # ./easyeffects.nix
     ./mpd.nix
     ./mpv.nix
   ];

@@ -12,7 +12,7 @@
       # LSP servers
       ccls
       gopls
-      haskellPackages.haskell-language-server
+      # haskellPackages.haskell-language-server # Provided per project
       nimlsp
       perlPackages.PLS
       rnix-lsp
@@ -78,49 +78,49 @@
         '';
       }
 
-      {
-        plugin = nvim-autopairs;
-        type = "lua";
-        config = ''
-          local npairs = require('nvim-autopairs')
+      # {
+      #   plugin = nvim-autopairs;
+      #   type = "lua";
+      #   config = ''
+      #     local npairs = require('nvim-autopairs')
 
-          npairs.setup {
-            enable_check_bracket_line = false,
-            map_bs = false,
-            map_cr = false,
-            check_ts = true,
-          }
+      #     npairs.setup {
+      #       enable_check_bracket_line = false,
+      #       map_bs = false,
+      #       map_cr = false,
+      #       check_ts = true,
+      #     }
 
-          vim.keymap.set('i', '<Esc>', [[pumvisible() ? '<C-e><Esc>' : '<Esc>']], { expr = true, noremap = true, silent = true })
-          vim.keymap.set('i', '<C-c>', [[pumvisible() ? '<C-e><C-c>' : '<C-c>']], { expr = true, noremap = true, silent = true })
-          vim.keymap.set('i', '<Tab>', [[pumvisible() ? '<C-n>' : '<Tab>']], { expr = true, noremap = true, silent = true })
-          vim.keymap.set('i', '<S-Tab>', [[pumvisible() ? '<C-p>' : '<BS>']], { expr = true, noremap = true, silent = true })
+      #     vim.keymap.set('i', '<Esc>', [[pumvisible() ? '<C-e><Esc>' : '<Esc>']], { expr = true, noremap = true, silent = true })
+      #     vim.keymap.set('i', '<C-c>', [[pumvisible() ? '<C-e><C-c>' : '<C-c>']], { expr = true, noremap = true, silent = true })
+      #     vim.keymap.set('i', '<Tab>', [[pumvisible() ? '<C-n>' : '<Tab>']], { expr = true, noremap = true, silent = true })
+      #     vim.keymap.set('i', '<S-Tab>', [[pumvisible() ? '<C-p>' : '<BS>']], { expr = true, noremap = true, silent = true })
 
-          _G.MUtils = {}
+      #     _G.MUtils = {}
 
-          MUtils.CR = function()
-            if vim.fn.pumvisible() ~= 0 then
-              if vim.fn.complete_info({ 'selected' }).selected ~= -1 then
-                return npairs.esc('<C-y>')
-              else
-                return npairs.esc('<C-e>') .. npairs.autopairs_cr()
-              end
-            else
-              return npairs.autopairs_cr()
-            end
-          end
-          vim.keymap.set('i', '<CR>', 'v:lua.MUtils.CR()', { expr = true, noremap = true, silent = true })
+      #     MUtils.CR = function()
+      #       if vim.fn.pumvisible() ~= 0 then
+      #         if vim.fn.complete_info({ 'selected' }).selected ~= -1 then
+      #           return npairs.esc('<C-y>')
+      #         else
+      #           return npairs.esc('<C-e>') .. npairs.autopairs_cr()
+      #         end
+      #       else
+      #         return npairs.autopairs_cr()
+      #       end
+      #     end
+      #     vim.keymap.set('i', '<CR>', 'v:lua.MUtils.CR()', { expr = true, noremap = true, silent = true })
 
-          MUtils.BS = function()
-            if vim.fn.pumvisible() ~= 0 and vim.fn.complete_info({ 'mode' }).mode == 'eval' then
-              return npairs.esc('<c-e>') .. npairs.autopairs_bs()
-            else
-              return npairs.autopairs_bs()
-            end
-          end
-          vim.keymap.set('i', '<BS>', 'v:lua.MUtils.BS()', { expr = true, noremap = true, silent = true })
-        '';
-      }
+      #     MUtils.BS = function()
+      #       if vim.fn.pumvisible() ~= 0 and vim.fn.complete_info({ 'mode' }).mode == 'eval' then
+      #         return npairs.esc('<C-e>') .. npairs.autopairs_bs()
+      #       else
+      #         return npairs.autopairs_bs()
+      #       end
+      #     end
+      #     -- vim.keymap.set('i', '<BS>', 'v:lua.MUtils.BS()', { expr = true, noremap = true, silent = true })
+      #   '';
+      # }
       {
         plugin = nvim-lspconfig;
         type = "lua";
@@ -143,11 +143,11 @@
           })
 
           lspconfig.hls.setup(coq.lsp_ensure_capabilities {
+            cmd = { 'haskell-language-server', '--lsp' },
             root_dir = lspconfig.util.root_pattern('*.cabal', 'stack.yaml', 'cabal.project', 'package.yaml', 'hie.yaml', '.git', 'flake.nix') or lspconfig.util.path.dirname
           })
 
           lspconfig.html.setup(coq.lsp_ensure_capabilities {
-            capabilities = vim.lsp.protocol.make_client_capabilities(),
             cmd = { 'html-languageserver', '--stdio' },
           })
 

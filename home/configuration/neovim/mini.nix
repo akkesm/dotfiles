@@ -40,6 +40,7 @@
         require('mini.comment').setup()
         require('mini.jump').setup()
         require('mini.jump2d').setup()
+        require('mini.pairs').setup()
         require('mini.statusline').setup { set_vim_settings = false }
         require('mini.surround').setup()
         require('mini.tabline').setup()

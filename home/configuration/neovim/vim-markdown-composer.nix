@@ -9,6 +9,7 @@
         plugin = pkgs.vimPlugins.vim-markdown-composer;
         type = "lua";
         config = ''
+
           vim.g.markdown_composer_autostart = 0
           vim.g.markdown_composer_browser = 'qutebrowser'
           vim.g.markdown_composer_refresh_rate = 1000

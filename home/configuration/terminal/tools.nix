@@ -2,6 +2,8 @@
 
 {
   home.packages = with pkgs; [
+    nixpkgs-review
+
     bat-extras.batdiff
     bat-extras.batman
     bat-extras.batgrep

@@ -17,13 +17,14 @@
     gdb
     ripgrep
     rwhich
+    scrcpy
     sd
     shellcheck
+    silent
     strace
     unzip
     wget
     zip
-    scrcpy
 
     bottom
     dig

@@ -22,6 +22,7 @@
     rwhich
     sd
     shellcheck
+    silent
     strace
     unzip
     wget

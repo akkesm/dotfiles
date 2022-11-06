@@ -10,6 +10,7 @@ in
   herbe = callPackage ./herbe { };
   nordzy-cursors = callPackage ./nordzy-cursors { };
   nordzy-icon-theme = callPackage ./nordzy-icon-theme { };
+  silent = callPackage ./silent { };
   sway-launcher-desktop = callPackage ./sway-launcher-desktop { };
   sway-prop = callPackage ./sway-prop { };
   wayherb = callPackage ./wayherb { };

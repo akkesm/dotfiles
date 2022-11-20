@@ -4,17 +4,32 @@
   programs.mpv = {
     enable = true;
 
-    config = {
-      # hwdec = "auto-safe";
-      scale = "ewa_lanczossharp";
-      cscale = "ewa_lanczossharp";
-      tscale = "oversample";
-      interpolation = true;
-      gpu-context = "wayland";
-      video-sync = "display-resample";
+    defaultProfiles = [
+      "gpu-hq"
+      "wayland-pipewire"
+    ];
+
+    profiles = rec {
+      hq = {
+        scale = "ewa_lanczossharp";
+        cscale = "ewa_lanczossharp";
+        tscale = "oversample";
+        interpolation = true;
+        video-sync = "display-resample";
+      };
+
+      wayland-pipewire = hq // {
+        hwdec = "vaapi";
+        gpu-context = "wayland";
+        ao = "pipewire,";
+        vo = "dmabuf-wayland";
+      };
     };
 
-    defaultProfiles = [ "gpu-hq" ];
-    scripts = [ pkgs.mpvScripts.mpris ];
+    scripts = with pkgs.mpvScripts; [
+      mpris
+      thumbnail
+      youtube-quality
+    ];
   };
 }

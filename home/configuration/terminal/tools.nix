@@ -41,7 +41,6 @@
 
     yubikey-manager-qt
     yubikey-personalization
-    yubioath-desktop
   ];
 
   programs = {

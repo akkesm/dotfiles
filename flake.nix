@@ -6,8 +6,7 @@
     };
 
     # Channels
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixos-2205.url = "github:NixOS/nixpkgs/nixos-22.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.11";
 
     nur.url = "github:nix-community/NUR";
 
@@ -26,7 +25,7 @@
 
     # Extra modules
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/release-22.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -77,7 +76,6 @@
     { self
     , nix
     , nixpkgs
-    , nixos-2205
     , nur
     , nixpkgs-wayland
     , flake-utils-plus
@@ -97,16 +95,12 @@
 
       supportedSystems = [ "x86_64-linux" ];
 
-      channels = {
-        nixpkgs = {
-          input = nixpkgs;
-          overlaysBuilder = channels: [
-            # nix.overlay
-            nixpkgs-wayland.overlay
-          ];
-        };
-
-        nixos-2205.input = nixos-2205;
+      channels.nixpkgs = {
+        input = nixpkgs;
+        overlaysBuilder = channels: [
+          # nix.overlay
+          nixpkgs-wayland.overlay
+        ];
       };
 
       channelsConfig.allowUnfree = true;
@@ -140,60 +134,51 @@
         ];
 
         # nix build .#nixosConfigurations.wsl.config.system.build.installer
-        wsl = {
-          channelName = "nixos-2205";
+        wsl.modules = [
+          nixos-wsl.nixosModules.wsl
+          {
+            wsl = {
+              enable = true;
+              automountPath = "/mnt";
+              defaultUser = "alessandro";
+              startMenuLaunchers = true;
+            };
 
-          modules = [
-            nixos-wsl.nixosModules.wsl
-            {
-              wsl = {
-                enable = true;
-                automountPath = "/mnt";
-                defaultUser = "alessandro";
-                startMenuLaunchers = true;
-              };
+            system.stateVersion = "22.11";
+          }
 
-              system.stateVersion = "22.05";
-            }
-
-            home-manager.nixosModules.home-manager
-            {
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                users.alessandro = import ./home;
-              };
-            }
-          ];
-        };
+          home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users.alessandro = import ./home;
+            };
+          }
+        ];
 
         # nix build --impure .#nixosConfigurations.live.config.system.build.isoImage
-        live = {
-          channelName = "nixpkgs";
+        live.modules = [
+          ./hosts/live
+          {
+            imports = [
+              (channels."${hosts.live.channelName}".input + "/nixos/modules/installer/cd-dvd/installation-cd-minimal-new-kernel.nix")
+              (channels."${hosts.live.channelName}".input + "/nixos/modules/installer/cd-dvd/channel.nix")
+            ];
+          }
+          {
+            system.stateVersion = "22.11";
+          }
 
-          modules = [
-            ./hosts/live
-            {
-              imports = [
-                (channels."${hosts.live.channelName}".input + "/nixos/modules/installer/cd-dvd/installation-cd-minimal-new-kernel.nix")
-                (channels."${hosts.live.channelName}".input + "/nixos/modules/installer/cd-dvd/channel.nix")
-              ];
-            }
-            {
-              system.stateVersion = "22.11";
-            }
-
-            # home-manager.nixosModules.home-manager
-            # {
-            #   home-manager.useGlobalPkgs = true;
-            #   home-manager.useUserPackages = true;
-            #   home-manager.users."alessandro" = import ./home;
-            # }
-          ];
-        };
+          # home-manager.nixosModules.home-manager
+          # {
+          #   home-manager.useGlobalPkgs = true;
+          #   home-manager.useUserPackages = true;
+          #   home-manager.users."alessandro" = import ./home;
+          # }
+        ];
 
         media = {
-          channelName = "nixpkgs-latest-stable";
           modules = [ ./hosts/media ];
         };
       };

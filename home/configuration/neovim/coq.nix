@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   programs.neovim = {
@@ -13,6 +13,7 @@
       ccls
       gopls
       # haskellPackages.haskell-language-server # Provided per project
+      jdt-language-server
       nimlsp
       perlPackages.PLS
       rnix-lsp
@@ -151,6 +152,22 @@
             cmd = { 'html-languageserver', '--stdio' },
           })
 
+          lspconfig.jdtls.setup(coq.lsp_ensure_capabilities {
+            cmd = { "jdt-language-server", "-configuration", "${config.xdg.cacheHome}/jdtls/config", "-data", "${config.xdg.cacheHome}/jdtls/workspace" },
+            root_dir = lspconfig.util.root_pattern({
+              -- Single-module projects
+             'build.xml', -- Ant
+             'pom.xml', -- Maven
+             'settings.gradle', -- Gradle
+             'settings.gradle.kts', -- Gradle
+              -- Multi-module projects
+              'build.gradle',
+              'build.gradle.kts',
+              -- Nix
+              'flake.nix',
+            }) or lspconfig.util.path.dirname
+          })
+
           lspconfig.jsonls.setup(coq.lsp_ensure_capabilities {
             cmd = { 'json-languageserver', '--stdio' }
           })
@@ -209,6 +226,7 @@
         '';
       }
 
+      nvim-jdtls
       zig-vim
 
       vim-vsnip

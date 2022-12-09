@@ -12,13 +12,13 @@
       # LSP servers
       ccls
       gopls
-      # haskellPackages.haskell-language-server # Provided per project
+      # haskellPackages.haskell-language-server # Provided per-project
       jdt-language-server
       nimlsp
       perlPackages.PLS
       rnix-lsp
       scry
-      solargraph
+      solargraph # provide rubocop per-project
       sqls
       sumneko-lua-language-server
       texlab

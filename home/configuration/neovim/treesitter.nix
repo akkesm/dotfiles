@@ -60,12 +60,15 @@
               highlight_definitions = { enable = true },
               highlight_current_scope = { enable = false },
             },
+
+            rainbow = { enable = true },
           }
         '';
       }
 
       nvim-treesitter-refactor
       nvim-treesitter-context
+      nvim-ts-rainbow
     ];
   };
 }

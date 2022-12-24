@@ -10,6 +10,13 @@ in
   herbe = callPackage ./herbe { };
   nordzy-cursors = callPackage ./nordzy-cursors { };
   nordzy-icon-theme = callPackage ./nordzy-icon-theme { };
+  px = callPackage ./px {
+    inherit (final.python3Packages)
+      buildPythonApplication
+      pytest
+      pytest-runner
+      python-dateutil;
+  };
   silent = callPackage ./silent { };
   sway-launcher-desktop = callPackage ./sway-launcher-desktop { };
   sway-prop = callPackage ./sway-prop { };

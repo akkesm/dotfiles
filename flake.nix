@@ -3,7 +3,7 @@
     # Channels
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.11";
     nur.url = "github:nix-community/NUR";
-    nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
+    # nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
 
     # Helpers
     flake-utils-plus.url = "github:gytis-ivaskevicius/flake-utils-plus";
@@ -62,7 +62,7 @@
     { self
     , nixpkgs
     , nur
-    , nixpkgs-wayland
+    # , nixpkgs-wayland
     , flake-utils-plus
     , home-manager
     , nixos-wsl
@@ -82,9 +82,7 @@
 
       channels.nixpkgs = {
         input = nixpkgs;
-        overlaysBuilder = channels: [
-          nixpkgs-wayland.overlay
-        ];
+        # overlaysBuilder = channels: [ nixpkgs-wayland.overlay ];
       };
 
       channelsConfig.allowUnfree = true;

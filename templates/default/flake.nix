@@ -24,11 +24,13 @@
       });
 
       checks = forAllSystems (system: {
-        build = self.packages."${system}".default;
+        inherit (self.packages."${system}") default;
       });
 
-      devShells.default = forAllSystems (system: with nixpkgsFor."${system}"; mkShell {
-        packages = [ ];
+      devShells = forAllSystems (system: with nixpkgsFor."${system}"; {
+        default = mkShell {
+          packages = [ ];
+        };
       });
     };
 }

@@ -1,19 +1,12 @@
 {
   inputs = {
-    nix = {
-      url = "github:NixOS/nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # Nix
+    nix.url = "github:NixOS/nix";
 
     # Channels
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.11";
-
     nur.url = "github:nix-community/NUR";
-
-    nixpkgs-wayland = {
-      url = "github:nix-community/nixpkgs-wayland";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
 
     # Helpers
     flake-utils-plus.url = "github:gytis-ivaskevicius/flake-utils-plus";
@@ -29,14 +22,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixos-wsl.url = "github:nix-community/NixOS-WSL";
-
-    sops-nix = {
-      url = "github:Mic92/sops-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
+    sops-nix.url = "github:Mic92/sops-nix";
     impermanence.url = "github:nix-community/impermanence";
+    nixos-wsl.url = "github:nix-community/NixOS-WSL";
 
     # Neovim and plugins
     dirbuf-nvim = {
@@ -56,6 +44,7 @@
       flake = false;
     };
 
+    # Tree-sitter grammars
     tree-sitter-norg-meta = {
       url = "github:nvim-neorg/tree-sitter-norg-meta";
       flake = false;

@@ -1,8 +1,5 @@
 {
   inputs = {
-    # Nix
-    nix.url = "github:NixOS/nix";
-
     # Channels
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.11";
     nur.url = "github:nix-community/NUR";
@@ -63,7 +60,6 @@
 
   outputs =
     { self
-    , nix
     , nixpkgs
     , nur
     , nixpkgs-wayland
@@ -87,7 +83,6 @@
       channels.nixpkgs = {
         input = nixpkgs;
         overlaysBuilder = channels: [
-          # nix.overlay
           nixpkgs-wayland.overlay
         ];
       };

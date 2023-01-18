@@ -17,6 +17,7 @@ in
 
       # LSP servers
       ccls
+      elixir_ls
       gopls
       # haskellPackages.haskell-language-server # Provided per-project
       jdt-language-server
@@ -143,6 +144,11 @@ in
 
           lspconfig.dockerls.setup(coq.lsp_ensure_capabilities {
             root_dir = lspconfig.util.root_pattern('Dockerfile', '.git', 'flake.nix') or lspconfig.util.path.dirname
+          })
+
+          lspconfig.elixirls.setup(coq.lsp_ensure_capabilities {
+            cmd = { '${pkgs.elixir_ls}/bin/elixir-ls' },
+            root_dir = lspconfig.util.root_pattern('mix.exs', '.git', 'flake.nix') or lspconfig.util.path.dirname
           })
 
           lspconfig.gopls.setup(coq.lsp_ensure_capabilities {

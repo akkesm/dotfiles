@@ -1,5 +1,11 @@
 { config, pkgs, ... }:
 
+let
+  hls-exe = pkgs.writeScript "hls-exe" ''
+    #!/bin/sh
+    [ -x haskell-language-server ] && haskell-language-server "$@" || haskell-language-server-wrapper "$@"
+  '';
+in
 {
   programs.neovim = {
     extraLuaPackages = with pkgs.lua51Packages; [ lua-lsp ];
@@ -144,8 +150,9 @@
           })
 
           lspconfig.hls.setup(coq.lsp_ensure_capabilities {
-            cmd = { 'haskell-language-server', '--lsp' },
-            root_dir = lspconfig.util.root_pattern('*.cabal', 'stack.yaml', 'cabal.project', 'package.yaml', 'hie.yaml', '.git', 'flake.nix') or lspconfig.util.path.dirname
+            cmd = { '${hls-exe}', '--lsp' },
+            root_dir = lspconfig.util.root_pattern('*.cabal', 'stack.yaml', 'cabal.project', 'package.yaml', 'hie.yaml', '.git', 'flake.nix') or lspconfig.util.path.dirname,
+            setting = { haskell = { formattingProvider = "fourmolu" } }
           })
 
           lspconfig.html.setup(coq.lsp_ensure_capabilities {

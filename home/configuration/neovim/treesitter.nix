@@ -68,7 +68,6 @@
 
       nvim-treesitter-refactor
       nvim-treesitter-context
-      nvim-ts-rainbow
     ];
   };
 }

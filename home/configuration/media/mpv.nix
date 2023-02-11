@@ -4,6 +4,8 @@
   programs.mpv = {
     enable = true;
 
+    config.osc = false;
+
     defaultProfiles = [
       "gpu-hq"
       "wayland-pipewire"

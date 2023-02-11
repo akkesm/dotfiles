@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ options, config, pkgs, ... }:
 
 {
   programs.bash = {
@@ -16,5 +16,9 @@
         source ${config.home.homeDirectory}/.nix-profile/etc/profile.d/nix.sh
       fi
     '';
+
+    shellOptions = options.programs.bash.shellOptions.default ++ [
+      "pipefail"
+    ];
   };
 }

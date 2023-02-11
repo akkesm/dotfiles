@@ -22,8 +22,8 @@
       relativeConfigHome + "/zsh";
 
     history = {
-      expireDuplicatesFirst = true;
       extended = true;
+      ignoreDups = false; # Set HIST_IGNORE_ALL_DUPS later
       ignorePatterns = [ "q" "kill *" ];
       path = "${config.home.homeDirectory}/${config.programs.zsh.dotDir}/zsh_history";
     };
@@ -34,11 +34,56 @@
       fi
     '';
 
-    initExtra = ''
-      setopt HIST_IGNORE_ALL_DUPS
+    initExtra =
+      let
+        opts = lib.concatMapStrings (o: "setopt " + o + "\n") [
+          # https://zsh.sourceforge.io/Doc/Release/Options.html
 
-      source "${./.}/p10k.zsh"
-    '';
+          # Changing Directories
+          # "AUTO_CD"
+          "AUTO_PUSHD"
+          "PUSHD_IGNORE_DUPS"
+
+          # Completion
+          "ALWAYS_TO_END"
+          "AUTO_MENU"
+          "COMPLETE_IN_WORD"
+          "GLOB_COMPLETE"
+          "EQUALS"
+          "GLOBDOTS"
+          "GLOB_STAR_SHORT"
+          "HIST_SUBST_PATTERN"
+          "RC_EXPAND_PARAM"
+          "REMATCH_PCRE"
+          # "WARN_CREATE_GLOBAL"
+          # "WARN_NESTED_VAR"
+
+          # History
+          # "EXTENDED_HISTORY"
+          "HIST_IGNORE_ALL_DUPS"
+          # "HIST_IGNORE_SPACE"
+          "HIST_NO_STORE"
+          "HIST_REDUCE_BLANKS"
+          "HIST_VERIFY"
+
+          # Input/Output
+          "INTERACTIVE_COMMENTS"
+
+          # Job Control
+          "AUTO_CONTINUE"
+          "LONG_LIST_JOBS"
+
+          # Scripts and Functions
+          "PIPE_FAIL"
+        ];
+      in
+      ''
+        ${opts}
+
+        unsetopt MENU_COMPLETE
+
+        source "${./.}/p10k.zsh"
+      '';
 
     localVariables.POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD = true;
 

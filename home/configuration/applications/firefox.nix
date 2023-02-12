@@ -6,20 +6,7 @@
     package = pkgs.firefox-wayland;
 
     extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-      (buildFirefoxXpiAddon {
-      pname = "bypass-paywalls-clean";
-      version = "3.0.4.0";
-      addonId = "{d133e097-46d9-4ecc-9903-fa6a722a6e0e}";
-      url = "https://gitlab.com/magnolia1234/bpc-uploads/-/raw/master/bypass_paywalls_clean-3.0.4.0.xpi";
-      sha256 = "003bf4f8fdc644f1113b2157642eb85e7704e32de2b5036ac24983b30f5412da";
-      meta = with lib;
-      {
-        homepage = "https://gitlab.com/magnolia1234/bypass-paywalls-firefox-clean";
-        description = "Bypass Paywalls of (custom) news sites";
-        license = licenses.mit;
-        platforms = platforms.all;
-        };
-      })
+      bypass-paywalls-clean
       facebook-container
       flagfox
       gopass-bridge

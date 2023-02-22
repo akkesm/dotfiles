@@ -49,8 +49,11 @@
           "AUTO_MENU"
           "COMPLETE_IN_WORD"
           "GLOB_COMPLETE"
+          "MENU_COMPLETE"
+
+          # Expansion and Globbing
           "EQUALS"
-          "GLOBDOTS"
+          "GLOB_DOTS"
           "GLOB_STAR_SHORT"
           "HIST_SUBST_PATTERN"
           "RC_EXPAND_PARAM"
@@ -79,8 +82,6 @@
       in
       ''
         ${opts}
-
-        unsetopt MENU_COMPLETE
 
         source "${./.}/p10k.zsh"
       '';

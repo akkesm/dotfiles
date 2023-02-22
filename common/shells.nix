@@ -38,48 +38,49 @@
           opts = lib.concatMapStrings (o: "setopt " + o + "\n") [
             # https://zsh.sourceforge.io/Doc/Release/Options.html
 
-            # Changing Directories
-            # "AUTO_CD"
-            "AUTO_PUSHD"
-            "PUSHD_IGNORE_DUPS"
+          # Changing Directories
+          # "AUTO_CD"
+          "AUTO_PUSHD"
+          "PUSHD_IGNORE_DUPS"
 
-            # Completion
-            "ALWAYS_TO_END"
-            "AUTO_MENU"
-            "COMPLETE_IN_WORD"
-            "GLOB_COMPLETE"
-            "EQUALS"
-            "GLOBDOTS"
-            "GLOB_STAR_SHORT"
-            "HIST_SUBST_PATTERN"
-            "RC_EXPAND_PARAM"
-            "REMATCH_PCRE"
-            # "WARN_CREATE_GLOBAL"
-            # "WARN_NESTED_VAR"
+          # Completion
+          "ALWAYS_TO_END"
+          "AUTO_MENU"
+          "COMPLETE_IN_WORD"
+          "GLOB_COMPLETE"
+          "MENU_COMPLETE"
 
-            # History
-            # "EXTENDED_HISTORY"
-            "HIST_IGNORE_ALL_DUPS"
-            # "HIST_IGNORE_SPACE"
-            "HIST_NO_STORE"
-            "HIST_REDUCE_BLANKS"
-            "HIST_VERIFY"
+          # Expansion and Globbing
+          "EQUALS"
+          "GLOB_DOTS"
+          "GLOB_STAR_SHORT"
+          "HIST_SUBST_PATTERN"
+          "RC_EXPAND_PARAM"
+          "REMATCH_PCRE"
+          # "WARN_CREATE_GLOBAL"
+          # "WARN_NESTED_VAR"
 
-            # Input/Output
-            "INTERACTIVE_COMMENTS"
+          # History
+          # "EXTENDED_HISTORY"
+          "HIST_IGNORE_ALL_DUPS"
+          # "HIST_IGNORE_SPACE"
+          "HIST_NO_STORE"
+          "HIST_REDUCE_BLANKS"
+          "HIST_VERIFY"
 
-            # Job Control
-            "AUTO_CONTINUE"
-            "LONG_LIST_JOBS"
+          # Input/Output
+          "INTERACTIVE_COMMENTS"
 
-            # Scripts and Functions
-            "PIPE_FAIL"
+          # Job Control
+          "AUTO_CONTINUE"
+          "LONG_LIST_JOBS"
+
+          # Scripts and Functions
+          "PIPE_FAIL"
           ];
         in
         ''
           ${opts}
-
-          unsetopt MENU_COMPLETE
         '';
     };
   };

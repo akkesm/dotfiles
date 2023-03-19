@@ -7,16 +7,16 @@
 
 rustPlatform.buildRustPackage rec {
   pname = "riff";
-  version = "2.23.0";
+  version = "2.23.2";
 
   src = fetchFromGitHub {
     owner = "walles";
     repo = pname;
     rev = version;
-    sha256 = "011by3yhc7lq2fm4jaacaknyi1n3wbhc7s8mxjsk3zmd11pla19n";
+    sha256 = "1samcsnpzhnvyg8dd97pswsrpaf6hmh5lgrjp2d8ngrnq9n92r30";
   };
 
-  cargoHash  = "sha256-IDhRpmCc/QItq0dynHm3GA2xIwCQhsqd1Vcxx9MbcV4=";
+  cargoHash  = "sha256-oNZFVLh7avEhwaVGFsdES/CcCuQKsCC+1f8iuqLg6KM=";
 
   buildInputs = [
     # diffutils

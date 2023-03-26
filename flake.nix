@@ -91,7 +91,7 @@
         self.overlay
 
         nur.overlay
-        sops-nix.overlay
+        sops-nix.overlays.default
       ];
 
       hostDefaults.modules = [

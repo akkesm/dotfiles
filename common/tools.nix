@@ -50,12 +50,22 @@
     tmux = {
       enable = true;
       clock24 = true;
+
+      extraConfig = ''
+        set -g @sidebar-tree-command 'exa --tree --level 2 --all --group-directories-first --noicons'
+      '';
+
       keyMode = "vi";
-      newSession = true;
 
       plugins = with pkgs.tmuxPlugins; [
+        fuzzback
+        nord
         resurrect
         sidebar
+        tmux-fzf
+        tmux-thumbs
+        urlview
+        # yank
       ];
 
       terminal = "screen-256color";

@@ -240,9 +240,10 @@
       enable = true;
       clock24 = true;
       keyMode = "vi";
-      newSession = true;
+      mouse = true;
 
       plugins = with pkgs.tmuxPlugins; [
+        fuzzback
         nord
         resurrect
 
@@ -252,9 +253,15 @@
             set -g @sidebar-tree-command 'exa --tree --level 2 --all --group-directories-first --noicons'
           '';
         }
+
+        tmux-fzf
+        tmux-thumbs
+        urlview
+        # yank
       ];
 
       shell = "${pkgs.zsh}/bin/zsh";
+      terminal = "screen-256color";
     };
 
     direnv = {

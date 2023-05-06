@@ -140,6 +140,7 @@
         ];
 
         # nix build --impure .#nixosConfigurations.live.config.system.build.isoImage
+        live.channelName = "nixpkgs";
         live.modules = [
           ./hosts/live
           {

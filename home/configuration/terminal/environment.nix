@@ -240,7 +240,7 @@
       enable = true;
       clock24 = true;
       keyMode = "vi";
-      mouse = true;
+      # mouse = true; TODO: reenable in 23.05
 
       plugins = with pkgs.tmuxPlugins; [
         fuzzback

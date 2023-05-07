@@ -1,4 +1,4 @@
-{ modulesPath, ... }:
+{ modulesPath, pkgs, ... }:
 
 {
   imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
@@ -15,6 +15,8 @@
 
     supportedFilesystems = [ "btrfs" ];
   };
+
+  environment.systemPackages = [ pkgs.duperemove ];
 
   fileSystems = {
     "/" = {

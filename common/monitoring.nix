@@ -3,7 +3,7 @@
 {
   environment.systemPackages = (with config.boot.kernelPackages; [
     bpftrace
-    perf
+    # perf
   ]) ++ (with pkgs; [
     bottom
     dig
@@ -28,7 +28,7 @@
 
     bcc.enable = true;
     mtr.enable = true;
-    sysdig.enable = true;
+    # sysdig.enable = true;
     traceroute.enable = true;
     wireshark.enable = true;
     zmap.enable = true;

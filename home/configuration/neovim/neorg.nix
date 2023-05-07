@@ -9,10 +9,12 @@
         require('neorg').setup {
           load = {
             ['core.defaults'] = {},
-            ['core.norg.esupports.metagen'] = { config = { type = 'auto' } },
-            ['core.integrations.telescope'] = {},
+
+            ['core.norg.concealer'] = { config = { folds = false } },
+            ['core.norg.esupports.metagen'] = { config = { type = 'empty' } },
+            ['core.export'] = {},
+            ['core.export.markdown'] = { config = { extensions = 'all' } },
             ['core.integrations.treesitter'] = {},
-            ['core.norg.concealer'] = {},
 
             ['core.norg.dirman'] = {
               config = {
@@ -21,6 +23,9 @@
                 ['workspaces.uni'] = "${config.xdg.userDirs.documents}/UNI/notes",
               },
             },
+
+            -- External modules
+            ['core.integrations.telescope'] = {},
           },
 
           ['logger.use_file'] = true,

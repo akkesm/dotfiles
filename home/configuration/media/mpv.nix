@@ -24,7 +24,8 @@
         hwdec = "vaapi";
         gpu-context = "wayland";
         ao = "pipewire,";
-        vo = "dmabuf-wayland";
+        # vo = "dmabuf-wayland";
+        vo = "gpu";
       };
     };
 

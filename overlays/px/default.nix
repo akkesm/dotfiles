@@ -10,13 +10,13 @@
 
 buildPythonApplication rec {
   pname = "px";
-  version = "3.2.0";
+  version = "3.3.1";
 
   src = fetchFromGitHub {
     owner = "walles";
     repo = pname;
     rev = version;
-    sha256 = "09lrk630yxd6jq2kz4sa4wpp8ffg93mdndp6ml37n36nmr9myk51";
+    sha256 = "0l4wzzicarqpdnnsrc73fh52pllx35r0kv47cxkgznkwm0bjw60s";
   };
 
   nativeBuildInputs = [

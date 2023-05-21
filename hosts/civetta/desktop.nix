@@ -22,4 +22,15 @@
   };
 
   security.pam.services.swaylock = { };
+
+  containers.postgres = {
+    config = { lib, pkgs, ... }: {
+      services.postgresql = {
+        enable = true;
+        package = pkgs.postgresql_15;
+      };
+
+      system.stateVersion = "22.11";
+    };
+  };
 }

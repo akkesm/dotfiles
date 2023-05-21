@@ -1,6 +1,8 @@
 { config, pkgs, ... }:
 
 {
+  boot.kernelPackages = pkgs.zfs.latestCompatibleLinuxPackages;
+
   xdg.portal = {
     enable = true;
 

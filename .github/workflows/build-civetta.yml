@@ -27,7 +27,7 @@ jobs:
       #     sudo rm -rf "/usr/local/share/boost"
       #     sudo rm -rf "$AGENT_TOOLSDIRECTORY"
       - uses: actions/checkout@v3.5.2
-      - uses: cachix/install-nix-action@v20
+      - uses: cachix/install-nix-action@v21
         with:
           nix_path: nixpkgs = nixpkgs:channel:nixos-unstable
           extra_nix_config: experimental-features = flakes nix-command recursive-nix

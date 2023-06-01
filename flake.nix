@@ -1,7 +1,7 @@
 {
   inputs = {
     # Channels
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.05";
     nur.url = "github:nix-community/NUR";
     # nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
 
@@ -145,7 +145,7 @@
           ./hosts/live
           {
             imports = [
-              (channels."${hosts.live.channelName}".input + "/nixos/modules/installer/cd-dvd/installation-cd-minimal-new-kernel.nix")
+              (channels."${hosts.live.channelName}".input + "/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix")
               (channels."${hosts.live.channelName}".input + "/nixos/modules/installer/cd-dvd/channel.nix")
             ];
           }

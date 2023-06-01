@@ -30,6 +30,7 @@
     mtr.enable = true;
     # sysdig.enable = true;
     traceroute.enable = true;
+    trippy.enable = true;
     wireshark.enable = true;
     zmap.enable = true;
   };

@@ -36,6 +36,7 @@
     pciutils
     sysstat
     tcpdump
+    trippy
     usbutils
     whois
 

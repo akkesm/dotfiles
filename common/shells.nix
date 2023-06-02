@@ -30,6 +30,7 @@
     '';
 
     zsh = {
+      enable = true;
       enableBashCompletion = true;
       enableCompletion = true;
 

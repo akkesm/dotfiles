@@ -3,7 +3,7 @@
 {
   services.openssh = {
     enable = true;
-    settings.passwordAuthentication = false;
+    settings.PasswordAuthentication = false;
     startWhenNeeded = true;
   };
 

@@ -22,7 +22,7 @@
       umount /mnt
     '';
 
-    tmpOnTmpfs = true;
+    tmp.useTmpfs = true;
   };
 
   environment = {

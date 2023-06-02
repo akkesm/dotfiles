@@ -5,12 +5,10 @@ let
     #!/bin/sh
     [ -x haskell-language-server ] && haskell-language-server "$@" || haskell-language-server-wrapper "$@"
   '';
-
-  elixir_ls_1_14 = pkgs.elixir_ls.override { elixir = pkgs.elixir_1_14; };
 in
 {
   programs.neovim = {
-    extraLuaPackages = with pkgs.lua51Packages; [ lua-lsp ];
+    extraLuaPackages = ps: [ ps.lua-lsp ];
 
     extraPackages = (with pkgs; [
       # coq
@@ -19,7 +17,7 @@ in
 
       # LSP servers
       ccls
-      elixir_ls_1_14
+      elixir-ls
       gopls
       # haskellPackages.haskell-language-server # Provided per-project
       jdt-language-server
@@ -149,7 +147,7 @@ in
           })
 
           lspconfig.elixirls.setup(coq.lsp_ensure_capabilities {
-            cmd = { '${elixir_ls_1_14}/bin/elixir-ls' },
+            cmd = { '${pkgs.elixir-ls}/bin/elixir-ls' },
             root_dir = lspconfig.util.root_pattern('mix.exs', '.git', 'flake.nix') or lspconfig.util.path.dirname
           })
 

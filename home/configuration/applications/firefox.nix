@@ -5,22 +5,6 @@
     enable = true;
     package = pkgs.firefox-wayland;
 
-    extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-      bypass-paywalls-clean
-      facebook-container
-      flagfox
-      gopass-bridge
-      kristofferhagen-nord-theme
-      octolinker
-      octotree
-      # plasma-integration
-      reddit-enhancement-suite
-      refined-github
-      return-youtube-dislikes
-      sourcegraph
-      ublock-origin
-    ];
-
     # There is a bug with RES in Firefox in Wayland? Sway? tiling WMs?
     # that doesn't display the popup window to grant permissions.
     # To solve:
@@ -30,7 +14,24 @@
     # https://reddit.com/r/RESissues/comments/pje3x2/expandos_in_linuxwaylandfirefox_permissions/hcn7mx5/
 
     profiles."main" = {
+      extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+        bypass-paywalls-clean
+        facebook-container
+        flagfox
+        gopass-bridge
+        kristofferhagen-nord-theme
+        octolinker
+        octotree
+        # plasma-integration
+        reddit-enhancement-suite
+        refined-github
+        return-youtube-dislikes
+        sourcegraph
+        ublock-origin
+      ];
+
       id = 0;
+
       settings = {
         # Misc
         "accessibility.blockautorefresh" = true;

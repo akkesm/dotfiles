@@ -3,9 +3,11 @@
 {
   environment.systemPackages = (with config.boot.kernelPackages; [
     bpftrace
+    cpupower
     # perf
   ]) ++ (with pkgs; [
     bottom
+    btop
     dig
     duf
     libva-utils
@@ -14,6 +16,7 @@
     nettools
     nmap
     pciutils
+    smartmontools
     sysstat
     tcpdump
     usbutils

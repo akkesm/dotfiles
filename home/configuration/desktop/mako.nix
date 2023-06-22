@@ -1,7 +1,7 @@
 { config, ... }:
 
 {
-  programs.mako = {
+  services.mako = {
     enable = true;
     anchor = "bottom-right";
     backgroundColor = "#3b4252";

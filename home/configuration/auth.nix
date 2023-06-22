@@ -1,6 +1,8 @@
 { config, lib, pkgs, ... }:
 
 {
+  pam.yubico.authorizedYubiKeys.ids = [ "ccccccuntbre" ];
+
   programs = {
     git = {
       enable = true;

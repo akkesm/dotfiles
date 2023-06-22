@@ -10,13 +10,13 @@
           load = {
             ['core.defaults'] = {},
 
-            ['core.norg.concealer'] = { config = { folds = false } },
-            ['core.norg.esupports.metagen'] = { config = { type = 'empty' } },
+            ['core.concealer'] = { config = { folds = false } },
+            ['core.esupports.metagen'] = { config = { type = 'empty' } },
             ['core.export'] = {},
             ['core.export.markdown'] = { config = { extensions = 'all' } },
             ['core.integrations.treesitter'] = {},
 
-            ['core.norg.dirman'] = {
+            ['core.dirman'] = {
               config = {
                 autodetect = true,
                 autochdir = true,

@@ -8,8 +8,6 @@ let
 in
 {
   programs.neovim = {
-    extraLuaPackages = ps: [ ps.lua-lsp ];
-
     extraPackages = (with pkgs; [
       # coq
       sqlite
@@ -21,13 +19,13 @@ in
       gopls
       # haskellPackages.haskell-language-server # Provided per-project
       jdt-language-server
+      lua-language-server
       nimlsp
       perlPackages.PLS
       rnix-lsp
       scry
       solargraph # provide rubocop per-project
       sqls
-      sumneko-lua-language-server
       texlab
       zls
     ]) ++ (with pkgs.nodePackages; [
@@ -201,12 +199,7 @@ in
 
           lspconfig.sqls.setup(coq.lsp_ensure_capabilities {})
 
-          lspconfig.sumneko_lua.setup(coq.lsp_ensure_capabilities {
-            cmd = {
-              "${pkgs.sumneko-lua-language-server}/bin/lua-language-server",
-              '-E',
-              "${pkgs.sumneko-lua-language-server}/extras/main.lua",
-            },
+          lspconfig.lua_ls.setup(coq.lsp_ensure_capabilities {
             settings = {
               Lua = {
                 runtime = {
@@ -215,11 +208,7 @@ in
                 },
 
                 ['diagnostics.globals'] = { 'vim' },
-
-                ['workspace.library'] = {
-                    [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-                    [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
-                },
+                ['workspace.library'] = vim.api.nvim_get_runtime_file("", true),
                 ['telemetry.enable'] = false,
               },
             },

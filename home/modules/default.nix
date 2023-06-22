@@ -2,7 +2,8 @@
 
 {
   imports = [
-    ./theming/fonts.nix
+    ./fonts.nix
     ./gopass.nix
+    ./herbe.nix
   ];
 }

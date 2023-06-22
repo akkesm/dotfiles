@@ -22,6 +22,7 @@
   };
 
   security.pam.services.swaylock = { };
+  services.udisks2.enable = true;
 
   containers.postgres = {
     config = { lib, pkgs, ... }: {

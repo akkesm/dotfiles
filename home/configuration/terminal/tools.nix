@@ -23,10 +23,10 @@
     silent
     strace
     unzip
+    wakeonlan
     wget
     zip
 
-    bottom
     dig
     duf
     lshw
@@ -42,6 +42,7 @@
 
     yubikey-manager-qt
     yubikey-personalization
+    yubioath-flutter
   ];
 
   programs = {
@@ -50,6 +51,17 @@
       config = {
         pager = "less";
         theme = "Nord";
+      };
+    };
+
+    bottom.enable = true;
+
+    btop = {
+      enable = true;
+
+      settings = {
+        color_theme = "nord";
+        vim_keys = true;
       };
     };
 

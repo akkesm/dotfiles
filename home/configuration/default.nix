@@ -13,6 +13,7 @@
     ./kitty.nix
     ./media
     ./neovim
+    ./peripherals.nix
     ./qt.nix
     ./terminal
     ./zsh

@@ -15,7 +15,6 @@ stdenv.mkDerivation rec {
     runHook preInstall
 
     mkdir -p $out/share/icons
-    ls -l
     cp -r Nordzy-cursors $out/share/icons
     cp -r Nordzy-cursors-white $out/share/icons
 

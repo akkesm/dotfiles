@@ -20,9 +20,9 @@ in
       # haskellPackages.haskell-language-server # Provided per-project
       jdt-language-server
       lua-language-server
+      nil
       nimlsp
       perlPackages.PLS
-      rnix-lsp
       scry
       solargraph # provide rubocop per-project
       sqls
@@ -187,7 +187,12 @@ in
           lspconfig.perlpls.setup(coq.lsp_ensure_capabilities {})
           lspconfig.purescriptls.setup(coq.lsp_ensure_capabilities {})
           lspconfig.pyright.setup(coq.lsp_ensure_capabilities {})
-          lspconfig.rnix.setup(coq.lsp_ensure_capabilities {})
+
+          lspconfig.nil_ls.setup(coq.lsp_ensure_capabilities {
+            settings = { ['nil'] = {
+                formatting = { command = { 'nixpkgs-fmt' } }
+            }}
+          })
 
           lspconfig.scry.setup(coq.lsp_ensure_capabilities {
             root_dir = lspconfig.util.root_pattern('shard.yml', '.git', 'flake.nix') or lspconfig.util.path.dirname

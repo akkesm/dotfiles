@@ -7,11 +7,10 @@
   };
 
   networking = {
-    enableIPv6 = false; # FIXME bugs eduroam
-    firewall.allowPing = false;
     hostName = "civetta";
     interfaces.wlp1s0.useDHCP = true;
     useDHCP = false;
+    useNetworkd = true;
 
     wireless = {
       environmentFile = config.sops.secrets.environmentFile.path;

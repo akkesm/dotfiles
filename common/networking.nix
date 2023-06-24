@@ -3,14 +3,15 @@
 {
   networking = {
     dhcpcd.enable = false;
-    firewall.package = pkgs.iptables-nftables-compat;
+    firewall = {
+      package = pkgs.iptables-nftables-compat;
+      allowPing = false;
+    };
 
     hosts = {
       "::1" = [ "localhost" ];
       "192.168.178.1" = [ "lanlocalhost" "router" ];
     };
-
-    useNetworkd = true;
 
     wireless = {
       enable = true;

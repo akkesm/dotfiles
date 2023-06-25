@@ -179,7 +179,7 @@
       };
       overlays = flake-utils-plus.lib.exportOverlays { inherit (self) pkgs inputs; };
 
-      outputsBuilder = channels: rec {
+      outputsBuilder = channels: {
         packages = flake-utils-plus.lib.exportPackages self.overlays channels;
 
         devShells = import ./shells { pkgs = self.pkgs.x86_64-linux.nixpkgs; };

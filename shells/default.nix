@@ -4,7 +4,7 @@ let
   inherit (pkgs) callPackage;
 in
 rec {
-  default = sops;
-  sops = callPackage ./sops { };
+  default = dotfiles;
+  dotfiles = callPackage ./dotfiles { };
   nconfig-latest = callPackage ./nconfig-latest { };
 }

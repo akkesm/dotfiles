@@ -1,4 +1,5 @@
 { mkShell
+, deploy-rs
 , nixpkgs-fmt
 , sops
 , ssh-to-pgp
@@ -7,9 +8,10 @@
 }:
 
 mkShell {
-  name = "sops-nix-secret-management";
+  name = "Manage dotfiles";
 
   packages = [
+    deploy-rs
     nixpkgs-fmt
     sops
     ssh-to-pgp

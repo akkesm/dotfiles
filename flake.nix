@@ -7,6 +7,7 @@
 
     # Helpers
     flake-utils-plus.url = "github:gytis-ivaskevicius/flake-utils-plus";
+    deploy-rs.url = "github:serokell/deploy-rs";
 
     # luks-yk = {
     #   url = "github:akkesm/luks-yk";
@@ -62,8 +63,9 @@
     { self
     , nixpkgs
     , nur
-    # , nixpkgs-wayland
+      # , nixpkgs-wayland
     , flake-utils-plus
+    , deploy-rs
     , home-manager
     , nixos-wsl
     , sops-nix
@@ -121,7 +123,12 @@
           {
             wsl = {
               enable = true;
-              automountPath = "/mnt";
+
+              wslConf = {
+                automount.root = "/mnt";
+                network.generateResolvConf = false;
+              };
+
               defaultUser = "alessandro";
               startMenuLaunchers = true;
             };
@@ -182,5 +189,21 @@
         path = ./templates/default;
         description = "Default flake template";
       };
+
+      deploy.nodes = {
+        media = {
+          hostname = "192.168.178.3";
+
+          profiles = {
+            system = {
+              sshUser = "root";
+              path = inputs.deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.media;
+              user = "root";
+            };
+          };
+        };
+      };
+
+      checks = builtins.mapAttrs (system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
     };
 }

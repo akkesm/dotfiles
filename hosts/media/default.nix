@@ -1,10 +1,11 @@
-{ config, ... }:
+{ ... }:
 
 {
   imports = [
     ./hardware.nix
     # ./navidrome.nix
     ./networking.nix
+    ./nginx.nix
     ./transmission.nix
     ./users.nix
     # ./vaultwarden.nix

@@ -1,12 +1,15 @@
-{ config, lib, pkgs, ... }:
+{ ... }:
 
 {
-  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" "sdhci_pci" ];
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-intel" ];
-  boot.extraModulePackages = [ ];
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot = {
+    initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" "sdhci_pci" ];
+    kernelModules = [ "kvm-intel" ];
+
+    loader = {
+      systemd-boot.enable = true;
+      efi.canTouchEfiVariables = true;
+    };
+  };
 
   fileSystems = {
     "/" =
@@ -21,6 +24,20 @@
         device = "/dev/disk/by-uuid/c3e8e9e9-17a4-4e01-9f7d-3b80f9c3790f";
         fsType = "btrfs";
         options = [ "compress=zstd" "subvol=dataroot" ];
+      };
+
+    "/var/lib/lidarr" =
+      {
+        device = "/dev/disk/by-uuid/c3e8e9e9-17a4-4e01-9f7d-3b80f9c3790f";
+        fsType = "btrfs";
+        options = [ "compress=zstd" "subvol=var/lib/lidarr" ];
+      };
+
+    "/var/lib/prowlarr" =
+      {
+        device = "/dev/disk/by-uuid/c3e8e9e9-17a4-4e01-9f7d-3b80f9c3790f";
+        fsType = "btrfs";
+        options = [ "compress=zstd" "subvol=var/lib/prowlarr" ];
       };
 
     "/var/lib/transmission/.incomplete" =

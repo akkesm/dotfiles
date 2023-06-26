@@ -16,7 +16,6 @@
     gwenview
     simple-scan
     teams
-    transmission-gtk
 
     # Chat
     element-desktop

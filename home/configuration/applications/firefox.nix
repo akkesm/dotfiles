@@ -31,7 +31,11 @@
       ];
 
       id = 0;
-      search.default = "DuckDuckGo";
+
+      search = {
+        default = "DuckDuckGo";
+        force = true;
+      };
 
       settings = {
         # Misc

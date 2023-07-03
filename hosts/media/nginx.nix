@@ -8,5 +8,6 @@
     recommendedGzipSettings = true;
     recommendedOptimisation = true;
     recommendedProxySettings = true;
+    statusPage = true;
   };
 }

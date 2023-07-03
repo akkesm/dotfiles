@@ -14,6 +14,7 @@
       ];
 
       isNormalUser = true;
+      passwordFile = config.sops.secrets.password-alessandro.path;
       useDefaultShell = true;
     };
   };
@@ -27,6 +28,22 @@
       '';
 
       wheelNeedsPassword = false;
+    };
+  };
+
+  sops.secrets = {
+    # Add users to "keys" group
+    password-alessandro = {
+      format = "yaml";
+      neededForUsers = true;
+      sopsFile = ../civetta/secrets/passwords.yaml;
+    };
+
+    config-cachix = {
+      format = "yaml";
+      owner = config.users.users.alessandro.name;
+      path = "${config.users.users.alessandro.home}/.config/cachix/cachix.dhall";
+      sopsFile = ../civetta/secrets/cachix.yaml;
     };
   };
 }

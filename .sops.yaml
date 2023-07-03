@@ -1,12 +1,15 @@
 keys:
   - &yubikey 50E2669CAB382F4A5F7216670D6BFC01D45EDADD
   - &civetta age1sqfav42073wealrhgd60x66qsradvswxyyzktdu408xjj7zwcf3scnmleu
+  - &media age1z56l3j7a66vf7hfmem4jge20s4l3ktsr4gjslplnxcxt20cnscvsjtpt53
 creation_rules:
   - path_regex: hosts/civetta/secrets/.+
     key_groups:
     - age:
       - *civetta
+      - *media
   - path_regex: common/secrets/.+
     key_groups:
     - age:
       - *civetta
+      - *media

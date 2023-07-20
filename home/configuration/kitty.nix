@@ -77,10 +77,10 @@
       };
     };
 
-    zsh.shellGlobalAliases = { ssh = "kitty +kitten ssh"; };
+    zsh.shellAliases = { ssh = "kitty +kitten ssh"; };
   };
   # services.xdg = {
-  # configFile = 
+  # configFile =
   #   let
   #     kitty-neighboring_window-py = builtins.fetchurl "https://raw.githubusercontent.com/knubie/vim-kitty-navigator/master/neighboring_window.py";
   #     kitty-pass_keys-py = builtins.fetchurl "https://raw.githubusercontent.com/knubie/vim-kitty-navigator/master/pass_keys.py";

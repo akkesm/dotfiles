@@ -17,7 +17,6 @@ in
       pytest-runner
       python-dateutil;
   };
-  riff = callPackage ./riff { };
   silent = callPackage ./silent { };
   sway-launcher-desktop = callPackage ./sway-launcher-desktop { };
   sway-prop = callPackage ./sway-prop { };

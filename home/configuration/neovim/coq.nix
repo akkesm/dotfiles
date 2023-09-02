@@ -26,6 +26,7 @@ in
       scry
       solargraph # provide rubocop per-project
       sqls
+      terraform-ls
       texlab
       zls
     ]) ++ (with pkgs.nodePackages; [
@@ -218,6 +219,8 @@ in
               },
             },
           })
+
+          lspconfig.terraformls.setup(coq.lsp_ensure_capabilities {})
 
           lspconfig.texlab.setup(coq.lsp_ensure_capabilities { ['settings.latex.lint.onchange'] = true })
 

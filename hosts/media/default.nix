@@ -3,7 +3,7 @@
 {
   imports = [
     ./hardware.nix
-    # ./navidrome.nix
+    ./navidrome.nix
     ./networking.nix
     ./nginx.nix
     ./monitoring.nix

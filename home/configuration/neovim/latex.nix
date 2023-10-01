@@ -6,6 +6,7 @@
       biber
       neovim-remote
       zathura
+      xdotool
     ];
 
     plugins = with pkgs.vimPlugins; [

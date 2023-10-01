@@ -1,11 +1,15 @@
-{ config, lib, pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   imports = [
-    ./coq.nix
+    # ./coq.nix
+    ./lsp
     ./latex.nix
     ./mini.nix
     ./neorg.nix
+    ./nnn.nix
+    ./nvim-autopairs.nix
+    ./nvim-surround.nix
     ./telescope.nix
     ./treesitter.nix
     ./vim-markdown-composer.nix

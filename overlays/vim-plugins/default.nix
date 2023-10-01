@@ -22,6 +22,12 @@ in
     src = inputs.neorg-telescope;
   };
 
+  nnn-nvim = vimUtils.buildVimPluginFrom2Nix {
+    pname = "nnn-nvim";
+    version = genDateVersion inputs.neorg-telescope;
+    src = inputs.nnn-nvim;
+  };
+
   vim-latex = {
     pname = "vim-latex";
     version = genDateVersion inputs.vim-latex;

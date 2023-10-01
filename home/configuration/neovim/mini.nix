@@ -6,7 +6,7 @@
       plugin = gitsigns-nvim;
       type = "lua";
       config = ''
-        require('gitsigns').setup()
+        require('gitsigns').setup {}
       '';
     }
 
@@ -14,7 +14,7 @@
       plugin = mini-nvim;
       type = "lua";
       config = ''
-        require('mini.ai').setup()
+        require('mini.ai').setup {}
 
         require('mini.base16').setup {
           palette = {
@@ -37,14 +37,15 @@
           }
         }
 
-        require('mini.comment').setup()
-        require('mini.jump').setup()
-        require('mini.jump2d').setup()
-        require('mini.pairs').setup()
+        require('mini.bracketed').setup {}
+        require('mini.bufremove').setup {}
+        require('mini.comment').setup {}
+        require('mini.jump').setup {}
+        require('mini.jump2d').setup {}
+        require('mini.pairs').setup {}
         require('mini.statusline').setup { set_vim_settings = false }
-        require('mini.surround').setup()
-        require('mini.tabline').setup()
-        require('mini.trailspace').setup()
+        require('mini.splitjoin').setup {}
+        require('mini.trailspace').setup {}
         '';
     }
   ];

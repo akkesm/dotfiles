@@ -37,6 +37,10 @@
       url = "github:nvim-neorg/neorg-telescope";
       flake = false;
     };
+    nnn-nvim = {
+      url = "github:luukvbaal/nnn.nvim";
+      flake = false;
+    };
     vim-latex = {
       url = "github:vim-latex/vim-latex";
       flake = false;
@@ -70,6 +74,7 @@
     , nixos-wsl
     , sops-nix
     , impermanence
+    , nixd
     , ...
     }@inputs:
     let

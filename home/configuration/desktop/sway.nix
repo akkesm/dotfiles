@@ -102,6 +102,7 @@
         };
 
         "type:touchpad" = {
+          click_method = "clickfinger";
           tap = "enabled";
           tap_button_map = "lrm";
         };
@@ -126,11 +127,7 @@
         "233" = "exec ${pkgs.brightnessctl}/bin/brightnessctl set +2%";
       };
 
-      output = {
-        "*" = {
-          background = "${../../..}/static/wallpaperNordNixLogo.png fill";
-        };
-      };
+      output."*".background = "${../../..}/static/wallpaperNordNixLogo.png fill";
 
       seat = {
         "seat0" = {
@@ -165,6 +162,11 @@
         }
       ];
     };
+
+    extraConfig = ''
+      bindswitch lid:on output HDMI-A-1 enable
+      bindswitch lid:off output HDMI-A-1 disable
+    '';
 
     systemdIntegration = true;
     wrapperFeatures.gtk = true;

@@ -11,13 +11,13 @@
 
 stdenv.mkDerivation rec {
   pname = "sway-launcher-desktop";
-  version = "1.6.0";
+  version = "1.7.0";
 
   src = fetchFromGitHub {
     owner = "Biont";
     repo = pname;
     rev = "v${version}";
-    sha256 = "1j3c0z709s5p68am87rjnhaac6x4mvfcpyd6dx7vzsg3g8ar888w";
+    sha256 = "0vphplphxfbdiwq0yk8ph7zlwlnghisnbwqjx7k9h93cy8n4rzcn";
   };
 
   buildInputs = [

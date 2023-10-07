@@ -74,7 +74,6 @@
     , nixos-wsl
     , sops-nix
     , impermanence
-    , nixd
     , ...
     }@inputs:
     let

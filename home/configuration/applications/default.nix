@@ -15,7 +15,7 @@
     gimp
     gwenview
     simple-scan
-    teams
+    teams-for-linux
 
     # Chat
     element-desktop

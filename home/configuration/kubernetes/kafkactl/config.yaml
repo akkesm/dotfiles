@@ -1,0 +1,21 @@
+contexts:
+  default:
+    brokers:
+      - localhost:9094
+      - kafka:9095
+
+    sasl:
+      enabled: true
+      username: user1
+      password: z81k6uyxkl
+
+    kubernetes:
+      enabled: false
+      binary: kubectl
+      kubeConfig: /etc/rancher/k3s/k3s.yaml
+      kubeContext: default
+      namespace: brokers
+
+    kafkaVersion: 3.6.0
+
+current-context: default

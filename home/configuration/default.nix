@@ -11,6 +11,7 @@
     ./gopass.nix
     ./gtk.nix
     ./kitty.nix
+    ./kubernetes
     ./media
     ./neovim
     ./peripherals.nix

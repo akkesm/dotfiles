@@ -1,0 +1,8 @@
+{ ... }:
+
+{
+  imports = [
+    ./kafkactl
+    ./nats.nix
+  ];
+}

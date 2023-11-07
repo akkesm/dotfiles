@@ -1,0 +1,21 @@
+apiVersion: helm.cattle.io/v1
+kind: HelmChart
+metadata:
+  name: vault
+  namespace: kube-system
+spec:
+  repo: https://helm.releases.hashicorp.com
+  chart: vault
+  targetNamespace: security
+  createNamespace: true
+  valuesContent: |-
+    global:
+      enabled: true
+    server:
+      enabled: true
+      standalone:
+        enabled:
+          true
+    ui:
+      enabled: true
+      serviceType: LoadBalancer

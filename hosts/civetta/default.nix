@@ -10,6 +10,7 @@
     ./filesystem.nix
     ./greetd.nix
     ./kernel.nix
+    ./kubernetes
     ./luks.nix
     ./networking.nix
     ./persistence.nix

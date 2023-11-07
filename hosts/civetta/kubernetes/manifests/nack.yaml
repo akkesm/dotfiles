@@ -1,0 +1,27 @@
+apiVersion: helm.cattle.io/v1
+kind: HelmChart
+metadata:
+  name: nack
+  namespace: kube-system
+spec:
+  repo: https://nats-io.github.io/k8s/helm/charts
+  chart: nack
+  targetNamespace: brokers
+  createNamespace: true
+  valuesContent: |-
+   jetstream:
+    enabled: true
+    nats:
+      url: nats://nats:4222
+---
+apiVersion: jetstream.nats.io/v1beta2
+kind: Stream
+metadata:
+  name: custom
+  namespace: brokers
+spec:
+  name: CUSTOM
+  subjects:
+    - "custom.>"
+  retention: workqueue
+  storage: file

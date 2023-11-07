@@ -1,0 +1,22 @@
+apiVersion: helm.cattle.io/v1
+kind: HelmChart
+metadata:
+  name: nats
+  namespace: kube-system
+spec:
+  repo: https://nats-io.github.io/k8s/helm/charts
+  chart: nats
+  targetNamespace: brokers
+  createNamespace: true
+  valuesContent: |-
+    config:
+      jetstream:
+        enabled: true
+        memoryStore:
+          enable: true
+    service:
+      merge:
+        spec:
+          type: LoadBalancer
+    natsBox:
+      enabled: false

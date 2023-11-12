@@ -1,6 +1,9 @@
 { ... }:
 
 {
+  # Enable for amd-pstate
+  # boot.kernelParams = [ "initcall_blacklist=acpi_cpufreq_init" ];
+
   services = {
     tlp = {
       enable = true;
@@ -8,18 +11,19 @@
         SOUND_POWER_SAVE_ON_AC = 0;
         SOUND_POWER_SAVE_ON_BAT = 10;
         SOUND_POWER_SAVE_CONTROLLER = "Y";
-        START_CHARGE_THRESH_BAT0 = 60;
+        START_CHARGE_THRESH_BAT0 = 20;
         STOP_CHARGE_THRESH_BAT0 = 85;
+        DISK_APM_LEVEL_ON_AC = "keep keep";
+        DISK_APM_LEVEL_ON_BAT = "keep keep";
         DISK_IOSCHED = "keep keep";
         WIFI_PWR_ON_BAT = "off";
         WOL_DISABLE = "N";
-        CPU_SCALING_GOVERNOR_ON_AC = "schedutil";
+        # Enable for amd-pstate
+        # CPU_DRIVER_OPMODE_ON_AC = "active";
+        # CPU_DRIVER_OPMODE_ON_BAT = "guided";
+        CPU_SCALING_GOVERNOR_ON_AC = "schedutil"; # Change to "powersave with amd-pstate"
         CPU_SCALING_GOVERNOR_ON_BAT = "schedutil";
-        CPU_SCALING_MIN_FREQ_ON_AC = 1400000;
-        CPU_SCALING_MAX_FREQ_ON_AC = 2900000;
-        CPU_SCALING_MIN_FREQ_ON_BAT = 1400000;
-        CPU_SCALING_MAX_FREQ_ON_BAT = 2900000;
-        DEVICES_TO_DISABLE_ON_STARTUP = "wwan";
+        RESTORE_DEVICE_STATE_ON_STARTUP = 1;
         USB_AUTOSUSPEND = 0;
       };
     };

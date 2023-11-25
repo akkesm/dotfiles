@@ -59,7 +59,6 @@ vim.opt.virtualedit = 'block'
 vim.opt.wildignorecase = true
 
 vim.keymap.set('c', 'ww', 'w !sudo tee % > /dev/null', { noremap = true })
-vim.keymap.set('n', '<Leader>fmt', function() vim.lsp.buf.format { async = true } end, { noremap = true, silent = true })
 vim.keymap.set('n', '<Leader>n', ":noh<CR>", { noremap = true, silent = true })
 
 vim.cmd([[

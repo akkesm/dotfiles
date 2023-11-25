@@ -49,8 +49,14 @@ in
           local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
           lspconfig.bashls.setup { capabilities = capabilities }
-          lspconfig.ccls.setup { capabilities = capabilities }
+          lspconfig.ccls.setup {
+            capabilities = capabilities,
+            root_dir = lspconfig.util.root_pattern('compile_commands.json', '.ccls', '.git', 'Makefile'),
+            single_file_support = true,
+          }
+
           lspconfig.cssls.setup { capabilities = capabilities }
+
           lspconfig.docker_compose_language_service.setup { capabilities = capabilities }
           lspconfig.dockerls.setup { capabilities = capabilities }
 
@@ -110,6 +116,12 @@ in
           lspconfig.tsserver.setup { capabilities = capabilities }
           lspconfig.yamlls.setup { capabilities = capabilities }
           lspconfig.zls.setup { capabilities = capabilities }
+
+
+          vim.keymap.set('n', '<Leader>fmt', function() vim.lsp.buf.format { async = true } end, { noremap = true, silent = true })
+          vim.keymap.set('n', 'gd', function() vim.lsp.buf.definition() end, { noremap = true, silent = true })
+          vim.keymap.set('n', 'gD', function() vim.lsp.buf.declaration() end, { noremap = true, silent = true })
+          vim.keymap.set('n', 'K', function() vim.lsp.buf.hover() end, { noremap = true, silent = true })
         '';
       }
 

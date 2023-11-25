@@ -51,13 +51,20 @@ in
           lspconfig.bashls.setup { capabilities = capabilities }
           lspconfig.ccls.setup {
             capabilities = capabilities,
-            root_dir = lspconfig.util.root_pattern('compile_commands.json', '.ccls', '.git', 'Makefile'),
+            root_dir = lspconfig.util.root_pattern('compile_commands.json', '.ccls', '.git', 'Makefile', 'flake.nix'),
             single_file_support = true,
           }
 
           lspconfig.cssls.setup { capabilities = capabilities }
 
-          lspconfig.docker_compose_language_service.setup { capabilities = capabilities }
+          lspconfig.docker_compose_language_service.setup {
+            capabilities = capabilities,
+            filetypes = {
+              'yaml',
+              'yaml.docker-compose',
+            },
+          }
+
           lspconfig.dockerls.setup { capabilities = capabilities }
 
           lspconfig.elixirls.setup {
@@ -70,7 +77,7 @@ in
           lspconfig.hls.setup {
               capabilities = capabilities,
               cmd = { '${hls-cmd}', '--lsp' },
-              setting = { haskell = { formattingProvider = "fourmolu" } }
+              setting = { haskell = { formattingProvider = 'fourmolu' } },
           }
 
           lspconfig.html.setup {
@@ -82,7 +89,7 @@ in
 
           lspconfig.jsonls.setup {
             capabilities = capabilities,
-            cmd = { '${pkgs.nodePackages.vscode-json-languageserver-bin}/bin/json-languageserver', '--stdio' }
+            cmd = { '${pkgs.nodePackages.vscode-json-languageserver-bin}/bin/json-languageserver', '--stdio' },
           }
 
           lspconfig.lua_ls.setup {
@@ -92,20 +99,20 @@ in
               if not vim.loop.fs_stat(path..'/.luarc.json') and not vim.loop.fs_stat(path..'/.luarc.jsonc') then
                 client.config.settings = vim.tbl_deep_extend('force', client.config.settings.Lua, {
                   runtime = { version = 'LuaJIT' },
-                  workspace = { library = { vim.env.VIMRUNTIME } }
+                  workspace = { library = { vim.env.VIMRUNTIME } },
                 })
 
                 client.notify('workspace/didChangeConfiguration', { settings = client.config.settings })
               end
               return true
-            end
+            end,
           }
 
           lspconfig.marksman.setup { capabilities = capabilities }
 
           lspconfig.nil_ls.setup {
               capabilities = capabilities,
-              settings = { ['nil'] = { formatting = { command = { 'nixpkgs-fmt' } } } }
+              settings = { ['nil'] = { formatting = { command = { 'nixpkgs-fmt' } } } },
           }
 
           lspconfig.nimls.setup { capabilities = capabilities }
@@ -114,7 +121,24 @@ in
           lspconfig.solargraph.setup { capabilities = capabilities }
           lspconfig.terraformls.setup { capabilities = capabilities }
           lspconfig.tsserver.setup { capabilities = capabilities }
-          lspconfig.yamlls.setup { capabilities = capabilities }
+
+          lspconfig.yamlls.setup {
+            capabilities = capabilities,
+            settings = {
+              yaml = {
+                format = {
+                  enable = true,
+                },
+                keyOrdering = false,
+              },
+              redhat = {
+                telemetry = {
+                  enabled = false
+                }
+              },
+            },
+          }
+
           lspconfig.zls.setup { capabilities = capabilities }
 
 

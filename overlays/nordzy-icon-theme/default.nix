@@ -2,13 +2,13 @@
 
 stdenv.mkDerivation rec {
   pname = "nordzy-icon-theme";
-  version = "1.8.5";
+  version = "1.8.6";
 
   src = fetchFromGitHub {
     owner = "alvatip";
     repo = "Nordzy-icon";
     rev = version;
-    sha256 = "0flj8ya0fzf8yhyjhwra9z8bax677pi8knnypmb7xh3byq34xbkr";
+    sha256 = "1wff4k5jmiw9ky87w1jdpxj8vcf8ng7scdms8y9lgvzdlx7yg40h";
   };
 
   nativeBuildInputs = [ gtk3 ];

@@ -6,7 +6,7 @@
     ./firefox.nix
     ./lbry.nix
     # ./packet-tracer.nix
-    ./qutebrowser.nix
+    # ./qutebrowser.nix
   ];
 
   home.packages = with pkgs; [
@@ -23,6 +23,7 @@
 
     # Games
     lutris
+    scarab
     steam
   ];
 }

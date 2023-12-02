@@ -15,6 +15,11 @@
   xdg.portal = {
     enable = true;
 
+    config = {
+      common.default = [ "gtk" ];
+      sway.default = [ "wlr" "gtk" ];
+    };
+
     extraPortals = [
       pkgs.xdg-desktop-portal-gtk
       pkgs.xdg-desktop-portal-kde
@@ -33,7 +38,7 @@
         package = pkgs.postgresql_15;
       };
 
-      system.stateVersion = "23.05";
+      system.stateVersion = "23.11";
     };
   };
 }

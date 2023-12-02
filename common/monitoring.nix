@@ -25,7 +25,7 @@
 
   programs = {
     atop = {
-      enable = true;
+      enable = false;
       setuidWrapper.enable = true;
     };
 

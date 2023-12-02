@@ -86,6 +86,8 @@
           { window_role = "dialog"; }
           { window_role = "pop-up"; }
         ];
+
+        titlebar = false;
       };
 
       fonts = {
@@ -139,28 +141,32 @@
       startup = [{ command = "${pkgs.brightnessctl}/bin/brightnessctl --quiet set 6%"; }];
       terminal = "${pkgs.kitty}/bin/kitty";
 
-      window.commands = [
-        {
-          command = "sticky enable";
-          criteria.class = "^Pinentry$";
-        }
-        {
-          command = "title_format '%title [XWayland]'";
-          criteria.shell = "xwayland";
-        }
-        {
-          command = "sticky enable, resize set 30 ppt 50 ppt";
-          criteria.app_id = "^launcher$";
-        }
-        {
-          command = "sticky enable";
+      window = {
+        commands = [
+          {
+            command = "sticky enable";
+            criteria.class = "^Pinentry$";
+          }
+          {
+            command = "title_format '%title [XWayland]'";
+            criteria.shell = "xwayland";
+          }
+          {
+            command = "sticky enable, resize set 30 ppt 50 ppt";
+            criteria.app_id = "^launcher$";
+          }
+          {
+            command = "sticky enable";
 
-          criteria = {
-            app_id = "firefox";
-            title = "^Picture-in-Picture$";
-          };
-        }
-      ];
+            criteria = {
+              app_id = "firefox";
+              title = "^Picture-in-Picture$";
+            };
+          }
+        ];
+
+        titlebar = false;
+      };
     };
 
     extraConfig = ''
@@ -168,7 +174,7 @@
       bindswitch lid:off output HDMI-A-1 disable
     '';
 
-    systemdIntegration = true;
+    systemd.enable = true;
     wrapperFeatures.gtk = true;
   };
 }

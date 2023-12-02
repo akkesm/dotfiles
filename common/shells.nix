@@ -9,8 +9,8 @@
 
       cdtmp = "cd \"$(mktemp -d)\"";
 
-      ll = "${pkgs.exa}/bin/exa --long --group-directories-first --links --binary --group --time-style long-iso --icons";
-      la = "${pkgs.exa}/bin/exa --long --group-directories-first --links --binary --group --time-style long-iso --icons --all";
+      ll = "${pkgs.eza}/bin/eza --long --group-directories-first --links --binary --group --time-style long-iso --icons";
+      la = "${pkgs.eza}/bin/eza --long --group-directories-first --links --binary --group --time-style long-iso --icons --all";
 
       gits = "${pkgs.git}/bin/git status";
 

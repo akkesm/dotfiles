@@ -14,7 +14,7 @@
       ];
 
       isNormalUser = true;
-      passwordFile = config.sops.secrets.password-alessandro.path;
+      hashedPasswordFile = config.sops.secrets.password-alessandro.path;
       useDefaultShell = true;
     };
   };

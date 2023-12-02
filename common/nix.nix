@@ -24,7 +24,7 @@
         # "https://nixpkgs-wayland.cachix.org"
         "https://akkesm.cachix.org"
         # "https://digitallyinduced.cachix.org"
-       # "https://cache.iog.io"
+        # "https://cache.iog.io"
         # "https://nickel.cachix.org"
         # "https://nixcache.reflex-frp.org"
       ];
@@ -36,7 +36,7 @@
         # "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
         "akkesm.cachix.org-1:9ESYmocqudg/QaRhELpkSWy4LNZbTqDdD2N0zpJP/e8="
         # "digitallyinduced.cachix.org-1:y+wQvrnxQ+PdEsCt91rmvv39qRCYzEgGQaldK26hCKE="
-      # "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ="
+        # "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ="
         # "nickel.cachix.org-1:ABoCOGpTJbAum7U6c+04VbjvLxG9f0gJP5kYihRRdQs="
         # "ryantrinkle.com-1:JJiAKaRv9mWgpVAz8dwewnZe0AzzEAzPkagE9SP5NWI="
       ];
@@ -48,58 +48,51 @@
     };
   };
 
-  nixpkgs = {
-    config = {
-      allowUnfree = true;
-      contentAddressableByDefault = 1;
-    };
+  nixpkgs.overlays = [
+    # Iosevka custom build
+    (final: prev: {
+      iosevka-custom-term-ss04 = prev.iosevka.override {
+        set = "custom-term-ss04";
+        privateBuildPlan = {
+          family = "Iosevka Custom Term";
+          spacing = "term";
+          serifs = "sans";
+          no-cv-ss = false;
+          export-glyph-names = true; # Needed for Kitty
 
-    overlays = [
-      # Iosevka custom build
-      (final: prev: {
-        iosevka-custom-term-ss04 = prev.iosevka.override {
-          set = "custom-term-ss04";
-          privateBuildPlan = {
-            family = "Iosevka Custom Term";
-            spacing = "term";
-            serifs = "sans";
-            no-cv-ss = false;
-            export-glyph-names = true; # Needed for Kitty
+          ligations = {
+            inherits = "dlig";
+          };
 
-            ligations = {
-              inherits = "dlig";
-            };
+          variants = {
+            inherits = "ss04";
 
-            variants = {
-              inherits = "ss04";
-
-              design = {
-                capital-i = "short-serifed";
-                capital-k = "symmetric-touching-serifless";
-                i = "hooky";
-                k = "straight-serifless";
-                r = "compact";
-                y = "straight";
-                capital-gamma = "top-right-serifed";
-                lower-iota = "flat-tailed";
-                lower-lambda = "straight";
-                cyrl-capital-ka = "straight-serifless";
-                cyrl-el = "straight";
-                zero = "dotted";
-                one = "nobase";
-                seven = "curly-serifless";
-                tilde = "low";
-                asterisk = "penta-high";
-                underscore = "high";
-                paragraph-sign = "low";
-                caret = "high";
-                ampersand = "closed";
-                at = "fourfold";
-              };
+            design = {
+              capital-i = "short-serifed";
+              capital-k = "symmetric-touching-serifless";
+              i = "hooky";
+              k = "straight-serifless";
+              r = "compact";
+              y = "straight";
+              capital-gamma = "top-right-serifed";
+              lower-iota = "flat-tailed";
+              lower-lambda = "straight";
+              cyrl-capital-ka = "straight-serifless";
+              cyrl-el = "straight";
+              zero = "dotted";
+              one = "nobase";
+              seven = "curly-serifless";
+              tilde = "low";
+              asterisk = "penta-high";
+              underscore = "high";
+              paragraph-sign = "low";
+              caret = "high";
+              ampersand = "closed";
+              at = "fourfold";
             };
           };
         };
-      })
-    ];
-  };
+      };
+    })
+  ];
 }

@@ -36,15 +36,7 @@
         plugin = indent-blankline-nvim;
         type = "lua";
         config = ''
-          require('indent_blankline').setup {
-            -- char = '⟩',
-            space_char = '·',
-            space_char_blankline = ' ',
-            show_current_context = true,
-            show_end_of_line = false,
-            show_trailing_blankline_indent = false,
-            use_treesitter = true,
-          }
+          require('ibl').setup()
         '';
       }
 

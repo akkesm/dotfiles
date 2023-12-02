@@ -12,7 +12,7 @@
     cachix
     dateutils
     diskus
-    exa
+    eza
     fd
     file
     gdb
@@ -52,7 +52,7 @@
       clock24 = true;
 
       extraConfig = ''
-        set -g @sidebar-tree-command 'exa --tree --level 2 --all --group-directories-first --noicons'
+        set -g @sidebar-tree-command 'eza --tree --level 2 --all --group-directories-first --noicons'
       '';
 
       keyMode = "vi";
@@ -74,9 +74,9 @@
 
   services.locate = {
     enable = true;
+    package = pkgs.plocate;
     interval = "Sat *-*-* 00:00";
     localuser = null;
-    locate = pkgs.plocate;
     output = "/var/lib/plocate/plocate.db";
     pruneNames = [ ".bzr" ".cache" ".direnv" ".git" ".hg" ".svn" ];
   };

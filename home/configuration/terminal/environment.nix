@@ -19,8 +19,8 @@
     dnfr = "sudo dnf remove";
     dnfu = "sudo dnf upgrade";
 
-    ll = "exa --long --group-directories-first --links --binary --group --time-style long-iso --icons";
-    la = "exa --long --group-directories-first --links --binary --group --time-style long-iso --icons --all";
+    ll = "eza --long --group-directories-first --links --binary --group --time-style long-iso --icons";
+    la = "eza --long --group-directories-first --links --binary --group --time-style long-iso --icons --all";
 
     gits = "git status";
 
@@ -240,7 +240,7 @@
       enable = true;
       clock24 = true;
       keyMode = "vi";
-      # mouse = true; TODO: reenable in 23.05
+      mouse = true;
 
       plugins = with pkgs.tmuxPlugins; [
         fuzzback
@@ -250,7 +250,7 @@
         {
           plugin = sidebar;
           extraConfig = ''
-            set -g @sidebar-tree-command 'exa --tree --level 2 --all --group-directories-first --noicons'
+            set -g @sidebar-tree-command 'eza --tree --level 2 --all --group-directories-first --noicons'
           '';
         }
 

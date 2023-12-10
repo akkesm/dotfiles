@@ -24,6 +24,9 @@
     impermanence.url = "github:nix-community/impermanence";
     nixos-wsl.url = "github:nix-community/NixOS-WSL";
 
+    # Wallpaper
+    plusultra.url = "github:jakehamilton/config";
+
     # Neovim and plugins
     dirbuf-nvim = {
       url = "github:elihunter173/dirbuf.nvim";
@@ -74,6 +77,7 @@
     , nixos-wsl
     , sops-nix
     , impermanence
+    , plusultra
     , ...
     }@inputs:
     let
@@ -101,6 +105,7 @@
 
         nur.overlay
         sops-nix.overlays.default
+        plusultra.overlays."package/wallpapers"
       ];
 
       hostDefaults.modules = [

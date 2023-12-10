@@ -129,7 +129,10 @@
         "233" = "exec ${pkgs.brightnessctl}/bin/brightnessctl set +2%";
       };
 
-      output."*".background = "${../../..}/static/wallpaperNordNixLogo.png fill";
+      output = {
+        "*".background = "${pkgs.plusultra.wallpapers.nord-rainbow-dark-nix} fill";
+        "Microstep MSI G281UV CC8Q232600088".scale = "1.5";
+      };
 
       seat = {
         "seat0" = {

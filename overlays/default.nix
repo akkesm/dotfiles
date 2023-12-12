@@ -19,7 +19,7 @@ in
   };
   silent = callPackage ./silent { };
   sway-launcher-desktop = callPackage ./sway-launcher-desktop { };
-  sway-prop = callPackage ./sway-prop { };
+  i3-prop = callPackage ./i3-prop { };
   utterly-nord-solid-kvantum = callPackage ./utterly-nord-solid-kvantum { };
   wayherb = callPackage ./wayherb { };
   xcursor-breeze-neutral = callPackage ./xcursor-breeze-neutral { };

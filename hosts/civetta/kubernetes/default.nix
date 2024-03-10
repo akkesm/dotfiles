@@ -13,7 +13,7 @@
   };
 
   services.k3s = {
-    enable = true;
+    enable = false;
     configPath = ./config.yaml;
   };
 

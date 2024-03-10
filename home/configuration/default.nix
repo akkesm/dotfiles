@@ -5,7 +5,7 @@
     ./applications
     ./auth.nix
     ./bash.nix
-    ./desktop
+    # ./desktop
     ./environment.nix
     ./fonts.nix
     ./gopass.nix
@@ -15,10 +15,8 @@
     ./media
     ./neovim
     ./peripherals.nix
-    ./qt.nix
+    # ./qt.nix
     ./terminal
     ./zsh
   ];
-
-  home.stateVersion = "23.11";
 }

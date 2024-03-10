@@ -15,6 +15,7 @@
     ./networking.nix
     ./persistence.nix
     ./pipewire.nix
+    ./plasma6.nix
     ./power.nix
     ./printing.nix
     ./users.nix

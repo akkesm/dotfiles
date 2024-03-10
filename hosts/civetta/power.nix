@@ -21,7 +21,7 @@
         # Enable for amd-pstate
         # CPU_DRIVER_OPMODE_ON_AC = "active";
         # CPU_DRIVER_OPMODE_ON_BAT = "guided";
-        CPU_SCALING_GOVERNOR_ON_AC = "schedutil"; # Change to "powersave with amd-pstate"
+        CPU_SCALING_GOVERNOR_ON_AC = "schedutil"; # Change to "powersave" with amd-pstate
         CPU_SCALING_GOVERNOR_ON_BAT = "schedutil";
         RESTORE_DEVICE_STATE_ON_STARTUP = 1;
         USB_AUTOSUSPEND = 0;

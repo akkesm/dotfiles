@@ -1521,6 +1521,26 @@
         "type": "github"
       }
     },
+    "home-manager-unstable": {
+      "inputs": {
+        "nixpkgs": [
+          "unstable"
+        ]
+      },
+      "locked": {
+        "lastModified": 1709445365,
+        "narHash": "sha256-DVv6nd9FQBbMWbOmhq0KVqmlc3y3FMSYl49UXmMcO+0=",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "4de84265d7ec7634a69ba75028696d74de9a44a7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "type": "github"
+      }
+    },
     "home-manager_2": {
       "inputs": {
         "nixpkgs": [
@@ -2293,6 +2313,7 @@
         "due_nvim": "due_nvim",
         "flake-utils-plus": "flake-utils-plus",
         "home-manager": "home-manager",
+        "home-manager-unstable": "home-manager-unstable",
         "impermanence": "impermanence",
         "neorg-telescope": "neorg-telescope",
         "nixos-wsl": "nixos-wsl",
@@ -2303,6 +2324,7 @@
         "sops-nix": "sops-nix",
         "tree-sitter-norg-meta": "tree-sitter-norg-meta",
         "tree-sitter-norg-table": "tree-sitter-norg-table",
+        "unstable": "unstable_3",
         "vim-latex": "vim-latex",
         "zig": "zig"
       }
@@ -3129,6 +3151,22 @@
       },
       "original": {
         "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "unstable_3": {
+      "locked": {
+        "lastModified": 1709237383,
+        "narHash": "sha256-cy6ArO4k5qTx+l5o+0mL9f5fa86tYUX3ozE1S+Txlds=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "1536926ef5621b09bba54035ae2bb6d806d72ac8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
         "ref": "nixos-unstable",
         "repo": "nixpkgs",
         "type": "github"

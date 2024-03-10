@@ -22,7 +22,7 @@
         kristofferhagen-nord-theme
         octolinker
         octotree
-        # plasma-integration
+        plasma-integration
         reddit-enhancement-suite
         refined-github
         return-youtube-dislikes

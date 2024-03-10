@@ -2,6 +2,7 @@
   inputs = {
     # Channels
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
+    unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nur.url = "github:nix-community/NUR";
     # nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
 
@@ -18,6 +19,10 @@
     home-manager = {
       url = "github:nix-community/home-manager/release-23.11";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+    home-manager-unstable = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "unstable";
     };
 
     sops-nix.url = "github:Mic92/sops-nix";
@@ -69,11 +74,13 @@
   outputs =
     { self
     , nixpkgs
+    , unstable
     , nur
       # , nixpkgs-wayland
     , flake-utils-plus
     , deploy-rs
     , home-manager
+    , home-manager-unstable
     , nixos-wsl
     , sops-nix
     , impermanence
@@ -90,9 +97,13 @@
 
       supportedSystems = [ "x86_64-linux" ];
 
-      channels.nixpkgs = {
-        input = nixpkgs;
-        # overlaysBuilder = channels: [ nixpkgs-wayland.overlay ];
+      channels = {
+        nixpkgs = {
+          input = nixpkgs;
+          # overlaysBuilder = channels: [ nixpkgs-wayland.overlay ];
+        };
+
+        unstable.input = unstable;
       };
 
       channelsConfig = {
@@ -113,21 +124,26 @@
         sops-nix.nixosModules.sops
         impermanence.nixosModules.impermanence
 
-        { nix.generateRegistryFromInputs = true; }
+        { nix.generateRegistryFromInputs = false; }
       ];
 
       hosts = {
-        civetta.modules = [
-          ./hosts/civetta
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              users.alessandro = import ./home;
-            };
-          }
-        ];
+        civetta = {
+          channelName = "unstable";
+          modules = [
+            ./hosts/civetta
+            home-manager-unstable.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                users.alessandro = import ./home // {
+                  home.stateVersion = "24.05";
+                };
+              };
+            }
+          ];
+        };
 
         # nix build .#nixosConfigurations.wsl.config.system.build.installer
         wsl.modules = [
@@ -153,7 +169,9 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              users.alessandro = import ./home;
+              users.alessandro = import ./home // {
+                home.stateVersion = "22.11";
+              };
             };
           }
         ];

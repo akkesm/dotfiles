@@ -16,6 +16,7 @@
     gwenview
     simple-scan
     teams-for-linux
+    ungoogled-chromium
 
     # Chat
     element-desktop
@@ -25,5 +26,6 @@
     lutris
     scarab
     steam
+    wineWowPackages.waylandFull
   ];
 }

@@ -2,21 +2,20 @@
 
 stdenv.mkDerivation rec {
   pname = "nordzy-cursors";
-  version = "0.6.0";
+  version = "1.0.0";
 
   src = fetchFromGitHub {
     owner = "alvatip";
     repo = "Nordzy-cursors";
-    rev = "v${version}";
-    sha256 = "0q4ik5ci080z1grf422b9bpwrgh8rv3sl6rca0y193ay5h9w9lxb";
+    rev = version;
+    sha256 = "12mpwmaf4jjbg09nzxb6dpj9pfbb1iq61c484f4cqf6jdkl9znim";
   };
 
   installPhase = ''
     runHook preInstall
 
     mkdir -p $out/share/icons
-    cp -r Nordzy-cursors $out/share/icons
-    cp -r Nordzy-cursors-white $out/share/icons
+    cp -r themes/* $out/share/icons
 
     runHook postInstall
   '';

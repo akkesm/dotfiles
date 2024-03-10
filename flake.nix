@@ -137,9 +137,7 @@
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
-                users.alessandro = import ./home // {
-                  home.stateVersion = "24.05";
-                };
+                users.alessandro = import ./home;
               };
             }
           ];
@@ -169,9 +167,7 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              users.alessandro = import ./home // {
-                home.stateVersion = "22.11";
-              };
+              users.alessandro = import ./home;
             };
           }
         ];

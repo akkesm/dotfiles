@@ -12,5 +12,6 @@
     desktopManager.plasma6.enable = true;
   };
 
+  services.greetd.enable = lib.mkForce false;
   services.tlp.enable = lib.mkForce false;
 }

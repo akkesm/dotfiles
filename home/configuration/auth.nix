@@ -105,9 +105,7 @@
     defaultCacheTtlSsh = 1800;
     enableSshSupport = true;
 
-    # "curses" breaks things
-    # "gnome3" requires services.dbus.packages = [ pkgs.gcr ]
-    pinentryFlavor = "gtk2";
+    pinentryPackage = pkgs.pinentry-qt;
     sshKeys = [ "9C9B70E57D232FBA6AFF0634A1CDDD6968769723" ];
   };
 }

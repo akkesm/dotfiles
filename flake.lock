@@ -1168,17 +1168,16 @@
         "flake-utils": "flake-utils_25"
       },
       "locked": {
-        "lastModified": 1715533576,
-        "narHash": "sha256-fT4ppWeCJ0uR300EH3i7kmgRZnAVxrH+XtK09jQWihk=",
+        "lastModified": 1657226504,
+        "narHash": "sha256-GIYNjuq4mJlFgqKsZ+YrgzWm0IpA4axA3MCrdKYj7gs=",
         "owner": "gytis-ivaskevicius",
         "repo": "flake-utils-plus",
-        "rev": "3542fe9126dc492e53ddd252bb0260fe035f2c0f",
+        "rev": "2bf0f91643c2e5ae38c1b26893ac2927ac9bd82a",
         "type": "github"
       },
       "original": {
         "owner": "gytis-ivaskevicius",
         "repo": "flake-utils-plus",
-        "rev": "3542fe9126dc492e53ddd252bb0260fe035f2c0f",
         "type": "github"
       }
     },
@@ -1187,11 +1186,11 @@
         "flake-utils": "flake-utils_26"
       },
       "locked": {
-        "lastModified": 1657226504,
-        "narHash": "sha256-GIYNjuq4mJlFgqKsZ+YrgzWm0IpA4axA3MCrdKYj7gs=",
+        "lastModified": 1715533576,
+        "narHash": "sha256-fT4ppWeCJ0uR300EH3i7kmgRZnAVxrH+XtK09jQWihk=",
         "owner": "gytis-ivaskevicius",
         "repo": "flake-utils-plus",
-        "rev": "2bf0f91643c2e5ae38c1b26893ac2927ac9bd82a",
+        "rev": "3542fe9126dc492e53ddd252bb0260fe035f2c0f",
         "type": "github"
       },
       "original": {
@@ -1596,15 +1595,12 @@
       }
     },
     "flake-utils_25": {
-      "inputs": {
-        "systems": "systems_15"
-      },
       "locked": {
-        "lastModified": 1694529238,
-        "narHash": "sha256-zsNZZGTGnMOf9YpHKJqMSsa0dXbfmxeoJ7xHlrt+xmY=",
+        "lastModified": 1644229661,
+        "narHash": "sha256-1YdnJAsNy69bpcjuoKdOYQX0YxZBiCYZo4Twxerqv7k=",
         "owner": "numtide",
         "repo": "flake-utils",
-        "rev": "ff7b65b44d01cf9ba6a71320833626af21126384",
+        "rev": "3cecb5b042f7f209c56ffd8371b2711a290ec797",
         "type": "github"
       },
       "original": {
@@ -1614,12 +1610,15 @@
       }
     },
     "flake-utils_26": {
+      "inputs": {
+        "systems": "systems_15"
+      },
       "locked": {
-        "lastModified": 1644229661,
-        "narHash": "sha256-1YdnJAsNy69bpcjuoKdOYQX0YxZBiCYZo4Twxerqv7k=",
+        "lastModified": 1694529238,
+        "narHash": "sha256-zsNZZGTGnMOf9YpHKJqMSsa0dXbfmxeoJ7xHlrt+xmY=",
         "owner": "numtide",
         "repo": "flake-utils",
-        "rev": "3cecb5b042f7f209c56ffd8371b2711a290ec797",
+        "rev": "ff7b65b44d01cf9ba6a71320833626af21126384",
         "type": "github"
       },
       "original": {
@@ -2314,6 +2313,22 @@
     },
     "nixpkgs_7": {
       "locked": {
+        "lastModified": 1716181197,
+        "narHash": "sha256-IXOUlMlt0f5n9BoJ56+CseCLV9aaBDoEygIWV/hnUso=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "461aad7a53142b9f9e2a666c810e86b20f5da76b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "release-23.11",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_8": {
+      "locked": {
         "lastModified": 1716651315,
         "narHash": "sha256-iMgzIeedMqf30TXZ439zW3Yvng1Xm9QTGO+ZwG1IWSw=",
         "owner": "NixOS",
@@ -2399,11 +2414,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1717199086,
-        "narHash": "sha256-kgzk8Nyda0s0nJAtOmuXVa0BBLfjfHJXL5XhkF3GszU=",
+        "lastModified": 1717246606,
+        "narHash": "sha256-4TPG39aCSXhtbSJKTFdUNwx+CYdd6lhdUoh3R4kyfG4=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "cbd1161796fef3f5f2b274c11199181a7025ffed",
+        "rev": "bc037454bfaab10a46088d0d2de9d5768c7c221f",
         "type": "github"
       },
       "original": {
@@ -2445,7 +2460,9 @@
         "rf": "rf",
         "scrumfish": "scrumfish",
         "snowfall-docs": "snowfall-docs",
-        "snowfall-lib": "snowfall-lib_18",
+        "snowfall-lib": [
+          "snowfall-lib"
+        ],
         "sokoban-app-website": "sokoban-app-website",
         "thaw": "thaw",
         "tmux": "tmux",
@@ -2653,6 +2670,7 @@
         "nnn-nvim": "nnn-nvim",
         "nur": "nur",
         "plusultra": "plusultra",
+        "snowfall-lib": "snowfall-lib_19",
         "sops-nix": "sops-nix",
         "tree-sitter-norg-meta": "tree-sitter-norg-meta",
         "tree-sitter-norg-table": "tree-sitter-norg-table",
@@ -2774,8 +2792,8 @@
     },
     "snowfall": {
       "inputs": {
-        "flake-compat": "flake-compat_29",
-        "flake-utils-plus": "flake-utils-plus_21",
+        "flake-compat": "flake-compat_28",
+        "flake-utils-plus": "flake-utils-plus_20",
         "nixpkgs": [
           "plusultra",
           "tmux",
@@ -3042,26 +3060,6 @@
         "flake-utils-plus": "flake-utils-plus_19",
         "nixpkgs": [
           "plusultra",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1716511748,
-        "narHash": "sha256-7mXi1aAfiXmIUFHYshf5wSY8tAICQaO6bw2Z/ldxJSM=",
-        "path": "/home/short/work/@snowfallorg/lib",
-        "type": "path"
-      },
-      "original": {
-        "path": "/home/short/work/@snowfallorg/lib",
-        "type": "path"
-      }
-    },
-    "snowfall-lib_19": {
-      "inputs": {
-        "flake-compat": "flake-compat_28",
-        "flake-utils-plus": "flake-utils-plus_20",
-        "nixpkgs": [
-          "plusultra",
           "thaw",
           "nixpkgs"
         ]
@@ -3077,6 +3075,27 @@
       "original": {
         "owner": "snowfallorg",
         "ref": "v3.0.2",
+        "repo": "lib",
+        "type": "github"
+      }
+    },
+    "snowfall-lib_19": {
+      "inputs": {
+        "flake-compat": "flake-compat_29",
+        "flake-utils-plus": "flake-utils-plus_21",
+        "nixpkgs": "nixpkgs_7"
+      },
+      "locked": {
+        "lastModified": 1716433572,
+        "narHash": "sha256-JzUSwdANQyTVZiKkTpGVB9rTCu2y8kn3vbrp8kUsozE=",
+        "owner": "snowfallorg",
+        "repo": "lib",
+        "rev": "c58023878d6720c525446cb67d8fcbe7c3a5d84c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "snowfallorg",
+        "ref": "v3.0.0",
         "repo": "lib",
         "type": "github"
       }
@@ -3292,7 +3311,7 @@
     },
     "sops-nix": {
       "inputs": {
-        "nixpkgs": "nixpkgs_7",
+        "nixpkgs": "nixpkgs_8",
         "nixpkgs-stable": "nixpkgs-stable_2"
       },
       "locked": {
@@ -3537,7 +3556,7 @@
     "thaw": {
       "inputs": {
         "nixpkgs": "nixpkgs_6",
-        "snowfall-lib": "snowfall-lib_19"
+        "snowfall-lib": "snowfall-lib_18"
       },
       "locked": {
         "lastModified": 1716675831,
@@ -3835,11 +3854,11 @@
     "zig": {
       "flake": false,
       "locked": {
-        "lastModified": 1717196414,
-        "narHash": "sha256-GuYSKw9bK8+iLir5nabARn2iefGvv2W+QqWUMOnxPgw=",
+        "lastModified": 1717237696,
+        "narHash": "sha256-0QEMy/v1Jxuoh1pZ9QryvWpFEkVm2ejLkJtSMMQPUo0=",
         "owner": "ziglang",
         "repo": "zig",
-        "rev": "e09963d8544c19812db20e520f09f6e5d9a57d64",
+        "rev": "64ef45eb059328ac8579c22506fa7574e8cf45f2",
         "type": "github"
       },
       "original": {

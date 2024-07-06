@@ -4,7 +4,7 @@
   environment.variables.NIXPKGS_ALLOW_UNFREE = "1";
 
   nix = {
-    package = pkgs.nixUnstable;
+    package = pkgs.nixVersions.latest;
     settings = {
       auto-optimise-store = true;
 

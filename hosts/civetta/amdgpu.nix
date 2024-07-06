@@ -4,13 +4,12 @@
   boot.initrd.kernelModules = [ "amdgpu" ];
   environment.sessionVariables.LIBVA_DRIVE_NAME = "radeonsi";
 
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
-    driSupport = true;
 
     # Cannot set the kernel feature with manualConfig
     # here it is checked
-    driSupport32Bit = true;
+    enable32Bit = true;
 
     extraPackages = with pkgs; [
       rocm-opencl-icd

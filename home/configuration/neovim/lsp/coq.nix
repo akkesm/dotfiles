@@ -36,9 +36,7 @@ in
       pyright
       typescript
       typescript-language-server
-      vscode-css-languageserver-bin
-      vscode-html-languageserver-bin
-      vscode-json-languageserver-bin
+      vscode-langservers-extracted
       yaml-language-server
     ]);
 

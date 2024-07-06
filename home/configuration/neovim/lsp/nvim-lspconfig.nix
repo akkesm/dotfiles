@@ -22,6 +22,7 @@ in
       nil nixpkgs-fmt
       nimlsp
       perlPackages.PLS
+      pyright
       solargraph rubocop
       sqls
       terraform-ls
@@ -32,11 +33,8 @@ in
     ]) ++ (with pkgs.nodePackages; [
       bash-language-server
       dockerfile-language-server-nodejs
-      pyright
       typescript-language-server typescript
-      vscode-css-languageserver-bin
-      vscode-html-languageserver-bin
-      vscode-json-languageserver-bin
+      vscode-langservers-extracted
       yaml-language-server
     ]);
 
@@ -82,14 +80,14 @@ in
 
           lspconfig.html.setup {
             capabilities = capabilities,
-            cmd = { '${pkgs.nodePackages.vscode-html-languageserver-bin}/bin/html-languageserver', '--stdio' },
+            cmd = { '${pkgs.nodePackages.vscode-langservers-extracted}/bin/vscode-html-languageserver', '--stdio' },
           }
 
           lspconfig.jdtls.setup { capabilities = capabilities }
 
           lspconfig.jsonls.setup {
             capabilities = capabilities,
-            cmd = { '${pkgs.nodePackages.vscode-json-languageserver-bin}/bin/json-languageserver', '--stdio' },
+            cmd = { '${pkgs.nodePackages.vscode-langservers-extracted}/bin/vscode-json-languageserver', '--stdio' },
           }
 
           lspconfig.lua_ls.setup {

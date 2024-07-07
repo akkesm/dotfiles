@@ -40,6 +40,7 @@
         require('mini.bracketed').setup {}
         require('mini.bufremove').setup {}
         require('mini.comment').setup {}
+        require('mini.git').setup {}
         require('mini.jump').setup {}
         require('mini.jump2d').setup {}
         require('mini.pairs').setup {}

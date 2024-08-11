@@ -15,8 +15,9 @@
 
     displayManager.sddm = {
       enable = true;
-      wayland.enable = true;
     };
+
+    xserver.enable = true;
   };
 
   services.greetd.enable = lib.mkForce false;

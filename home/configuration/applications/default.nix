@@ -27,5 +27,7 @@
     scarab
     steam
     wineWowPackages.waylandFull
+
+    olympus
   ];
 }

@@ -5,6 +5,7 @@
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nur.url = "github:nix-community/NUR";
     # nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
+    olympus-nixpkgs.url = "github:Petingoso/nixpkgs/olympus";
 
     # Helpers
     flake-utils-plus.url = "github:gytis-ivaskevicius/flake-utils-plus";
@@ -28,9 +29,6 @@
     sops-nix.url = "github:Mic92/sops-nix";
     impermanence.url = "github:nix-community/impermanence";
     nixos-wsl.url = "github:nix-community/NixOS-WSL";
-
-    # Wallpaper
-    plusultra.url = "github:jakehamilton/config";
 
     # Neovim and plugins
     dirbuf-nvim = {
@@ -77,6 +75,7 @@
     , unstable
     , nur
       # , nixpkgs-wayland
+    , olympus-nixpkgs
     , flake-utils-plus
     , deploy-rs
     , home-manager
@@ -84,7 +83,6 @@
     , nixos-wsl
     , sops-nix
     , impermanence
-    , plusultra
     , ...
     }@inputs:
     let
@@ -104,6 +102,9 @@
         };
 
         unstable.input = unstable;
+
+        unstable.overlaysBuilder = channels: [ (final: prev: { inherit (channels.olympus-nixpkgs) olympus; }) ];
+        olympus.input = olympus-nixpkgs;
       };
 
       channelsConfig = {
@@ -116,7 +117,6 @@
 
         nur.overlay
         sops-nix.overlays.default
-        plusultra.overlays."package/wallpapers"
       ];
 
       hostDefaults.modules = [

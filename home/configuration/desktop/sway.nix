@@ -130,7 +130,7 @@
       };
 
       output = {
-        "*".background = "${pkgs.plusultra.wallpapers.nord-rainbow-dark-nix} fill";
+        # "*".background = "${pkgs.plusultra.wallpapers.nord-rainbow-dark-nix} fill";
         "Microstep MSI G281UV CC8Q232600088".scale = "1.5";
       };
 

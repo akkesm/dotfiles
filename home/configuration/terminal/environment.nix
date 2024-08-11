@@ -264,11 +264,6 @@
       terminal = "screen-256color";
     };
 
-    direnv = {
-      enable = true;
-      nix-direnv.enable = true;
-    };
-
     nix-index.enable = true;
   };
 }

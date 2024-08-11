@@ -55,6 +55,10 @@
             private_key="${config.sops.secrets.polimi-keyFile.path}"
           '';
         };
+        "Gemini" = {
+          authProtocols = [ "WPA-PSK" ];
+          psk = "@PSK_GEMINI@";
+        };
       };
     };
   };

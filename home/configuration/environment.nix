@@ -19,7 +19,7 @@
       lolcat
       nix-prefetch-scripts
       nixpkgs-review
-      taskwarrior
+      taskwarrior3
       xdg-utils
     ];
 

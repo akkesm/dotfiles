@@ -12,7 +12,7 @@
     ./nvim-surround.nix
     ./telescope.nix
     ./treesitter.nix
-    ./vim-markdown-composer.nix
+    # ./vim-markdown-composer.nix
   ];
 
   home.sessionVariables.EDITOR = "nvim";
@@ -123,6 +123,8 @@
           vim.keymap.set('n', '<Leader>u', '<Cmd>MundoToggle<CR>', { noremap = true })
         '';
       }
+
+      markview-nvim
     ];
 
     viAlias = true;

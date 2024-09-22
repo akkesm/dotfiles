@@ -15,7 +15,7 @@
 
     profiles."main" = {
       extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-        bypass-paywalls-clean
+        # bypass-paywalls-clean
         facebook-container
         flagfox
         gopass-bridge
@@ -213,6 +213,9 @@
         "general.autoScroll" = true;
         "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons" = false;
         "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features" = false;
+
+        # https://make-firefox-private-again.com/
+        "dom.private-attribution.submission.enabled" = false;
       };
     };
   };

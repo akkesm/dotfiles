@@ -1,0 +1,5 @@
+{... }:
+
+{
+  hardware.flipperzero.enable = true;
+}

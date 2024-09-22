@@ -8,6 +8,7 @@
     ./boot.nix
     ./desktop.nix
     ./filesystem.nix
+    ./flipperzero.nix
     ./greetd.nix
     ./kernel.nix
     ./kubernetes

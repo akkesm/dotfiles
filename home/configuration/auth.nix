@@ -50,6 +50,7 @@
     };
 
     # https://infosec.mozilla.org/guidelines/openssh
+    # note: for extra safety, use `ssh -a -i /dev/null -o IdentityAgent=/dev/null remote-host`
     ssh = {
       enable = true;
       controlMaster = "auto";

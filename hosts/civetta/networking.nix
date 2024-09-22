@@ -13,19 +13,19 @@
     useNetworkd = true;
 
     wireless = {
-      environmentFile = config.sops.secrets.environmentFile.path;
+      secretsFile = config.sops.secrets.environmentFile.path;
       interfaces = [ "wlp1s0" ];
 
       networks = {
         "FRITZ!Box 7590 ZT" = {
           authProtocols = [ "WPA-PSK" ];
-          psk = "@PSK_FRITZBOX@";
+          psk = "ext:PSK_FRITZBOX";
         };
 
         "coldspot" = {
           authProtocols = [ "WPA-PSK" ];
           hidden = true;
-          psk = "@PSK_COLDSPOT@";
+          psk = "ext:PSK_COLDSPOT";
         };
 
         "eduroam" = {
@@ -37,7 +37,7 @@
             ca_cert="${config.sops.secrets.polimi-cert.path}"
             identity="@IDENTITY_POLIMI@@polimi.it"
             altsubject_match="DNS:wifi.polimi.it"
-            private_key_passwd="@PSK_POLIMI@"
+            private_key_passwd="ext:PSK_POLIMI"
             private_key="${config.sops.secrets.polimi-keyFile.path}"
           '';
         };
@@ -51,13 +51,14 @@
             ca_cert="${config.sops.secrets.polimi-cert.path}"
             identity="@IDENTITY_POLIMI@@polimi.it"
             altsubject_match="DNS:wifi.polimi.it"
-            private_key_passwd="@PSK_POLIMI@"
+            private_key_passwd="ext:PSK_POLIMI"
             private_key="${config.sops.secrets.polimi-keyFile.path}"
           '';
         };
+
         "Gemini" = {
           authProtocols = [ "WPA-PSK" ];
-          psk = "@PSK_GEMINI@";
+          psk = "ext:PSK_GEMINI";
         };
       };
     };

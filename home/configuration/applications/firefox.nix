@@ -3,7 +3,7 @@
 {
   programs.firefox = {
     enable = true;
-    package = pkgs.firefox-wayland;
+    package = pkgs.firefox;
 
     # There is a bug with RES in Firefox in Wayland? Sway? tiling WMs?
     # that doesn't display the popup window to grant permissions.

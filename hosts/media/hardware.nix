@@ -28,16 +28,16 @@
 
     "/var/lib/lidarr" =
       {
-        device = "/dev/disk/by-uuid/c3e8e9e9-17a4-4e01-9f7d-3b80f9c3790f";
+        device = "/dev/disk/by-uuid/9adf901b-b846-48b7-ad73-51f6241b4a63";
         fsType = "btrfs";
-        options = [ "compress=zstd" "subvol=var/lib/lidarr" ];
+        options = [ "compress=zstd" "subvol=var/lib/lidarr" "noatime" ];
       };
 
     "/var/lib/prowlarr" =
       {
-        device = "/dev/disk/by-uuid/c3e8e9e9-17a4-4e01-9f7d-3b80f9c3790f";
+        device = "/dev/disk/by-uuid/9adf901b-b846-48b7-ad73-51f6241b4a63";
         fsType = "btrfs";
-        options = [ "compress=zstd" "subvol=var/lib/prowlarr" ];
+        options = [ "compress=zstd" "subvol=var/lib/prowlarr" "noatime" ];
       };
 
     "/var/lib/transmission/.incomplete" =

@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ lib, config, ... }:
 
 {
   boot = {
@@ -13,19 +13,30 @@
     useNetworkd = true;
 
     wireless = {
-      secretsFile = config.sops.secrets.environmentFile.path;
+      secretsFile = config.sops.secrets.secretsFile.path;
+
+      extraConfig = ''
+        pmf=1
+      '';
+
+      fallbackToWPA2 = false;
       interfaces = [ "wlp1s0" ];
 
       networks = {
         "FRITZ!Box 7590 ZT" = {
-          authProtocols = [ "WPA-PSK" ];
-          psk = "ext:PSK_FRITZBOX";
+          authProtocols = [ "SAE" ];
+
+          extraConfig = ''
+            ieee80211w=2
+          '';
+
+          pskRaw = "ext:psk_fritzbox";
         };
 
         "coldspot" = {
           authProtocols = [ "WPA-PSK" ];
           hidden = true;
-          psk = "ext:PSK_COLDSPOT";
+          pskRaw = "ext:psk_coldspot";
         };
 
         "eduroam" = {
@@ -34,11 +45,11 @@
             pairwise=CCMP
             group=CCMP TKIP
             eap=TLS
-            ca_cert="${config.sops.secrets.polimi-cert.path}"
-            identity="@IDENTITY_POLIMI@@polimi.it"
+            ca_cert="${config.sops.secrets."polimi/cert".path}"
+            identity="@POLIMI_IDENTITY@@polimi.it"
             altsubject_match="DNS:wifi.polimi.it"
-            private_key_passwd="ext:PSK_POLIMI"
-            private_key="${config.sops.secrets.polimi-keyFile.path}"
+            private_key_passwd="ext:psk_polimi"
+            private_key="${config.sops.secrets."polimi/keyFile".path}"
           '';
         };
 
@@ -48,36 +59,49 @@
             pairwise=CCMP
             group=CCMP TKIP
             eap=TLS
-            ca_cert="${config.sops.secrets.polimi-cert.path}"
-            identity="@IDENTITY_POLIMI@@polimi.it"
+            ca_cert="${config.sops.secrets."polimi/cert".path}"
+            identity="@POLIMI_IDENTITY@@polimi.it"
             altsubject_match="DNS:wifi.polimi.it"
-            private_key_passwd="ext:PSK_POLIMI"
-            private_key="${config.sops.secrets.polimi-keyFile.path}"
+            private_key_passwd="ext:psk_polimi"
+            private_key="${config.sops.secrets."polimi/keyFile".path}"
           '';
         };
 
         "Gemini" = {
           authProtocols = [ "WPA-PSK" ];
-          psk = "ext:PSK_GEMINI";
+          pskRaw = "ext:psk_gemini";
         };
       };
     };
   };
 
-  sops.secrets = {
-    environmentFile = {
-      format = "binary";
-      sopsFile = ./secrets/networks/environmentFile;
+  systemd.services."wpa_supplicant-wlp1s0".serviceConfig.EnvironmentFile = config.sops.templates."wpa_supplicant.env".path;
+
+  sops = {
+    secrets = {
+      secretsFile = {
+        format = "binary";
+        sopsFile = ./secrets/networks/secretsFile;
+      };
+
+      "polimi/cert" = {
+        format = "binary";
+        sopsFile = ./secrets/networks/polimi-cert/ca.pem;
+      };
+
+      "polimi/keyFile" = {
+        format = "binary";
+        sopsFile = ./secrets/networks/polimi-cert/user.p12;
+      };
+
+      "polimi/identity" = {
+        format = "yaml";
+        sopsFile = ./secrets/networks/polimi-cert/identity.yaml;
+      };
     };
 
-    polimi-cert = {
-      format = "binary";
-      sopsFile = ./secrets/networks/polimi-cert/ca.pem;
-    };
-
-    polimi-keyFile = {
-      format = "binary";
-      sopsFile = ./secrets/networks/polimi-cert/user.p12;
-    };
+    templates."wpa_supplicant.env".content = ''
+      POLIMI_IDENTITY=${config.sops.placeholder."polimi/identity"}
+    '';
   };
 }

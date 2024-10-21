@@ -14,7 +14,6 @@ in
     inherit (final.python3Packages)
       buildPythonApplication
       pytest
-      pytest-runner
       python-dateutil;
   };
   silent = callPackage ./silent { };

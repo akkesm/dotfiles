@@ -1,7 +1,7 @@
 {
   inputs = {
     # Channels
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nur.url = "github:nix-community/NUR";
     # nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
@@ -18,7 +18,7 @@
 
     # Extra modules
     home-manager = {
-      url = "github:nix-community/home-manager/release-23.11";
+      url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager-unstable = {
@@ -99,6 +99,10 @@
         nixpkgs = {
           input = nixpkgs;
           # overlaysBuilder = channels: [ nixpkgs-wayland.overlay ];
+          overlaysBuilder = channels: [
+            (final: prev: { vimPlugins = prev.vimPlugins // { inherit (channels.unstable.vimPlugins) markview-nvim; }; })
+            (final: prev: { inherit (channels.olympus-nixpkgs) olympus; })
+          ];
         };
 
         unstable.input = unstable;
@@ -159,7 +163,7 @@
               startMenuLaunchers = true;
             };
 
-            system.stateVersion = "22.11";
+            system.stateVersion = "24.05";
           }
 
           home-manager.nixosModules.home-manager
@@ -173,7 +177,7 @@
         ];
 
         # nix build --impure .#nixosConfigurations.live.config.system.build.isoImage
-        live.channelName = "nixpkgs";
+        live.channelName = "unstable";
         live.modules = [
           ./hosts/live
           {
@@ -183,10 +187,10 @@
             ];
           }
           {
-            system.stateVersion = "22.11";
+            system.stateVersion = "24.11";
           }
 
-          # home-manager.nixosModules.home-manager
+          # home-managerhome-manager-unstable.nixosModules.home-manager
           # {
           #   home-manager.useGlobalPkgs = true;
           #   home-manager.useUserPackages = true;

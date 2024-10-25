@@ -17,12 +17,13 @@
 
     config = {
       common.default = [ "gtk" ];
+      kde.default = [ "kde" ];
       sway.default = [ "wlr" "gtk" ];
     };
 
-    extraPortals = [
-      pkgs.xdg-desktop-portal-gtk
-      pkgs.xdg-desktop-portal-kde
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-gtk
+      xdg-desktop-portal-kde
     ];
 
     wlr.enable = true;
@@ -103,7 +104,7 @@
         };
       };
 
-      system.stateVersion = "23.11";
+      system.stateVersion = "24.11";
     };
   };
 }

@@ -19,6 +19,7 @@
     ungoogled-chromium
 
     # Chat
+    discord
     element-desktop
     tdesktop
 

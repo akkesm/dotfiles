@@ -9,18 +9,14 @@
     sansSerif = "MesloLGMDZ Nerd Font";
     serif = "Roboto Slab";
 
-    fonts = with pkgs; [
+    fonts = with pkgs; with pkgs.nerd-fonts; [
       twemoji-color-font
       ttf_bitstream_vera
 
-      (nerdfonts.override {
-        fonts = [
-          "FiraCode"
-          "Iosevka"
-          "IosevkaTerm"
-          "Meslo"
-        ];
-      })
+      iosevka
+      iosevka-term
+      fira-code
+      meslo-lg
 
       roboto-slab
       dejavu_fonts

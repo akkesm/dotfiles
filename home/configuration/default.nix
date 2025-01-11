@@ -5,7 +5,6 @@
     ./applications
     ./auth.nix
     ./bash.nix
-    # ./desktop
     ./environment.nix
     ./fonts.nix
     ./gopass.nix
@@ -14,8 +13,8 @@
     ./kubernetes
     ./media
     ./neovim
-    ./peripherals.nix
     # ./qt.nix
+    # ./sway
     ./terminal
     ./zsh
   ];

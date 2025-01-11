@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 
 let
   EpsonSX600W-IP = "192.168.178.29";
@@ -11,8 +11,8 @@ in
       ensurePrinters = [{
         description = "Epson Stylus SX600FW";
         deviceUri = "socket://${EpsonSX600W-IP}";
-        model = "epson-inkjet-printer-escpr/Epson-Stylus_SX600FW-epson-escpr-en.ppd";
-        # model = "gutenprint.${lib.versions.majorMinor (lib.getVersion pkgs.gutenprint)}://escp2-sx600fw/expert";
+        # model = "epson-inkjet-printer-escpr/Epson-Stylus_SX600FW-epson-escpr-en.ppd";
+        model = "gutenprint.${lib.versions.majorMinor (lib.getVersion pkgs.gutenprint)}://escp2-sx600fw/expert";
         name = "EPSONSX600FW";
 
         ppdOptions = { PageSize = "A4"; };
@@ -40,8 +40,8 @@ in
     defaultShared = true;
 
     drivers = [
-      pkgs.epson-escpr
-      # pkgs.gutenprint
+      # pkgs.epson-escpr
+      pkgs.gutenprint
     ];
 
     logLevel = "debug";

@@ -141,6 +141,22 @@
         "type": "github"
       }
     },
+    "fx-autoconfig": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1742393828,
+        "narHash": "sha256-NUGFGlf7HdZUVNmK3Hk5xbRGIKzg3QJVXO5kM44Xqy0=",
+        "owner": "MrOtherGuy",
+        "repo": "fx-autoconfig",
+        "rev": "3b04baa24a53b8bddb14e7bcf76f105026c6416c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "MrOtherGuy",
+        "repo": "fx-autoconfig",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -335,11 +351,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1744410837,
-        "narHash": "sha256-eIPkQv0bxaDy47lFnRyY0xJCzH5SLj8o/9mUZF0lnhI=",
+        "lastModified": 1744454766,
+        "narHash": "sha256-24qW6Oqdxr9MGwGXqFwQCuV2kcHeWQmMSKax0bLKNXg=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "df3270cbd0e9bb799ce24685606128f2a7d11588",
+        "rev": "d4aafd7c84f836cc89b27424314785e2acacfe51",
         "type": "github"
       },
       "original": {
@@ -370,6 +386,7 @@
         "dirbuf-nvim": "dirbuf-nvim",
         "due_nvim": "due_nvim",
         "flake-utils-plus": "flake-utils-plus",
+        "fx-autoconfig": "fx-autoconfig",
         "home-manager": "home-manager",
         "home-manager-unstable": "home-manager-unstable",
         "impermanence": "impermanence",

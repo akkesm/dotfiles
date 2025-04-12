@@ -30,6 +30,12 @@
     impermanence.url = "github:nix-community/impermanence";
     nixos-wsl.url = "github:nix-community/NixOS-WSL";
 
+    # Firefox
+    fx-autoconfig = {
+      url = "github:MrOtherGuy/fx-autoconfig";
+      flake = false;
+    };
+
     # Neovim and plugins
     dirbuf-nvim = {
       url = "github:elihunter173/dirbuf.nvim";
@@ -105,10 +111,15 @@
           ];
         };
 
-        unstable.input = unstable;
+        unstable = {
+          input = unstable;
 
-        unstable.overlaysBuilder = channels: [ (final: prev: { inherit (channels.olympus-nixpkgs) olympus; }) ];
-        olympus.input = olympus-nixpkgs;
+          unstable.overlaysBuilder = channels: [
+            (final: prev: { inherit (channels.olympus-nixpkgs) olympus; })
+          ];
+        };
+
+        olympus-nixpkgs.input = olympus-nixpkgs;
       };
 
       channelsConfig = {
@@ -119,7 +130,7 @@
       sharedOverlays = [
         self.overlay
 
-        nur.overlay
+        nur.overlays.default
         sops-nix.overlays.default
       ];
 
@@ -142,6 +153,9 @@
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 users.alessandro = import ./home;
+                extraSpecialArgs = {
+                  inherit (inputs) fx-autoconfig;
+                };
               };
             }
           ];

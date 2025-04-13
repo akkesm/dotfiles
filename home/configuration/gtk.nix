@@ -31,8 +31,12 @@
     };
   };
 
-  home.packages = with pkgs; [
-    # gnome-themes-extra
-    hicolor-icon-theme
-  ];
+  home = {
+    file."${config.gtk.gtk2.configLocation}".force = true;
+
+    packages = with pkgs; [
+      # gnome-themes-extra
+      hicolor-icon-theme
+    ];
+  };
 }

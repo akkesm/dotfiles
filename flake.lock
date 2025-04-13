@@ -141,22 +141,6 @@
         "type": "github"
       }
     },
-    "fx-autoconfig": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1742393828,
-        "narHash": "sha256-NUGFGlf7HdZUVNmK3Hk5xbRGIKzg3QJVXO5kM44Xqy0=",
-        "owner": "MrOtherGuy",
-        "repo": "fx-autoconfig",
-        "rev": "3b04baa24a53b8bddb14e7bcf76f105026c6416c",
-        "type": "github"
-      },
-      "original": {
-        "owner": "MrOtherGuy",
-        "repo": "fx-autoconfig",
-        "type": "github"
-      }
-    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -386,7 +370,6 @@
         "dirbuf-nvim": "dirbuf-nvim",
         "due_nvim": "due_nvim",
         "flake-utils-plus": "flake-utils-plus",
-        "fx-autoconfig": "fx-autoconfig",
         "home-manager": "home-manager",
         "home-manager-unstable": "home-manager-unstable",
         "impermanence": "impermanence",

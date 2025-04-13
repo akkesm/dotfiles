@@ -30,12 +30,6 @@
     impermanence.url = "github:nix-community/impermanence";
     nixos-wsl.url = "github:nix-community/NixOS-WSL";
 
-    # Firefox
-    fx-autoconfig = {
-      url = "github:MrOtherGuy/fx-autoconfig";
-      flake = false;
-    };
-
     # Neovim and plugins
     dirbuf-nvim = {
       url = "github:elihunter173/dirbuf.nvim";
@@ -153,7 +147,6 @@
                 useUserPackages = true;
                 users.alessandro = import ./home;
                 extraSpecialArgs = {
-                  inherit (inputs) fx-autoconfig;
                   inherit (olympus-nixpkgs.legacyPackages.x86_64-linux) olympus;
                 };
               };

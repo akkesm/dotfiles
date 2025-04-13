@@ -14,7 +14,7 @@
     # https://reddit.com/r/RESissues/comments/pje3x2/expandos_in_linuxwaylandfirefox_permissions/hcn7mx5/
 
     profiles."main" = {
-      extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+      extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
         # bypass-paywalls-clean
         facebook-container
         flagfox
@@ -33,7 +33,7 @@
       id = 0;
 
       search = {
-        default = "DuckDuckGo";
+        default = "ddg";
         force = true;
       };
 
@@ -229,3 +229,4 @@
     let mod = config.wayland.windowManager.sway.config.modifier;
     in lib.mkOptionDefault { "${mod}+b" = "exec firefox"; };
 }
+

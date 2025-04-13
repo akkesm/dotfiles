@@ -7,6 +7,10 @@
       ripgrep
     ];
 
+    extraLuaPackages = (ps: with ps; [
+      telescope-nvim
+    ]);
+
     plugins = with pkgs.vimPlugins; [
       {
         plugin = telescope-nvim;

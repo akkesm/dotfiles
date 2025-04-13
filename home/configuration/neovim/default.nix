@@ -6,7 +6,7 @@
     ./lsp
     ./latex.nix
     ./mini.nix
-    ./neorg.nix
+    # ./neorg.nix
     ./nnn.nix
     ./nvim-autopairs.nix
     ./nvim-surround.nix

@@ -35,6 +35,13 @@
     indicator = true;
   };
 
+  systemd.user.targets.tray = {
+    Unit = {
+      Description = "Home Manager System Tray";
+      Requires = [ "graphical-session-pre.target" ];
+    };
+  };
+
   xdg = {
     enable = true;
     configFile."mimeapps.list".force = true; # $XDG_CONFIG_HOME/mimeapps.list often gets overwritten

@@ -23,7 +23,7 @@
 
     extraPortals = with pkgs; [
       xdg-desktop-portal-gtk
-      xdg-desktop-portal-kde
+      kdePackages.xdg-desktop-portal-kde
     ];
 
     wlr.enable = true;

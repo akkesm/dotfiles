@@ -7,7 +7,6 @@
     pcscd.enable = true;
 
     udev.packages = [
-      pkgs.yubikey-manager-qt
       pkgs.yubikey-personalization
     ];
   };

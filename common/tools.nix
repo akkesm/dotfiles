@@ -76,7 +76,6 @@
     enable = true;
     package = pkgs.plocate;
     interval = "Sat *-*-* 00:00";
-    localuser = null;
     output = "/var/lib/plocate/plocate.db";
     pruneNames = [ ".bzr" ".cache" ".direnv" ".git" ".hg" ".svn" ];
   };

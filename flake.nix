@@ -1,7 +1,7 @@
 {
   inputs = {
     # Channels
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nur.url = "github:nix-community/NUR";
     # nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
@@ -18,7 +18,7 @@
 
     # Extra modules
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.05";
+      url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager-unstable = {
@@ -106,7 +106,6 @@
           input = nixpkgs;
           # overlaysBuilder = channels: [ nixpkgs-wayland.overlay ];
           overlaysBuilder = channels: [
-            (final: prev: { vimPlugins = prev.vimPlugins // { inherit (channels.unstable.vimPlugins) markview-nvim; }; })
             (final: prev: { inherit (channels.olympus-nixpkgs) olympus; })
           ];
         };
@@ -155,6 +154,7 @@
                 users.alessandro = import ./home;
                 extraSpecialArgs = {
                   inherit (inputs) fx-autoconfig;
+                  inherit (olympus-nixpkgs.legacyPackages.x86_64-linux) olympus;
                 };
               };
             }

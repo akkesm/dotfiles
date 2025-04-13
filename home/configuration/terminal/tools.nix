@@ -40,7 +40,6 @@
     usbutils
     whois
 
-    yubikey-manager-qt
     yubikey-personalization
     yubioath-flutter
   ];

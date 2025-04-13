@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, olympus, ... }:
 
 {
   imports = [
@@ -11,9 +11,9 @@
 
   home.packages = with pkgs; [
     android-file-transfer
-    dolphin
+    kdePackages.dolphin
     gimp
-    gwenview
+    kdePackages.gwenview
     simple-scan
     teams-for-linux
     ungoogled-chromium

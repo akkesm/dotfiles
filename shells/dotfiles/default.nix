@@ -1,5 +1,6 @@
 { mkShell
 , deploy-rs
+, fup-repl
 , nixpkgs-fmt
 , sops
 , ssh-to-pgp
@@ -12,6 +13,7 @@ mkShell {
 
   packages = [
     deploy-rs
+    fup-repl
     nixpkgs-fmt
     sops
     ssh-to-pgp

@@ -5,7 +5,7 @@
 {
   home = {
     packages = with pkgs; [
-      nordzy-cursors
+      nordzy-cursor-theme
       playerctl
     ];
 

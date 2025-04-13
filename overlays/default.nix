@@ -8,8 +8,6 @@ in
 {
   # New packages
   herbe = callPackage ./herbe { };
-  nordzy-cursors = callPackage ./nordzy-cursors { };
-  nordzy-icon-theme = callPackage ./nordzy-icon-theme { };
   px = callPackage ./px {
     inherit (final.python3Packages)
       buildPythonApplication

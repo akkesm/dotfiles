@@ -5,7 +5,7 @@
     enable = true;
 
     cursorTheme = {
-      package = pkgs.nordzy-cursors;
+      package = pkgs.nordzy-cursor-theme;
       name = "Nordzy-cursors";
       size = 24;
     };

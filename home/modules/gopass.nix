@@ -99,7 +99,7 @@ in
       fi
     '';
 
-    programs.zsh.initExtra = mkIf cfg.enableZshIntegration ''
+    programs.zsh.initContent = mkIf cfg.enableZshIntegration ''
       if [[ $options[zle] = on ]]; then
         fpath+="${cfg.package}/share/zsh/site-functions/_gopass"
       fi

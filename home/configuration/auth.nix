@@ -106,7 +106,7 @@
     defaultCacheTtlSsh = 1800;
     enableSshSupport = true;
 
-    pinentryPackage = pkgs.pinentry-qt;
+    pinentry.package = pkgs.pinentry-qt;
     sshKeys = [ "9C9B70E57D232FBA6AFF0634A1CDDD6968769723" ];
   };
 }

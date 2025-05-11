@@ -28,63 +28,67 @@
       path = "${config.home.homeDirectory}/${config.programs.zsh.dotDir}/zsh_history";
     };
 
-    initExtraFirst = ''
-      if [[ -r "${config.xdg.cacheHome}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
-        source "${config.xdg.cacheHome}/p10k-instant-prompt-''${(%):-%n}.zsh"
-      fi
-    '';
-
-    initExtra =
+    initContent =
       let
-        opts = lib.concatMapStrings (o: "setopt " + o + "\n") [
-          # https://zsh.sourceforge.io/Doc/Release/Options.html
+        initExtraFirst = lib.mkBefore ''
+          if [[ -r "${config.xdg.cacheHome}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
+            source "${config.xdg.cacheHome}/p10k-instant-prompt-''${(%):-%n}.zsh"
+          fi
+        '';
 
-          # Changing Directories
-          # "AUTO_CD"
-          "AUTO_PUSHD"
-          "PUSHD_IGNORE_DUPS"
+        initExtra =
+          let
+            opts = lib.concatMapStrings (o: "setopt " + o + "\n") [
+              # https://zsh.sourceforge.io/Doc/Release/Options.html
 
-          # Completion
-          "ALWAYS_TO_END"
-          "AUTO_MENU"
-          "COMPLETE_IN_WORD"
-          "GLOB_COMPLETE"
-          "MENU_COMPLETE"
+              # Changing Directories
+              # "AUTO_CD"
+              "AUTO_PUSHD"
+              "PUSHD_IGNORE_DUPS"
 
-          # Expansion and Globbing
-          "EQUALS"
-          "GLOB_DOTS"
-          "GLOB_STAR_SHORT"
-          "HIST_SUBST_PATTERN"
-          "RC_EXPAND_PARAM"
-          "REMATCH_PCRE"
-          # "WARN_CREATE_GLOBAL"
-          # "WARN_NESTED_VAR"
+              # Completion
+              "ALWAYS_TO_END"
+              "AUTO_MENU"
+              "COMPLETE_IN_WORD"
+              "GLOB_COMPLETE"
+              "MENU_COMPLETE"
 
-          # History
-          # "EXTENDED_HISTORY"
-          "HIST_IGNORE_ALL_DUPS"
-          # "HIST_IGNORE_SPACE"
-          "HIST_NO_STORE"
-          "HIST_REDUCE_BLANKS"
-          "HIST_VERIFY"
+              # Expansion and Globbing
+              "EQUALS"
+              "GLOB_DOTS"
+              "GLOB_STAR_SHORT"
+              "HIST_SUBST_PATTERN"
+              "RC_EXPAND_PARAM"
+              "REMATCH_PCRE"
+              # "WARN_CREATE_GLOBAL"
+              # "WARN_NESTED_VAR"
 
-          # Input/Output
-          "INTERACTIVE_COMMENTS"
+              # History
+              # "EXTENDED_HISTORY"
+              "HIST_IGNORE_ALL_DUPS"
+              # "HIST_IGNORE_SPACE"
+              "HIST_NO_STORE"
+              "HIST_REDUCE_BLANKS"
+              "HIST_VERIFY"
 
-          # Job Control
-          "AUTO_CONTINUE"
-          "LONG_LIST_JOBS"
+              # Input/Output
+              "INTERACTIVE_COMMENTS"
 
-          # Scripts and Functions
-          "PIPE_FAIL"
-        ];
+              # Job Control
+              "AUTO_CONTINUE"
+              "LONG_LIST_JOBS"
+
+              # Scripts and Functions
+              "PIPE_FAIL"
+            ];
+          in
+          ''
+            ${opts}
+
+            source "${./.}/p10k.zsh"
+          '';
       in
-      ''
-        ${opts}
-
-        source "${./.}/p10k.zsh"
-      '';
+      lib.mkMerge [ initExtraFirst initExtra ];
 
     localVariables.POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD = true;
 

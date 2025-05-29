@@ -9,13 +9,13 @@
 
 buildPythonApplication rec {
   pname = "px";
-  version = "3.6.5";
+  version = "3.6.10";
 
   src = fetchFromGitHub {
     owner = "walles";
     repo = pname;
     rev = version;
-    sha256 = "0zhh3y8caww6rxy9ppg60ls1505s5z1jmnahr5v31r94vzlp4h8v";
+    sha256 = "15xkpmymf0g0mqhjc6mswymrqkilbys3mkhz1xk9lq3jilfhdm04";
   };
 
   nativeBuildInputs = [
@@ -31,13 +31,7 @@ buildPythonApplication rec {
 
   preBuild = ''
     substituteInPlace ./setup.py \
-      --replace-fail 'subprocess.check_output(["git", "describe", "--dirty"]).decode("utf-8").strip()' '"${version}"'
-
-    substituteInPlace ./setup.py \
       --replace-fail '"pytest-runner",' ' '
-
-    substituteInPlace ./devbin/update_version_py.py \
-      --replace-fail 'subprocess.check_output(["git", "describe", "--dirty"]).decode("utf-8").strip()' '"${version}"'
 
     substituteInPlace ./px/px_process.py \
       --replace-fail '"/bin/ps"' '"${procps}/bin/ps"'

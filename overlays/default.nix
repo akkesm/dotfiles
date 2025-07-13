@@ -12,7 +12,8 @@ in
     inherit (final.python3Packages)
       buildPythonApplication
       pytest
-      python-dateutil;
+      python-dateutil
+      setuptools;
   };
   silent = callPackage ./silent { };
   sway-launcher-desktop = callPackage ./sway-launcher-desktop { };

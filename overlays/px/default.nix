@@ -5,22 +5,24 @@
 , procps
 , pytest
 , python-dateutil
+, setuptools
 }:
 
 buildPythonApplication rec {
   pname = "px";
-  version = "3.6.10";
+  version = "3.6.12";
+  pyproject = true;
 
   src = fetchFromGitHub {
     owner = "walles";
     repo = pname;
     rev = version;
-    sha256 = "15xkpmymf0g0mqhjc6mswymrqkilbys3mkhz1xk9lq3jilfhdm04";
+    sha256 = "06jg6izya1k5gk71pygv8691fcaa6zfnzns57fjknnihz3c42pzw";
   };
 
-  nativeBuildInputs = [
-    git
-  ];
+  build-system = [ setuptools ];
+
+  nativeBuildInputs = [ git ];
 
   buildInputs = [ procps ];
   checkInputs = [ pytest ];

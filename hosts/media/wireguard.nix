@@ -14,18 +14,31 @@
         };
 
         wireguardConfig = {
-          ListenPort = 51820;
-          PrivateKeyFile = "/run/keys/wireguard-privkey.key";
+          PrivateKeyFile = config.sops.secrets.vpn-key.path;
+          ListenPort = 9918;
         };
 
         wireguardPeers = [{
-          wireguardPeerConfig = {
-            AllowedIPs = [ "192.168.178.1/32" ];
-            PublicKey = "OhApdFoOYnKesRVpnYRqwk3pdM247j8PPVH5K7aIKX0=";
-            PresharedKeyFile = "/run/keys/wg-preshared.key";
-          };
+          PublicKey = "J4XVdtoBVc/EoI2Yk673Oes97WMnQSH5KfamZNjtM2s=";
+          AllowedIPs = [ "0.0.0.0/0" ];
+          Endpoint = "185.183.34.149:51820";
         }];
       };
     };
+
+    networks.wg0 = {
+      matchConfig.Name = "wg0";
+      address = [ "10.2.0.2/32" ];
+      DHCP = "no";
+      dns = [ "10.2.0.1" ];
+      networkConfig.IPv6AcceptRA = false;
+    };
+  };
+
+  sops.secrets.vpn-key = {
+    format = "yaml";
+    sopsFile = ./secrets/vpn.yaml;
+    owner = "systemd-network";
   };
 }
+

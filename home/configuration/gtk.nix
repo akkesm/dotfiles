@@ -10,7 +10,10 @@
       size = 24;
     };
 
-    gtk2.configLocation = "${config.xdg.configHome}/gtk-2.0/gtkrc";
+    gtk2 = {
+      configLocation = "${config.xdg.configHome}/gtk-2.0/gtkrc";
+      force = true;
+    };
 
     gtk3.extraConfig = {
       gtk-application-prefer-dark-theme = true;
@@ -31,12 +34,9 @@
     };
   };
 
-  home = {
-    file."${config.gtk.gtk2.configLocation}".force = true;
-
-    packages = with pkgs; [
-      # gnome-themes-extra
-      hicolor-icon-theme
-    ];
-  };
+  home.packages = with pkgs; [
+    # gnome-themes-extra
+    hicolor-icon-theme
+  ];
 }
+

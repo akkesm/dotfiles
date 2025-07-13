@@ -154,34 +154,34 @@
           ];
         };
 
-        # nix build .#nixosConfigurations.wsl.config.system.build.installer
-        wsl.modules = [
-          nixos-wsl.nixosModules.wsl
-          {
-            wsl = {
-              enable = true;
-
-              wslConf = {
-                automount.root = "/mnt";
-                network.generateResolvConf = false;
-              };
-
-              defaultUser = "alessandro";
-              startMenuLaunchers = true;
-            };
-
-            system.stateVersion = "24.05";
-          }
-
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              users.alessandro = import ./home;
-            };
-          }
-        ];
+        # # nix build .#nixosConfigurations.wsl.config.system.build.installer
+        # wsl.modules = [
+        #   nixos-wsl.nixosModules.wsl
+        #   {
+        #     wsl = {
+        #       enable = true;
+        #
+        #       wslConf = {
+        #         automount.root = "/mnt";
+        #         network.generateResolvConf = false;
+        #       };
+        #
+        #       defaultUser = "alessandro";
+        #       startMenuLaunchers = true;
+        #     };
+        #
+        #     system.stateVersion = "24.11";
+        #   }
+        #
+        #   home-manager.nixosModules.home-manager
+        #   {
+        #     home-manager = {
+        #       useGlobalPkgs = true;
+        #       useUserPackages = true;
+        #       users.alessandro = import ./home;
+        #     };
+        #   }
+        # ];
 
         # nix build --impure .#nixosConfigurations.live.config.system.build.isoImage
         live.channelName = "unstable";

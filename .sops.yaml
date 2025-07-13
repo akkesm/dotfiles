@@ -5,11 +5,20 @@ keys:
 creation_rules:
   - path_regex: hosts/civetta/secrets/.+
     key_groups:
-    - age:
+    - pgp:
+      - *yubikey
+      age:
       - *civetta
+  - path_regex: hosts/media/secrets/.+
+    key_groups:
+    - pgp:
+      - *yubikey
+      age:
       - *media
   - path_regex: common/secrets/.+
     key_groups:
-    - age:
+    - pgp:
+      - *yubikey
+      age:
       - *civetta
       - *media

@@ -3,7 +3,11 @@
 {
   networking = {
     hostName = "media";
-    defaultGateway = "192.168.178.1";
+
+    defaultGateway = {
+      address = "192.168.178.1";
+      interface = "enp1s0";
+    };
 
     interfaces.enp1s0 = {
       ipv4.addresses = [{
@@ -22,5 +26,6 @@
     ];
 
     useDHCP = false;
+    useNetworkd = true;
   };
 }

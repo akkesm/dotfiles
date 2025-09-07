@@ -1,4 +1,4 @@
-{ pkgs, olympus, ... }:
+{ pkgs, ... }:
 
 {
   imports = [
@@ -25,10 +25,9 @@
 
     # Games
     lutris
+    olympus
     scarab
     steam
     wineWowPackages.waylandFull
-
-    olympus
   ];
 }

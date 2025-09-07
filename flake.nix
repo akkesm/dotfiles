@@ -5,7 +5,9 @@
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nur.url = "github:nix-community/NUR";
     # nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
-    olympus-nixpkgs.url = "github:Petingoso/nixpkgs/olympus";
+
+    # Determinate System's Nix
+    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
 
     # Helpers
     flake-utils-plus.url = "github:gytis-ivaskevicius/flake-utils-plus";
@@ -75,7 +77,7 @@
     , unstable
     , nur
       # , nixpkgs-wayland
-    , olympus-nixpkgs
+    , determinate
     , flake-utils-plus
     , deploy-rs
     , home-manager
@@ -99,20 +101,11 @@
         nixpkgs = {
           input = nixpkgs;
           # overlaysBuilder = channels: [ nixpkgs-wayland.overlay ];
-          overlaysBuilder = channels: [
-            (final: prev: { inherit (channels.olympus-nixpkgs) olympus; })
-          ];
         };
 
         unstable = {
           input = unstable;
-
-          unstable.overlaysBuilder = channels: [
-            (final: prev: { inherit (channels.olympus-nixpkgs) olympus; })
-          ];
         };
-
-        olympus-nixpkgs.input = olympus-nixpkgs;
       };
 
       channelsConfig = {
@@ -146,11 +139,10 @@
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 users.alessandro = import ./home;
-                extraSpecialArgs = {
-                  inherit (olympus-nixpkgs.legacyPackages.x86_64-linux) olympus;
-                };
               };
             }
+
+            determinate.nixosModules.default
           ];
         };
 

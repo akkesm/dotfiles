@@ -4,7 +4,7 @@
   environment.variables.NIXPKGS_ALLOW_UNFREE = "1";
 
   nix = {
-    package = pkgs.nixVersions.latest;
+    # package = pkgs.nixVersions.latest;
     settings = {
       auto-optimise-store = true;
 
@@ -29,6 +29,7 @@
         # "https://cache.iog.io"
         # "https://nickel.cachix.org"
         # "https://nixcache.reflex-frp.org"
+        "https://install.determinate.systems"
       ];
 
       trusted-public-keys = lib.mkForce [
@@ -41,6 +42,7 @@
         # "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ="
         # "nickel.cachix.org-1:ABoCOGpTJbAum7U6c+04VbjvLxG9f0gJP5kYihRRdQs="
         # "ryantrinkle.com-1:JJiAKaRv9mWgpVAz8dwewnZe0AzzEAzPkagE9SP5NWI="
+        "cache.flakehub.com-3:hJuILl5sVK4iKm86JzgdXW12Y2Hwd5G07qKtHTOcDCM="
       ];
 
       trusted-users = [

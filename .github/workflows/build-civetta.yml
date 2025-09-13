@@ -1,15 +1,17 @@
 name: "Build civetta"
 
 on:
-  pull_request_target:
-    types:
-      - closed
-    branches:
-      - master
   push:
     branches:
       - master
+    paths:
+      - 'common/**'
+      - 'home/**'
   workflow_dispatch:
+  workflow_run:
+    workflows: [Update flake.lock]
+    types:
+      - completed
 
 jobs:
   civetta:

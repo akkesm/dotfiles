@@ -15,5 +15,7 @@
     ];
   };
 
+  services.chrony.enable = true;
+
   time.timeZone = "Europe/Rome";
 }

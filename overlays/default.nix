@@ -13,7 +13,7 @@ in
       buildPythonApplication
       pytest
       python-dateutil
-      setuptools;
+      setuptools-scm;
   };
   silent = callPackage ./silent { };
   sway-launcher-desktop = callPackage ./sway-launcher-desktop { };

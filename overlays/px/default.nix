@@ -5,22 +5,22 @@
 , procps
 , pytest
 , python-dateutil
-, setuptools
+, setuptools-scm
 }:
 
 buildPythonApplication rec {
   pname = "px";
-  version = "3.6.12";
+  version = "3.8.0";
   pyproject = true;
 
   src = fetchFromGitHub {
     owner = "walles";
     repo = pname;
     rev = version;
-    sha256 = "06jg6izya1k5gk71pygv8691fcaa6zfnzns57fjknnihz3c42pzw";
+    sha256 = "0cnqqi5d81hbhy5pg7cykbn4rbyplhq07r2x8bx64qn1rw7dl93h";
   };
 
-  build-system = [ setuptools ];
+  build-system = [ setuptools-scm ];
 
   nativeBuildInputs = [ git ];
 
@@ -28,19 +28,13 @@ buildPythonApplication rec {
   checkInputs = [ pytest ];
   propagatedBuildInputs = [ python-dateutil ];
 
-  # Tests want "/bin/ps"
-  doCheck = false;
-
   preBuild = ''
-    substituteInPlace ./setup.py \
-      --replace-fail '"pytest-runner",' ' '
-
     substituteInPlace ./px/px_process.py \
       --replace-fail '"/bin/ps"' '"${procps}/bin/ps"'
   '';
 
   meta = with lib; {
-    description = "ps and top for human beings";
+    description = "ps, top and pstree for human beings";
     homepage = "https://github.com/walles/px";
     license = licenses.mit;
     platforms = platforms.unix;

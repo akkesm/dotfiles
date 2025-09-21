@@ -18,6 +18,7 @@
     gdb
     openssl
     parted
+    px
     ripgrep
     rwhich
     sd

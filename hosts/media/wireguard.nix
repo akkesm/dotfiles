@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, ... }:
 
 {
   networking.firewall.allowedUDPPorts = [ config.systemd.network.netdevs."10-wg0".wireguardConfig.ListenPort ];

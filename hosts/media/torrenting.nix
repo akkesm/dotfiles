@@ -30,8 +30,8 @@ in
 
         cache-size-mb = 128;
 
-        bind-address-ipv4 = wg-address;
-        bind-address-ipv6 = "::1";
+        # bind-address-ipv4 = wg-address;
+        # bind-address-ipv6 = "::1";
 
         port-forwarding-enabled = false;
 
@@ -53,6 +53,7 @@ in
         proxyPass = "http://127.0.0.1:8686";
         proxyWebsockets = true;
       };
+
       "^~ /lidarr/api" = {
         proxyPass = "http://127.0.0.1:8686";
 
@@ -79,18 +80,17 @@ in
     };
   };
 
-  systemd.services.transmission.serviceConfig = {
-    ExecStartPre = [
-      "+${pkgs.libnatpmp}/bin/natpmpc -g ${wg-dns} -a 1 0 tcp 60"
-      "+${pkgs.libnatpmp}/bin/natpmpc -g ${wg-dns} -a 1 0 udp 60"
-    ];
-
-    RestrictAddressFamilies = [
-      ""
-      "AF_UNIX"
-      "AF_INET"
-    ];
-  };
+  # systemd.services.transmission.serviceConfig = {
+  #   ExecStartPre = [
+  #     "+${pkgs.libnatpmp}/bin/natpmpc -g ${wg-dns} -a 1 0 tcp 60"
+  #     "+${pkgs.libnatpmp}/bin/natpmpc -g ${wg-dns} -a 1 0 udp 60"
+  #   ];
+  #
+  #   RestrictAddressFamilies = [
+  #     "AF_UNIX"
+  #     "AF_INET"
+  #   ];
+  # };
 
   users.groups.media = { };
 }

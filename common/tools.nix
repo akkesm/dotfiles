@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   environment.systemPackages = with pkgs; [
@@ -16,9 +16,10 @@
     fd
     file
     gdb
+    jq
     openssl
     parted
-    px
+    # px
     ripgrep
     rwhich
     sd
@@ -27,6 +28,7 @@
     strace
     unzip
     wget
+    yq
     zip
   ];
 

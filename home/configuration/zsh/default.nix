@@ -84,6 +84,7 @@
           in
           ''
             ${opts}
+            zstyle ':completion:*' special-dirs false
 
             source "${./.}/p10k.zsh"
           '';

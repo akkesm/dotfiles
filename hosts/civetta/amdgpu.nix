@@ -14,11 +14,7 @@
     extraPackages = with pkgs; [
       rocmPackages.clr.icd
       rocmPackages.clr
-      amdvlk
-    ];
-
-    extraPackages32 = [
-      pkgs.driversi686Linux.amdvlk
     ];
   };
 }
+

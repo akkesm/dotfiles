@@ -6,6 +6,11 @@ let
 in
 {
   services = {
+    flaresolverr = {
+      enable = true;
+      openFirewall = true;
+    };
+
     lidarr = {
       enable = true;
       group = "media";

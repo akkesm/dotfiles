@@ -25,6 +25,7 @@
 
     # Games
     lutris
+    nexusmods-app-unfree
     olympus
     scarab
     steam

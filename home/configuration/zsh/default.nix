@@ -19,7 +19,7 @@
       extended = true;
       ignoreDups = false; # Set HIST_IGNORE_ALL_DUPS later
       ignorePatterns = [ "q" "kill *" ];
-      path = "${config.home.homeDirectory}/${config.programs.zsh.dotDir}/zsh_history";
+      path = "${config.programs.zsh.dotDir}/zsh_history";
     };
 
     initContent =

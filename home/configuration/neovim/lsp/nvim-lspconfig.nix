@@ -45,51 +45,62 @@ in
         config = ''
           local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-          vim.lsp.config.bashls.setup { capabilities = capabilities }
-          vim.lsp.config.ccls.setup {
+          vim.lsp.config('bashls', { capabilities = capabilities })
+          vim.lsp.enable('bashls')
+
+          vim.lsp.config('ccls', {
             capabilities = capabilities,
-            root_dir = vim.lsp.config.util.root_pattern('compile_commands.json', '.ccls', '.git', 'Makefile', 'flake.nix'),
+            root_markers = {'compile_commands.json', '.ccls', '.git', 'Makefile', 'flake.nix'},
             single_file_support = true,
-          }
+          })
+          vim.lsp.enable('ccls')
 
-          vim.lsp.config.cssls.setup { capabilities = capabilities }
+          vim.lsp.config('cssls', { capabilities = capabilities })
+          vim.lsp.enable('cssls')
 
-          vim.lsp.config.docker_compose_language_service.setup {
+          vim.lsp.config('docker_compose_language_service', {
             capabilities = capabilities,
             filetypes = {
               'yaml',
               'yaml.docker-compose',
             },
-          }
+          })
+          vim.lsp.enable('docker_compose_language_service')
 
-          vim.lsp.config.dockerls.setup { capabilities = capabilities }
+          vim.lsp.config('dockerls', { capabilities = capabilities })
+          vim.lsp.enable('dockerls')
 
-          vim.lsp.config.elixirls.setup {
+          vim.lsp.config('elixirls', {
             capabilities = capabilities,
             cmd = { '${pkgs.elixir-ls}/bin/elixir-ls' },
-          }
+          })
+          vim.lsp.enable('elixirls')
 
-          vim.lsp.config.gopls.setup { capabilities = capabilities }
+          vim.lsp.config('gopls', { capabilities = capabilities })
+          vim.lsp.enable('gopls')
 
-          vim.lsp.config.hls.setup {
+          vim.lsp.config('hls', {
               capabilities = capabilities,
               cmd = { '${hls-cmd}', '--lsp' },
               setting = { haskell = { formattingProvider = 'fourmolu' } },
-          }
+          })
+          vim.lsp.enable('hls')
 
-          vim.lsp.config.html.setup {
+          vim.lsp.config('html', {
             capabilities = capabilities,
             cmd = { '${pkgs.nodePackages.vscode-langservers-extracted}/bin/vscode-html-languageserver', '--stdio' },
-          }
+          })
+          vim.lsp.enable('hls')
 
-          vim.lsp.config.jdtls.setup { capabilities = capabilities }
+          vim.lsp.config('jdtls', { capabilities = capabilities })
+          vim.lsp.enable('hls')
 
-          vim.lsp.config.jsonls.setup {
+          vim.lsp.config('jsonls', {
             capabilities = capabilities,
             cmd = { '${pkgs.nodePackages.vscode-langservers-extracted}/bin/vscode-json-languageserver', '--stdio' },
-          }
+          })
 
-          vim.lsp.config.lua_ls.setup {
+          vim.lsp.config('lua_ls', {
             capabilities = capabilities,
             on_init = function(client)
               local path = client.workspace_folders[1].name
@@ -103,23 +114,32 @@ in
               end
               return true
             end,
-          }
+          })
+          vim.lsp.enable('lua_ls')
 
-          vim.lsp.config.marksman.setup { capabilities = capabilities }
+          vim.lsp.config('marksman', { capabilities = capabilities })
+          vim.lsp.enable('marksman')
 
-          vim.lsp.config.nil_ls.setup {
+          vim.lsp.config('nil_ls', {
               capabilities = capabilities,
               settings = { ['nil'] = { formatting = { command = { 'nixpkgs-fmt' } } } },
-          }
+          })
+          vim.lsp.enable('nil_ls')
 
-          vim.lsp.config.nimls.setup { capabilities = capabilities }
-          vim.lsp.config.perlpls.setup { capabilities = capabilities }
-          vim.lsp.config.pyright.setup { capabilities = capabilities }
-          vim.lsp.config.solargraph.setup { capabilities = capabilities }
-          vim.lsp.config.terraformls.setup { capabilities = capabilities }
-          vim.lsp.config.ts_ls.setup { capabilities = capabilities }
+          vim.lsp.config('nimls', { capabilities = capabilities })
+          vim.lsp.enable('nimls')
+          vim.lsp.config('perlpls', { capabilities = capabilities })
+          vim.lsp.enable('perlpls')
+          vim.lsp.config('pyright', { capabilities = capabilities })
+          vim.lsp.enable('pyright')
+          vim.lsp.config('solargraph', { capabilities = capabilities })
+          vim.lsp.enable('solargraph')
+          vim.lsp.config('terraformls', { capabilities = capabilities })
+          vim.lsp.enable('terraformls')
+          vim.lsp.config('ts_ls', { capabilities = capabilities })
+          vim.lsp.enable('ts_ls')
 
-          vim.lsp.config.yamlls.setup {
+          vim.lsp.config('yamlls', {
             capabilities = capabilities,
             settings = {
               yaml = {
@@ -134,9 +154,11 @@ in
                 }
               },
             },
-          }
+          })
+          vim.lsp.enable('yamlls')
 
-          vim.lsp.config.zls.setup { capabilities = capabilities }
+          vim.lsp.config('zls', { capabilities = capabilities })
+          vim.lsp.enable('zls')
 
 
           vim.keymap.set('n', '<Leader>fmt', function() vim.lsp.buf.format { async = true } end, { noremap = true, silent = true })

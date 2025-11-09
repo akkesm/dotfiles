@@ -7,9 +7,17 @@
     git = {
       enable = true;
 
-      extraConfig = {
-        core.editor = "nvim";
+      settings = {
+        alias.fpush = "push --force-with-lease";
+        branch.sort = "-committerdate";
+
+        core = {
+          editor = "nvim";
+          fsmonitor = true;
+        };
+
         credential.helper = "store";
+        column.ui = "auto";
         diff.tool = "vimdiff";
         difftool.prompt = true;
         help.autoCorrect = "prompt";
@@ -17,15 +25,17 @@
         merge.tool = "vimdiff";
         pull.rebase = false;
         tag.gpgSign = true;
+
+        user = {
+          email = config.accounts.email.accounts."${config.home.username}".address;
+          name = config.accounts.email.accounts."${config.home.username}".realName;
+        };
       };
 
       signing = {
         key = "14E259475412EC24";
         signByDefault = true;
       };
-
-      userEmail = config.accounts.email.accounts."${config.home.username}".address;
-      userName = config.accounts.email.accounts."${config.home.username}".realName;
     };
 
     gpg = {
@@ -53,8 +63,7 @@
     # note: for extra safety, use `ssh -a -i /dev/null -o IdentityAgent=/dev/null remote-host`
     ssh = {
       enable = true;
-      controlMaster = "auto";
-      controlPath = "/var/tmp/ssh_mux_%h_%p_%r";
+      enableDefaultConfig = false;
 
       extraConfig = ''
         HostKeyAlgorithms ssh-ed25519-cert-v01@openssh.com,ssh-rsa-cert-v01@openssh.com,ssh-ed25519,ssh-rsa,ecdsa-sha2-nistp521-cert-v01@openssh.com,ecdsa-sha2-nistp384-cert-v01@openssh.com,ecdsa-sha2-nistp256-cert-v01@openssh.com,ecdsa-sha2-nistp521,ecdsa-sha2-nistp384,ecdsa-sha2-nistp256
@@ -63,21 +72,30 @@
         Ciphers chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes128-gcm@openssh.com,aes256-ctr,aes192-ctr,aes128-ctr
       '';
 
-      hashKnownHosts = true;
+      matchBlocks =
+        let
+          common = {
+            controlMaster = "auto";
+            controlPath = "/var/tmp/ssh_mux_%h_%p_%r";
+            controlPersist = "30m";
+            hashKnownHosts = true;
+            userKnownHostsFile = "${config.xdg.dataHome}/ssh/known_hosts";
+          };
+        in
+        {
+          "github.com" = {
+            hostname = "github.com";
+            user = "git";
+          } // common;
 
-      matchBlocks = {
-        "github.com" = {
-          hostname = "github.com";
-          user = "git";
+          "nixos-server,192.168.178.24" = {
+            hostname = "192.168.178.24";
+            user = "user";
+          } // common;
+
+          "*" = common;
         };
 
-        "nixos-server,192.168.178.24" = {
-          hostname = "192.168.178.24";
-          user = "user";
-        };
-      };
-
-      userKnownHostsFile = "${config.xdg.dataHome}/ssh/known_hosts";
     };
   };
 

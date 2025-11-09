@@ -24,7 +24,7 @@
       gyre-fonts
       liberation_ttf
       unifont
-      noto-fonts-emoji
+      noto-fonts-color-emoji
     ];
   };
 }

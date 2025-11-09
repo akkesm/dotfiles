@@ -13,13 +13,7 @@
       fi
     '';
 
-    dotDir =
-      let
-        relativeConfigHome = lib.removePrefix
-          (config.home.homeDirectory + "/")
-          config.xdg.configHome;
-      in
-      relativeConfigHome + "/zsh";
+    dotDir = "${config.xdg.configHome}/zsh";
 
     history = {
       extended = true;

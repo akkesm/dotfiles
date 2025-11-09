@@ -21,7 +21,7 @@
     # Chat
     discord
     element-desktop
-    tdesktop
+    telegram-desktop
 
     # Games
     lutris

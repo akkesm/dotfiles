@@ -120,7 +120,7 @@
     less = {
       enable = true;
 
-      keys = ''
+      config = ''
         #env
         LESS = --quit-if-one-screen --ignore-case --RAW-CONTROL-CHARS --incsearch
       '';

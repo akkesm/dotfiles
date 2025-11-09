@@ -64,5 +64,5 @@
     };
   };
 
-  home.packages = [ pkgs.onlyoffice-bin ];
+  home.packages = [ pkgs.onlyoffice-desktopeditors ];
 }

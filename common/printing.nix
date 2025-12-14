@@ -21,11 +21,19 @@ in
 
     sane = {
       enable = true;
-      disabledDefaultBackends = [ "v4l" ];
+      disabledDefaultBackends = [
+        "escl"
+        "v4l"
+      ];
 
-      extraBackends = [
-        pkgs.epkowa
-        # pkgs.sane-backends
+      extraBackends = with pkgs; [
+        (epkowa.overrideAttrs (oldAttrs: {
+          postInstall = oldAttrs.postInstall + ''
+            echo "net ${EpsonSX600W-IP}" >> $out/etc/sane.d/epkowa.conf
+          '';
+        }))
+
+        sane-airscan
       ];
     };
   };
@@ -34,17 +42,31 @@ in
     iptables -I INPUT -p udp -s ${EpsonSX600W-IP} -j ACCEPT
   '';
 
-  services.printing = {
-    enable = true;
-    browsing = true;
-    defaultShared = true;
+  services = {
+    avahi = {
+      enable = true;
+      nssmdns4 = true;
+    };
 
-    drivers = [
-      # pkgs.epson-escpr
-      pkgs.gutenprint
+    ipp-usb.enable = true;
+
+    printing = {
+      enable = true;
+      browsing = true;
+      cups-pdf.enable = true;
+
+      drivers = with pkgs; [
+        # epson-escpr
+        canon-cups-ufr2
+        gutenprint
+      ];
+
+      tempDir = "/var/spool/cups/tmp";
+    };
+
+    udev.packages = with pkgs; [
+      sane-airscan
     ];
-
-    logLevel = "debug";
-    tempDir = "/var/spool/cups/tmp";
   };
 }
+

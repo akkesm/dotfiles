@@ -10,6 +10,9 @@
 
       extraGroups = [
         "keys"
+        "lp"
+        "podman"
+        "scanner"
         "wheel"
       ];
 

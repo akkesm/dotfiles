@@ -7,6 +7,7 @@
     ./networking.nix
     ./nginx.nix
     ./monitoring.nix
+    ./printing.nix
     ./torrenting.nix
     ./users.nix
     # ./vaultwarden.nix

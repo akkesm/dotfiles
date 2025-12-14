@@ -18,7 +18,6 @@
     ./pipewire.nix
     ./plasma6.nix
     ./power.nix
-    ./printing.nix
     ./users.nix
     ./virtualisation.nix
     ./zram.nix

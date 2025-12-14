@@ -1,7 +1,7 @@
 {
   inputs = {
     # Channels
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nur.url = "github:nix-community/NUR";
     # nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
@@ -20,7 +20,7 @@
 
     # Extra modules
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.05";
+      url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager-unstable = {
@@ -130,10 +130,10 @@
 
       hosts = {
         civetta = {
-          channelName = "unstable";
+          channelName = "nixpkgs";
           modules = [
             ./hosts/civetta
-            home-manager-unstable.nixosModules.home-manager
+            home-manager.nixosModules.home-manager
             {
               home-manager = {
                 useGlobalPkgs = true;

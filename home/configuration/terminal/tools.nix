@@ -42,6 +42,8 @@
 
     yubikey-personalization
     yubioath-flutter
+
+    adafruit-nrfutil
   ];
 
   programs = {

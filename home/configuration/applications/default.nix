@@ -26,7 +26,7 @@
     # Games
     lutris
     nexusmods-app-unfree
-    olympus
+    (olympus.override { celesteWrapper = "steam-run"; })
     scarab
     steam
     wineWowPackages.waylandFull

@@ -20,6 +20,7 @@ in
   i3-prop = callPackage ./i3-prop { };
   utterly-nord-solid-kvantum = callPackage ./utterly-nord-solid-kvantum { };
   wayherb = callPackage ./wayherb { };
+  weiqihub = callPackage ./weiqihub { };
   xcursor-breeze-neutral = callPackage ./xcursor-breeze-neutral { };
 
   ## scripts

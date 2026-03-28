@@ -18,9 +18,10 @@
     ./pipewire.nix
     ./plasma6.nix
     ./power.nix
+    ./swap.nix
     ./users.nix
     ./virtualisation.nix
-    ./zram.nix
+    # ./zram.nix
   ];
 
   nixpkgs.hostPlatform = "x86_64-linux";

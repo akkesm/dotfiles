@@ -27,7 +27,7 @@ jobs:
           remove-docker-images: 'true'
       - run: sudo chown root:root /nix
       - uses: actions/checkout@v6.0.2
-      - uses: DeterminateSystems/nix-installer-action@v21
+      - uses: DeterminateSystems/nix-installer-action@v22
         with:
           determinate: true
           extra-conf: |

@@ -37,4 +37,8 @@ jobs:
           name: akkesm
           authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
           extraPullNames: nix-community,nixpkgs-wayland
-      - run: nix build -L .#nixosConfigurations.civetta.config.system.build.toplevel
+      - run: nix build --impure -L .#nixosConfigurations.civetta.config.system.build.toplevel
+        env:
+          NIXPKGS_ALLOW_INSECURE: ${{ vars.NIXPKGS_ALLOW_INSECURE }}
+          NIXPKGS_ALLOW_UNFREE: ${{ vars.NIXPKGS_ALLOW_UNFREE }}
+

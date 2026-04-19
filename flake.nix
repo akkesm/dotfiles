@@ -162,7 +162,7 @@
         #       startMenuLaunchers = true;
         #     };
         #
-        #     system.stateVersion = "24.11";
+        #     system.stateVersion = "25.11";
         #   }
         #
         #   home-manager.nixosModules.home-manager
@@ -186,7 +186,7 @@
             ];
           }
           {
-            system.stateVersion = "24.11";
+            system.stateVersion = "25.11";
           }
 
           # home-managerhome-manager-unstable.nixosModules.home-manager

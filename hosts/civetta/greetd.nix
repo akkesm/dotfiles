@@ -5,7 +5,7 @@
     enable = true;
     settings = {
       default_session = {
-        command = "${pkgs.greetd.greetd}/bin/agreety --cmd ${pkgs.zsh}/bin/zsh";
+        command = "${pkgs.greetd}/bin/agreety --cmd ${pkgs.zsh}/bin/zsh";
         user = "greeter";
       };
 

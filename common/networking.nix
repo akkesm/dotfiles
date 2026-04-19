@@ -21,10 +21,8 @@
 
   services.resolved = {
     enable = true;
-
-    extraConfig = ''
-      DNSOverTLS=opportunistic
-    '';
+    dnsovertls = "opportunistic";
+    dnssec = "allow-downgrade";
 
     fallbackDns = [
       "9.9.9.9#dns.quad9.net"

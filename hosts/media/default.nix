@@ -2,6 +2,8 @@
 
 {
   imports = [
+    ./cloudflared.nix
+    ./ente.nix
     ./hardware.nix
     ./navidrome.nix
     ./networking.nix

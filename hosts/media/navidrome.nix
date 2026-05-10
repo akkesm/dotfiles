@@ -1,9 +1,10 @@
-{ ... }:
+{ config, ... }:
 
 {
   services = {
     navidrome = {
       enable = true;
+      openFirewall = true;
 
       settings = {
         MusicFolder = "/data/music";
@@ -20,7 +21,8 @@
     };
 
     nginx.virtualHosts."media.fritz.box".locations."^~ /navidrome" = {
-        proxyPass = "http://127.0.0.1:4533";
-      };
+      proxyPass = "http://localhost:${builtins.toString config.services.navidrome.settings.Port}";
     };
-  }
+  };
+}
+

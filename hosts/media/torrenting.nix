@@ -45,7 +45,7 @@ in
         seed-queue-size = 20;
 
         rpc-bind-address = "0.0.0.0";
-        rpc-whitelist = "127.0.0.1,::1,192.168.178.*";
+        rpc-whitelist = "localhost,::1,192.168.178.*";
         rpc-host-whitelist = "*.fritz.box";
 
         idle-seeding-limit = 60;
@@ -55,12 +55,12 @@ in
 
     nginx.virtualHosts."media.fritz.box".locations = {
       "/lidarr" = {
-        proxyPass = "http://127.0.0.1:8686";
+        proxyPass = "http://localhost:${builtins.toString config.services.lidarr.settings.server.port}";
         proxyWebsockets = true;
       };
 
       "^~ /lidarr/api" = {
-        proxyPass = "http://127.0.0.1:8686";
+        proxyPass = "http://localhost:${builtins.toString config.services.lidarr.settings.server.port}";
 
         extraConfig = ''
           auth_basic off;
@@ -68,11 +68,11 @@ in
       };
 
       "/prowlarr" = {
-        proxyPass = "http://127.0.0.1:9696";
+        proxyPass = "http://localhost:${builtins.toString config.services.prowlarr.settings.server.port}";
         proxyWebsockets = true;
       };
       "^~ /prowlarr(/[0-9]+)?/api" = {
-        proxyPass = "http://127.0.0.1:9696";
+        proxyPass = "http://localhost:${builtins.toString config.services.prowlarr.settings.server.port}";
 
         extraConfig = ''
           auth_basic off;
@@ -80,7 +80,7 @@ in
       };
 
       "^~ /transmission" = {
-        proxyPass = "http://127.0.0.1:9091/transmission";
+        proxyPass = "http://localhost:${builtins.toString config.services.transmission.settings.rpc-port}/transmission";
       };
     };
   };

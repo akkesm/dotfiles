@@ -4,7 +4,7 @@ let
   grafanaServerCfg = config.services.grafana.settings.server;
 in
 {
-  networking.firewall.allowedTCPPorts = [ 3000 9090 ];
+  networking.firewall.allowedTCPPorts = [ 4000 9090 ];
 
   services = {
     grafana = {
@@ -26,7 +26,7 @@ in
         server = {
           enable_gzip = true;
           http_addr = "127.0.0.1";
-          http_port = 3000;
+          http_port = 4000;
           root_url = "https://media.fritz.box/grafana";
           serve_from_sub_path = true;
         };

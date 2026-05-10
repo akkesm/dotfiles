@@ -22,7 +22,7 @@
   services.resolved = {
     enable = true;
     dnsovertls = "opportunistic";
-    dnssec = "allow-downgrade";
+    dnssec = "false";
 
     fallbackDns = [
       "9.9.9.9#dns.quad9.net"

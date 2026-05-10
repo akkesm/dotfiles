@@ -108,11 +108,11 @@
   '';
 
   home.activation = {
-    "gnupgDirPermìssions" = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    "gnupgDirPermissions" = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
       $DRY_RUN_CMD chmod $VERBOSE_ARG 700 ${config.programs.gpg.homedir}
     '';
 
-    "sshDirPermìssions" = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    "sshDirPermissions" = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
       $DRY_RUN_CMD chmod $VERBOSE_ARG 700 ${config.home.homeDirectory}/.ssh
       $DRY_RUN_CMD chmod $VERBOSE_ARG 700 ${config.xdg.dataHome}/ssh
     '';

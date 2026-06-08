@@ -26,7 +26,7 @@ jobs:
           remove-codeql: 'true'
           remove-docker-images: 'true'
       - run: sudo chown root:root /nix
-      - uses: actions/checkout@v6.0.2
+      - uses: actions/checkout@v6.0.3
       - uses: DeterminateSystems/nix-installer-action@v22
         with:
           determinate: true

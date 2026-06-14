@@ -2,6 +2,8 @@
 
 {
   environment.systemPackages = with pkgs; [
+    p7zip
+
     bat
     bat-extras.batdiff
     bat-extras.batman

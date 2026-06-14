@@ -4,6 +4,8 @@
   home.packages = with pkgs; [
     nixpkgs-review
 
+    p7zip
+
     bat-extras.batdiff
     bat-extras.batman
     bat-extras.batgrep

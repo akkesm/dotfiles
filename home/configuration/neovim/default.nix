@@ -69,18 +69,6 @@
       }
 
       {
-        plugin = registers-nvim;
-        type = "lua";
-        config = ''
-          require('registers').setup {
-            symbols = {
-              tab = "»·"
-            }
-          }
-        '';
-      }
-
-      {
         plugin = vim-kitty-navigator;
         type = "lua";
         config = ''

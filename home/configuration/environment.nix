@@ -72,6 +72,7 @@
       music = "${config.home.homeDirectory}/Music";
       pictures = "${config.home.homeDirectory}/Pictures";
       publicShare = "${config.home.homeDirectory}/Public";
+      setSessionVariables = true;
       templates = "${config.home.homeDirectory}/Templates";
       videos = "${config.home.homeDirectory}/Videos";
     };

@@ -30,6 +30,6 @@
     r2modman
     scarab
     steam
-    wineWowPackages.waylandFull
+    wineWow64Packages.waylandFull
   ];
 }

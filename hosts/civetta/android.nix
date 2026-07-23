@@ -1,7 +1,9 @@
 { pkgs, ... }:
 
 {
-  environment.systemPackages = [ pkgs.pmbootstrap ];
-
-  programs.adb.enable = true; # Add users to "adbusers" group
+  environment.systemPackages = with pkgs; [
+    android-tools # Add users to "adbusers" group
+    pmbootstrap
+  ];
 }
+

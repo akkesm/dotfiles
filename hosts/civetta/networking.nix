@@ -82,21 +82,25 @@
       secretsFile = {
         format = "binary";
         sopsFile = ./secrets/networks/secretsFile;
+        group = config.users.users.wpa_supplicant.group;
       };
 
       "polimi/cert" = {
         format = "binary";
         sopsFile = ./secrets/networks/polimi-cert/ca.pem;
+        group = config.users.users.wpa_supplicant.group;
       };
 
       "polimi/keyFile" = {
         format = "binary";
         sopsFile = ./secrets/networks/polimi-cert/user.p12;
+        group = config.users.users.wpa_supplicant.group;
       };
 
       "polimi/identity" = {
         format = "yaml";
         sopsFile = ./secrets/networks/polimi-cert/identity.yaml;
+        group = config.users.users.wpa_supplicant.group;
       };
     };
 

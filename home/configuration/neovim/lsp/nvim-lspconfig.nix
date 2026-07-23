@@ -28,14 +28,14 @@ in
       terraform-ls
       texlab
       zls
-    ]) ++ (with pkgs.haskellPackages; [
-      haskell-language-server hls-cmd fourmolu
-    ]) ++ (with pkgs.nodePackages; [
+
       bash-language-server
       dockerfile-language-server-nodejs
       typescript-language-server typescript
       vscode-langservers-extracted
       yaml-language-server
+    ]) ++ (with pkgs.haskellPackages; [
+      haskell-language-server hls-cmd fourmolu
     ]);
 
     plugins = with pkgs.vimPlugins; [
@@ -88,7 +88,7 @@ in
 
           vim.lsp.config('html', {
             capabilities = capabilities,
-            cmd = { '${pkgs.nodePackages.vscode-langservers-extracted}/bin/vscode-html-languageserver', '--stdio' },
+            cmd = { '${pkgs.vscode-langservers-extracted}/bin/vscode-html-languageserver', '--stdio' },
           })
           vim.lsp.enable('hls')
 
@@ -97,7 +97,7 @@ in
 
           vim.lsp.config('jsonls', {
             capabilities = capabilities,
-            cmd = { '${pkgs.nodePackages.vscode-langservers-extracted}/bin/vscode-json-languageserver', '--stdio' },
+            cmd = { '${pkgs.vscode-langservers-extracted}/bin/vscode-json-languageserver', '--stdio' },
           })
 
           vim.lsp.config('lua_ls', {

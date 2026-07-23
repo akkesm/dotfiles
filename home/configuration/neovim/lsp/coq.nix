@@ -30,7 +30,7 @@ in
       terraform-ls
       texlab
       zls
-    ]) ++ (with pkgs.nodePackages; [
+
       bash-language-server
       dockerfile-language-server-nodejs
       pyright

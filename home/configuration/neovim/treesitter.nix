@@ -24,7 +24,6 @@
         '';
       }
 
-      nvim-treesitter-refactor
       nvim-treesitter-context
       nvim-ts-context-commentstring
     ];

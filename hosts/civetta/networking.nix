@@ -82,24 +82,28 @@
       secretsFile = {
         format = "binary";
         sopsFile = ./secrets/networks/secretsFile;
+        owner = config.users.users.wpa_supplicant.name;
         group = config.users.users.wpa_supplicant.group;
       };
 
       "polimi/cert" = {
         format = "binary";
         sopsFile = ./secrets/networks/polimi-cert/ca.pem;
+        owner = config.users.users.wpa_supplicant.name;
         group = config.users.users.wpa_supplicant.group;
       };
 
       "polimi/keyFile" = {
         format = "binary";
         sopsFile = ./secrets/networks/polimi-cert/user.p12;
+        owner = config.users.users.wpa_supplicant.name;
         group = config.users.users.wpa_supplicant.group;
       };
 
       "polimi/identity" = {
         format = "yaml";
         sopsFile = ./secrets/networks/polimi-cert/identity.yaml;
+        owner = config.users.users.wpa_supplicant.name;
         group = config.users.users.wpa_supplicant.group;
       };
     };

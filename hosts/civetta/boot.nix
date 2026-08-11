@@ -1,8 +1,6 @@
 
 {
   boot = {
-    initrd.systemd.enable = false; # TODO: remove before 26.11
-
     loader = {
       efi.canTouchEfiVariables = true;
 

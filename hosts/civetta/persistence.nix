@@ -1,26 +1,35 @@
-{ lib, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   boot = {
-    initrd.postDeviceCommands = lib.mkBefore ''
-      mkdir -p /mnt
+    initrd.systemd.services.restore-btrfs = {
+      description = "Restore blank btrfs subvolumes";
+      wantedBy = [ "initrd.target" ];
+      after = [ "systemd-cryptsetup@nixos-enc.service" ];
+      before = [ "sysroot.mount" ];
+      unitConfig.DefaultDependencies = "no";
+      serviceConfig.Type = "oneshot";
 
-      mount -o subvol=/ /dev/mapper/nixos-enc /mnt
+      script = ''
+        mkdir -p /mnt
 
-      btrfs subvolume list -o /mnt/root |
-      cut -f 9 -d ' ' |
-      while read subvolume; do
-        btrfs subvolume delete "/mnt/$subvolume" &&
-        echo 'deleting /$subvolume subvolume...'
-      done &&
-      btrfs subvolume delete /mnt/root &&
-      echo 'deleting /root subvolume...'
+        mount -t btrfs -o subvol=/ /dev/mapper/nixos-enc /mnt
 
-      btrfs subvolume snapshot /mnt/root-blank /mnt/root &&
-      echo 'restoring blank /root subvolume...'
+        btrfs subvolume list -o /mnt/root |
+        cut -f 9 -d ' ' |
+        while read subvolume; do
+          btrfs subvolume delete "/mnt/$subvolume" &&
+          echo 'deleting /$subvolume subvolume...'
+        done &&
+        btrfs subvolume delete /mnt/root &&
+        echo 'deleting /root subvolume...'
 
-      umount /mnt
-    '';
+        btrfs subvolume snapshot /mnt/root-blank /mnt/root &&
+        echo 'restoring blank /root subvolume...'
+
+        umount /mnt
+      '';
+    };
 
     tmp.useTmpfs = true;
   };
@@ -44,3 +53,4 @@
     systemPackages = [ pkgs.fs-diff ];
   };
 }
+

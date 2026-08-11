@@ -10,18 +10,11 @@
     ];
 
     luks = {
-      yubikeySupport = true;
-
       devices = {
         "nixos-enc" = {
           device = "/dev/nvme0n1p2";
+          crypttabExtraOpts = ["fido2-device=auto"];
           preLVM = true;
-          yubikey = {
-            gracePeriod = 20;
-            slot = 2;
-            storage.device = "/dev/nvme0n1p1";
-            twoFactor = true;
-          };
         };
       };
     };

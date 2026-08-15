@@ -36,7 +36,7 @@
     config = { lib, pkgs, ... }: {
       services.postgresql = {
         enable = true;
-        package = pkgs.postgresql_16_jit;
+        package = pkgs.postgresql_18_jit;
         enableJIT = true;
 
         # https://pgtune.leopard.in.ua/#/
@@ -104,7 +104,7 @@
         };
       };
 
-      system.stateVersion = "25.11";
+      system.stateVersion = "26.05";
     };
   };
 }

@@ -1,7 +1,14 @@
 { pkgs, ... }:
 
 {
-  hardware.xpadneo.enable = true;
+  hardware = {
+    logitech.wireless = {
+      enable = true;
+      enableGraphical = true;
+    };
+
+    xpadneo.enable = true;
+  };
 
   networking.firewall = {
     # KDE Connect
@@ -9,8 +16,10 @@
     allowedUDPPortRanges = [{ from = 1714; to = 1764; }];
   };
 
-  programs.dconf.enable = true;
-  programs.droidcam.enable = true;
+  programs = {
+    dconf.enable = true;
+    droidcam.enable = true;
+  };
 
   xdg.portal = {
     enable = true;

@@ -4,6 +4,11 @@ let
   EpsonSX600W-IP = "192.168.178.29";
 in
 {
+  environment.systemPackages = with pkgs; [
+    cups-filters
+    cups-browsed
+  ];
+
   hardware = {
     printers = {
       ensureDefaultPrinter = "EPSONSX600FW";
@@ -52,10 +57,20 @@ in
 
     printing = {
       enable = true;
+
+      package = pkgs.cups.overrideAttrs (
+        final: prev: {
+          buildInputs = prev.buildInputs ++ [ pkgs.bash ];
+        }
+      );
+
       browsing = true;
       cups-pdf.enable = true;
 
       drivers = with pkgs; [
+        cups-filters
+        cups-browsed
+
         # epson-escpr
         canon-cups-ufr2
         gutenprint

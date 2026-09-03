@@ -128,7 +128,7 @@
         "privacy.trackingprotection.enabled" = true;
         "privacy.trackingprotection.socialtracking.enabled" = true;
         # "toolkit.telemetry.enabled" = false; # when true send anonymous reports to Mozilla
-        "privacy.firstparty.isolate" = true; # Can break third-party logins
+        "privacy.firstparty.isolate" = false; # Can break third-party logins
         "privacy.resistFingerprinting" = false; #!! RFP !! This is the setting
         "browser.send_pings" = false; # default
         "network.http.referer.XOriginPolicy" = 1; # A value of 0 can break stuff

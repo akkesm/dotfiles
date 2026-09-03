@@ -93,6 +93,11 @@
             user = "user";
           } // common;
 
+          "print-server,orangepizero3, orangepizero3.local,192.168.178.49" = {
+            hostname = "orangepizero3.local";
+            user = "orangepi";
+          } // common;
+
           "*" = common;
         };
 
@@ -105,6 +110,7 @@
     github.com,140.82.121.4 ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBEmKSENjQEezOmxkZMy7opKgwFB9nkt5YRrYMjNuG5N87uRgg6CLrbo5wAdT/y6v0mKV0U2w0WZ2YB/++Tpockg=
     192.168.178.3 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJVlo1mmlr+DpBW4xHVeP0pKC16+2sAYVBLdEZTRpCTE
     192.168.178.24 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFcv3qVMZPeRBFnZIsj8IDsIndlwbC4RPcPfgDEbyVua
+    orangepizero3.local,orangepizero3-2.local,192.168.178.49,192.168.178.50 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGfts4hI+kNXcxftfLzK74IWOX0T21jWqk0A6ZZzT62G
   '';
 
   home.activation = {

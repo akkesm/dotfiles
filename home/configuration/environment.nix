@@ -5,7 +5,7 @@
     primary = true;
     address = "alessandro.barenghi@tuta.io";
     realName = "Alessandro Barenghi";
-    gpg.key = "50E2669CAB382F4A5F7216670D6BFC01D45EDADD";
+    gpg.key = "15EC07BB11F212A2B2D49F5826A28944F1BA041F";
   };
 
   home = {

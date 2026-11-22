@@ -33,7 +33,7 @@
       };
 
       signing = {
-        key = "14E259475412EC24";
+        key = "7E2C554C7CB1BFE8";
         signByDefault = true;
       };
     };
@@ -48,7 +48,7 @@
       };
 
       settings = {
-        default-key = "50E2669CAB382F4A5F7216670D6BFC01D45EDADD";
+        default-key = "15EC07BB11F212A2B2D49F5826A28944F1BA041F";
         keyserver = "hkps://keys.openpgp.org ";
         keyid-format = "0xlong";
         list-options = "show-uid-validity";
@@ -131,6 +131,7 @@
     enableSshSupport = true;
 
     pinentry.package = pkgs.pinentry-qt;
-    sshKeys = [ "9C9B70E57D232FBA6AFF0634A1CDDD6968769723" ];
+    sshKeys = [ "29072C132D2346D24CB0D290B4BA6ABA21E48C0D" ];
   };
 }
+

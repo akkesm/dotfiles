@@ -5,7 +5,7 @@
     initrd.systemd.services.restore-btrfs = {
       description = "Restore blank btrfs subvolumes";
       wantedBy = [ "initrd.target" ];
-      after = [ "systemd-cryptsetup@nixos-enc.service" ];
+      after = [ "cryptsetup.target" ];
       before = [ "sysroot.mount" ];
       unitConfig.DefaultDependencies = "no";
       serviceConfig.Type = "oneshot";

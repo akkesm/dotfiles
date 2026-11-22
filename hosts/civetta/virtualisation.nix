@@ -17,10 +17,14 @@
   virtualisation.libvirtd = {
     # Add users to "libvirtd" group
     enable = true;
-    qemu.swtpm.enable = true;
+
+    qemu = {
+      swtpm.enable = true;
+      vhostUserPackages = with pkgs; [ virtiofsd ];
+    };
   };
 
-  environment.systemPackages = [ pkgs.virt-manager ];
+  environment.systemPackages = with pkgs; [ virt-manager ];
 
   # Vagrant
   services.nfs.server.enable = true;
@@ -34,6 +38,8 @@
     allowedTCPPorts = [ 2049 ];
     allowedUDPPorts = [ 2049 ];
   };
+
+  systemd.tmpfiles.rules = [ "L+ /var/lib/qemu/firmware - - - - ${pkgs.qemu}/share/qemu/firmware" ];
 }
 
 # Windows VM optimization options
